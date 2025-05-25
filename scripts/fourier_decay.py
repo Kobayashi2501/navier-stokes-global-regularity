@@ -1,0 +1,3 @@
+def analyze_decay(E_j_series):
+    """Plots log-log decay for dyadic shell energies"""
+    ...

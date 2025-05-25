@@ -1,0 +1,3 @@
+def embed_and_analyze(snapshot_data):
+    """Isomap + persistent homology for orbit geometry"""
+    ...
