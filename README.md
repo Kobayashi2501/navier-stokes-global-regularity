@@ -22,8 +22,8 @@ This project was initiated by **A. Kobayashi**, a non-specialist, as a creative 
 
 ## ■ Files
 
-- `main.tex`: Main LaTeX source (English)
-- `main.pdf`: Compiled manuscript (v2.0)
+- `navier_stokes_global.tex`: Main LaTeX source (English)
+- `navier_stokes_global.pdf`: Compiled manuscript (v2.0)
 - `appendix_code.py`: Pseudocode for reproducibility (Python-style)
 - `.gitignore`: Build artifact exclusion list (LaTeX)
 
