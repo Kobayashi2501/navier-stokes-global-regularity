@@ -22,10 +22,13 @@ This project was initiated by **A. Kobayashi**, a non-specialist, as a creative 
 
 ## ■ Files
 
-- `navier_stokes_global.tex`: Main LaTeX source (English)
-- `navier_stokes_global.pdf`: Compiled manuscript (v2.0)
-- `appendix_code.py`: Pseudocode for reproducibility (Python-style)
-- `.gitignore`: Build artifact exclusion list (LaTeX)
+## 📄 Files
+
+- [navier_stokes_global.pdf](./navier_stokes_global.pdf) — Full compiled paper (v2.0)
+- [navier_stokes_global.tex](./navier_stokes_global.tex) — LaTeX source
+- [scripts/pseudo_spectral_sim.py](./scripts/pseudo_spectral_sim.py) — Pseudo-spectral Navier-Stokes
+- [scripts/fourier_decay.py](./scripts/fourier_decay.py) — Fourier decay visualization
+- [scripts/ph_isomap.py](./scripts/ph_isomap.py) — Isomap and persistent homology
 
 ---
 
