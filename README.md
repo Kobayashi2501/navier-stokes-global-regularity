@@ -79,5 +79,7 @@ We welcome:
 
 Please open an [Issue](https://github.com/Kobayashi2501/navier-stokes-global-regularity/issues) or PR to contribute.
 
+📬 If you are an arXiv contributor in math.AP or math.DS and would consider endorsing this work for a first-time submission, your support would be greatly appreciated. Please contact via GitHub or email.
+
 📘 日本語版はこちら → [README_ja.md](./README_ja.md)
 
