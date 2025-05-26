@@ -79,4 +79,5 @@ We welcome:
 
 Please open an [Issue](https://github.com/Kobayashi2501/navier-stokes-global-regularity/issues) or PR to contribute.
 
+📘 日本語版はこちら → [README_ja.md](./README_ja.md)
 
