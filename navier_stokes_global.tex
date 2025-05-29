@@ -634,42 +634,66 @@ While $H^1$ provides a natural setting here, extension to Besov or Triebel–Liz
 % ===========================
 % Conclusion and Future Directions
 % ===========================
-\section{Conclusion and Future Directions}
-\label{sec:conclusion}
-
-We have presented a six-step analytic–topological–geometric framework toward resolving the global regularity problem for the three-dimensional incompressible Navier--Stokes equations. The program establishes a novel bridge between persistent homology, energy dissipation, orbit geometry, and classical PDE techniques.
-
-\subsection*{Summary of Results}
-\begin{itemize}
-  \item \textbf{Topological Stability:} Step 1 established that persistent homology barcodes remain stable under $H^1$-small perturbations. This links topological coherence with analytic continuity.
-
-  \item \textbf{Gradient Control via Persistence:} Step 2 showed that persistent structures in $\mathrm{PH}_1$ govern local enstrophy bounds, enabling control of $\|\nabla u\|^2$ through a Lyapunov-type function.
-
-  \item \textbf{Type I Blow-Up Exclusion:} Step 3 demonstrated that the solution orbit $\mathcal{O} \subset H^1$ is injective, finite-length, contractible, and homologically trivial. These properties eliminate self-similar (Type I) singularities.
-
-  \item \textbf{Higher-Order Blow-Up Exclusion:} Step 4 excluded Type II and III singularities by showing that persistent topological simplicity prohibits both slow-gradient divergence and oscillatory complexity.
-
-  \item \textbf{Global Attractor Simplicity:} Step 5 showed that persistent flattening leads to convergence toward a contractible global attractor $\mathcal{A}$ with $PH_k(\mathcal{A}) = 0$ and finite fractal dimension.
-
-  \item \textbf{Structural Stability:} Step 6 proved that topological simplicity is robust under perturbations of the initial data. The attractor and its trivial persistent homology structure persist under $H^1$-small changes.
-\end{itemize}
-
-\subsection*{Global Regularity Theorem}
-\textbf{Theorem:} Let $u_0 \in H^1(\mathbb{R}^3)$ be divergence-free. Then the corresponding solution $u(t)$ to the 3D incompressible Navier--Stokes equations remains globally smooth for all $t \ge 0$. Furthermore, the solution orbit $\mathcal{O} := \{ u(t) : t \ge 0 \} \subset H^1$ satisfies:
-\begin{itemize}
-  \item $\mathrm{PH}_1(\mathcal{O}) = 0$ \ (topological triviality)
-  \item $\overline{\mathcal{O}}$ is compact in $H^1$
-  \item Energy decays strictly: $\frac{d}{dt} E(t) < 0$
-\end{itemize}
-\noindent Thus, no singularity of Type I, II, or III may occur.
-
 \section{Future Directions}
 \label{sec:future}
-Several promising directions remain to deepen and generalize the analytic–topological framework:
+Several promising directions remain to deepen and generalize the analytic–topological framework. We group these into three categories: structural extensions, functional space generalizations, and computational or probabilistic expansions.
 
+\subsection*{Structural Extensions}
 \begin{itemize}
   \item \textbf{Extension to Bounded Domains:} Can the theory be extended to no-slip or Navier boundary conditions, where topology of the flow near walls may vary?
   \item \textbf{Critical Space Formulation:} Can persistent homology arguments be adapted to initial data in critical spaces such as $L^3$, $BMO^{-1}$, or $\dot{B}^{-1}_{\infty,\infty}$?
+\end{itemize}
+
+\vspace{1em}
+
+\subsection*{Supplement C: Extension to Besov and Critical Function Spaces}
+
+While the present framework is developed in the classical Sobolev space $H^1(\mathbb{R}^3)$, several foundational and structural insights suggest a promising path toward generalization into more refined function spaces, including Besov and critical-scale settings.
+
+\begin{definition}[Critical Function Space]
+A function space $X$ is said to be \emph{critical} for the Navier–Stokes equations if the norm $\|u_0\|_X$ is invariant under the natural scaling:
+\[
+u_\lambda(x, t) := \lambda u(\lambda x, \lambda^2 t), \quad \text{for all } \lambda > 0.
+\]
+Examples include $L^3(\mathbb{R}^3)$, $\dot{B}^{-1+\frac{3}{p}}_{p,q}(\mathbb{R}^3)$, and $BMO^{-1}$.
+\end{definition}
+
+\begin{remark}[Why Extend Beyond $H^1$?]
+While $H^1$ regularity is sufficient for establishing global smoothness in the present framework, the Clay Millennium Problem explicitly allows for $u_0 \in H^1$ but demands control over \emph{all} possible finite-energy data, especially those in scale-critical norms. Extending persistent homology arguments into Besov settings would significantly broaden the admissible data class.
+\end{remark}
+
+\begin{proposition}[Speculative Framework for Besov Generalization]
+Suppose that the velocity field $u(x,t)$ belongs to a critical Besov space $\dot{B}^{-1+\frac{3}{p}}_{p,q}$ with $p < \infty$, and assume:
+\begin{enumerate}
+    \item The persistent homology of $|u(x,t)|$ remains stable under spatial filtering via wavelet decompositions.
+    \item The associated energy cascade across dyadic shells is sufficiently monotonic.
+    \item The temporal barcode evolution satisfies:
+    \[
+    d_B(\mathrm{PH}_1(t_1), \mathrm{PH}_1(t_2)) \leq C|t_1 - t_2|^\alpha.
+    \]
+\end{enumerate}
+Then, the persistent homology approach may be adapted by replacing $H^1$ with norm estimates derived from multiscale decompositions:
+\[
+\|u(t)\|_{\dot{B}^{s}_{p,q}} := \left( \sum_j 2^{jsq} \| \Delta_j u \|_{L^p}^q \right)^{1/q}.
+\]
+\end{proposition}
+
+\begin{remark}[Outlook]
+While the required topological tools (e.g., persistent homology over Besov-regular filtrations) are still in early development, this represents a promising frontier. Combining wavelet-based representations with PH could bridge harmonic analysis and data topology.
+\end{remark}
+
+\begin{remark}[Connection to Critical Thresholds]
+The present framework focuses on $H^1$-based bounded enstrophy. However, via suitable reinterpretation of barcode decay in terms of Besov norms, one may track regularity below $H^1$, particularly in borderline cases near $\dot{B}^{-1}_{\infty,\infty}$ where classical PDE techniques become delicate.
+\end{remark}
+
+\begin{remark}[Invitation to Future Work]
+This supplement is intended not as a proof but as a structural hypothesis: that topological flattening and barcode convergence may be extended to settings where classical norms are either non-Hilbertian or scaling-invariant.
+\end{remark}
+
+\vspace{1em}
+
+\subsection*{Computational and Generalized Settings}
+\begin{itemize}
   \item \textbf{Statistical Attractors and Inertial Manifolds:} The persistent collapse of topological features suggests a link to low-dimensional long-time behavior. Can this guide the construction of inertial manifolds?
   \item \textbf{Persistent Homology in Numerics:} To what extent can $PH_1 = 0$ be verified numerically in large-scale simulations? Can this serve as a stability indicator or anomaly detector?
   \item \textbf{Extension to Other PDEs:} How transferable is this approach to the Euler equations, magnetohydrodynamics (MHD), or active scalar models like SQG?
