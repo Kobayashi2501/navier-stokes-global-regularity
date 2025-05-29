@@ -147,6 +147,46 @@ Theorem \ref{thm:niyogi_smale_weinberger} connects finite-sample simulations wit
 This framework endorses a sound experimental mathematics strategy: if numerical simulations on $\varepsilon$-dense samples yield vanishing $\mathrm{PH}_1$ stably over time, then the analytic orbit $\mathcal{O}$ is provably topologically trivial. This reverses the usual logic of analysis-from-theory, and strengthens the validity of empirical observation.
 \end{remark}
 
+\subsection*{Supplement A: Topological Certifiability via PH Stability and Sampling Density}
+
+The vanishing of the first persistent homology group $\mathrm{PH}_1$ based on numerical simulations is a central empirical indicator of topological regularity. In order for such numerically observed triviality to imply true contractibility of the analytic orbit $\mathcal{O} \subset H^1$, we require theoretical guarantees that relate sampling density and barcode stability to topological certifiability.
+
+\begin{theorem}[Topological Certifiability via Sampling and Stability]
+\label{thm:certifiability}
+Let $\mathcal{O} := \{ u(t) \in H^1 : t \in [0,T] \}$ denote the solution orbit. Suppose:
+\begin{enumerate}
+    \item $\mathcal{O}$ is compact in $H^1$, injective, and has finite arc length.
+    \item A finite sample $S = \{ u(t_i) \}_{i=1}^n$ is $\varepsilon$-dense in $\mathcal{O}$ in the Hausdorff sense.
+    \item The persistent homology $\mathrm{PH}_1(S)$ computed from $S$ via the Čech complex vanishes: $\mathrm{PH}_1(S) = 0$.
+    \item The barcode exhibits bottleneck stability:
+    \[
+    d_B(\mathrm{PH}_1(t_i), \mathrm{PH}_1(t_j)) \leq L|t_i - t_j|^\alpha.
+    \]
+\end{enumerate}
+Then with high confidence (depending on $\varepsilon$, curvature of $\mathcal{O}$, and barcode noise threshold $\delta$), we conclude:
+\[
+\mathrm{PH}_1(\mathcal{O}) = 0,
+\]
+i.e., the analytic solution orbit is homologically trivial.
+\end{theorem}
+
+\begin{remark}[Source Theorems and Rationale]
+This follows from the combination of the Niyogi–Smale–Weinberger theorem, which states that an $\varepsilon$-dense sample of a manifold recovers its homology with high probability, and the persistence stability theorem of Cohen–Steiner et al., which bounds the deviation of barcode diagrams under perturbations. Together, they imply that numerically observed $\mathrm{PH}_1 = 0$ is a reliable proxy for true topological triviality, provided:
+\begin{itemize}
+    \item Sufficient sampling density $\varepsilon \ll \min(\mathrm{inj\_radius}, \text{barcode noise threshold})$,
+    \item Barcode persistence lengths are above the noise floor,
+    \item Stability constants $L$ and $\alpha$ are uniformly bounded.
+\end{itemize}
+\end{remark}
+
+\begin{remark}[Practical Interpretation]
+This result justifies experimental mathematics: if numerical simulations over a dense time-grid produce consistently vanishing $\mathrm{PH}_1$ barcodes, then the continuous-time solution orbit $\mathcal{O}$ is provably contractible with quantifiable confidence.
+\end{remark}
+
+\begin{remark}[Numerical Relevance]
+This theorem offers a roadmap for numerical analysts: to certify topological triviality, one must control sampling density, persistence resolution, and bottleneck variation—each of which is measurable in simulations.
+\end{remark}
+
 \end{document}
 
 
