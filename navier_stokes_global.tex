@@ -346,12 +346,16 @@ If the persistence barcode $\mathrm{PH}_1(u(t))$ converges to zero as $t \to \in
 Let $\mathcal{A}$ be the $\omega$-limit set of $u(t)$ in $H^1$. If $\lim_{t \to \infty} PH_1(u(t)) = 0$, then $\mathcal{A}$ is topologically contractible and $PH_k(\mathcal{A}) = 0$ for $k \ge 1$.
 \end{lemma}
 
+\begin{theorem}[Foias--Temam Dimension Bound]
+Suppose $u(t)$ is a weak solution to the 3D Navier--Stokes equations with bounded energy and enstrophy over $[0,\infty)$, and assume $\partial_t u \in L^2([0,T]; H^{-1})$. Then the global attractor $\mathcal{A}$ in $H^1$ has finite Hausdorff and fractal dimension, bounded by a function of the Grashof number and viscosity.
+\end{theorem}
+
 \begin{theorem}[Persistence-Based Attractor Confinement]
 Under energy decay and persistent homology stability, the solution orbit remains confined to a compact, low-complexity region of $H^1$.
 \end{theorem}
 
 \subsection*{Proof Sketch}
-The decay of $C(t)$ implies simplification of topological complexity. Combined with bounded enstrophy, the orbit becomes confined to a topologically simple attractor. The persistence diagrams shrink over time, indicating collapse of homological features, which ensures that $\mathcal{A}$ is not only compact but also low-dimensional and contractible.
+The decay of $C(t)$ implies simplification of topological complexity. Combined with bounded enstrophy, the orbit becomes confined to a topologically simple attractor. The persistence diagrams shrink over time, indicating collapse of homological features, which ensures that $\mathcal{A}$ is not only compact but also low-dimensional and contractible. The classical Foias--Temam framework guarantees that this attractor has finite Hausdorff and fractal dimension, and persistent homology offers a computable way to detect this structure in simulations.
 
 \subsection*{Remarks}
 
