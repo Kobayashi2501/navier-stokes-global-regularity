@@ -143,7 +143,11 @@ Let $\mathcal{O} := \{u(t): t \in [0,T]\} \subset H^1$ be the solution orbit, an
 Theorem \ref{thm:niyogi_smale_weinberger} connects finite-sample simulations with analytic topological properties. It enables reliable use of discrete barcode observations to infer continuum regularity.
 \end{remark}
 
-\textbf{Conclusion of Step 1:} Theorem \ref{thm:topological_sobolev_continuity} and Lemma \ref{lem:lyapunov_decay} link barcode stability to Sobolev smoothness. Theorem \ref{thm:niyogi_smale_weinberger} guarantees that observed $\mathrm{PH}_1 = 0$ in simulations implies true topological triviality of the continuous flow. Together, these results establish a robust analytic-topological bridge for regularity theory.
+\begin{remark}[Experimental Mathematics Perspective]
+This framework endorses a sound experimental mathematics strategy: if numerical simulations on $\varepsilon$-dense samples yield vanishing $\mathrm{PH}_1$ stably over time, then the analytic orbit $\mathcal{O}$ is provably topologically trivial. This reverses the usual logic of analysis-from-theory, and strengthens the validity of empirical observation.
+\end{remark}
+
+\textbf{Conclusion of Step 1:} Theorem \ref{thm:topological_sobolev_continuity} and Lemma \ref{lem:lyapunov_decay} link barcode stability to Sobolev smoothness. Theorem \ref{thm:niyogi_smale_weinberger} guarantees that observed $\mathrm{PH}_1 = 0$ in simulations implies true topological triviality of the continuous flow. Together with the experimental inference perspective, these results establish a robust analytic-topological bridge for regularity theory and position persistent homology as both a diagnostic and predictive mathematical tool.
 
 
 % ===========================
