@@ -483,7 +483,7 @@ By integrating persistent homology, energy decay, and orbit-level geometry, this
 
 
 % =============================================================
-% === Appendix=
+% === Appendix
 % =============================================================
 
 \section{Appendix A. Reproducibility Toolkit}
@@ -534,6 +534,37 @@ d_B(Dgm(u), Dgm(P_d u)) \le \|u - P_d u\|_{L^\infty H^1}.
 \]
 This ensures that the triviality of $PH_1$ observed numerically is stable under finite-rank projections and bounded noise.
 
+\section{Appendix C. Supplemental Lemmas for Step 3}
+\label{sec:appendixC}
+
+\begin{lemma}[Injectivity from Energy Dissipation]
+Let $E(t) = \|u(t)\|_{H^1}^2$ be the energy of the solution. Then $E(t)$ is strictly decreasing for $t > 0$, hence $u(t_1) \ne u(t_2)$ for all $t_1 \ne t_2$.
+\end{lemma}
+
+\begin{proof}
+Standard energy inequalities give $\frac{d}{dt} E(t) \le -\nu \|\nabla u(t)\|_{L^2}^2$, so $E$ is strictly decreasing unless $\nabla u = 0$, which contradicts the non-triviality of Navier--Stokes flows. Hence, no two states along the orbit can be identical.
+\end{proof}
+
+\begin{lemma}[Finite Arc Length of the Orbit]
+If $\partial_t u \in L^1(0, T; H^{-1})$, then the orbit $\mathcal{O} = \{ u(t) \}$ has finite arc length in $H^1$.
+\end{lemma}
+
+\begin{proof}
+Arc length is estimated as $\int_0^T \|\partial_t u(t)\|_{H^{-1}} dt < \infty$, which implies finite variation in $H^1$ norm, thus finite arc length.
+\end{proof}
+
+\begin{lemma}[Orbit Closure is Contractible]
+If $\mathcal{O}$ is injective and has finite arc length in a separable Hilbert space (e.g., $H^1$), then its closure is homeomorphic to a compact interval.
+\end{lemma}
+
+\begin{proof}
+This follows from classical results in geometric topology: injective, continuous, finite-length curves in separable Hilbert spaces are topologically equivalent to arcs.
+\end{proof}
+
+\begin{theorem}[Persistent Homology Triviality from Simplicity]
+If the orbit $\mathcal{O}$ is injective, contractible, and Lipschitz, then its first persistent homology vanishes: $PH_1(\mathcal{O}) = 0$.
+\end{theorem}
+
 \section*{Acknowledgements}
 We thank the open-source and mathematical communities for their contributions to reproducible computational fluid dynamics and topological data analysis.
 
@@ -571,9 +602,9 @@ Robert Ghrist.\\
 Bulletin of the American Mathematical Society, 45(1):61--75, 2008.
 
 \bibitem{Escauriaza2003}
-Luis Escauriaza, Gregory Seregin, and Vladimir Šverák.\\
+Luis Escauriaza, Gregory Seregin, and Vladimir \v{S}ver\'ak.\\
 \textit{$L^{3,\infty}$-solutions of Navier-Stokes equations and backward uniqueness}.\\
-Uspekhi Matematicheskikh Nauk, 58(2):3–44, 2003.
+Uspekhi Matematicheskikh Nauk, 58(2):3--44, 2003.
 
 \end{thebibliography}
 
