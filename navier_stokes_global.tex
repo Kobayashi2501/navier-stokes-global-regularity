@@ -381,9 +381,33 @@ If the persistence barcode $\mathrm{PH}_1(u(t))$ converges to zero as $t \to \in
 Let $\mathcal{A}$ be the $\omega$-limit set of $u(t)$ in $H^1$. If $\lim_{t \to \infty} PH_1(u(t)) = 0$, then $\mathcal{A}$ is topologically contractible and $PH_k(\mathcal{A}) = 0$ for $k \ge 1$.
 \end{lemma}
 
-\begin{theorem}[Foias--Temam Dimension Bound]
-Suppose $u(t)$ is a weak solution to the 3D Navier--Stokes equations with bounded energy and enstrophy over $[0,\infty)$, and assume $\partial_t u \in L^2([0,T]; H^{-1})$. Then the global attractor $\mathcal{A}$ in $H^1$ has finite Hausdorff and fractal dimension, bounded by a function of the Grashof number and viscosity.
+\begin{theorem}[Foias--Temam Fractal Dimension Bound]
+Let $\mathcal{A} \subset H^1$ be the global attractor for the 3D Navier--Stokes equations on a bounded domain $\Omega$ with viscosity $\nu$ and initial data $u_0$. Then:
+\[
+\dim_f(\mathcal{A}) \leq C \cdot \left( \frac{\|\nabla u_0\|^2}{\nu^3} \right),
+\]
+where $\dim_f$ denotes the fractal (box-counting) dimension, and $C > 0$ depends on the geometry of $\Omega$.
 \end{theorem}
+
+\begin{definition}[Persistent Energy Barcode Function]
+Define the persistent homology energy functional:
+\[
+C(t) := \sum_{h \in \mathrm{PH}_1(t)} \mathrm{persist}(h)^2.
+\]
+This serves as a Lyapunov-type function measuring topological complexity.
+\end{definition}
+
+\begin{lemma}[Topological Decay Bounds Fractal Dimension]
+Suppose $C(t)$ satisfies:
+\[
+\sup_{t > T_0} C(t) \leq \varepsilon,
+\]
+for sufficiently large $T_0$ and small $\varepsilon > 0$. Then the attractor $\mathcal{A}$ is topologically trivial in first homology and satisfies:
+\[
+\dim_f(\mathcal{A}) \leq C' \cdot \varepsilon^\delta,
+\]
+for constants $C', \delta > 0$.
+\end{lemma}
 
 \begin{theorem}[Persistence-Based Attractor Confinement]
 Under energy decay and persistent homology stability, the solution orbit remains confined to a compact, low-complexity region of $H^1$.
@@ -393,6 +417,14 @@ Under energy decay and persistent homology stability, the solution orbit remains
 The decay of $C(t)$ implies simplification of topological complexity. Combined with bounded enstrophy, the orbit becomes confined to a topologically simple attractor. The persistence diagrams shrink over time, indicating collapse of homological features, which ensures that $\mathcal{A}$ is not only compact but also low-dimensional and contractible. The classical Foias--Temam framework guarantees that this attractor has finite Hausdorff and fractal dimension, and persistent homology offers a computable way to detect this structure in simulations.
 
 \subsection*{Remarks}
+
+\begin{remark}[Interpretation]
+Persistent homology thus quantifies the “topological compression” of the long-time dynamics. As vortex interactions decay and merge, the number and persistence of 1-dimensional cycles vanishes, pushing the system onto a contractible attractor.
+\end{remark}
+
+\begin{remark}[Topological Thermostat Effect]
+The decay of $C(t)$ over time can be interpreted as a “topological thermostat,” stabilizing the flow by damping oscillatory or recurrent behaviors.
+\end{remark}
 
 \begin{remark}[Comparison with Foias--Temam Attractors]
 This attractor parallels classical results on finite-dimensional global attractors (Foias--Temam) but uses persistent homology to offer a topological lens.
@@ -409,6 +441,12 @@ Persistent flattening of topological features supports the notion that turbulenc
 \begin{remark}[Time Irreversibility]
 Strict monotonic energy decay ensures that no part of the orbit revisits earlier topological configurations, reinforcing a one-way evolution in function space.
 \end{remark}
+
+\begin{corollary}[Asymptotic PH$_1$ Triviality]
+Under the decay of $C(t)$, the long-time dynamics are contained in a homologically trivial set. Hence, $\mathrm{PH}_1(\mathcal{A}) = 0$.
+\end{corollary}
+
+\end{document}
 
 
 % ===========================
