@@ -345,6 +345,37 @@ The presented topological constraints offer concrete criteria suitable for numer
 Future work includes refining numerical methods to explicitly verify persistent homology constraints and exploring extensions to less regular initial conditions or broader classes of PDE systems.
 \end{remark}
 
+\subsection*{Numerical Validation Code Snippet}
+\begin{lstlisting}[language=Python, caption=Isomap + Persistent Homology Validation for Navier--Stokes Orbit Geometry]
+from sklearn.manifold import Isomap
+from ripser import ripser
+from persim import plot_diagrams
+import matplotlib.pyplot as plt
+
+
+def embed_and_analyze(snapshot_data, n_neighbors=10, n_components=2):
+    """Apply Isomap to orbit snapshots and compute persistent homology."""
+    # Step 1: Isomap embedding
+    isomap = Isomap(n_neighbors=n_neighbors, n_components=n_components)
+    embedded = isomap.fit_transform(snapshot_data)
+
+    # Step 2: Persistent homology (Rips complex)
+    result = ripser(embedded, maxdim=1)
+    diagrams = result['dgms']
+
+    # Step 3: Plot PH diagrams
+    plot_diagrams(diagrams, show=True)
+    
+    return diagrams
+\end{lstlisting}
+
+\section{Step 5 - Persistent Topology of the Global Attractor}
+\label{sec:step5}
+
+% (existing Step 5 content follows unchanged)
+
+\end{document}
+
 
 % ===========================
 % STEP 5 - Elimination of Type II Blow-Up
