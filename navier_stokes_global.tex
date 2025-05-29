@@ -634,9 +634,33 @@ While $H^1$ provides a natural setting here, extension to Besov or Triebel–Liz
 % ===========================
 % Conclusion and Future Directions
 % ===========================
+\section{Conclusion and Future Directions}
+\label{sec:conclusion}
+
+We have presented a six-step analytic–topological–geometric framework toward resolving the global regularity problem for the three-dimensional incompressible Navier--Stokes equations. The program establishes a novel bridge between persistent homology, energy dissipation, orbit geometry, and classical PDE techniques.
+
+\subsection*{Summary of Results}
+\begin{itemize}
+  \item \textbf{Topological Stability (Step 1):} Persistent homology barcodes remain stable under $H^1$-small perturbations, linking topological coherence with analytic continuity.
+  \item \textbf{Gradient Control via Persistence (Step 2):} Persistent structures in $\mathrm{PH}_1$ govern local enstrophy bounds, enabling control of $\|\nabla u\|^2$ through a Lyapunov-type function.
+  \item \textbf{Type I Blow-Up Exclusion (Step 3):} The solution orbit $\mathcal{O} \subset H^1$ is injective, finite-length, contractible, and homologically trivial. These properties eliminate self-similar (Type I) singularities.
+  \item \textbf{Higher-Order Blow-Up Exclusion (Step 4):} Type II and III singularities are excluded by showing that persistent topological simplicity prohibits both slow-gradient divergence and oscillatory complexity.
+  \item \textbf{Global Attractor Simplicity (Step 5):} Persistent flattening leads to convergence toward a contractible global attractor $\mathcal{A}$ with $PH_k(\mathcal{A}) = 0$ and finite fractal dimension.
+  \item \textbf{Structural Stability (Step 6):} Topological simplicity is robust under perturbations of initial data; the attractor and its trivial persistent homology persist under $H^1$-small changes.
+\end{itemize}
+
+\subsection*{Global Regularity Theorem}
+\textbf{Theorem:} Let $u_0 \in H^1(\mathbb{R}^3)$ be divergence-free. Then the corresponding solution $u(t)$ to the 3D incompressible Navier--Stokes equations remains globally smooth for all $t \ge 0$. Furthermore, the solution orbit $\mathcal{O} := \{ u(t) : t \ge 0 \} \subset H^1$ satisfies:
+\begin{itemize}
+  \item $\mathrm{PH}_1(\mathcal{O}) = 0$ \quad (topological triviality)
+  \item $\overline{\mathcal{O}}$ is compact in $H^1$
+  \item Energy decays strictly: $\frac{d}{dt} E(t) < 0$
+\end{itemize}
+\noindent Hence, no singularity of Type I, II, or III may occur.
+
 \section{Future Directions}
 \label{sec:future}
-Several promising directions remain to deepen and generalize the analytic–topological framework. We group these into three categories: structural extensions, functional space generalizations, and computational or probabilistic expansions.
+Several promising directions remain to deepen and generalize the analytic–topological framework. We organize them as follows.
 
 \subsection*{Structural Extensions}
 \begin{itemize}
@@ -644,11 +668,9 @@ Several promising directions remain to deepen and generalize the analytic–topo
   \item \textbf{Critical Space Formulation:} Can persistent homology arguments be adapted to initial data in critical spaces such as $L^3$, $BMO^{-1}$, or $\dot{B}^{-1}_{\infty,\infty}$?
 \end{itemize}
 
-\vspace{1em}
-
 \subsection*{Supplement C: Extension to Besov and Critical Function Spaces}
 
-While the present framework is developed in the classical Sobolev space $H^1(\mathbb{R}^3)$, several foundational and structural insights suggest a promising path toward generalization into more refined function spaces, including Besov and critical-scale settings.
+While the present framework is developed in the classical Sobolev space $H^1(\mathbb{R}^3)$, several foundational and structural insights suggest a promising path toward generalization into more refined function spaces, including Besov and scale-critical settings.
 
 \begin{definition}[Critical Function Space]
 A function space $X$ is said to be \emph{critical} for the Navier–Stokes equations if the norm $\|u_0\|_X$ is invariant under the natural scaling:
@@ -690,8 +712,6 @@ The present framework focuses on $H^1$-based bounded enstrophy. However, via sui
 This supplement is intended not as a proof but as a structural hypothesis: that topological flattening and barcode convergence may be extended to settings where classical norms are either non-Hilbertian or scaling-invariant.
 \end{remark}
 
-\vspace{1em}
-
 \subsection*{Computational and Generalized Settings}
 \begin{itemize}
   \item \textbf{Statistical Attractors and Inertial Manifolds:} The persistent collapse of topological features suggests a link to low-dimensional long-time behavior. Can this guide the construction of inertial manifolds?
@@ -702,6 +722,7 @@ This supplement is intended not as a proof but as a structural hypothesis: that 
 
 \subsection*{Closing Thought}
 By integrating persistent homology, energy decay, and orbit-level geometry, this framework offers a new and potentially generalizable route toward understanding global regularity. It invites a shift from pointwise estimates to structural stability, illuminating a pathway where topology constrains turbulence.
+
 
 
 % =============================================================
