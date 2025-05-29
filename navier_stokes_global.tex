@@ -432,49 +432,50 @@ While $H^1$ provides a natural setting here, extension to Besov or Triebel–Liz
 % ===========================
 % Conclusion and Future Directions
 % ===========================
-\section{Conclusion}
+\section{Conclusion and Future Directions}
 \label{sec:conclusion}
 
-We have presented a six-step analytic–topological–geometric program aimed at resolving the global regularity problem for the three-dimensional incompressible Navier–Stokes equations on \( \mathbb{R}^3 \). The strategy hinges on the interplay between deterministic decay estimates, orbit geometry, and persistent topological constraints.
+We have presented a six-step analytic–topological–geometric framework toward resolving the global regularity problem for the three-dimensional incompressible Navier--Stokes equations. The program establishes a novel bridge between persistent homology, energy dissipation, orbit geometry, and classical PDE techniques.
 
 \subsection*{Summary of Results}
 \begin{itemize}
-  \item \textbf{Spectral decay:} Unconditional dyadic shell energy decay (Step 1) enables derivation of global smoothing via classical LPS and BKM criteria (Step 2), without small initial data.
+  \item \textbf{Topological Stability:} Step 1 established that persistent homology barcodes remain stable under $H^1$-small perturbations. This links topological coherence with analytic continuity.
 
-  \item \textbf{Topological regularity:} Injectivity and finite-length of the solution orbit in \( H^1 \) implies trivial persistent homology \( PH_1 = 0 \) (Step 3), excluding all Type I (self-similar) singularities.
+  \item \textbf{Gradient Control via Persistence:} Step 2 showed that persistent structures in $\mathrm{PH}_1$ govern local enstrophy bounds, enabling control of $\|\nabla u\|^2$ through a Lyapunov-type function.
 
-  \item \textbf{Robustness to forcing:} The energy and topological structure persists under small divergence-free forcing terms (Step 4), confirming the stability of the framework.
+  \item \textbf{Type I Blow-Up Exclusion:} Step 3 demonstrated that the solution orbit $\mathcal{O} \subset H^1$ is injective, finite-length, contractible, and homologically trivial. These properties eliminate self-similar (Type I) singularities.
 
-  \item \textbf{Enstrophy control:} A linear growth bound \( \|\nabla u(t)\|_2^2 \le C(1 + t) \) (Step 5) invalidates all Type II blow-up scenarios based on slow critical scaling.
+  \item \textbf{Higher-Order Blow-Up Exclusion:} Step 4 excluded Type II and III singularities by showing that persistent topological simplicity prohibits both slow-gradient divergence and oscillatory complexity.
 
-  \item \textbf{Orbit compactness:} Aubin–Lions compactness combined with dissipative bounds ensures that the solution orbit \( \mathcal{O} \) is precompact in \( H^1 \) (Step 6), excluding all Type III behaviors.
+  \item \textbf{Global Attractor Simplicity:} Step 5 showed that persistent flattening leads to convergence toward a contractible global attractor $\mathcal{A}$ with $PH_k(\mathcal{A}) = 0$ and finite fractal dimension.
+
+  \item \textbf{Structural Stability:} Step 6 proved that topological simplicity is robust under perturbations of the initial data. The attractor and its trivial persistent homology structure persist under $H^1$-small changes.
 \end{itemize}
 
 \subsection*{Global Regularity Theorem}
-\textbf{Theorem:} Let \( u_0 \in H^1(\mathbb{R}^3) \) be divergence-free. Then the corresponding solution \( u(t) \) to the 3D incompressible Navier–Stokes equations remains smooth for all \( t \ge 0 \). Furthermore, the orbit \( \mathcal{O} := \{ u(t) \} \subset H^1 \) is:
+\textbf{Theorem:} Let $u_0 \in H^1(\mathbb{R}^3)$ be divergence-free. Then the corresponding solution $u(t)$ to the 3D incompressible Navier--Stokes equations remains globally smooth for all $t \ge 0$. Furthermore, the solution orbit $\mathcal{O} := \{ u(t) : t \ge 0 \} \subset H^1$ satisfies:
 \begin{itemize}
-  \item Topologically trivial (\( PH_1 = 0 \))
-  \item Strongly precompact (compact closure)
-  \item Dynamically non-recurrent (strict energy decay)
+  \item $\mathrm{PH}_1(\mathcal{O}) = 0$ \ (topological triviality)
+  \item $\overline{\mathcal{O}}$ is compact in $H^1$
+  \item Energy decays strictly: $\frac{d}{dt} E(t) < 0$
 \end{itemize}
+\noindent Thus, no singularity of Type I, II, or III may occur.
 
-\noindent Hence, no singularity of Type I, II, or III can occur.
-
-\bigskip
 \section{Future Directions}
 \label{sec:future}
-While this work provides a coherent argument for global regularity in \( \mathbb{R}^3 \), several questions remain open and invite further exploration.
+Several promising directions remain to deepen and generalize the analytic–topological framework:
 
 \begin{itemize}
-  \item \textbf{Extension to bounded domains:} Can the topological and spectral techniques be adapted to domains with physical boundaries, such as no-slip or Navier conditions?
-  \item \textbf{Critical space generalization:} What modifications are needed to extend this method to data in \( L^3 \), \( BMO^{-1} \), or critical Besov spaces?
-  \item \textbf{Connection to attractor theory:} The compactness of \( \mathcal{O} \) suggests a pathway to identifying inertial manifolds or global attractors. Can this be formalized?
-  \item \textbf{Persistent homology in numerics:} How robust is the observed \( PH_1 = 0 \) topology in high-resolution simulations, and can it be used as a diagnostic for smoothness?
-  \item \textbf{Extension to related PDEs:} Can this framework be generalized to Euler equations, magnetohydrodynamics, or surface quasi-geostrophic (SQG) models?
+  \item \textbf{Extension to Bounded Domains:} Can the theory be extended to no-slip or Navier boundary conditions, where topology of the flow near walls may vary?
+  \item \textbf{Critical Space Formulation:} Can persistent homology arguments be adapted to initial data in critical spaces such as $L^3$, $BMO^{-1}$, or $\dot{B}^{-1}_{\infty,\infty}$?
+  \item \textbf{Statistical Attractors and Inertial Manifolds:} The persistent collapse of topological features suggests a link to low-dimensional long-time behavior. Can this guide the construction of inertial manifolds?
+  \item \textbf{Persistent Homology in Numerics:} To what extent can $PH_1 = 0$ be verified numerically in large-scale simulations? Can this serve as a stability indicator or anomaly detector?
+  \item \textbf{Extension to Other PDEs:} How transferable is this approach to the Euler equations, magnetohydrodynamics (MHD), or active scalar models like SQG?
+  \item \textbf{Probabilistic Settings:} Can similar regularity results be proven in a stochastic setting, or under random initial data sampled from ensembles?
 \end{itemize}
 
 \subsection*{Closing Thought}
-This project integrates decay, topology, and geometry into a reproducible and potentially generalizable proof structure. By rejecting small-data dependence and embracing orbit-level structure, it offers a new route to regularity grounded in mathematical simplicity and dynamical intuition.
+By integrating persistent homology, energy decay, and orbit-level geometry, this framework offers a new and potentially generalizable route toward understanding global regularity. It invites a shift from pointwise estimates to structural stability, illuminating a pathway where topology constrains turbulence.
 
 
 % =============================================================
