@@ -189,27 +189,26 @@ Under the conditions of Theorem \ref{thm:local_gradient_control}, the enstrophy 
 \section{Step 3 - Topological Exclusion of Type I Blow-Up via Orbit Simplicity}
 \label{sec:step3}
 
-In this step, we show that the solution orbit \( \mathcal{O} := \{ u(t) : t \ge 0 \} \subset H^1 \) is injective and topologically trivial. These properties exclude self-similar (Type I) singularities by connecting analytic decay with geometric-topological simplicity. Type II and III blow-ups will be addressed explicitly in Steps 5 and 6.
-
-\subsection*{Definitions}
 \begin{definition}[Solution Orbit]
-The trajectory (or orbit) \( \mathcal{O} := \{ u(t) : t \ge 0 \} \subset H^1 \) denotes the set of solution snapshots under temporal evolution of the Navier--Stokes flow from initial data \( u_0 \in H^1 \).
+The trajectory (or orbit) $\mathcal{O} := \{ u(t) : t \ge 0 \} \subset H^1$ denotes the set of solution snapshots under temporal evolution of the Navier--Stokes flow from initial data $u_0 \in H^1$.
 \end{definition}
 
 \begin{definition}[Type I Blow-Up]
-A solution develops a Type I singularity at time \( T^* \) if
-\[ \|u(t)\|_{H^1} \sim (T^* - t)^{-\alpha} \quad \text{as } t \nearrow T^* \]
-for some \( \alpha > 0 \), corresponding to a self-similar rescaling of the solution.
+A solution develops a Type I singularity at time $T^*$ if
+\[
+\|u(t)\|_{H^1} \sim (T^* - t)^{-\alpha} \quad \text{as } t \nearrow T^*
+\]
+for some $\alpha > 0$, corresponding to a self-similar rescaling of the solution.
 \end{definition}
 
-\subsection*{Main Theorem}
 \begin{theorem}[Topological Exclusion of Type I Blow-Up]
-Let \( u(t) \) be the solution constructed in Steps 1--2. Then the orbit \( \mathcal{O} \subset H^1 \) satisfies:
+\label{thm:typeI_exclusion}
+Let $u(t)$ be the solution constructed in Steps 1--2. Then the orbit $\mathcal{O} \subset H^1$ satisfies:
 \begin{enumerate}
-  \item \textbf{Injectivity:} If \( t_1 \ne t_2 \), then \( u(t_1) \ne u(t_2) \).
-  \item \textbf{Finite Length:} The curve \( \mathcal{O} \) has finite length in \( H^1 \).
-  \item \textbf{Contractibility:} The closure \( \overline{\mathcal{O}} \) is homeomorphic to a compact arc.
-  \item \textbf{Homological Simplicity:} The first persistent homology group satisfies \( PH_1(\mathcal{O}) = 0 \).
+  \item \textbf{Injectivity:} If $t_1 \ne t_2$, then $u(t_1) \ne u(t_2)$.
+  \item \textbf{Finite Length:} The curve $\mathcal{O}$ has finite length in $H^1$.
+  \item \textbf{Contractibility:} The closure $\overline{\mathcal{O}}$ is homeomorphic to a compact arc.
+  \item \textbf{Homological Simplicity:} The first persistent homology group satisfies $PH_1(\mathcal{O}) = 0$.
   \item \textbf{Topological Irreversibility:} Strict energy decay prevents return to previous states.
   \item \textbf{No Scaling Invariance:} Dissipative flow precludes self-similar orbit symmetry.
   \item \textbf{Type I Blow-Up Excluded:} Self-similar singularities require recurrence, which is topologically forbidden.
@@ -218,56 +217,32 @@ Let \( u(t) \) be the solution constructed in Steps 1--2. Then the orbit \( \mat
 
 \subsection*{Key Theorems and Lemmas}
 \begin{lemma}[Energy Decay Implies Injectivity]
-Strict monotonicity of energy \( E(t) \) implies \( u(t_1) \ne u(t_2) \) for all \( t_1 \ne t_2 \).
+Strict monotonicity of energy $E(t)$ implies $u(t_1) \ne u(t_2)$ for all $t_1 \ne t_2$.
 \end{lemma}
 
 \begin{lemma}[Bounded Variation Implies Finite Length]
-If \( \partial_t u \in L^1(0,\infty; H^{-1}) \), then \( \mathcal{O} \) has finite arc-length in \( H^1 \).
+If $\partial_t u \in L^1(0,\infty; H^{-1})$, then $\mathcal{O}$ has finite arc-length in $H^1$.
 \end{lemma}
 
 \begin{lemma}[Contractibility of Orbit Closure]
-A finite-length injective curve in a separable Hilbert space has a closure homeomorphic to a compact interval (cf. Kuratowski, Vol. II).
+A finite-length injective curve in a separable Hilbert space has a closure homeomorphic to a compact interval.
 \end{lemma}
 
 \begin{theorem}[Topological Triviality under Persistent Homology]
-Let \( \gamma: [0,1] \to H^1 \) be an injective, finite-length curve with contractible image. Then the associated persistence diagram \( PH_1(\gamma) = 0 \) under any \v{C}ech or Vietoris--Rips filtration at scale \( \epsilon > 0 \), up to sampling resolution.
+An injective, finite-length curve with contractible image has trivial first persistent homology: $PH_1(\mathcal{O}) = 0$.
 \end{theorem}
 
 \begin{theorem}[Energy Dissipation Implies Topological Irreversibility]
-Let \( E(t) \) be strictly decreasing and \( u(t) \in H^1 \). Then the orbit \( \mathcal{O} \) cannot return arbitrarily close to any previous state: \( \forall \varepsilon > 0, \exists \delta > 0 \) s.t. \( \|u(t_2) - u(t_1)\|_{H^1} > \delta \) for all \( t_2 > t_1 \).
+Strict energy decay implies that the solution orbit does not revisit previous states.
 \end{theorem}
 
 \begin{theorem}[Dissipative Orbit Breaks Scaling Invariance]
-Let \( \mathcal{O} \subset H^1 \) be the solution orbit with \( PH_1(\mathcal{O}) = 0 \). Then \( \mathcal{O} \) does not admit any rescaling map \( S_\lambda: u(t) \mapsto \lambda u(\lambda^2 t) \) such that \( S_\lambda(\mathcal{O}) = \mathcal{O} \).
+The dissipative orbit $\mathcal{O}$ does not admit any self-similar scaling invariance.
 \end{theorem}
 
 \subsection*{Proof Sketch of Theorem}
-Injectivity and bounded variation yield a topologically contractible orbit. The persistent homology vanishes due to this simplicity. Energy decay prevents recurrence, and broken scaling invariance eliminates self-similar orbit structure. These together exclude Type I singularities.
+Injectivity and bounded variation yield a topologically contractible orbit. Persistent homology vanishes due to this simplicity. Energy decay prevents recurrence, and broken scaling invariance eliminates self-similar orbit structure, collectively excluding Type I singularities.
 
-\subsection*{Remarks}
-\begin{remark}[Geometric and Topological Interpretation]
-Self-similarity implies recurrence, but energy decay induces an irreversible flow through function space, preventing loops or rescaling cycles.
-\end{remark}
-
-\begin{remark}[On Scaling Invariance]
-Scale invariance requires symmetric orbit structure. Our strictly dissipative and topologically trivial \( \mathcal{O} \) cannot support such symmetry.
-\end{remark}
-
-\begin{remark}[Pressure and Boundary Conditions]
-The pressure \( p \) solves \( \Delta p = -\partial_i u_j \partial_j u_i \), consistent with decay at infinity. For bounded domains, elliptic regularity ensures solvability under Dirichlet or Navier boundary conditions.
-\end{remark}
-
-\begin{remark}[Numerical Relevance]
-Triviality of \( PH_1 \) is verifiable via persistent homology of simulation data. Its stability under perturbation ensures practical computability.
-\end{remark}
-
-\begin{remark}[Adaptation to Low-Regularity Data]
-While proven in \( H^1 \), mollified trajectories or Galerkin approximations may extend topological simplicity to energy-class weak solutions.
-\end{remark}
-
-\begin{remark}[Implications for Turbulence and Boundary Layers]
-Non-recurrent orbit structure parallels the transient yet non-cyclic nature of turbulence. The topology-based analysis may inform reduced turbulence models.
-\end{remark}
 
 % ===========================
 % STEP 4 - Robustness Under Small Forcing
