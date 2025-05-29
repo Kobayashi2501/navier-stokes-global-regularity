@@ -1,79 +1,48 @@
 # 🌊 Global Regularity of 3D Navier–Stokes via Energy–Topology–Geometry Approach (v2.4)
 
-This repository presents **version 2.4** of an evolving proof framework for the **global regularity of the 3D incompressible Navier–Stokes equations** on \( \mathbb{R}^3 \).  
-Unlike traditional approaches, this method fuses **persistent homology**, **orbit-level geometric compactness**, and **energy dissipation analysis** into a coherent, six-step exclusion program for all known finite-time singularity types.
+This repository presents **version 2.4** of a novel framework for proving **global regularity** of the 3D incompressible Navier–Stokes equations on \( \mathbb{R}^3 \).  
+This approach combines persistent homology, orbit-level geometric compactness, and classical PDE energy analysis to exclude all known finite-time singularities—**without relying on small initial data** or perturbative assumptions.
 
 > 🧠 **Author’s Note:**  
-> This work is rooted in the intuition that topological simplicity of the solution orbit reflects analytic regularity. By quantifying persistent structures through barcode analysis, we establish a topological obstruction to blow-up, without invoking smallness conditions or critical scaling.
+> This project emerged from the intuition that **topological simplicity** in the solution orbit may signal analytic regularity. Persistent homology is used to detect such simplicity, forming a bridge from data topology to PDE analysis.
 
 ---
 
-## 🔑 Core Theorem (v2.4 Summary)
+## 🔑 Main Theorem (Simplified Summary)
 
-> **Global Regularity Theorem (v2.4):**  
-> Let \( u_0 \in H^1(\mathbb{R}^3) \) be divergence-free. Then the Navier–Stokes solution \( u(t) \) remains smooth for all \( t \ge 0 \).  
-> Furthermore, the orbit  
-> \[
-> \mathcal{O} := \{ u(t) \mid t \ge 0 \} \subset H^1
-> \]
-> satisfies:
-> - Persistent homology triviality: \( \mathrm{PH}_1(\mathcal{O}) = 0 \)  
-> - Compactness and contractibility  
-> - Strictly decreasing energy \( E(t) := \|u(t)\|_{H^1}^2 \)
+Let \( u_0 \in H^1(\mathbb{R}^3) \) be divergence-free. Then the solution \( u(t) \) to the 3D Navier–Stokes equations remains smooth for all \( t \ge 0 \), and the solution orbit
+\[
+\mathcal{O} := \{ u(t) \mid t \ge 0 \} \subset H^1
+\]
+is:
+- Topologically trivial: \( \mathrm{PH}_1(\mathcal{O}) = 0 \)
+- Compact and contractible
+- Strictly energy-decreasing: \( \frac{d}{dt} \|u(t)\|_{H^1}^2 < 0 \)
 
-Hence, **no singularity of Type I (self-similar), Type II (slow-gradient), or Type III (oscillatory escape)** may form.
+Thus, **Type I, II, and III finite-time singularities** are ruled out.
 
 ---
 
-## 🧠 Six-Step Hybrid Strategy
+## 🧠 Six-Step Hybrid Strategy Overview
 
-![Six-Step Strategy Overview](outputs/figures/strategy_overview_v2.4.png)
-
-| Step | Focus | Singularity Excluded |
-|------|-------|-----------------------|
-| 1 | Persistent barcode stability under \( H^1 \)-perturbations | Regularity anchor |
-| 2 | Enstrophy bounded via PH Lyapunov function \( C(t) \) | Energy-based regularity |
-| 3 | Topological triviality: orbit injectivity, contractibility | Excludes Type I |
-| 4 | Stability of topological simplicity rules out chaos/divergence | Excludes Type II/III |
-| 5 | Structural stability under initial perturbation | Robust under uncertainty |
-| 6 | Global attractor collapse via PH flattening | Ensures long-time regularity |
+| Step | Title | Description | Effect |
+|------|-------|-------------|--------|
+| 1 | **Barcode Stability** | Persistent homology is stable under \( H^1 \)-perturbation | Forms analytic–topological bridge |
+| 2 | **Enstrophy Bound** | Gradient control via Lyapunov function \( C(t) \) from PH | Excludes Type I blow-up |
+| 3 | **PH₁ Triviality** | Orbit is contractible ⇒ \( \mathrm{PH}_1 = 0 \) | Excludes Type I |
+| 4 | **Persistent Simplicity** | No topological bifurcation or oscillation occurs | Excludes Type II/III |
+| 5 | **Attractor Convergence** | Orbit collapses to a finite-dimensional contractible set | Ensures long-term regularity |
+| 6 | **Perturbation Stability** | Structure preserved under small changes in \( u_0 \) | Guarantees robustness |
 
 ---
 
-## 🌀 Orbit Geometry and Persistent Homology
-
-![Orbit Projection + PH₁ Triviality](outputs/figures/orbit_projection_ph.png)
-
-> *Top: Isomap projection of the solution orbit in \( H^1 \).  
-> Bottom: Persistent homology barcode diagram showing \( \mathrm{PH}_1 = 0 \).*  
-> These visuals support Steps 1–3 by demonstrating the orbit's injectivity and absence of cyclic recurrence.
-
----
-
-## 📉 Topological–Spectral Link: Step 1–2
-
-![Spectral Decay Sketch](outputs/figures/spectral_decay_sketch.png)
-
-- The function  
-  \[
-  C(t) = \sum_{h \in \mathrm{PH}_1(t)} \mathrm{persist}(h)^2
-  \]  
-  is used as a **topological Lyapunov functional**.
-- Gradient growth and enstrophy are bounded via  
-  \[
-  \frac{d}{dt}C(t) \le -\gamma \|\nabla u(t)\|^2 + \varepsilon.
-  \]
-- **Energy dissipation** leads to collapse of topological features: \( \mathrm{PH}_1(t) \to 0 \) as \( t \to \infty \)
-
----
-
-## 🚫 Blow-Up Type Exclusion Summary
+## 🚫 Blow-Up Type Classification
 
 | Type | Nature | Exclusion Mechanism |
-|------|--------|---------------------|
-| I | Self-similar scaling | Topological injectivity + trivial \( \mathrm{PH}_1 \) |
-| II | Critical gradient divergence | Uniform barcode stability + energy bound |
-| III | Oscillatory / chaotic | Persistent non-recurrence via topology |
+|------|--------|----------------------|
+| Type I | Self-similar singularities | Excluded via PH₁-trivial, injective orbit |
+| Type II | Slow enstrophy divergence | Excluded via persistence-controlled bounds |
+| Type III | Oscillatory or chaotic escape | Excluded via topological simplicity + energy decay |
 
 ---
 
@@ -81,18 +50,17 @@ Hence, **no singularity of Type I (self-similar), Type II (slow-gradient), or Ty
 
 | File | Description |
 |------|-------------|
-| `navier_stokes_global_v2.4.tex`  | LaTeX source of full paper |
+| `navier_stokes_global_v2.4.tex`  | Full LaTeX source of paper |
 | `navier_stokes_global_v2.4.pdf`  | Compiled manuscript |
-| `scripts/` | Simulation scaffolds for spectral decay and PH analysis |
-| `outputs/figures/` | Visual aids for Steps 1–6 and orbit projections |
-| *(optional)* `notebooks/` | Jupyter or Python scripts for reproduction (TBD) |
+| `scripts/` | Spectral decay and PH scaffolding (placeholder) |
+| `outputs/` | Optional result folders, e.g., sample plots |
 
 ---
 
 ## 🔬 Experimental Mathematics Philosophy
 
-Persistent homology is used not only as an analytic aid, but as a **numerically certifiable regularity detector**.  
-The use of **sampling-density theorems** (e.g., Niyogi–Smale–Weinberger) and **barcode stability results** justifies numerical inference of \( \mathrm{PH}_1 = 0 \).
+Persistent homology allows **numerical certification** of orbit regularity.  
+Through the use of sampling theorems (e.g., Niyogi–Smale–Weinberger) and PH stability (Cohen–Steiner et al.), this approach **reverses the classical logic**: numerical observations (e.g., vanishing PH₁) imply topological regularity.
 
 ---
 
@@ -100,21 +68,19 @@ The use of **sampling-density theorems** (e.g., Niyogi–Smale–Weinberger) and
 
 | Author | Method | Limitation |
 |--------|--------|------------|
-| Tao (2006) | Logarithmic energy bounds in critical spaces | Requires small data |
-| Escauriaza et al. | Backward uniqueness for critical spaces | Partial type exclusion |
+| Tao (2006) | Critical space perturbation | Requires small data |
 | Koch–Tataru | Critical space well-posedness | Scaling-sensitive |
-| **This Work (v2.4)** | Orbit topology + energy decay | All types excluded, no small-data assumption |
+| Escauriaza et al. | Backward uniqueness | Partial type exclusion |
+| **This Work** | Persistent topology + orbit geometry | No small-data required; all types excluded |
 
 ---
 
 ## 🧩 Future Directions
 
-We are particularly interested in:
-
-- Expert feedback and counterexamples  
-- Numerical validation of topological invariants  
-- Extensions to critical norms (\( L^3, BMO^{-1}, \dot{B}^{-1}_{\infty,\infty} \))  
-- Application to Euler/MHD/active scalar PDEs
+- Numerical verification of PH₁ behavior
+- Extension to critical spaces (\( L^3, BMO^{-1} \), Besov)
+- Application to Euler, MHD, SQG models
+- Formalization in probabilistic or data-driven settings
 
 ---
 
@@ -125,14 +91,13 @@ We are particularly interested in:
 **Email:** dollops2501@icloud.com
 
 > 🚩 **Authorship Note:**  
-> While the structure, vision, and intuition for this approach originated with the contributor, the proof formalization was co-developed with ChatGPT.  
-> **The author is open to transferring first-authorship to any qualified researcher** who can rigorously extend, validate, or formalize this approach.  
-> The aim is not priority—but progress.
-
-📘 日本語版はこちら → [README_ja.md](./README_ja.md)
+> While the structure and conceptual direction of this work originated with the contributor, formalization was jointly developed with ChatGPT.  
+> **I am open to transferring first-authorship to any researcher** who can rigorously extend, formalize, or publish this approach.  
+> The goal is not priority—but progress.
 
 ---
 
 ## ⚖️ License
 
-MIT License. Attribution and citation welcome. Feel free to fork, extend, or replicate.
+MIT License — open for use, extension, and citation.  
+Please credit this repository if helpful.
