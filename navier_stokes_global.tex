@@ -310,87 +310,62 @@ Future work includes refining numerical methods to explicitly verify persistent 
 % ===========================
 % STEP 5 - Elimination of Type II Blow-Up
 % ===========================
-\section{Step 5 - Exclusion of Type II Blow-Up via Enstrophy Bounds}
+\section{Step 5 - Persistent Topology of the Global Attractor}
 \label{sec:step5}
 
-Type II blow-ups are characterized by slow enstrophy divergence near the singular time:
+\begin{definition}[Global Attractor in $H^1$]
+Let $\mathcal{A} \subset H^1$ denote the global attractor of the Navier--Stokes flow, defined as the minimal compact invariant set that attracts all bounded subsets of $H^1$ under the semigroup $S(t)$. That is,
 \[
-\sup_{t < T^*} (T^* - t)^\alpha \|\nabla u(t)\|_2 = \infty \quad \text{for all } \alpha > 0.
+\lim_{t \to \infty} \mathrm{dist}_{H^1}(S(t)u_0, \mathcal{A}) = 0 \quad \text{for all bounded } u_0 \in H^1.
 \]
-Such blow-ups are subtler than Type I, as they lack self-similarity and may involve prolonged enstrophy accumulation without strong spatial concentration.
+\end{definition}
 
-We now demonstrate that our solution trajectory is incompatible with Type II blow-up by establishing explicit enstrophy bounds and asymptotic decay.
-
-\subsection*{Main Result}
-\begin{theorem}[Linear Enstrophy Growth]
-Let $u(t)$ be the solution constructed in Steps 1--4. Then
-\[
-\|\nabla u(t)\|_2^2 \le C(1 + t)
-\]
-for some constant $C$ depending only on $\nu$ and $\|u_0\|_{H^1}$.
+\begin{theorem}[Persistent Topology Implies Compact, Simple Attractor]
+\label{thm:attractor_persistence}
+Suppose the solution $u(t)$ satisfies the persistent homology stability and energy dissipation properties established in Steps 1--4. Then the orbit $\mathcal{O} := \{u(t): t \ge 0\}$ converges to a compact attractor $\mathcal{A}$ in $H^1$ satisfying:
+\begin{enumerate}
+  \item \textbf{Compactness:} $\mathcal{A}$ is compact in $H^1$.
+  \item \textbf{Finite Fractal Dimension:} $\dim_f(\mathcal{A}) < \infty$ (e.g., in the Hausdorff or fractal sense).
+  \item \textbf{Topological Simplicity:} $PH_k(\mathcal{A}) = 0$ for $k \ge 1$.
+  \item \textbf{Persistence Flattening:} $\lim_{t \to \infty} \mathrm{PH}_1(u(t)) = 0$.
+  \item \textbf{Time Irreversibility:} The orbit does not return arbitrarily close to earlier states due to strict energy dissipation.
+\end{enumerate}
 \end{theorem}
 
-\begin{proof}
-From the shell decay established in Step 1:
-\[
-E_j(t) \le C 2^{-2j(1+\sigma)} e^{-2\nu 2^{2j} t},
-\]
-and recalling that
-\[
-\|\nabla u(t)\|_2^2 = \sum_j 2^{2j} E_j(t),
-\]
-we split the sum into low and high shells. The low shells remain bounded by data, and the high shells are exponentially suppressed. The total is at most linear in $t$.
-\end{proof}
+\subsection*{Key Lemmas and Theorems}
 
-\begin{theorem}[Exclusion of Type II Blow-Up]
-Let $T^*$ be any finite time. Then:
-\[
-(T^* - t)^\alpha \|\nabla u(t)\|_2 \le C (T^* - t)^\alpha (1 + t)^{1/2}
-\]
-remains bounded as $t \nearrow T^*$ for any $\alpha > 0$. Hence, no Type II singularity can occur.
-\end{theorem}
-
-\subsection*{Structural Lemmas}
-\begin{lemma}[Dissipation Implies Subcritical Growth]
-Assume $\|\nabla u(t)\|_2^2 \le C(1 + t)$. Then for any $\alpha > 0$,
-\[
-\sup_{t < T^*} (T^* - t)^\alpha \|\nabla u(t)\|_2 < \infty.
-\]
+\begin{lemma}[Persistence Controls Dimension]
+If the persistence barcode $\mathrm{PH}_1(u(t))$ converges to zero as $t \to \infty$, then the attractor $\mathcal{A}$ has finite fractal dimension.
 \end{lemma}
 
-\begin{theorem}[Topological Consistency with Type II Exclusion]
-A solution orbit with vanishing persistent homology (Step 3) and linear enstrophy growth cannot exhibit subcritical energy accumulation required for Type II blow-up.
+\begin{lemma}[Vanishing Persistence Implies Contractibility]
+Let $\mathcal{A}$ be the $\omega$-limit set of $u(t)$ in $H^1$. If $\lim_{t \to \infty} PH_1(u(t)) = 0$, then $\mathcal{A}$ is topologically contractible and $PH_k(\mathcal{A}) = 0$ for $k \ge 1$.
+\end{lemma}
+
+\begin{theorem}[Persistence-Based Attractor Confinement]
+Under energy decay and persistent homology stability, the solution orbit remains confined to a compact, low-complexity region of $H^1$.
 \end{theorem}
 
-\subsection*{Corollaries and Implications}
-\begin{corollary}[Global Regularity (Types I and II Excluded)]
-The solution $u(t)$ remains smooth on $[0, \infty)$ and cannot exhibit either self-similar (Type I) or critical enstrophy (Type II) singularities.
-\end{corollary}
+\subsection*{Proof Sketch}
+The decay of $C(t)$ implies simplification of topological complexity. Combined with bounded enstrophy, the orbit becomes confined to a topologically simple attractor. The persistence diagrams shrink over time, indicating collapse of homological features, which ensures that $\mathcal{A}$ is not only compact but also low-dimensional and contractible.
 
-\begin{remark}[Comparison with $\varepsilon$-Regularity Criteria]
-Unlike $\varepsilon$-regularity or backward uniqueness approaches, our method derives smoothness from unconditional spectral decay and global energy structure, avoiding any local scaling arguments.
+\subsection*{Remarks}
+
+\begin{remark}[Comparison with Foias--Temam Attractors]
+This attractor parallels classical results on finite-dimensional global attractors (Foias--Temam) but uses persistent homology to offer a topological lens.
 \end{remark}
 
-\begin{remark}[Logarithmic and Weighted Norms]
-Analytic criteria such as
-\[
-\int_0^{T^*} \frac{\|\nabla u(t)\|_2^2}{(1 + \log^+ \|\nabla u(t)\|_2)^p} dt < \infty
-\]
-are satisfied due to the linear growth of $\|\nabla u(t)\|_2^2$, which dominates any sub-logarithmic divergence.
+\begin{remark}[Numerical Interpretation]
+The convergence of $PH_1(u(t))$ to zero offers a computable signal for long-time stability, guiding adaptive resolution in simulations.
 \end{remark}
 
-\begin{remark}[Long-Term Enstrophy Control]
-Time-averaged enstrophy remains bounded:
-\[
-\frac{1}{T} \int_0^T \|\nabla u(t)\|_2^2 dt \le C,
-\]
-excluding any turbulent cascade with anomalous dissipation.
+\begin{remark}[Connection to Turbulent Flow Structure]
+Persistent flattening of topological features supports the notion that turbulence asymptotically collapses into a finite-dimensional inertial manifold.
 \end{remark}
 
-\begin{remark}[Numerical Observability of Type II Exclusion]
-Because $\|\nabla u(t)\|_2^2$ is observable in simulations and grows linearly, any deviation toward singularity would manifest in steepening growth—providing practical validation of this exclusion.
+\begin{remark}[Time Irreversibility]
+Strict monotonic energy decay ensures that no part of the orbit revisits earlier topological configurations, reinforcing a one-way evolution in function space.
 \end{remark}
-
 
 
 % ===========================
