@@ -324,80 +324,72 @@ The suppression of $C(t)$ and control of enstrophy imply orbit compactness and g
 % ===========================
 % STEP 3 - Topological Exclusion of Type I Blow-Up (Reinforced)
 % ===========================
+% ===========================
+% STEP 3 - Topological Exclusion of Type I Blow-Up via Orbit Simplicity
+% ===========================
 \section{Step 3 - Topological Exclusion of Type I Blow-Up via Orbit Simplicity}
 
-% (Step 3 content remains unchanged)
-
 \begin{definition}[Solution Orbit]
-Let $u(t)$ be a weak or strong solution. The orbit is defined as:
-\[ \mathcal{O} := \{ u(t) : t \in [0,T] \} \subset H^1. \]
+Let $u(t)$ be a weak or strong solution. Define the orbit as:
+\[
+\mathcal{O} := \{u(t) \in H^1 : t \in [0,T]\}.
+\]
 \end{definition}
 
 \begin{definition}[Type I Blow-Up]
 A singularity at $T^*$ is of Type I if:
-\[ \|u(t)\|_{H^1} \sim (T^* - t)^{-\alpha}, \quad \alpha > 0. \]
-This corresponds to self-similar or rescaling-invariant behavior.
+\[
+\|u(t)\|_{H^1} \sim (T^* - t)^{-\alpha}, \quad \alpha > 0,
+\]
+indicating self-similar or scaling-invariant blow-up.
 \end{definition}
 
-\begin{theorem}[PH$_1 = 0$ Implies Topological Triviality via Čech Complex]
-\label{thm:ph1_cech_contractibility}
-Let $\mathcal{O} \subset H^1$ be the solution orbit as above, and suppose that:
+\begin{theorem}[PH₁ = 0 Implies Topological Triviality via Čech Complex]\label{thm:cech-triviality}
+Let $\mathcal{O} \subset H^1$ be compact, injective, and of finite arc length. Suppose:
 \begin{itemize}
-  \item $\mathcal{O}$ is compact, injective, and has finite arc length,
-  \item The persistent homology satisfies $\mathrm{PH}_1(\mathcal{O}) = 0$,
-  \item The filtration is Čech-based and $\varepsilon$-dense in the Hausdorff metric.
+  \item Persistent homology satisfies $\mathrm{PH}_1(\mathcal{O}) = 0$,
+  \item A Čech filtration built on an $\varepsilon$-dense sampling of $\mathcal{O}$.
 \end{itemize}
-Then $\mathcal{O}$ is homotopy equivalent to a contractible 1-dimensional arc. In particular, $\mathcal{O}$ contains no nontrivial loops and cannot support Type I blow-up.
+Then $\mathcal{O}$ is homotopy equivalent to a contractible 1D arc; in particular, it contains no nontrivial loops.
 \end{theorem}
 
-\begin{proof}[Proof Sketch]
-From compactness and finite arc length, $\mathcal{O}$ can be covered by a good cover of metric balls. By the Nerve Theorem, the Čech complex built on this cover is homotopy equivalent to $\mathcal{O}$ itself. The assumption $\mathrm{PH}_1 = 0$ implies that the Čech complex has trivial first homology group, hence so does $\mathcal{O}$.
-
-Since $\mathcal{O}$ is injective and non-recurrent under energy decay, it cannot return to any previous point in $H^1$, forbidding loops. Therefore, the orbit is topologically equivalent to an embedded interval—an arc—and contractible.
+\begin{proof}[Sketch]
+Using compactness and finite arc length, $\mathcal{O}$ admits a good cover. By the Nerve Theorem, the Čech complex built on this cover is homotopy equivalent to $\mathcal{O}$. The assumption $\mathrm{PH}_1 = 0$ implies trivial $H_1$ group, hence contractibility.
 \end{proof}
 
-\begin{theorem}[Homotopy Triviality Implies PH$_1 = 0$ via Vietoris–Rips Complex]
-\label{thm:ph1_zero_vr}
-Let $\mathcal{O} \subset H^1$ be a compact, injective, finite-length trajectory of a dissipative flow. Suppose further that:
-\begin{itemize}
-  \item The temporal evolution is Lipschitz continuous in $H^1$,
-  \item The induced topology is contractible ($\pi_1(\mathcal{O}) = 0$).
-\end{itemize}
-Then, for any scale $\epsilon > 0$, the Vietoris--Rips complex $\mathrm{VR}_\epsilon(\mathcal{O})$ satisfies:
-\[ H_1(\mathrm{VR}_\epsilon(\mathcal{O})) = 0. \]
-Hence, $\mathrm{PH}_1(\mathcal{O}) = 0$.
-\end{theorem}
-
 \begin{lemma}[Injectivity from Energy Dissipation]
-Let $E(t) = \|u(t)\|_{H^1}^2$ be the energy of the solution. Then $E(t)$ is strictly decreasing for $t > 0$, hence $u(t_1) \ne u(t_2)$ for all $t_1 \ne t_2$.
+If $E(t) := \|u(t)\|^2_{H^1}$ is strictly decreasing, then $u(t_1) \neq u(t_2)$ for $t_1 \neq t_2$.
 \end{lemma}
 
-\begin{lemma}[Finite Arc Length of the Orbit]
-If $\partial_t u \in L^1(0, T; H^{-1})$, then the orbit $\mathcal{O} = \{ u(t) \}$ has finite arc length in $H^1$.
+\begin{lemma}[Finite Arc Length]
+If $\partial_t u \in L^1(0,T; H^{-1})$, then $\mathcal{O}$ has finite arc length in $H^1$.
 \end{lemma}
 
-\begin{lemma}[Orbit Closure is Contractible]
-If $\mathcal{O}$ is injective and has finite arc length in a separable Hilbert space (e.g., $H^1$), then its closure is homeomorphic to a compact interval.
+\begin{lemma}[Contractibility of Orbit Closure]
+If $\mathcal{O}$ is injective and finite-length in a separable Hilbert space, then $\overline{\mathcal{O}}$ is homeomorphic to a closed interval.
 \end{lemma}
 
-\begin{theorem}[Persistent Homology Triviality from Simplicity]
-If the orbit $\mathcal{O}$ is injective, contractible, and Lipschitz, then its first persistent homology vanishes: $\mathrm{PH}_1(\mathcal{O}) = 0$.
+\begin{theorem}[Persistent Homology Triviality from Orbit Simplicity]\label{thm:ph1-triviality}
+If $\mathcal{O} \subset H^1$ is injective, of finite arc length, and contractible, then:
+\[
+\mathrm{PH}_1(\mathcal{O}) = 0.
+\]
 \end{theorem}
 
-\begin{remark}[Čech vs Vietoris–Rips Complexes]
-The Čech complex more faithfully captures the homotopy type of the underlying space when using an $\varepsilon$-dense sample with convex covers. While Vietoris–Rips approximations are often used computationally, Čech-based inference is stronger for proving contractibility.
+\begin{remark}[Why Type I Requires Topological Loops]
+Self-similar blow-up implies a scaling orbit:
+\[
+u(t) \approx \frac{1}{(T^*-t)^{\alpha}} U\left( \frac{x}{(T^*-t)^{\beta}} \right),
+\]
+where $U$ solves a stationary rescaled equation. This implies invariance under a loop-like transformation in function space, i.e., $u(t+\Delta t) \approx u(t)$ up to scaling. Such a structure contradicts $\mathrm{PH}_1(\mathcal{O}) = 0$.
 \end{remark}
 
-\begin{corollary}[No Type I Blow-Up]
-Under the conditions of Theorem~\ref{thm:ph1_cech_contractibility}, the orbit $\mathcal{O}$ cannot exhibit self-similar singularities, since such blow-ups require a closed or scaling-invariant loop structure in function space.
+\begin{corollary}[Exclusion of Type I Blow-Up]
+Under the assumptions of Theorem \ref{thm:cech-triviality}, no Type I blow-up can occur.
 \end{corollary}
 
-\begin{remark}[Energetic Irreversibility]
-The strict decay of energy $E(t)$ prevents the orbit from re-entering any previous $H^1$ state. This irreversibility reinforces the nonexistence of recurrent or closed flow paths.
-\end{remark}
-
-\begin{remark}[Geometric Topology Interpretation]
-The flow orbit behaves like a non-branching 1D path embedded in infinite-dimensional space. Its injectivity and energy dissipation ensure that it never folds or loops, aligning with a topologically simple, arc-like structure.
+\begin{remark}[Link to Step 4 – Topological Transition Barrier]
+The injectivity and contractibility of $\mathcal{O}$, together with strictly decreasing energy $E(t)$, prevent return to any prior topological state. Thus, oscillatory or chaotic (Type II/III) transitions must also be ruled out via homological persistence and its stability—see Step 4.
 \end{remark}
 
 
