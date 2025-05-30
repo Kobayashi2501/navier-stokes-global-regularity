@@ -699,20 +699,21 @@ Topological triviality in persistent homology, when encoded with algebraic struc
 \section{Conclusion and Future Directions}
 \label{sec:conclusion}
 
-We have presented a six-step analytic–topological–geometric framework toward resolving the global regularity problem for the 3D incompressible Navier--Stokes equations. The program establishes a novel bridge between persistent homology, energy dissipation, orbit geometry, and classical PDE techniques.
+We have presented a seven-step analytic–topological–geometric framework toward resolving the global regularity problem for the 3D incompressible Navier--Stokes equations. The program establishes a novel bridge between persistent homology, energy dissipation, orbit geometry, algebraic degeneration, and classical PDE techniques.
 
 \subsection*{Summary of Results}
 \begin{itemize}
-  \item \textbf{Topological Stability (Step 1):} Persistent homology barcodes $\mathrm{PH}_1(t)$ remain bottleneck-stable under time evolution, ensuring H\"older continuity in $H^1$ and suppressing topological bifurcations.
+  \item \textbf{Topological Stability (Step 1):} Persistent homology barcodes $\mathrm{PH}_1(t)$ remain bottleneck-stable under time evolution, ensuring H"older continuity in $H^1$ and suppressing topological bifurcations.
   \item \textbf{Enstrophy Control via Topology (Step 2):} The barcode-based Lyapunov energy $C(t)$ bounds $\|\nabla u\|^2$, yielding quantitative enstrophy control from topological persistence.
   \item \textbf{Type I Blow-Up Exclusion (Step 3):} The solution orbit $\mathcal{O}$ is finite-length, injective, and contractible. Persistent triviality implies $\mathcal{O}$ is topologically equivalent to an interval, excluding self-similar singularities.
   \item \textbf{Type II/III Blow-Up Exclusion (Step 4):} Persistent simplicity, non-recurrence, and strict barcode monotonicity exclude slow-gradient (Type II) and oscillatory (Type III) singularities.
   \item \textbf{Global Attractor Simplicity (Step 5):} The attractor $\mathcal{A}$ is contractible with $\mathrm{PH}_1(\mathcal{A}) = 0$ and has finite fractal dimension controlled by the decay of $C(t)$.
   \item \textbf{Structural Stability (Step 6):} Topological features are stable under $H^1$ perturbations; $d_B$, $d_H$, and attractor topology remain unchanged under small noise or ensemble uncertainty.
+  \item \textbf{Algebraic-Topological Collapse Implies Regularity (Step 7):} Under VHS degeneration and tropical bottleneck stability, topological triviality directly enforces temporal $H^1$-H"older continuity, establishing a geometric-topological path to smoothness.
 \end{itemize}
 
 \subsection*{Global Regularity Theorem}
-\textbf{Theorem:} Let $u_0 \in H^1(\mathbb{R}^3)$ be divergence-free. Then the corresponding Leray–Hopf solution $u(t)$ to the 3D incompressible Navier–Stokes equations satisfies:
+\textbf{Theorem:} Let $u_0 \in H^1(\mathbb{R}^3)$ be divergence-free. Then the corresponding Leray--Hopf solution $u(t)$ to the 3D incompressible Navier--Stokes equations satisfies:
 \begin{itemize}
   \item $\|u(t)\|_{H^1}$ remains bounded for all $t \ge 0$ (global regularity),
   \item $\mathrm{PH}_1(\mathcal{O}) = 0$, i.e., topological triviality of the solution orbit,
@@ -732,7 +733,7 @@ Several promising directions remain to deepen and generalize the topological-ana
   \item \textbf{Critical Spaces and Minimal Regularity:} Generalize the approach to critical spaces such as $L^3$, $BMO^{-1}$, or $\dot{B}^{-1}_{\infty,\infty}$ using multiscale persistence and wavelet filtrations.
 \end{itemize}
 
-\subsection*{Supplement C: Persistent Homology in Besov and Critical Function Spaces}
+\subsection*{Persistent Homology in Besov and Critical Function Spaces}
 
 \begin{definition}[Critical Function Space]
 A Banach space $X$ is \emph{critical} for the Navier--Stokes equations if
@@ -765,7 +766,7 @@ Wavelet-scale filtration applied to vorticity magnitude may define persistent ho
 \end{itemize}
 
 \subsection*{Closing Thought}
-By combining persistent homology, Lyapunov-type energy decay, and global orbit topology, we build a framework where topology controls turbulence. This suggests that singularity formation may not merely be a matter of high-frequency energy concentration, but rather of structural failure in topological coherence. Our results point toward a future where PDE regularity can be diagnosed by topological methods grounded in geometry and data science.
+By combining persistent homology, Lyapunov-type energy decay, and global orbit topology—including their algebraic degenerations and tropical deformations—we build a framework where topology controls turbulence. This suggests that singularity formation may not merely be a matter of high-frequency energy concentration, but rather of structural failure in topological coherence. Our results point toward a future where PDE regularity can be diagnosed and perhaps even guaranteed by topological methods grounded in geometry and data science.
 
 
 % =============================================================
