@@ -24,7 +24,7 @@
 \maketitle
 
 \begin{abstract}
-This paper develops a six-step analytic--topological--geometric framework aimed at resolving the global regularity problem for the three-dimensional incompressible Navier--Stokes equations on \( \mathbb{R}^3 \). Our strategy fuses persistent homology, energy dissipation, and orbit-level geometry into a unified program that excludes all known types of finite-time singularities---Type I (self-similar), Type II (critical gradient blow-up), and Type III (non-compact excursions). We construct a deterministic, non-perturbative argument grounded in both classical PDE estimates and topological data analysis, with no reliance on small data or critical scaling. The result is a novel, reproducible path to global smoothness.
+This paper develops a seven-step analytic--topological--geometric framework aimed at resolving the global regularity problem for the three-dimensional incompressible Navier--Stokes equations on $\mathbb{R}^3$. Our strategy fuses persistent homology, energy dissipation, orbit-level geometry, and algebraic degeneration into a unified program that excludes all known types of finite-time singularities---Type I (self-similar), Type II (critical gradient blow-up), and Type III (non-compact excursions). We construct a deterministic, non-perturbative argument grounded in both classical PDE estimates and topological data analysis, with no reliance on small data or critical scaling. The result is a novel, reproducible path to global smoothness.
 \end{abstract}
 
 \tableofcontents
@@ -33,8 +33,8 @@ This paper develops a six-step analytic--topological--geometric framework aimed 
 \label{sec:intro}
 
 The global regularity problem for the three-dimensional incompressible Navier--Stokes equations,
-\[ 
-\partial_t u + (u \cdot \nabla) u + \nabla p = \nu \Delta u, \quad \nabla \cdot u = 0, 
+\[
+\partial_t u + (u \cdot \nabla) u + \nabla p = \nu \Delta u, \quad \nabla \cdot u = 0,
 \]
 remains one of the most fundamental open problems in mathematical physics. The Clay Millennium Problem asks whether for every divergence-free initial data $u_0 \in H^1(\mathbb{R}^3)$, the solution remains smooth for all time.
 
@@ -43,12 +43,13 @@ While partial results exist under smallness or critical norm conditions, a gener
   \item Spectral energy decay without smallness assumptions,
   \item Topological regularity via persistent homology,
   \item Geometric compactness of solution orbits,
-  \item Structural exclusion of all known singularity types.
+  \item Structural exclusion of all known singularity types,
+  \item Algebraic and tropical collapse mechanisms enforcing regularity.
 \end{itemize}
 
-We develop a six-step program in which topological and geometric insights are tightly coupled with classical analytic bounds. The key innovation lies in encoding regularity via the topological simplicity (e.g., vanishing $\mathrm{PH}_1$) and compactness of the orbit $\mathcal{O} := \{ u(t) : t \ge 0 \}$ in $H^1$.
+We develop a seven-step program in which topological, geometric, and algebraic insights are tightly coupled with classical analytic bounds. The key innovation lies in encoding regularity via the topological simplicity (e.g., vanishing $\mathrm{PH}_1$), VHS degeneration, and compactness of the orbit $\mathcal{O} := \{ u(t) : t \ge 0 \}$ in $H^1$.
 
-\subsection*{Overview Table of the Six-Step Framework}
+\subsection*{Overview Table of the Seven-Step Framework}
 
 \begin{center}
 \renewcommand{\arraystretch}{1.4}
@@ -66,9 +67,11 @@ We develop a six-step program in which topological and geometric insights are ti
 \hline
 \textbf{Step 6} & \textbf{Stability under Perturbation}: The barcode and attractor remain stable under $H^1$ perturbations. Hausdorff and bottleneck distances are Lipschitz in perturbation size, ensuring structural robustness of regularity. \\
 \hline
+\textbf{Step 7} & \textbf{Algebraic-Topological Collapse}: Assuming VHS degeneration and tropical bottleneck stability, vanishing $\mathrm{PH}_1$ directly implies temporal $H^1$ regularity. This links topological triviality to Sobolev continuity via algebraic-geometric moduli.
+\\
+\hline
 \end{tabular}
 \end{center}
-
 
 
 % ===========================
