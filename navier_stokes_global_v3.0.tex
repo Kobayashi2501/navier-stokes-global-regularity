@@ -882,27 +882,6 @@ If $\mathcal{O}$ is contractible and Lipschitz, then $\mathrm{PH}_1(\mathcal{O})
 
 % =============================================================
 
-\section{Appendix D. Stability Under Perturbation and Noise}
-\label{sec:appendixD}
-
-\begin{proposition}[Sampling Stability for PH₁]
-Let $\|u_\varepsilon - u\|_{H^1} \le \varepsilon$. Then:
-\[
-d_B(\mathrm{PH}_1(u_\varepsilon(t)), \mathrm{PH}_1(u(t))) \le C \varepsilon.
-\]
-\end{proposition}
-
-\begin{remark}[Practical Conditions]
-To certify $\mathrm{PH}_1 = 0$ numerically:
-\begin{itemize}
-  \item Time grid spacing $\Delta t \ll \delta_{PH}$
-  \item Lifespan threshold $\tau < \epsilon_\text{noise}$
-  \item Orbit curvature bounded in $H^1$
-\end{itemize}
-\end{remark}
-
-% =============================================================
-
 \section*{Acknowledgements}
 We thank the open-source and mathematical communities for their contributions to reproducible fluid dynamics and topological data analysis.
 
