@@ -20,13 +20,13 @@ is:
 - **Topologically trivial**: \( \mathrm{PH}_1(\mathcal{O}) = 0 \)
 - **Energetically dissipative**: \( \frac{d}{dt} \|u(t)\|_{H^1}^2 < 0 \)
 - **Compact and contractible**
-- **Stable under perturbation** in initial data
+- **Structurally stable** under small perturbations
 
-Thus, **Type I (self-similar), Type II (slow blow-up), and Type III (chaotic)** singularities are all excluded.
+Thus, **Type I (self-similar), Type II (slow blow-up), and Type III (chaotic)** singularities are all excluded—even under perturbations.
 
 ---
 
-## 🧠 Six-Step Proof Strategy
+## 🧠 Seven-Step Proof Strategy
 
 | Step | Title | Core Idea | Effect |
 |------|-------|-----------|--------|
@@ -36,6 +36,7 @@ Thus, **Type I (self-similar), Type II (slow blow-up), and Type III (chaotic)** 
 | 4 | **Topological Irreversibility** | Monotonic PH₁ decay blocks oscillatory/topological return | Excludes Type II/III |
 | 5 | **Attractor Collapse** | PH₁ collapse ⇒ finite-dimensional attractor | Long-time regularity ensured |
 | 6 | **Perturbation Robustness** | PH₁-triviality preserved under small initial changes | Stability guarantee |
+| 7 | **Structural Stability** | No re-entry of singularities under \( H^1 \)-perturbed dynamics | Topological exclusion remains under noise |
 
 ---
 
@@ -45,7 +46,7 @@ Thus, **Type I (self-similar), Type II (slow blow-up), and Type III (chaotic)** 
 |------|--------|----------------------|
 | Type I | Self-similar scaling | Excluded via orbit injectivity & PH₁ = 0 |
 | Type II | Slow gradient divergence | Excluded via topological Lyapunov decay |
-| Type III | Chaotic oscillations | Excluded via persistent barcode stability |
+| Type III | Chaotic oscillations | Excluded via persistent barcode monotonicity |
 
 ---
 
@@ -55,9 +56,9 @@ Thus, **Type I (self-similar), Type II (slow blow-up), and Type III (chaotic)** 
 |------|-------------|
 | `navier_stokes_global_v3.0.tex`  | LaTeX source of the v3.0 paper |
 | `navier_stokes_global_v3.0.pdf`  | Compiled manuscript |
-| `pseudo_spectral_sim.py` | Placeholder pseudo-spectral Navier–Stokes solver:contentReference[oaicite:0]{index=0} |
-| `fourier_decay.py` | Energy decay analysis on dyadic shells:contentReference[oaicite:1]{index=1} |
-| `ph_isomap.py` | PH diagram generation from orbit geometry:contentReference[oaicite:2]{index=2} |
+| `pseudo_spectral_sim.py` | Pseudo-spectral Navier–Stokes solver (placeholder) |
+| `fourier_decay.py` | Energy decay analyzer via dyadic shell gradients |
+| `ph_isomap.py` | Persistent homology diagram from Isomap embedding |
 
 > Dependencies: Python 3.9+, NumPy, SciPy, matplotlib, scikit-learn, ripser, persim
 
@@ -72,21 +73,21 @@ Combining sampling theorems (Niyogi–Smale–Weinberger) with PH stability (Coh
 
 ## 📊 Theoretical Contributions
 
-- Establishes **PH₁ = 0** as a sufficient regularity condition
-- Develops a **Lyapunov-like topological energy** \( C(t) \)
-- Excludes singularities **via topology**, not norm bounds
-- Extends Foias–Temam attractor theory via **persistent topology**
-- Proposes robust generalization to **Besov and critical spaces**
+- Establishes **PH₁ = 0** as a sufficient regularity condition  
+- Develops a **Lyapunov-type topological energy** \( C(t) \)  
+- Excludes singularities **via topological criteria**, not just analytic estimates  
+- Introduces a **structurally stable framework** under \( H^1 \)-perturbed dynamics  
+- Links topological flattening to **attractor dimension bounds** and statistical regularity  
 
 ---
 
 ## 🧩 Future Directions
 
-- Extend to critical spaces: \( L^3 \), \( BMO^{-1} \), \( \dot{B}^{-1}_{\infty,\infty} \)
-- Certify attractor properties in **turbulent DNS data**
-- Apply to Euler, MHD, SQG, or active scalar models
-- Develop **wavelet-based persistence** in non-Hilbert settings
-- Investigate **Bayesian regularity preservation** under ensemble perturbations
+- Extend to critical spaces: \( L^3 \), \( BMO^{-1} \), \( \dot{B}^{-1}_{\infty,\infty} \)  
+- Certify attractor dimensionality in turbulent DNS simulations  
+- Apply to Euler, MHD, SQG, or active scalar models  
+- Explore **wavelet-based persistence** in Besov settings  
+- Analyze **Bayesian regularity stability** for ensemble perturbations  
 
 ---
 
@@ -106,7 +107,5 @@ Combining sampling theorems (Niyogi–Smale–Weinberger) with PH stability (Coh
 
 MIT License — open for use, verification, and extension.  
 Please cite this repository or paper if helpful.
-
-For a detailed explanation in Japanese, please refer to the following document:
 
 👉 [日本語版READMEはこちら](README_ja.md)
