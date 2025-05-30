@@ -106,3 +106,7 @@ Combining sampling theorems (Niyogi–Smale–Weinberger) with PH stability (Coh
 
 MIT License — open for use, verification, and extension.  
 Please cite this repository or paper if helpful.
+
+For a detailed explanation in Japanese, please refer to the following document:
+
+👉 日本語版READMEはこちら / Japanese README available here
