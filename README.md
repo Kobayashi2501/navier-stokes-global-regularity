@@ -109,4 +109,4 @@ Please cite this repository or paper if helpful.
 
 For a detailed explanation in Japanese, please refer to the following document:
 
-👉 日本語版READMEはこちら / Japanese README available here
+👉 [日本語版READMEはこちら](README_ja.md)
