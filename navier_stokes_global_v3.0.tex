@@ -1338,6 +1338,62 @@ Each 1-cycle in $\mathrm{PH}_1(t)$ can be interpreted as tracking a coherent vor
 
 % =============================================================
 
+\subsection*{Appendix G. Persistent Homology in Critical Spaces and Wavelet Filtrations}
+
+\begin{definition}[Critical Function Space]
+A Banach space $X$ is \emph{critical} for the Navier--Stokes equations if
+\[
+\|u_0\|_X = \|u_\lambda(0)\|_X, \quad \text{where } u_\lambda(x,t) = \lambda u(\lambda x, \lambda^2 t).
+\]
+Examples include $L^3$, $\dot{B}^{-1+\frac{3}{p}}_{p,q}$, and $BMO^{-1}$.
+\end{definition}
+
+\begin{proposition}[Persistence-Theoretic Extension to Besov-Type Spaces]
+Suppose $u(t) \in \dot{B}^{-1+\frac{3}{p}}_{p,q}$ and:
+\begin{enumerate}
+    \item The persistence barcode filtered through multiscale wavelet decomposition is Lipschitz-stable;
+    \item The energy cascade over dyadic frequency shells decays strictly;
+    \item $\mathrm{PH}_1(t)$ satisfies bottleneck stability: $d_B(\mathrm{PH}_1(t_1), \mathrm{PH}_1(t_2)) \le C|t_1 - t_2|^\alpha$.
+\end{enumerate}
+Then a generalized topological simplification principle may extend to sub-$H^1$ regimes.
+\end{proposition}
+
+\begin{remark}[Wavelet-Based Persistent Homology]
+By applying wavelet-scale filtrations to the vorticity magnitude $|\omega(x,t)|$, one can construct time-indexed filtered barcodes in critical Besov norms. This provides a tool to bridge harmonic analysis with topological regularity.
+\end{remark}
+
+\begin{remark}[Numerical and Analytical Relevance]
+This formalism allows for persistence-based analysis even in near-singular or low-regularity regimes. If energy and barcode decay remain stable, global regularity could potentially be inferred below $H^1$.
+\end{remark}
+
+% =============================================================
+
+\subsection*{Appendix H. Noise Robustness and Experimental Validation}
+
+\begin{itemize}
+    \item Empirically investigate how PH$_1$ stability degrades under increasing levels of additive noise to initial data $u_0$.
+    \item Establish thresholds for barcode lifespan below which topological artifacts can be statistically disregarded.
+    \item Implement ensemble simulations with Gaussian-distributed perturbations to quantify topological observables under uncertainty.
+    \item Relate bottleneck distance fluctuations $d_B(PH_1(u^\delta(t)), PH_1(u(t)))$ to $\|u^\delta - u\|_{H^1}$ bounds.
+\end{itemize}
+
+% =============================================================
+
+\subsection*{Appendix I. Intuition and Visualization of Tropical Degenerations}
+
+\begin{itemize}
+    \item Provide illustrative diagrams of barcode collapse as tropical polyhedral contractions.
+    \item Explain the mapping from degenerating Hodge structures to piecewise-linear tropical moduli.
+    \item Discuss how tropicalization encodes topological simplification with bounded bottleneck trajectories.
+    \item Use example synthetic datasets (e.g., evolving loops, vortex rings) to visualize PH$_1$ death patterns via tropical coordinates.
+\end{itemize}
+
+\subsection*{Closing Thought}
+
+By interpreting turbulent flows through the lens of topological simplicity and its algebraic degeneration, we gain a new perspective on regularity: not merely as the absence of singularity, but as a structural alignment of analysis, geometry, and data topology. This approach opens a path toward certifiable smoothness in nonlinear PDEs, guided not by pointwise estimates, but by global topological invariants.
+
+% =============================================================
+
 \section*{Acknowledgements}
 We thank the open-source and mathematical communities for their contributions to reproducible fluid dynamics and topological data analysis.
 
