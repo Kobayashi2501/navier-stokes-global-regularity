@@ -1493,14 +1493,88 @@ plot_diagrams(diagrams, show=True)
 
 % =============================================================
 
-\subsection*{Appendix H. Noise Robustness and Experimental Validation}
+\section{Appendix H. Numerical Parameters and Reproducibility Details}
+\label{sec:appendixH}
+
+This appendix summarizes the simulation environment, parameter choices, and reproducibility guidelines for the numerical experiments reported in the main text and Appendices A, F, and G.
+
+\subsection*{H.1 Simulation Environment}
 
 \begin{itemize}
-    \item Empirically investigate how PH$_1$ stability degrades under increasing levels of additive noise to initial data $u_0$.
-    \item Establish thresholds for barcode lifespan below which topological artifacts can be statistically disregarded.
-    \item Implement ensemble simulations with Gaussian-distributed perturbations to quantify topological observables under uncertainty.
-    \item Relate bottleneck distance fluctuations $d_B(PH_1(u^\delta(t)), PH_1(u(t)))$ to $\|u^\delta - u\|_{H^1}$ bounds.
+  \item Programming Language: Python 3.9+
+  \item Key Libraries: NumPy, SciPy, matplotlib, scikit-learn, ripser, persim
+  \item Hardware: Standard desktop machine (Intel i7 or M1 chip), 16GB RAM
+  \item OS: macOS/Linux/Windows-compatible
+  \item Execution Time per Run: ~10–30 seconds (depending on resolution)
 \end{itemize}
+
+\subsection*{H.2 Parameters for pseudo\_spectral\_sim.py}
+
+\begin{itemize}
+  \item Grid size: \( N_x = 32 \) (default; higher resolution possible)
+  \item Time step: \( \Delta t = 0.01 \)
+  \item Total time: \( T = 1.0 \)
+  \item Viscosity: \( \nu = 0.1 \)
+  \item Forcing: Constant or zero external forcing \( f \)
+  \item Initial condition: Random divergence-free velocity field
+\end{itemize}
+
+\subsection*{H.3 Parameters for fourier\_decay.py}
+
+\begin{itemize}
+  \item Shell bin width: dyadic \( j = 0,1,...,J \)
+  \item Visualization: Log–log slope estimate with fitted line
+  \item Energy threshold for PH flattening: \( E_j < 10^{-4} \)
+\end{itemize}
+
+\subsection*{H.4 Parameters for ph\_isomap.py}
+
+\begin{itemize}
+  \item Number of neighbors (Isomap): 10
+  \item Embedding dimension: 2
+  \item Max persistent homology dimension: 1
+  \item Barcode threshold for PH₁ vanishing: \( \mathrm{persist}(h) < 0.05 \)
+\end{itemize}
+
+\subsection*{H.5 Reproducibility Guidelines}
+
+\begin{enumerate}
+  \item Clone the repository and install dependencies listed in \texttt{requirements.txt}
+  \item Run \texttt{pseudo\_spectral\_sim.py} to generate velocity snapshots
+  \item Analyze shell energy decay via \texttt{fourier\_decay.py}
+  \item Project and analyze orbit topology via \texttt{ph\_isomap.py}
+\end{enumerate}
+
+\paragraph{Data Format.} Snapshots are saved as NumPy arrays of shape \( (T/\Delta t, N_x, N_x, N_x, 3) \).
+
+\paragraph{Output Directory Structure.}
+All generated outputs are saved under the following structure:
+\begin{itemize}
+  \item \texttt{data/snapshots/} — raw velocity field data (\texttt{.npy})
+  \item \texttt{results/decay/} — dyadic shell decay plots (\texttt{.png})
+  \item \texttt{results/persistence/} — persistence diagrams (\texttt{.pdf} or \texttt{.png})
+\end{itemize}
+
+\paragraph{Command-Line Example.}
+To execute the full pipeline, run:
+\begin{verbatim}
+python pseudo_spectral_sim.py
+python fourier_decay.py
+python ph_isomap.py
+\end{verbatim}
+
+\paragraph{Repository.}
+All source code and examples are available at: \texttt{https://github.com/NavierStokes-Hybrid/v3.0}
+
+\paragraph{Suggested Validation.}
+Compare computed results with:
+\begin{itemize}
+  \item Dyadic slope \( \alpha \in [1.5, 2.5] \)
+  \item No bars in \( \mathrm{PH}_1 \) above threshold
+  \item Monotonic decay of \( C(t) \)
+\end{itemize}
+
+\paragraph{Note.} These guidelines support the experimental reproducibility commitments discussed in Step 1 and Appendix A.
 
 % =============================================================
 
