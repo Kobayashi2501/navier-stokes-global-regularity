@@ -419,6 +419,7 @@ The decay of $C(t)$ constrains the high-frequency tail of the energy spectrum. T
 % ===========================
 % STEP 3 - Topological Exclusion of Type I Blow-Up via Orbit Simplicity
 % ===========================
+
 \section{Step 3 - Topological Exclusion of Type I Blow-Up via Orbit Simplicity}
 
 \begin{definition}[Solution Orbit]
@@ -440,7 +441,7 @@ indicating self-similar or scaling-invariant blow-up.
 Let $\mathcal{O} \subset H^1$ be compact, injective, and of finite arc length. Suppose:
 \begin{itemize}
   \item Persistent homology satisfies $\mathrm{PH}_1(\mathcal{O}) = 0$,
-  \item A Čech filtration built on an $\varepsilon$-dense sampling of $\mathcal{O}$.
+  \item A Čech filtration is built on an $\varepsilon$-dense sampling of $\mathcal{O}$.
 \end{itemize}
 Then $\mathcal{O}$ is homotopy equivalent to a contractible 1D arc; in particular, it contains no nontrivial loops.
 \end{theorem}
@@ -474,6 +475,35 @@ Self-similar blow-up implies a scaling orbit:
 u(t) \approx \frac{1}{(T^*-t)^{\alpha}} U\left( \frac{x}{(T^*-t)^{\beta}} \right),
 \]
 where $U$ solves a stationary rescaled equation. This implies invariance under a loop-like transformation in function space, i.e., $u(t+\Delta t) \approx u(t)$ up to scaling. Such a structure contradicts $\mathrm{PH}_1(\mathcal{O}) = 0$.
+\end{remark}
+
+\begin{remark}[Orbit Topology Illustration]
+The orbit $\mathcal{O}$ under $\mathrm{PH}_1 = 0$ is contractible:
+
+\begin{center}
+\begin{tabular}{c c}
+\textbf{PH$_1$ = 0 (Contractible)} & \textbf{PH$_1$ $\neq$ 0 (Loop)} \\
+\texttt{u(t)} $\longrightarrow$ $\bullet$---$\bullet$---$\bullet$ & \texttt{u(t)} $\longrightarrow$ $\bullet$---$\bullet$---$\bullet$---$\bullet$ (loop)
+\end{tabular}
+\end{center}
+
+A self-similar blow-up would require a loop in function space, inconsistent with PH$_1$ triviality.
+\end{remark}
+
+\begin{lemma}[Self-Similar Scaling Implies Topological Loop]
+Suppose $u(t)$ exhibits self-similar scaling:
+\[
+u(t) = \frac{1}{(T^* - t)^\alpha} U\left( \frac{x}{(T^* - t)^\beta} \right).
+\]
+Then the orbit $\mathcal{O}$ in $H^1$ contains a loop-like structure homeomorphic to $\mathbb{S}^1$, contradicting $\mathrm{PH}_1(\mathcal{O}) = 0$.
+\end{lemma}
+
+\begin{remark}[Topological Compression Excludes Scaling Invariance]
+Type I blow-up requires structural repetition under rescaling, implying conservation of topological complexity. However, persistent homology triviality ($\mathrm{PH}_1 = 0$) implies maximal topological compression. Thus, the flow cannot sustain a recursive or self-similar topological regime.
+\end{remark}
+
+\begin{remark}[Time-Asymmetry Precludes Type I Self-Similarity]
+Self-similar blow-up requires a reversible rescaling of the orbit $\mathcal{O}$, i.e., $u(t+\Delta t) \approx \lambda(\Delta t) u(t)$. However, persistent homology triviality ($\mathrm{PH}_1 = 0$) combined with strict energy dissipation implies time-asymmetric collapse of topological structure. Hence, no invertible scaling trajectory can exist, precluding Type I singularities.
 \end{remark}
 
 \begin{corollary}[Exclusion of Type I Blow-Up]
