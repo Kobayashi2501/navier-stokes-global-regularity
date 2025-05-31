@@ -1589,8 +1589,7 @@ Compare computed results with:
 
 % =============================================================
 
-\section{Appendix I. Extensions to Critical Spaces and Alternative PDE Systems}
-\label{sec:appendixI}
+\section*{Appendix I. Extensions to Critical Spaces and Alternative PDE Systems}
 
 This appendix explores the speculative extension of the topological-analytic framework to two major frontiers:
 \begin{itemize}
@@ -1601,9 +1600,7 @@ This appendix explores the speculative extension of the topological-analytic fra
 \subsection*{I.1 Critical Function Spaces for Navier--Stokes}
 
 Let \( u_0 \in X \), where \( X \) is a scale-invariant Banach space under the Navier--Stokes rescaling:
-\[
-\nu u_\lambda(x,t) = \lambda u(\lambda x, \lambda^2 t).
-\]
+\[ \nu u_\lambda(x,t) = \lambda u(\lambda x, \lambda^2 t). \]
 Examples include:
 \begin{itemize}
   \item \( L^3(\mathbb{R}^3) \): endpoint of classical energy theory
@@ -1620,45 +1617,78 @@ In critical spaces, we propose using wavelet decompositions:
 \end{itemize}
 This generalizes the Fourier shell approach from Appendix F.
 
+\paragraph{Definition (Wavelet-Filtered Velocity Field)}
+Let \( \psi_{j,k}(x) \) be an orthonormal wavelet basis. Decompose:
+\[ u(x, t) = \sum_{j,k} c_{j,k}(t) \psi_{j,k}(x). \]
+
+\paragraph{Definition (Wavelet Barcode and Energy)}
+Filtration at each scale:
+\[ X_r^{(j)}(t) := \{ x : |c_{j,k}(t)| \leq r \ \forall k \}. \]
+Then:
+\[ C_W(t) := \sum_j \sum_{h \in \mathrm{PH}_1^{(j)}(t)} \mathrm{persist}(h)^2. \]
+
 \subsection*{I.3 Speculative Generalization}
 
 \begin{proposition}[Topological Extension in Critical Regimes]
-Let \( u(t) \in \dot{B}^{-1+3/p}_{p,q} \) and assume wavelet-based persistence barcodes \( \mathrm{PH}_1^W(t) \) satisfy:
+Let \( u(t) \in \dot{B}^{-1+3/p}_{p,q} \) and assume wavelet-based barcodes \( \mathrm{PH}_1^W(t) \) satisfy:
 \begin{itemize}
   \item Stability: \( d_B(\mathrm{PH}_1^W(t_1), \mathrm{PH}_1^W(t_2)) \leq L|t_1 - t_2|^\alpha \)
-  \item Uniform collapse: \( \mathrm{PH}_1^W(t) \to 0 \) as \( t \to \infty \)
+  \item Uniform collapse: \( \mathrm{PH}_1^W(t) \to 0 \)
 \end{itemize}
-Then the topological Lyapunov energy \( C^W(t) \) can control Besov-scale gradient norms.
+Then \( C^W(t) \) controls Besov-scale regularity.
 \end{proposition}
 
 \subsection*{I.4 Applications to Alternative PDE Systems}
 
-The analytic–topological strategy may extend beyond NSE. Candidate systems include:
+Candidate systems include:
 \begin{itemize}
-  \item \textbf{Euler equations:} inviscid, same vorticity topology
-  \item \textbf{Magnetohydrodynamics (MHD):} magnetic field adds PH$_1$-like flux features
-  \item \textbf{SQG (Surface Quasi-Geostrophic):} sharp fronts and vortex folds
-  \item \textbf{Active scalar models:} complex scalar-driven fluid dynamics
+  \item \textbf{Euler:} inviscid, same vorticity topology
+  \item \textbf{MHD:} magnetic PH$_1$-like flux tubes
+  \item \textbf{SQG:} sharp vortex fronts
+  \item \textbf{Active Scalars:} scalar-vorticity interaction
 \end{itemize}
-Each possesses rich geometric structure accessible via PH methods.
+Each has geometry accessible via PH.
 
 \subsection*{I.5 Universality Conjecture}
 
 \begin{conjecture}[Topological Universality Hypothesis]
-Let \( u(t) \) be a finite-energy solution to a dissipative PDE. If PH$_1$ of a suitable filtered quantity (e.g., vorticity magnitude) is stable and collapses over time, then regularity or geometric confinement generically follows.
+If PH$_1$ of a filtered observable is stable and collapses over time, then regularity or confinement generically follows.
 \end{conjecture}
 
 \subsection*{I.6 Challenges and Open Directions}
 
 \begin{itemize}
   \item Define robust multiscale PH in Besov/BMO frameworks
-  \item Relate wavelet-based PH to physical observables
-  \item Extend Lyapunov decay \( dC/dt \leq -\gamma E(t) + \epsilon \) beyond \( H^1 \)
-  \item Unify persistence under diverse PDE scaling laws
+  \item Link wavelet-PH to observables
+  \item Generalize Lyapunov decay: \( \frac{d}{dt}C \leq -\gamma E + \epsilon \)
+  \item Unify PH under scaling laws
 \end{itemize}
 
-\paragraph{Outlook.}
-This appendix positions the current theory as a base for generalized topological regularity analysis. While speculative, these extensions offer a roadmap toward a universal theory linking persistent topology and PDE dynamics.
+\paragraph{Outlook.} This extension supports a universal framework bridging PDE dynamics and topological collapse.
+
+\subsection*{I.7 Comparison Table: PDE Systems and PH Applicability}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|p{5cm}|p{6cm}|}
+\hline
+\textbf{PDE System} & \textbf{Characteristic Dynamics} & \textbf{Persistent Homology Role} \\
+\hline
+Euler Equations & Inviscid, vortex stretching & PH\textsubscript{1} tracks vortex loops; topological recurrence may indicate instability \\
+\hline
+Navier--Stokes (NSE) & Dissipative, viscous smoothing & PH\textsubscript{1} decay implies regularity; central to \( C(t) \) Lyapunov structure \\
+\hline
+MHD (Magnetohydrodynamics) & Coupled velocity and magnetic fields & Magnetic flux tubes form PH\textsubscript{1} cycles; joint decay reflects magneto-topological simplification \\
+\hline
+SQG (Surface Quasi-Geostrophic) & Sharp gradients, rotating fronts & PH\textsubscript{1} captures front loops; transition to laminarity detectable via barcode simplification \\
+\hline
+Active Scalar Models & Scalar advects velocity (or vice versa) & Scalar gradient structures induce topological persistence; PH\textsubscript{1} detects geometric coherence \\
+\hline
+\end{tabular}
+\caption{Comparison of PDE systems and roles of persistent homology in topological analysis}
+\label{tab:pde-ph-compare}
+\end{table}
+
 
 % =============================================================
 
