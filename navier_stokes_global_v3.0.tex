@@ -1,5 +1,5 @@
 % ===========================
-% Navier--Stokes Global Regularity -- Hybrid Analytic--Topological Approach (v3.0)
+% Navier--Stokes Global Regularity -- Hybrid Analytic--Topological Approach (v3.1)
 % ===========================
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -10,7 +10,7 @@
 
 \title{Toward a Proof of Global Regularity for the 3D Incompressible Navier--Stokes Equations\\via a Hybrid Energy--Topology--Geometry Approach}
 \author{A. Kobayashi \and ChatGPT Research Partner}
-\date{Version 3.0 -- June 2025}
+\date{Version 3.1 -- June 2025}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -49,6 +49,17 @@ While partial results exist under smallness or critical norm conditions, a gener
 
 We develop a seven-step program in which topological, geometric, and algebraic insights are tightly coupled with classical analytic bounds. The key innovation lies in encoding regularity via the topological simplicity (e.g., vanishing $\mathrm{PH}_1$), VHS degeneration, and compactness of the orbit $\mathcal{O} := \{ u(t) : t \ge 0 \}$ in $H^1$.
 
+\subsection*{Step 0: Analytical Initialization and Simulation Consistency}
+
+As a foundational assumption, we begin with divergence-free initial data $u_0 \in H^1(\mathbb{R}^3)$ and construct Leray--Hopf weak solutions. Our numerical simulations use pseudo-spectral methods (Appendix A) that preserve incompressibility and dissipative structure. This initialization provides the setting in which all subsequent topological and energetic quantities are defined and sampled. In particular:
+\begin{itemize}
+  \item The orbit $\{ u(t) \}$ is sampled at uniform time intervals and is embedded into finite-dimensional space for persistent homology computation.
+  \item Consistency with Sobolev and spectral structures is ensured by alignment with Fourier and wavelet resolution (see Appendices F and I).
+  \item Numerical sampling theorems (e.g., Niyogi--Smale--Weinberger) provide justification for finite-point inference of homological properties.
+\end{itemize}
+
+This step underlies the empirical-to-analytic bridge central to Step 1 and supports the reproducibility principles formalized in Appendix H.
+
 \subsection*{Overview Table of the Seven-Step Framework}
 
 \begin{center}
@@ -67,8 +78,7 @@ We develop a seven-step program in which topological, geometric, and algebraic i
 \hline
 \textbf{Step 6} & \textbf{Stability under Perturbation}: The barcode and attractor remain stable under $H^1$ perturbations. Hausdorff and bottleneck distances are Lipschitz in perturbation size, ensuring structural robustness of regularity. \\
 \hline
-\textbf{Step 7} & \textbf{Algebraic-Topological Collapse}: Assuming VHS degeneration and tropical bottleneck stability, vanishing $\mathrm{PH}_1$ directly implies temporal $H^1$ regularity. This links topological triviality to Sobolev continuity via algebraic-geometric moduli.
-\\
+\textbf{Step 7} & \textbf{Algebraic-Topological Collapse}: Assuming VHS degeneration and tropical bottleneck stability, vanishing $\mathrm{PH}_1$ directly implies temporal $H^1$ regularity. This links topological triviality to Sobolev continuity via algebraic-geometric moduli. \\
 \hline
 \end{tabular}
 \end{center}
