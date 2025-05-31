@@ -1,6 +1,7 @@
 % ===========================
 % Navier--Stokes Global Regularity -- Hybrid Analytic--Topological Approach (v3.1)
 % ===========================
+
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb,amsthm,amsfonts,geometry,hyperref,listings,footmisc}
@@ -24,7 +25,7 @@
 \maketitle
 
 \begin{abstract}
-This paper develops a seven-step analytic--topological--geometric framework aimed at resolving the global regularity problem for the three-dimensional incompressible Navier--Stokes equations on $\mathbb{R}^3$. Our strategy fuses persistent homology, energy dissipation, orbit-level geometry, and algebraic degeneration into a unified program that excludes all known types of finite-time singularities---Type I (self-similar), Type II (critical gradient blow-up), and Type III (non-compact excursions). We construct a deterministic, non-perturbative argument grounded in both classical PDE estimates and topological data analysis, with no reliance on small data or critical scaling. The result is a novel, reproducible path to global smoothness.
+This paper develops a seven-step analytic--topological--geometric framework aimed at resolving the global regularity problem for the three-dimensional incompressible Navier--Stokes equations on $\mathbb{R}^3$. Our strategy fuses persistent homology, energy dissipation, orbit-level geometry, and algebraic degeneration into a unified program that excludes all known types of finite-time singularities---Type I (self-similar), Type II (critical gradient blow-up), and Type III (non-compact excursions). We construct a deterministic, non-perturbative argument grounded in both classical PDE estimates and topological data analysis, with no reliance on small data or critical scaling. The result is a novel, reproducible path to global smoothness. The final step (Step 7) shows that topological triviality and analytic regularity are not merely correlated—but mutually enforcing through a degeneration of mixed Hodge structures.
 \end{abstract}
 
 \tableofcontents
@@ -47,7 +48,7 @@ While partial results exist under smallness or critical norm conditions, a gener
   \item Algebraic and tropical collapse mechanisms enforcing regularity.
 \end{itemize}
 
-We develop a seven-step program in which topological, geometric, and algebraic insights are tightly coupled with classical analytic bounds. The key innovation lies in encoding regularity via the topological simplicity (e.g., vanishing $\mathrm{PH}_1$), VHS degeneration, and compactness of the orbit $\mathcal{O} := \{ u(t) : t \ge 0 \}$ in $H^1$.
+We develop a seven-step program in which topological, geometric, and algebraic insights are tightly coupled with classical analytic bounds. The key innovation lies in encoding regularity via the topological simplicity (e.g., vanishing $\mathrm{PH}_1$), VHS degeneration, and compactness of the orbit $\mathcal{O} := \{ u(t) : t \ge 0 \}$ in $H^1$. The final step (Step 7) closes a feedback loop by showing that topological triviality is both a consequence and a sufficient cause of regularity under a degenerating mixed Hodge structure.
 
 \subsection*{Step 0: Analytical Initialization and Simulation Consistency}
 
@@ -78,11 +79,10 @@ This step underlies the empirical-to-analytic bridge central to Step 1 and suppo
 \hline
 \textbf{Step 6} & \textbf{Stability under Perturbation}: The barcode and attractor remain stable under $H^1$ perturbations. Hausdorff and bottleneck distances are Lipschitz in perturbation size, ensuring structural robustness of regularity. \\
 \hline
-\textbf{Step 7} & \textbf{Algebraic-Topological Collapse}: Assuming VHS degeneration and tropical bottleneck stability, vanishing $\mathrm{PH}_1$ directly implies temporal $H^1$ regularity. This links topological triviality to Sobolev continuity via algebraic-geometric moduli. \\
+\textbf{Step 7} & \textbf{Algebraic-Topological Collapse}: Under degeneration of mixed Hodge structures and tropical barcode contraction, we show that $\mathrm{PH}_1 = 0$ implies temporal $H^1$ regularity—and vice versa. This bidirectional correspondence links topological triviality to Sobolev continuity through a degenerating geometric moduli system. \\
 \hline
 \end{tabular}
 \end{center}
-
 
 
 % ===========================
