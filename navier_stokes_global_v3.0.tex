@@ -1102,6 +1102,10 @@ If $C(t)$ decays sufficiently fast such that $C(t) \log C(t)$ is integrable, the
 This implies a global information collapse consistent with long-term enstrophy dissipation and orbit compactness.
 \end{theorem}
 
+\begin{lemma}[Uniqueness of Steady-State Limit]
+Let $u(t)$ be a Leray--Hopf solution with $\int_0^\infty C(t)\,dt < \infty$, and assume the orbit $\mathcal{O} = \{u(t)\}$ is precompact in $H^1$. Then the limit $u_\infty := \lim_{t \to \infty} u(t)$ exists and is unique in $H^1$.
+\end{lemma}
+
 \section*{E.3 Technical Notes on Barcode Events}
 $C(t)$ may exhibit non-smooth behavior at times when bars are born or die (i.e., when topological features suddenly emerge or vanish). However:
 \begin{itemize}
@@ -1131,6 +1135,10 @@ Topological simplification via persistent homology behaves analogously to entrop
 
 \begin{remark}[Implication for Reversibility Hypotheses]
 Any formulation of the Navier--Stokes evolution that assumes time-symmetric reconstruction must account for the informational and topological collapse encoded in $C(t)$. Hence, topological decay acts as a physical obstruction to naive reversibility.
+\end{remark}
+
+\begin{remark}[PH$_1$ Loops as Topological Tracer Particles]
+Each 1-cycle in $\mathrm{PH}_1(t)$ can be interpreted as tracking a coherent vortex ring or local circulation structure. In this sense, persistent homology acts as a topological tracer particle system, recording the birth, evolution, and death of fluid structures beyond pointwise vorticity.
 \end{remark}
 
 % =============================================================
