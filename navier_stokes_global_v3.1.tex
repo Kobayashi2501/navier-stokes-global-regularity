@@ -1818,6 +1818,65 @@ If $dH/dt \leq -\alpha H + \epsilon$, then $H(t) \to 0$ and the flow becomes top
 
 This establishes a thermodynamic-like principle for topological information dissipation.
 
+% =============================================================
+
+\subsection*{Appendix J. Numerical Validation and Visualization Protocols}
+
+\paragraph{J.1 Experimental Framework for Persistent Collapse.}
+We describe a reproducible numerical pipeline to validate topological decay and spectral collapse in pseudo-spectral Navier--Stokes simulations.
+
+\begin{itemize}
+  \item Generate velocity field snapshots $u(x,t_i)$ using `pseudo_spectral_sim.py`.
+  \item Apply wavelet or Fourier filtering to extract scale-dependent features.
+  \item Compute persistent homology via `ripser` or `Gudhi` libraries.
+  \item Visualize barcode diagrams and monitor $C(t)$, $H(t)$, $E_j(t)$.
+\end{itemize}
+
+\paragraph{J.2 Thresholding and Noise Filtering.}
+Short-lived topological features due to numerical noise must be filtered. Let $\tau_{\text{cutoff}}$ be a persistence threshold:
+\[ \mathrm{persist}(h) < \tau_{\text{cutoff}} \Rightarrow \text{discard}. \]
+Typical values: $\tau_{\text{cutoff}} \in [0.01, 0.05]$, depending on resolution.
+
+\paragraph{J.3 Visualization Tools.}
+Barcode diagrams and their time evolution can be visualized using `persim.plot_diagrams` or customized matplotlib routines. Key quantities to track:
+\begin{itemize}
+  \item Time-series of $C(t)$ and $H(t)$,
+  \item Maximum persistence vs. dyadic shell index $j$,
+  \item 2D Isomap embedding with topological color coding,
+  \item Heatmaps of barcode lifespan density over time.
+\end{itemize}
+
+\paragraph{J.4 Reproducibility and Data Structure.}
+Organize output as:
+\begin{itemize}
+  \item `data/snapshots/`: velocity field arrays (NumPy `.npy` files),
+  \item `results/decay/`: shell energy and slope plots,
+  \item `results/persistence/`: barcode diagrams and summaries,
+  \item `logs/configs/`: parameters used for each simulation.
+\end{itemize}
+Ensure fixed random seeds, controlled noise, and matched grid resolutions. Maintain YAML/JSON-based metadata tracking.
+
+\paragraph{J.5 Interpretation and Cross-Reference to Theory.}
+Numerical decay in $C(t)$ and $H(t)$ provides empirical support for Step 2 (gradient control), Step 3 (orbit simplicity), and Step 5 (attractor contraction).
+Appendix I's predictions (e.g., $C_{\text{Besov}}(t) \to 0$) can be tested directly.
+
+\paragraph{J.6 Benchmarking Across Models and Resolutions.}
+To evaluate robustness of PH-based diagnostics:
+\begin{itemize}
+  \item Compare results across different resolutions (e.g., $N=32$, $64$, $128$),
+  \item Evaluate sensitivity to viscosity $\nu$, forcing $f$, and domain geometry,
+  \item Test model variants: Euler, SQG, MHD using same topological pipeline.
+\end{itemize}
+
+\paragraph{J.7 Automated Analysis and Statistical Summaries.}
+For large simulations:
+\begin{itemize}
+  \item Compute ensemble statistics of $C(t)$, $H(t)$,
+  \item Use bootstrap or rolling-window averaging for topological indicators,
+  \item Extract and rank dominant barcode features via lifetime or scale concentration.
+\end{itemize}
+
+This appendix provides the empirical complement to the analytic framework, supporting reproducibility, visual insight, cross-model comparison, and future benchmarking standards.
 
 % =============================================================
 
