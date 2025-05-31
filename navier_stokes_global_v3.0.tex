@@ -519,6 +519,18 @@ Type I blow-up requires structural repetition under rescaling, implying conserva
 Self-similar blow-up requires a reversible rescaling of the orbit $\mathcal{O}$, i.e., $u(t+\Delta t) \approx \lambda(\Delta t) u(t)$. However, persistent homology triviality ($\mathrm{PH}_1 = 0$) combined with strict energy dissipation implies time-asymmetric collapse of topological structure. Hence, no invertible scaling trajectory can exist, precluding Type I singularities.
 \end{remark}
 
+\begin{remark}[Nonlocality Contradicts Dissipative Trajectories]
+Self-similar blow-up requires nonlocal rescaling across space-time neighborhoods. However, the dissipative nature of the Navier--Stokes flow, combined with injectivity and contractibility of the orbit $\mathcal{O}$, precludes such spatially extended recurrence. Thus, global self-similarity cannot persist in a topologically trivial trajectory.
+\end{remark}
+
+\begin{remark}[Contractibility in Moduli-Space Perspective]
+The topological simplicity of the orbit is reflected not only in $\mathrm{PH}_1$ but also in its embedding into a contractible moduli space of flow configurations. No nontrivial fiber or obstruction class exists to support recurrent or self-similar structure within this simplified configuration manifold.
+\end{remark}
+
+\begin{remark}[Numerical Implication]
+In practice, if PH₁ barcodes computed along a numerical trajectory remain trivial and no closed loop is detected under Isomap projection, then the orbit is empirically consistent with Type I blow-up exclusion. This provides an observable numerical criterion for ruling out self-similarity.
+\end{remark}
+
 \begin{remark}[Higher-Dimensional Persistent Homology]
 The exclusion of Type I blow-up hinges specifically on the vanishing of first persistent homology $\mathrm{PH}_1$, which corresponds to loop-like structures in the orbit geometry. Higher-dimensional features such as $\mathrm{PH}_2$ (e.g., voids or cavities) do not arise in the 1D trajectory $\mathcal{O} \subset H^1$, and even if they did, they would not imply loop recurrence or self-similar blow-up. Thus, the analysis is fully robust within the $\mathrm{PH}_1$ framework.
 \end{remark}
