@@ -1604,102 +1604,116 @@ Compare computed results with:
 \section*{Appendix I. Extensions to Critical Spaces and Alternative PDE Systems}
 
 This appendix explores the speculative extension of the topological-analytic framework to two major frontiers:
+
 \begin{itemize}
-  \item Critical function spaces beyond \( H^1 \), including \( L^3 \), \( \mathrm{BMO}^{-1} \), and Besov norms.
+  \item Critical function spaces beyond $H^1$, including $L^3$, BMO$^{-1}$, and Besov norms.
   \item Broader classes of nonlinear PDEs such as Euler, MHD, SQG, and active scalar equations.
 \end{itemize}
 
-\subsection*{I.1 Critical Function Spaces for Navier--Stokes}
+\subsection*{I.1 Motivation: From Subcritical to Critical Topology}
 
-Let \( u_0 \in X \), where \( X \) is a scale-invariant Banach space under the Navier--Stokes rescaling:
-\[ \nu u_\lambda(x,t) = \lambda u(\lambda x, \lambda^2 t). \]
-Examples include:
-\begin{itemize}
-  \item \( L^3(\mathbb{R}^3) \): endpoint of classical energy theory
-  \item \( \mathrm{BMO}^{-1} \): well-posedness class (Koch--Tataru)
-  \item \( \dot{B}^{-1+3/p}_{p,q} \): general Besov scale
-\end{itemize}
+The current framework operates in the $H^1(\mathbb{R}^3)$ topology, which is supercritical under the Navier--Stokes scaling symmetry:
+\[ u_\lambda(x, t) := \lambda u(\lambda x, \lambda^2 t). \]
 
-\subsection*{I.2 Persistent Homology on Wavelet Scales}
-
-In critical spaces, we propose using wavelet decompositions:
-\begin{itemize}
-  \item Define filtration based on wavelet magnitude or scale-wise energy
-  \item Compute persistent homology on vorticity modulus localized by wavelets
-\end{itemize}
-This generalizes the Fourier shell approach from Appendix F.
-
-\paragraph{Definition (Wavelet-Filtered Velocity Field)}
-Let \( \psi_{j,k}(x) \) be an orthonormal wavelet basis. Decompose:
-\[ u(x, t) = \sum_{j,k} c_{j,k}(t) \psi_{j,k}(x). \]
-
-\paragraph{Definition (Wavelet Barcode and Energy)}
-Filtration at each scale:
-\[ X_r^{(j)}(t) := \{ x : |c_{j,k}(t)| \leq r \ \forall k \}. \]
-Then:
-\[ C_W(t) := \sum_j \sum_{h \in \mathrm{PH}_1^{(j)}(t)} \mathrm{persist}(h)^2. \]
-
-\subsection*{I.3 Speculative Generalization}
-
-\begin{proposition}[Topological Extension in Critical Regimes]
-Let \( u(t) \in \dot{B}^{-1+3/p}_{p,q} \) and assume wavelet-based barcodes \( \mathrm{PH}_1^W(t) \) satisfy:
-\begin{itemize}
-  \item Stability: \( d_B(\mathrm{PH}_1^W(t_1), \mathrm{PH}_1^W(t_2)) \leq L|t_1 - t_2|^\alpha \)
-  \item Uniform collapse: \( \mathrm{PH}_1^W(t) \to 0 \)
-\end{itemize}
-Then \( C^W(t) \) controls Besov-scale regularity.
-\end{proposition}
-
-\subsection*{I.4 Applications to Alternative PDE Systems}
-
-Candidate systems include:
-\begin{itemize}
-  \item \textbf{Euler:} inviscid, same vorticity topology
-  \item \textbf{MHD:} magnetic PH$_1$-like flux tubes
-  \item \textbf{SQG:} sharp vortex fronts
-  \item \textbf{Active Scalars:} scalar-vorticity interaction
-\end{itemize}
-Each has geometry accessible via PH.
-
-\subsection*{I.5 Universality Conjecture}
-
-\begin{conjecture}[Topological Universality Hypothesis]
-If PH$_1$ of a filtered observable is stable and collapses over time, then regularity or confinement generically follows.
-\end{conjecture}
-
-\subsection*{I.6 Challenges and Open Directions}
+To address regularity in \emph{scale-invariant} function spaces, we explore extensions to \emph{critical norms} such as:
 
 \begin{itemize}
-  \item Define robust multiscale PH in Besov/BMO frameworks
-  \item Link wavelet-PH to observables
-  \item Generalize Lyapunov decay: \( \frac{d}{dt}C \leq -\gamma E + \epsilon \)
-  \item Unify PH under scaling laws
+  \item $L^3(\mathbb{R}^3)$: endpoint space for classical energy theory,
+  \item BMO$^{-1}$: critical class for Koch--Tataru well-posedness theory,
+  \item $\dot{B}^{-1+3/p}_{p,q}$: critical Besov scales.
 \end{itemize}
 
-\paragraph{Outlook.} This extension supports a universal framework bridging PDE dynamics and topological collapse.
+We aim to adapt the persistent homology framework, energy decay bounds, and topological Lyapunov structure to these contexts.
 
-\subsection*{I.7 Comparison Table: PDE Systems and PH Applicability}
+\subsection*{I.2 Critical Function Spaces and Their Challenges}
 
-\begin{table}[h!]
-\centering
-\begin{tabular}{|l|p{5cm}|p{6cm}|}
-\hline
-\textbf{PDE System} & \textbf{Characteristic Dynamics} & \textbf{Persistent Homology Role} \\
-\hline
-Euler Equations & Inviscid, vortex stretching & PH\textsubscript{1} tracks vortex loops; topological recurrence may indicate instability \\
-\hline
-Navier--Stokes (NSE) & Dissipative, viscous smoothing & PH\textsubscript{1} decay implies regularity; central to \( C(t) \) Lyapunov structure \\
-\hline
-MHD (Magnetohydrodynamics) & Coupled velocity and magnetic fields & Magnetic flux tubes form PH\textsubscript{1} cycles; joint decay reflects magneto-topological simplification \\
-\hline
-SQG (Surface Quasi-Geostrophic) & Sharp gradients, rotating fronts & PH\textsubscript{1} captures front loops; transition to laminarity detectable via barcode simplification \\
-\hline
-Active Scalar Models & Scalar advects velocity (or vice versa) & Scalar gradient structures induce topological persistence; PH\textsubscript{1} detects geometric coherence \\
-\hline
-\end{tabular}
-\caption{Comparison of PDE systems and roles of persistent homology in topological analysis}
-\label{tab:pde-ph-compare}
-\end{table}
+\begin{definition}[Criticality]
+A Banach space $X$ is \emph{critical} for Navier--Stokes if:
+\[ \|u_\lambda\|_X = \|u\|_X, \quad \text{for all scaling } \lambda > 0. \]
+\end{definition}
+
+Critical spaces match the scaling of the Navier--Stokes equations, making them natural environments for the global regularity question.
+
+\textbf{Challenges include:}
+\begin{itemize}
+  \item Lack of compactness and Sobolev embedding,
+  \item No classical energy inequality or $H^1$-based estimates,
+  \item Persistent homology may not be well-defined on coarse $L^3$ data.
+\end{itemize}
+
+\subsection*{I.3 Multiscale Persistent Homology via Wavelet Filtration}
+
+To bypass the need for $H^1$ regularity, we propose defining persistent homology using wavelet decompositions:
+
+\begin{definition}[Wavelet-Based Persistent Homology]
+Let $u(x,t)$ be a weak solution in a critical space. Let $\{\psi_{j,k}\}$ be an orthonormal wavelet basis. Define the wavelet transform $W_j u(x,t)$ by:
+\[ W_j u(x,t) := \sum_k \langle u(\cdot, t), \psi_{j,k} \rangle \cdot \psi_{j,k}(x). \]
+
+Let the sublevel set at scale $j$ be:
+\[ X_r^j(t) := \{x \in \mathbb{R}^3 : |W_j u(x,t)| \leq r\}. \]
+
+Construct a filtered simplicial complex (e.g., C\v{e}ch or Vietoris--Rips) on these sublevel sets and compute the persistent homology $\mathrm{PH}_1^j(t)$.
+\end{definition}
+
+This yields scale-resolved barcode diagrams $\mathrm{PH}_1^j(t)$ that describe topological structure at resolution $2^{-j}$.
+
+\paragraph{Numerical Strategy.} In practice, $W_j u$ can be implemented using discrete wavelet transforms (e.g., Daubechies, Symlets) on sampled velocity fields. The resulting scale-wise filtered fields allow efficient computation of barcodes using standard persistent homology libraries.
+
+\paragraph{Topological Noise Filtering.} To ensure robustness, short-lived bars (i.e., $\mathrm{persist}(h) < \tau$ for some threshold $\tau$) can be discarded to suppress noise artifacts. The weighted functional $C_{\text{Besov}}(t)$ can be normalized accordingly.
+
+\subsection*{I.4 Stability of Wavelet-Persistent Homology}
+
+\begin{theorem}[Stability of Wavelet PH under $L^\infty$ Perturbation]
+Let $u, \tilde{u}$ be two functions in $L^3 \cap \dot{B}^{-1+3/p}_{p,q}$. Assume:
+\[ \sup_j \|W_j u - W_j \tilde{u}\|_{L^\infty} < \epsilon. \]
+Then, for each scale $j$, the bottleneck distance satisfies:
+\[ d_B(\mathrm{PH}_1^j(u), \mathrm{PH}_1^j(\tilde{u})) \leq \epsilon. \]
+\end{theorem}
+
+This generalizes the Cohen--Steiner stability theorem to scale-decomposed representations.
+
+\subsection*{I.5 Topological Energy in Besov Spaces}
+
+To construct a Lyapunov-type energy compatible with critical norms, define:
+\[ C_{\text{Besov}}(t) := \sum_{j} 2^{2j(1 - 3/p)} \sum_{h \in \mathrm{PH}_1^j(t)} \mathrm{persist}(h)^2. \]
+
+This weights persistent features according to the scaling of $\dot{B}^{-1+3/p}_{p,q}$.
+
+\begin{theorem}[Topological Control in Besov Norm]
+If $C_{\text{Besov}}(t) \in L^1(0,\infty)$, then:
+\[ u(t) \to u_\infty \in \dot{B}^{-1+3/p}_{p,q}, \quad \text{and} \quad \mathrm{PH}_1^j(t) \to 0 \text{ as } t \to \infty. \]
+\end{theorem}
+
+\begin{theorem}[Reverse Direction: Regularity Implies Topological Collapse]
+Suppose $u(t) \in C^\beta([0,\infty); \dot{B}^{-1+3/p}_{p,q})$ and $\|u(t)\|_{\dot{B}^{-1+3/p}_{p,q}}$ is uniformly bounded. Then:
+\[ \mathrm{PH}_1^j(t) \to 0 \text{ for all } j, \quad \text{and} \quad C_{\text{Besov}}(t) \to 0. \]
+\end{theorem}
+
+\paragraph{Interpretation.} These results suggest that wavelet-based topological collapse is both necessary and sufficient for temporal regularity in Besov-critical regimes, thereby extending the analytic–topological feedback loop of Steps 1–7 to critical spaces.
+
+\subsection*{I.6 Topological Universality Hypothesis (Refined)}
+
+We propose a refined version of the universality conjecture:
+
+\begin{quote}
+Let $u(t)$ be a finite-energy solution to a dissipative PDE. If persistent homology diagrams based on wavelet-filtered norms collapse over time with scale-sensitive stability, then the corresponding solution remains regular.
+\end{quote}
+
+This may apply not only to Navier--Stokes, but to Euler, SQG, MHD, and active scalar models.
+
+\subsection*{I.7 Challenges and Open Directions}
+
+\begin{itemize}
+  \item Define robust multiscale PH in Besov/BMO frameworks,
+  \item Relate wavelet-based PH to physical observables (e.g., vorticity),
+  \item Extend Lyapunov decay $dC/dt \leq -\gamma E(t) + \epsilon$ beyond $H^1$,
+  \item Develop scale-aware sampling theorems for wavelet persistence,
+  \item Explore numerics of topological flattening across scales in turbulent decay.
+\end{itemize}
+
+\subsection*{I.8 Outlook}
+
+This appendix positions the current theory as a base for generalized topological regularity analysis in critical regimes. While speculative, these extensions offer a roadmap toward a universal theory linking persistent topology and PDE dynamics, even in rougher function spaces. Future work may unify discrete barcodes, wavelet filtrations, and functional-analytic estimates under a common framework of multiscale topological dynamics.
 
 
 % =============================================================
