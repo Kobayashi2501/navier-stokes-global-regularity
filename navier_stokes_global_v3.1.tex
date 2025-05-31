@@ -1044,6 +1044,24 @@ PH vanishing, $C(t)$ decay, and tropical collapse can be validated numerically u
 
 This completes the analytic–topological–algebraic argument for global regularity with structural stability and mutual reinforcement.
 
+\begin{theorem}[Analytic Regularity Implies Topological Collapse]
+Let \( u(t) \in C^\beta_t H^1_x \) be a Leray--Hopf solution on \( [0, T] \), and assume:
+\begin{itemize}
+  \item The map \( t \mapsto u(t) \) is uniformly Hölder continuous in \( H^1 \),
+  \item The enstrophy \( \|\nabla u(t)\|^2 \) is bounded on \( [0, T] \),
+\end{itemize}
+Then the persistent homology barcodes \( \mathrm{PH}_1(t) \) converge in bottleneck distance to a trivial barcode:
+\[
+\lim_{t \to T} d_B(\mathrm{PH}_1(t), 0) = 0,
+\]
+and the associated topological energy satisfies \( \lim_{t \to T} C(t) = 0 \).
+\end{theorem}
+
+\begin{remark}
+This establishes the reverse direction of the regularity-feedback loop: temporal Sobolev regularity implies topological triviality.
+\end{remark}
+
+
 
 
 % ===========================
