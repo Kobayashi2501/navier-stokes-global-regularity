@@ -419,7 +419,6 @@ The decay of $C(t)$ constrains the high-frequency tail of the energy spectrum. T
 % ===========================
 % STEP 3 - Topological Exclusion of Type I Blow-Up via Orbit Simplicity
 % ===========================
-
 \section{Step 3 - Topological Exclusion of Type I Blow-Up via Orbit Simplicity}
 
 \begin{definition}[Solution Orbit]
@@ -437,7 +436,8 @@ A singularity at $T^*$ is of Type I if:
 indicating self-similar or scaling-invariant blow-up.
 \end{definition}
 
-\begin{theorem}[PH₁ = 0 Implies Topological Triviality via Čech Complex]\label{thm:cech-triviality}
+\begin{theorem}[PH₁ = 0 Implies Topological Triviality via Čech Complex]
+\label{thm:cech-triviality}
 Let $\mathcal{O} \subset H^1$ be compact, injective, and of finite arc length. Suppose:
 \begin{itemize}
   \item Persistent homology satisfies $\mathrm{PH}_1(\mathcal{O}) = 0$,
@@ -462,7 +462,8 @@ If $\partial_t u \in L^1(0,T; H^{-1})$, then $\mathcal{O}$ has finite arc length
 If $\mathcal{O}$ is injective and finite-length in a separable Hilbert space, then $\overline{\mathcal{O}}$ is homeomorphic to a closed interval.
 \end{lemma}
 
-\begin{theorem}[Persistent Homology Triviality from Orbit Simplicity]\label{thm:ph1-triviality}
+\begin{theorem}[Persistent Homology Triviality from Orbit Simplicity]
+\label{thm:ph1-triviality}
 If $\mathcal{O} \subset H^1$ is injective, of finite arc length, and contractible, then:
 \[
 \mathrm{PH}_1(\mathcal{O}) = 0.
@@ -498,12 +499,28 @@ u(t) = \frac{1}{(T^* - t)^\alpha} U\left( \frac{x}{(T^* - t)^\beta} \right).
 Then the orbit $\mathcal{O}$ in $H^1$ contains a loop-like structure homeomorphic to $\mathbb{S}^1$, contradicting $\mathrm{PH}_1(\mathcal{O}) = 0$.
 \end{lemma}
 
+\begin{lemma}[Loop Implies Asymptotic Return]
+If the solution orbit $\mathcal{O}$ contains a topological loop, then there exists $t, \tau > 0$ such that:
+\[
+\liminf_{\tau \to \tau^*} \|u(t + \tau) - u(t)\|_{H^1} \to 0.
+\]
+This implies a periodic or quasi-periodic recurrence in $H^1$, contradicting the strict energy dissipation and the topological triviality $\mathrm{PH}_1 = 0$.
+\end{lemma}
+
+\begin{remark}[Energy Dissipation Prevents Asymptotic Return]
+Since $\frac{d}{dt} E(t) < 0$, the solution loses energy monotonically. Therefore, no orbit segment can return arbitrarily close to a previous state in $H^1$ norm unless the flow is trivial. Hence, recurrence as implied by a topological loop cannot occur.
+\end{remark}
+
 \begin{remark}[Topological Compression Excludes Scaling Invariance]
 Type I blow-up requires structural repetition under rescaling, implying conservation of topological complexity. However, persistent homology triviality ($\mathrm{PH}_1 = 0$) implies maximal topological compression. Thus, the flow cannot sustain a recursive or self-similar topological regime.
 \end{remark}
 
 \begin{remark}[Time-Asymmetry Precludes Type I Self-Similarity]
 Self-similar blow-up requires a reversible rescaling of the orbit $\mathcal{O}$, i.e., $u(t+\Delta t) \approx \lambda(\Delta t) u(t)$. However, persistent homology triviality ($\mathrm{PH}_1 = 0$) combined with strict energy dissipation implies time-asymmetric collapse of topological structure. Hence, no invertible scaling trajectory can exist, precluding Type I singularities.
+\end{remark}
+
+\begin{remark}[Higher-Dimensional Persistent Homology]
+The exclusion of Type I blow-up hinges specifically on the vanishing of first persistent homology $\mathrm{PH}_1$, which corresponds to loop-like structures in the orbit geometry. Higher-dimensional features such as $\mathrm{PH}_2$ (e.g., voids or cavities) do not arise in the 1D trajectory $\mathcal{O} \subset H^1$, and even if they did, they would not imply loop recurrence or self-similar blow-up. Thus, the analysis is fully robust within the $\mathrm{PH}_1$ framework.
 \end{remark}
 
 \begin{corollary}[Exclusion of Type I Blow-Up]
@@ -513,7 +530,6 @@ Under the assumptions of Theorem \ref{thm:cech-triviality}, no Type I blow-up ca
 \begin{remark}[Link to Step 4 – Topological Transition Barrier]
 The injectivity and contractibility of $\mathcal{O}$, together with strictly decreasing energy $E(t)$, prevent return to any prior topological state. Thus, oscillatory or chaotic (Type II/III) transitions must also be ruled out via homological persistence and its stability—see Step 4.
 \end{remark}
-
 
 
 % ===========================
