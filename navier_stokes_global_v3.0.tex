@@ -1578,60 +1578,76 @@ Compare computed results with:
 
 % =============================================================
 
-\section{Appendix I. Extension to Critical Function Spaces}
+\section{Appendix I. Extensions to Critical Spaces and Alternative PDE Systems}
 \label{sec:appendixI}
 
-This appendix explores the speculative extension of the topological-analytic framework developed in Steps 1--7 to critical function spaces beyond \( H^1(\mathbb{R}^3) \). The goal is to understand whether persistence-based topological collapse and regularity results may hold in weaker or scaling-invariant regimes.
+This appendix explores the speculative extension of the topological-analytic framework to two major frontiers:
+\begin{itemize}
+  \item Critical function spaces beyond \( H^1 \), including \( L^3 \), \( \mathrm{BMO}^{-1} \), and Besov norms.
+  \item Broader classes of nonlinear PDEs such as Euler, MHD, SQG, and active scalar equations.
+\end{itemize}
 
 \subsection*{I.1 Critical Function Spaces for Navier--Stokes}
 
 Let \( u_0 \in X \), where \( X \) is a scale-invariant Banach space under the Navier--Stokes rescaling:
 \[
-u u_\lambda(x,t) = \lambda u(\lambda x, \lambda^2 t).
+\nu u_\lambda(x,t) = \lambda u(\lambda x, \lambda^2 t).
 \]
 Examples include:
 \begin{itemize}
-  \item \( L^3(\mathbb{R}^3) \): endpoint of classical energy methods
-  \item \( \mathrm{BMO}^{-1} \): Koch--Tataru well-posedness space
-  \item Besov spaces \( \dot{B}^{-1+3/p}_{p,q} \) with \( p < 3 \)
+  \item \( L^3(\mathbb{R}^3) \): endpoint of classical energy theory
+  \item \( \mathrm{BMO}^{-1} \): well-posedness class (Koch--Tataru)
+  \item \( \dot{B}^{-1+3/p}_{p,q} \): general Besov scale
 \end{itemize}
 
 \subsection*{I.2 Persistent Homology on Wavelet Scales}
 
-In critical spaces, the standard Fourier-based shell decomposition may not be directly applicable. Instead, we propose:
+In critical spaces, we propose using wavelet decompositions:
 \begin{itemize}
-  \item Use of wavelet decomposition to define multiscale filtration
-  \item Application of persistent homology to the modulus of vorticity on each scale
+  \item Define filtration based on wavelet magnitude or scale-wise energy
+  \item Compute persistent homology on vorticity modulus localized by wavelets
 \end{itemize}
-This defines a persistence diagram that reflects energy concentration and dissipation in time-frequency localized settings.
+This generalizes the Fourier shell approach from Appendix F.
 
-\subsection*{I.3 Speculative Conjecture and Generalization}
+\subsection*{I.3 Speculative Generalization}
 
-\begin{proposition}[Speculative Generalization]
-Let \( u(t) \in \dot{B}^{-1+3/p}_{p,q} \) be a solution to NSE with bounded wavelet energy across scales. If the persistent homology constructed from the vorticity magnitude decays uniformly in scale and time, then persistent simplicity \( \mathrm{PH}_1(t) = 0 \) may be preserved in the critical regime.
+\begin{proposition}[Topological Extension in Critical Regimes]
+Let \( u(t) \in \dot{B}^{-1+3/p}_{p,q} \) and assume wavelet-based persistence barcodes \( \mathrm{PH}_1^W(t) \) satisfy:
+\begin{itemize}
+  \item Stability: \( d_B(\mathrm{PH}_1^W(t_1), \mathrm{PH}_1^W(t_2)) \leq L|t_1 - t_2|^\alpha \)
+  \item Uniform collapse: \( \mathrm{PH}_1^W(t) \to 0 \) as \( t \to \infty \)
+\end{itemize}
+Then the topological Lyapunov energy \( C^W(t) \) can control Besov-scale gradient norms.
 \end{proposition}
 
-\paragraph{Implication.}
-Under this conjecture, Steps 1--7 may generalize to critical initial data if topological degeneration can be captured in localized filtration domains.
+\subsection*{I.4 Applications to Alternative PDE Systems}
 
-\subsection*{I.4 Relation to the Current Framework}
-
+The analytic–topological strategy may extend beyond NSE. Candidate systems include:
 \begin{itemize}
-  \item Step 1 (PH stability) may require \( L^3 \)-based or wavelet Lipschitz estimates
-  \item Step 2–3 (enstrophy control) could be reformulated using \( \dot{B}^{s}_{p,q} \) norms
-  \item Step 7 (algebraic-topological collapse) might extend to tropical degenerations of wavelet barcodes
+  \item \textbf{Euler equations:} inviscid, same vorticity topology
+  \item \textbf{Magnetohydrodynamics (MHD):} magnetic field adds PH$_1$-like flux features
+  \item \textbf{SQG (Surface Quasi-Geostrophic):} sharp fronts and vortex folds
+  \item \textbf{Active scalar models:} complex scalar-driven fluid dynamics
 \end{itemize}
+Each possesses rich geometric structure accessible via PH methods.
 
-\subsection*{I.5 Challenges and Open Problems}
+\subsection*{I.5 Universality Conjecture}
+
+\begin{conjecture}[Topological Universality Hypothesis]
+Let \( u(t) \) be a finite-energy solution to a dissipative PDE. If PH$_1$ of a suitable filtered quantity (e.g., vorticity magnitude) is stable and collapses over time, then regularity or geometric confinement generically follows.
+\end{conjecture}
+
+\subsection*{I.6 Challenges and Open Directions}
 
 \begin{itemize}
-  \item Defining stable and noise-tolerant persistence diagrams on critical scales
-  \item Understanding nonlinear interaction between energy dissipation and multiscale topology
-  \item Extending the Lyapunov-type inequality for \( C(t) \) beyond \( H^1 \)
+  \item Define robust multiscale PH in Besov/BMO frameworks
+  \item Relate wavelet-based PH to physical observables
+  \item Extend Lyapunov decay \( dC/dt \leq -\gamma E(t) + \epsilon \) beyond \( H^1 \)
+  \item Unify persistence under diverse PDE scaling laws
 \end{itemize}
 
 \paragraph{Outlook.}
-While preliminary, this appendix sets the stage for extending topological regularity methods to more singular regimes. It invites future theoretical and computational exploration of persistent topology in critical spaces.
+This appendix positions the current theory as a base for generalized topological regularity analysis. While speculative, these extensions offer a roadmap toward a universal theory linking persistent topology and PDE dynamics.
 
 % =============================================================
 
