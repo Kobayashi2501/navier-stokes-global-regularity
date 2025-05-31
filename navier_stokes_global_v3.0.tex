@@ -1028,7 +1028,7 @@ Future work includes:
 
 
 % ===========================
-% Conclusion and Future Directions (Revised with Step 7 Integration)
+% Conclusion and Future Directions (Revised with Step 7 and Appendix I Integration)
 % ===========================
 
 \section{Conclusion and Future Directions}
@@ -1054,22 +1054,24 @@ We have developed a seven-step hybrid framework for addressing the global regula
     \item \textbf{Global regularity}: $\|u(t)\|_{H^1}$ remains bounded for all $t \geq 0$.
     \item \textbf{Topological triviality}: $\mathrm{PH}_1(\{u(t)\}) = 0$.
     \item \textbf{Energy dissipation}: $\frac{d}{dt} E(t) < 0$ for all $t > 0$.
-    \item \textbf{Compactness}: The solution orbit is compact and injective in $H^1$.
+    \item \textbf{Compactness}: The solution orbit $\{u(t)\}$ forms a compact, injective, and contractible arc in $H^1$.
 \end{enumerate}
 \textit{Hence, no finite-time singularity of Type I, II, or III may occur.}
 
 \subsection*{Future Directions}
 
 \begin{itemize}
-    \item \textbf{Extension to bounded domains and critical spaces}: Applying the framework to domains with boundary and scale-invariant function spaces.
-    \item \textbf{Numerical certification of topological collapse}: Tracking PH$_1$ stability as an empirical turbulence detector or smoothness certifier.
-    \item \textbf{Algebraic generalization}: Deepening the connection with Hodge theory, tropical geometry, and moduli spaces for regularity mechanisms.
-    \item \textbf{Stochastic and ensemble frameworks}: Generalizing the theory under statistical uncertainty and exploring implications for data-driven PDEs.
+    \item \textbf{Extension to bounded domains and critical spaces}: As explored in Appendix I, we aim to generalize the theory to boundary-influenced settings and scale-invariant function spaces such as $L^3$, $\mathrm{BMO}^{-1}$, and Besov classes.
+    \item \textbf{Numerical certification of topological collapse}: Persistent homology can serve as an empirical detector of turbulence or regularity, as implemented in Appendices F, G, and validated via the reproducibility protocol in Appendix H.
+    \item \textbf{Algebraic generalization}: Step 7 motivates further use of Hodge theory, tropical degenerations, and geometric moduli spaces for encoding regularity conditions.
+    \item \textbf{Extension to other PDE systems}: Appendix I outlines speculative but promising directions for applying this framework to Euler, MHD, SQG, and active scalar models.
+    \item \textbf{Stochastic and ensemble frameworks}: Exploring the robustness of PH-stability under noisy, Bayesian, or data-driven initial distributions. Future numerical and Bayesian simulations can test whether PH-stability serves as a universal diagnostic across uncertainty ensembles.
 \end{itemize}
 
 \subsection*{Closing Thought}
 
 By interpreting turbulent flows through the lens of topological simplicity and its algebraic degeneration, we gain a new perspective on regularity: not merely as the absence of singularity, but as a structural alignment of analysis, geometry, and data topology. This approach opens a path toward certifiable smoothness in nonlinear PDEs, guided not by pointwise estimates, but by global topological invariants.
+
 
 
 
