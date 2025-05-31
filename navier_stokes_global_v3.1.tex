@@ -1760,6 +1760,62 @@ This bridges persistent homology with information theory and algorithmic compres
   \item Ensemble methods and information metrics extend the framework toward uncertainty-aware turbulence analysis.
 \end{itemize}
 
+\subsection*{I.12 Multiphysics Coupling and PH Structure Transfer}
+
+In multiphysics PDE systems, persistent homology can reveal the topological interaction between coupled fields.
+Consider a velocity field $u(x,t)$ and a secondary field $\phi(x,t)$ (e.g., magnetic field $B$, temperature $\theta$, or vorticity $\omega = \nabla \times u$).
+
+\paragraph{Coupled Topological Dynamics.}
+Define scale-resolved persistent homology diagrams:
+\[
+\mathrm{PH}_1^j(u), \quad \mathrm{PH}_1^j(\phi).
+\]
+We say topological structure transfers from $\phi$ to $u$ if decay in $\mathrm{PH}_1^j(\phi)$ precedes and implies decay in $\mathrm{PH}_1^j(u)$.
+
+\begin{proposition}[Topological Causality Criterion]
+Suppose:
+\begin{itemize}
+  \item $\phi$ evolves independently or with weak coupling,
+  \item $\mathrm{PH}_1^j(\phi) \to 0$ uniformly for all $j$,
+  \item $\mathrm{PH}_1^j(u)$ is Lipschitz-stable under perturbations in $\phi$.
+\end{itemize}
+Then $\mathrm{PH}_1^j(u) \to 0$ as $t \to \infty$.
+\end{proposition}
+
+\paragraph{Application to MHD.}
+In magnetohydrodynamics, $B$ and $u$ are coupled via:
+\[ \partial_t B = \nabla \times (u \times B) + \eta \Delta B. \]
+Thus, topological decay in $B$ may drive suppression of complex flow in $u$.
+
+\subsection*{I.13 Hybrid Topological-Spectral Indicators}
+
+We connect persistent homology to spectral cascade via the correlation between topological features and Fourier shell energy.
+
+\paragraph{Definition.} Define the topological–spectral correlation at scale $j$:
+\[ \mathrm{Corr}_j(t) := \mathrm{Corr}(\text{persist}_j, E_j), \]
+where $E_j(t)$ is the dyadic shell energy and $\text{persist}_j$ is the average barcode length at scale $j$.
+
+\begin{proposition}[Spectral Alignment Implies Topological Flattening]
+If $\mathrm{Corr}_j(t) \approx 1$ for all $j$, then topological complexity tracks spectral excitation, and shell energy decay implies PH suppression.
+\end{proposition}
+
+This hybrid structure allows linking turbulence decay with topological simplification.
+
+\subsection*{I.14 Persistent Homology Thermodynamics and Entropic Decay}
+
+Define the topological entropy of persistence:
+\[ H(t) := -\sum_h p_h(t) \log p_h(t), \quad p_h(t) = \frac{\text{persist}(h)^2}{C(t)}. \]
+
+\paragraph{Interpretation.} $H(t)$ captures the distributional complexity of barcode lifetimes.
+As $C(t) \to 0$, a decreasing $H(t)$ reflects increasing compressibility.
+
+\begin{theorem}[Entropy Decay and Flow Predictability]
+If $dH/dt \leq -\alpha H + \epsilon$, then $H(t) \to 0$ and the flow becomes topologically deterministic in the long run.
+\end{theorem}
+
+This establishes a thermodynamic-like principle for topological information dissipation.
+
+
 % =============================================================
 
 \section*{Acknowledgements}
