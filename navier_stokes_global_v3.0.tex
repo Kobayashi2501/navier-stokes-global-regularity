@@ -1578,18 +1578,60 @@ Compare computed results with:
 
 % =============================================================
 
-\subsection*{Appendix I. Intuition and Visualization of Tropical Degenerations}
+\section{Appendix I. Extension to Critical Function Spaces}
+\label{sec:appendixI}
 
+This appendix explores the speculative extension of the topological-analytic framework developed in Steps 1--7 to critical function spaces beyond \( H^1(\mathbb{R}^3) \). The goal is to understand whether persistence-based topological collapse and regularity results may hold in weaker or scaling-invariant regimes.
+
+\subsection*{I.1 Critical Function Spaces for Navier--Stokes}
+
+Let \( u_0 \in X \), where \( X \) is a scale-invariant Banach space under the Navier--Stokes rescaling:
+\[
+u u_\lambda(x,t) = \lambda u(\lambda x, \lambda^2 t).
+\]
+Examples include:
 \begin{itemize}
-    \item Provide illustrative diagrams of barcode collapse as tropical polyhedral contractions.
-    \item Explain the mapping from degenerating Hodge structures to piecewise-linear tropical moduli.
-    \item Discuss how tropicalization encodes topological simplification with bounded bottleneck trajectories.
-    \item Use example synthetic datasets (e.g., evolving loops, vortex rings) to visualize PH$_1$ death patterns via tropical coordinates.
+  \item \( L^3(\mathbb{R}^3) \): endpoint of classical energy methods
+  \item \( \mathrm{BMO}^{-1} \): Koch--Tataru well-posedness space
+  \item Besov spaces \( \dot{B}^{-1+3/p}_{p,q} \) with \( p < 3 \)
 \end{itemize}
 
-\subsection*{Closing Thought}
+\subsection*{I.2 Persistent Homology on Wavelet Scales}
 
-By interpreting turbulent flows through the lens of topological simplicity and its algebraic degeneration, we gain a new perspective on regularity: not merely as the absence of singularity, but as a structural alignment of analysis, geometry, and data topology. This approach opens a path toward certifiable smoothness in nonlinear PDEs, guided not by pointwise estimates, but by global topological invariants.
+In critical spaces, the standard Fourier-based shell decomposition may not be directly applicable. Instead, we propose:
+\begin{itemize}
+  \item Use of wavelet decomposition to define multiscale filtration
+  \item Application of persistent homology to the modulus of vorticity on each scale
+\end{itemize}
+This defines a persistence diagram that reflects energy concentration and dissipation in time-frequency localized settings.
+
+\subsection*{I.3 Speculative Conjecture and Generalization}
+
+\begin{proposition}[Speculative Generalization]
+Let \( u(t) \in \dot{B}^{-1+3/p}_{p,q} \) be a solution to NSE with bounded wavelet energy across scales. If the persistent homology constructed from the vorticity magnitude decays uniformly in scale and time, then persistent simplicity \( \mathrm{PH}_1(t) = 0 \) may be preserved in the critical regime.
+\end{proposition}
+
+\paragraph{Implication.}
+Under this conjecture, Steps 1--7 may generalize to critical initial data if topological degeneration can be captured in localized filtration domains.
+
+\subsection*{I.4 Relation to the Current Framework}
+
+\begin{itemize}
+  \item Step 1 (PH stability) may require \( L^3 \)-based or wavelet Lipschitz estimates
+  \item Step 2–3 (enstrophy control) could be reformulated using \( \dot{B}^{s}_{p,q} \) norms
+  \item Step 7 (algebraic-topological collapse) might extend to tropical degenerations of wavelet barcodes
+\end{itemize}
+
+\subsection*{I.5 Challenges and Open Problems}
+
+\begin{itemize}
+  \item Defining stable and noise-tolerant persistence diagrams on critical scales
+  \item Understanding nonlinear interaction between energy dissipation and multiscale topology
+  \item Extending the Lyapunov-type inequality for \( C(t) \) beyond \( H^1 \)
+\end{itemize}
+
+\paragraph{Outlook.}
+While preliminary, this appendix sets the stage for extending topological regularity methods to more singular regimes. It invites future theoretical and computational exploration of persistent topology in critical spaces.
 
 % =============================================================
 
