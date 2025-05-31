@@ -1198,85 +1198,36 @@ If $\mathcal{O}$ is contractible and Lipschitz, then $\mathrm{PH}_1(\mathcal{O})
 
 % =============================================================
 
-\section{Appendix D. Supplemental Lemmas for Topological Simplicity}
-\label{sec:appendixD}
+\section*{Appendix D. Summary of Topological Collapse Argument}
+\addcontentsline{toc}{section}{Appendix D. Summary of Topological Collapse Argument}
 
-We aim to rigorously justify the implication:
-\begin{quote}
-\textbf{If} the persistent homology PH$_1$ of the solution orbit is identically zero, and evolves via a degenerating Variation of Mixed Hodge Structures (VMHS), \textbf{then} the solution is H"older continuous in time with respect to the $H^1$ norm.
-\end{quote}
-We denote:
-\begin{itemize}
-  \item $u(t)$: Leray--Hopf solution in $H^1(\mathbb{R}^3)$.
-  \item $O = \{u(t): t \in [0,T]\}$: the solution orbit.
-  \item $C(t) = \sum_{h \in \mathrm{PH}_1(t)} \mathrm{persist}(h)^2$: topological Lyapunov energy.
-  \item $\mathcal{B}(t)$: barcode diagram of $\mathrm{PH}_1$.
-  \item $d_B(\mathcal{B}(t_1),\mathcal{B}(t_2))$: bottleneck distance between barcodes.
-\end{itemize}
+\paragraph{Purpose.}
+This appendix summarizes the core results underlying Step 7 (Algebraic-Topological Collapse). Since the strengthened version of Step 7 now contains the full mathematical argument from persistent homology collapse to temporal $H^1$ regularity, this appendix serves only as a brief guide to its logical structure.
 
-\section*{D.2 Assumptions and Preliminaries}
-We restate and strengthen the hypotheses:
+\paragraph{Core Strategy.}
+We connect topological observables—primarily the first persistent homology group $\mathrm{PH}_1(t)$ and the associated energy functional $C(t)$—to analytic regularity via tropical geometric collapse and algebraic degeneration (VMHS).
+
+\paragraph{Structure Overview.}
+Let $u(t)$ be a Leray--Hopf solution. The main logical implication established in Step 7 is:
 \begin{enumerate}
-  \item[(A1)] $\mathrm{PH}_1(t) = 0$ for all $t \in [0,T]$.
-  \item[(A2)] $\mathcal{B}(t)$ arises from a polarized VMHS degenerating over $t \to T$.
-  \item[(A3)] $d_B(\mathcal{B}(t_1), \mathcal{B}(t_2)) \leq L |t_1 - t_2|^\alpha$.
-  \item[(A4)] $C(t)$ satisfies: $\frac{d}{dt} C(t) \leq -\gamma \|\nabla u(t)\|_{L^2}^2 + \varepsilon$.
+  \item $\mathrm{PH}_1(t) = 0$ (topological simplicity);
+  \item $B(t)$ exhibits tropical contraction and polarized VMHS degeneration;
+  \item $C(t)$ satisfies a Lyapunov-type decay inequality;
 \end{enumerate}
+Then:
+\begin{center}
+$u(t)$ is H"older continuous in time with respect to the $H^1$ norm.
+\end{center}
 
-We also define the following:
-\begin{definition}[Topological Certifiability]
-Let $S = \{u(t_i)\}_{i=1}^n$ be an $\varepsilon$-dense sample of $O$ in $H^1$. If $\mathrm{PH}_1(S) = 0$ and $d_B(\mathrm{PH}_1(t_i), \mathrm{PH}_1(t_j)) \leq L |t_i - t_j|^\alpha$, then $\mathrm{PH}_1(O) = 0$ with high probability.
-\end{definition}
-
-\begin{definition}[Degenerating VMHS and Tropical Stability]
-We say that $\mathcal{B}(t)$ degenerates via a Variation of Mixed Hodge Structures if the filtration over time collapses in a polarized family whose periods contract to boundary points. If this degeneration is reflected in a polyhedral contraction in tropical coordinates, we say the system exhibits \emph{tropical bottleneck stability}.
-\end{definition}
-
-\section*{D.3 Proof of Temporal $H^1$-Regularity}
-\begin{theorem}
-Under assumptions (A1)--(A4), the map $t \mapsto u(t)$ is H"older continuous in time with respect to the $H^1$-norm:
+\paragraph{Feedback Closure.}
+Furthermore, Step 7 establishes the bidirectional feedback loop:
 \[
-\|u(t_1) - u(t_2)\|_{H^1} \leq M |t_1 - t_2|^\beta, \quad \beta = \alpha/2.
+\mathrm{PH}_1 = 0 \Leftrightarrow C(t) \downarrow \Leftrightarrow \|\nabla u\|^2 \text{ bounded} \Rightarrow u \in C^{\beta}_t H^1 \Rightarrow \mathrm{PH}_1 \text{ collapses}
 \]
-\end{theorem}
 
-\begin{proof}
-From (A4), integrating between $t_1$ and $t_2$ gives:
-\[
-\int_{t_1}^{t_2} \|\nabla u(s)\|_{L^2}^2 \, ds \leq \frac{C(t_1) - C(t_2)}{\gamma} + \varepsilon (t_2 - t_1).
-\]
-By (A3) and definition of $C(t)$, $|C(t_1) - C(t_2)| \leq K |t_1 - t_2|^\alpha$ for some $K > 0$.
-Hence:
-\[
-\int_{t_1}^{t_2} \|\nabla u(s)\|_{L^2}^2 \, ds \leq C' |t_2 - t_1|^\alpha.
-\]
-Since $\partial_t u \in L^{4/3}(0,T;H^{-1})$ and $u \in L^\infty(0,T;H^1)$, interpolation and compactness imply:
-\[
-\|u(t_1) - u(t_2)\|_{H^1} \leq M |t_1 - t_2|^{\alpha/2}.
-\]
-\end{proof}
+\paragraph{Note.} For detailed definitions, theorems, and proofs—including the role of tropical stability, piecewise-linear convergence, and mixed Hodge structures—see Section~7.
 
-\section*{D.4 Supporting Lemmas}
-\begin{lemma}[Boundedness of $\partial_t u$]
-Let $u(t)$ be a Leray--Hopf solution. Then $\partial_t u \in L^{4/3}(0,T; H^{-1})$, and $u(t) \in C([0,T]; L^2_{\text{weak}})$.
-\end{lemma}
-
-\begin{lemma}[Persistence Energy Decay Implies Enstrophy Boundedness]
-If $C(t)$ satisfies $\frac{d}{dt} C(t) \leq -\gamma \|\nabla u(t)\|^2 + \varepsilon$, then $\int_0^T \|\nabla u(t)\|^2 dt \leq \frac{C(0)}{\gamma} + \varepsilon T$.
-\end{lemma}
-
-\begin{lemma}[Differentiability of $C(t)$ in a Measurable Sense]
-Suppose $PH_1(t)$ is stable and $\varepsilon$-dense over $t \in [0,T]$. Then $C(t)$ is differentiable almost everywhere, and its variation is bounded by barcode length fluctuation. In particular, $C(t)$ is Lipschitz on compact time intervals if $d_B(PH_1(t_1),PH_1(t_2)) \leq L |t_1 - t_2|^\alpha$.
-\end{lemma}
-
-\section*{D.5 Remarks and Interpretation}
-\begin{itemize}
-  \item The VMHS hypothesis models barcode collapse in algebraic families, where the topology of $u(t)$ degenerates structurally.
-  \item Tropical stability ensures that this degeneration occurs in a geometrically regular manner, avoiding pathological jumps.
-  \item The result highlights that topological triviality is not only a geometric feature but can enforce analytic regularity in nonlinear PDEs.
-  \item Measurable differentiability of $C(t)$ guarantees that energy decay and topological collapse interact in a controlled analytic regime.
-  \item These findings support a novel viewpoint: \emph{that persistent topological simplicity can substitute for classical pointwise bounds in regularity theory}.
-\end{itemize}
+\paragraph{Remark.} This appendix replaces earlier formulations of Step 7 which were expanded and refined into their current rigorous form.
 
 % =============================================================
 
