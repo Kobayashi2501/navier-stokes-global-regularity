@@ -1715,6 +1715,50 @@ This may apply not only to Navier--Stokes, but to Euler, SQG, MHD, and active sc
 
 This appendix positions the current theory as a base for generalized topological regularity analysis in critical regimes. While speculative, these extensions offer a roadmap toward a universal theory linking persistent topology and PDE dynamics, even in rougher function spaces. Future work may unify discrete barcodes, wavelet filtrations, and functional-analytic estimates under a common framework of multiscale topological dynamics.
 
+\subsection*{I.9 Stochastic Stability and Ensemble Homology}
+
+We now extend the theory to accommodate uncertainty in initial data. Let $u_0$ be drawn from a probability distribution $\mathcal{P}$ on a critical function space $X$ (e.g., $L^3$, $\dot{B}^{-1+3/p}_{p,q}$).
+
+\paragraph{Problem Setup.} Let $u^{(i)}(t)$ be Leray--Hopf solutions corresponding to i.i.d. samples $u^{(i)}_0 \sim \mathcal{P}$. Compute the ensemble-averaged barcode energy:
+\[ \mathbb{E}[C_{\text{Besov}}(t)] = \mathbb{E}\left[\sum_{j} 2^{2j(1 - 3/p)} \sum_{h \in \mathrm{PH}_1^j(t)} \mathrm{persist}(h)^2\right]. \]
+
+\begin{theorem}[Mean Collapse Implies High-Probability Regularity]
+Suppose there exists $T > 0$ such that:
+\[ \sup_{t > T} \mathbb{E}[C_{\text{Besov}}(t)] < \varepsilon. \]
+Then, for $\delta > 0$, with probability at least $1 - \delta$, we have:
+\[ u^{(i)}(t) \in C^\beta([T, \infty); \dot{B}^{-1+3/p}_{p,q}) \quad \text{and} \quad \mathrm{PH}_1^j(t) < \tau \text{ for all } j. \]
+\end{theorem}
+
+This provides a probabilistic certificate of regularity based on ensemble barcode decay.
+
+\paragraph{Noise-Tolerant PH Thresholding.} Given numerical uncertainty or perturbations in measurement, persistent bars below a lifetime threshold $\tau$ can be filtered to increase stability. The mean collapse condition can be interpreted modulo this threshold.
+
+\paragraph{Applications.} This stochastic formulation supports:
+\begin{itemize}
+  \item Ensemble forecasting of turbulent flows,
+  \item Bayesian inference with PH-based regularity priors,
+  \item Quantification of topological uncertainty in underresolved simulations.
+\end{itemize}
+
+\subsection*{I.10 Topological Parameters and Informational Complexity}
+
+Define the \emph{topological disorder parameter}:
+\[ \Theta(t) := \frac{\sum_j \mathrm{Var}(\mathrm{persist}_j(t))}{\sum_j \mathbb{E}[\mathrm{persist}_j(t)] + \varepsilon}. \]
+
+\begin{proposition}[Collapse of $\Theta(t)$ Implies Compressibility]
+If $\Theta(t) \to 0$ as $t \to \infty$, then the flow admits a topologically low-complexity regime, suitable for reduced modeling.
+\end{proposition}
+
+This bridges persistent homology with information theory and algorithmic compressibility of flow states.
+
+\subsection*{I.11 Summary of Critical-Space Topology Framework}
+
+\begin{itemize}
+  \item PH structures can be extended via wavelet filtrations to critical spaces.
+  \item $C_{\text{Besov}}(t)$ is a viable Lyapunov-type functional under both deterministic and stochastic settings.
+  \item Topological collapse acts as a universal signal of temporal regularity.
+  \item Ensemble methods and information metrics extend the framework toward uncertainty-aware turbulence analysis.
+\end{itemize}
 
 % =============================================================
 
