@@ -74,6 +74,7 @@ We develop a seven-step program in which topological, geometric, and algebraic i
 \end{center}
 
 
+
 % ===========================
 % STEP 1 - Spectral Decay Section (Enhanced and Extended)
 % ===========================
@@ -256,7 +257,7 @@ This strengthens the feedback loop:
 In other words, the collapse of persistent topology acts not just as a signature but as a generator of smoothness.
 \end{remark}
 
-\end{document}
+
 
 % ===========================
 % STEP 2 - Classical Regularity Criteria (Reinforced)
@@ -282,6 +283,22 @@ C(t) := \sum_{h \in \mathrm{PH}_1(t)} \mathrm{persist}(h)^2.
 This serves as a Lyapunov-type functional, measuring the accumulated persistence of all $1$-cycles.
 \end{definition}
 
+\begin{lemma}[Spectral Decomposition of Topological Energy]
+Suppose the velocity field $u(x,t)$ admits a Fourier representation:
+\[
+u(x,t) = \sum_{k \in \mathbb{Z}^3} \hat{u}_k(t) e^{i k \cdot x}.
+\]
+Let $B_k(t)$ denote a ball in Fourier space of radius $|k| \sim 2^j$ corresponding to dyadic shell $j$. Then the topological energy $C(t)$ admits a mode-weighted expression:
+\[
+C(t) \sim \sum_{j} \lambda_j(t) \cdot \left(\sum_{k \in B_j} |\hat{u}_k(t)|^2\right),
+\]
+where $\lambda_j(t)$ encodes the contribution of persistent 1-cycles supported in scale $2^j$.
+\end{lemma}
+
+\begin{remark}[Topological Filter Viewpoint]
+This spectral representation allows interpreting $C(t)$ as a topology-based filter over the energy spectrum. While enstrophy counts $\|\nabla u\|^2$ uniformly over modes, $C(t)$ amplifies contributions from coherent cyclic structures. Its decay implies spectral flattening and topological simplification.
+\end{remark}
+
 \subsection{Topological Control of Gradient Norms}
 
 \begin{lemma}[Lyapunov Differential Inequality]
@@ -299,15 +316,37 @@ Integrating over $[0,T]$, we obtain:
 This provides a time-averaged bound on enstrophy driven by the decay of topological complexity.
 \end{corollary}
 
+\begin{remark}[Sampling Resolution and Topological Certifiability]
+In practical simulations, persistent homology is computed over discretized samples of $u(x,t)$. Excessive subsampling may cause underestimation of $\mathrm{PH}_1$—especially for short-lived bars—leading to false triviality.
+
+To avoid this, sampling must satisfy:
+\[ \varepsilon \ll \min(\text{inj. radius},\text{barcode threshold}) \]
+and $\mathrm{persist}(h) > \tau_\text{min}$ for all $h$. These ensure that observed decay in $C(t)$ reflects real topological collapse.
+\end{remark}
+
+\begin{remark}[Extension Outlook: Multiscale Topological Filters]
+While $C(t)$ is defined via Fourier modes, it may be generalized using wavelet-based filtrations aligned with Besov norms. This would enable topological enstrophy control for rougher initial data, particularly in critical or near-critical regimes.
+\end{remark}
+
+\begin{lemma}[Piecewise Lipschitz Structure of $C(t)$]
+Suppose $\mathrm{PH}_1(t)$ is stable in bottleneck distance over $[0,T]$. Then $C(t)$ is piecewise Lipschitz and differentiable almost everywhere. The set of discontinuities corresponds to birth/death events of topological features and is of measure zero.
+\end{lemma}
+
 \begin{remark}[Concrete Example of $C(t)$]
-Consider a 2D periodic flow field $u(x,y) = (\sin(y), \sin(x))$. The level sets of $|u|$ form nested annular structures. The associated $\mathrm{PH}_1$ barcode includes one long-persisting cycle. If viscosity reduces circulation over time, the loops shrink and disappear, causing $C(t)$ to decay. This illustrates the link between enstrophy dissipation and topological simplification.
+Consider a two-dimensional periodic flow field given by:
+\[
+    u(x, y) = (\sin(y), \sin(x)).
+\]
+The level sets of the velocity magnitude $|u(x, y)|$ form nested annuli with circular symmetry. These annular regions support a single dominant $1$-cycle in the persistent homology barcode $\mathrm{PH}_1(t)$, with high persistence.
+
+As viscosity causes the flow to decay, the velocity magnitudes decrease and the circular level sets collapse inward. Consequently, the persistence of the dominant cycle shrinks and eventually vanishes. This provides a concrete illustration of how enstrophy dissipation induces topological simplification, causing $C(t)$ to decay over time.
 \end{remark}
 
 \subsection{Analytic Energy Decay Implies Topological Collapse}
 
 \begin{theorem}[Energy Decay Forces Topological Simplicity]
 \label{thm:energy_topo}
-Let $u(t)$ be a Leray–Hopf weak solution to the 3D incompressible Navier–Stokes equations on a smooth bounded domain $\Omega$. Suppose:
+Let $u(t)$ be a Leray--Hopf weak solution to the 3D incompressible Navier--Stokes equations on a smooth bounded domain $\Omega$. Suppose:
 \begin{itemize}
     \item The energy $E(t) := \|u(t)\|_{H^1}^2$ satisfies $\frac{d}{dt} E(t) < 0$ for all $t > 0$;
     \item The orbit $\mathcal{O} := \{ u(t) \}$ is compact and injective in $H^1$;
@@ -320,7 +359,15 @@ Then there exists a constant $\eta > 0$ such that:
 for some small constant $\delta > 0$. In particular, if $E(t) \to 0$ as $t \to \infty$, then $C(t) \to 0$, and hence $\mathrm{PH}_1(t) \to 0$.
 \end{theorem}
 
-\begin{lemma}[Equivalence with Beale–Kato–Majda Criterion]
+\begin{theorem}[Integrated Decay Implies Regularity]
+If $\int_0^\infty C(t)\,dt < \infty$, then
+\[
+\int_0^\infty \|\nabla u(t)\|_{L^2}^2 dt < \infty,
+\]
+and $u(t)$ converges in $H^1$ norm to a steady state.
+\end{theorem}
+
+\begin{lemma}[Equivalence with Beale--Kato--Majda Criterion]
 \label{lem:bkm_equiv}
 Let $u(x,t)$ be a sufficiently regular weak solution. Assume:
 \[
@@ -337,6 +384,10 @@ That is, bounded topological persistence is equivalent to bounded enstrophy unde
 
 \begin{remark}[Topological Lyapunov Functional]
 The function $C(t)$ serves as a topological analogue to enstrophy. Its decay mirrors dissipation of energy and suppression of coherent structures. Hence, it provides a homological measure of turbulence intensity.
+\end{remark}
+
+\begin{remark}[Topological Dissipation as Information Compression]
+The decay of $C(t)$ can be interpreted as a form of topological information loss or compression. In analogy with Kolmogorov complexity, the flattening of $\mathrm{PH}_1$ suggests that the flow becomes increasingly predictable and algorithmically compressible over time, mirroring turbulence dissipation into laminarity.
 \end{remark}
 
 \begin{remark}[Feedback Loop Between Topology and Analysis]
@@ -358,6 +409,11 @@ From a fluid perspective, as kinetic energy dissipates and high-frequency modes 
 \begin{remark}[Connection to Step 3]
 The suppression of $C(t)$ and control of enstrophy imply orbit compactness and gradient regularity, enabling the arguments in Step 3. There, we use this to exclude Type I self-similar blow-ups by proving that the orbit $\mathcal{O} \subset H^1$ is contractible and loop-free.
 \end{remark}
+
+\begin{remark}[Link to Spectral Decay (Step 4)]
+The decay of $C(t)$ constrains the high-frequency tail of the energy spectrum. This will be used in Step 4 to exclude Type II singularities by bounding spectral energy via topological flattening.
+\end{remark}
+
 
 
 % ===========================
@@ -427,6 +483,7 @@ Under the assumptions of Theorem \ref{thm:cech-triviality}, no Type I blow-up ca
 \begin{remark}[Link to Step 4 – Topological Transition Barrier]
 The injectivity and contractibility of $\mathcal{O}$, together with strictly decreasing energy $E(t)$, prevent return to any prior topological state. Thus, oscillatory or chaotic (Type II/III) transitions must also be ruled out via homological persistence and its stability—see Step 4.
 \end{remark}
+
 
 
 % ===========================
@@ -531,6 +588,7 @@ def embed_and_analyze(snapshot_data, n_neighbors=10, n_components=2):
 \end{lstlisting}
 
 
+
 % ===========================
 % STEP 5 - Persistent Topology of the Global Attractor
 % ===========================
@@ -608,6 +666,7 @@ Hence, no slowly diverging orbit with sustained topology can emerge. \textbf{Thi
 \end{remark}
 
 
+
 % ===========================
 % STEP 6 - Stability under Perturbation of Initial Conditions
 % ===========================
@@ -675,6 +734,7 @@ Thus, no physically meaningful perturbation can trigger topological or analytic 
 \end{remark}
 
 
+
 % ============================================
 % Step 7: Algebraic-Topological Collapse Implies Regularity
 % ============================================
@@ -738,6 +798,8 @@ For a complete proof of this theorem and the differentiability of the topologica
 \begin{remark}[Geometric-Topological Regularity Principle]
 Topological triviality in persistent homology, when encoded with algebraic structure and quantitative stability, can enforce analytic regularity in nonlinear PDEs.
 \end{remark}
+
+
 
 % ===========================
 % Conclusion and Future Directions
@@ -813,6 +875,7 @@ Wavelet-scale filtration applied to vorticity magnitude may define persistent ho
 
 \subsection*{Closing Thought}
 By combining persistent homology, Lyapunov-type energy decay, and global orbit topology—including their algebraic degenerations and tropical deformations—we build a framework where topology controls turbulence. This suggests that singularity formation may not merely be a matter of high-frequency energy concentration, but rather of structural failure in topological coherence. Our results point toward a future where PDE regularity can be diagnosed and perhaps even guaranteed by topological methods grounded in geometry and data science.
+
 
 
 % =============================================================
