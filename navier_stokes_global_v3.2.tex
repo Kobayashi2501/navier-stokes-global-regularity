@@ -1,17 +1,16 @@
 % ===========================
-% Navier--Stokes Global Regularity -- Hybrid Analytic--Topological Approach (v3.2)
+% Navier--Stokes Global Regularity -- Hybrid Analytic--Topological Approach (v4.0)
 % ===========================
 
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath,amssymb,amsthm,amsfonts,geometry,hyperref,listings,footmisc}
-\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsthm,amsfonts,geometry,hyperref,listings,graphicx,footmisc}
 \geometry{margin=1in}
 \lstset{basicstyle=\ttfamily\small,inputencoding=utf8}
 
 \title{Toward a Proof of Global Regularity for the 3D Incompressible Navier--Stokes Equations\\via a Hybrid Energy--Topology--Geometry Approach}
 \author{A. Kobayashi \and ChatGPT Research Partner}
-\date{Version 3.2 -- June 2025}
+\date{Version 4.0 -- June 2025}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -22,6 +21,7 @@
 \newtheorem{remark}[theorem]{Remark}
 
 \begin{document}
+
 \maketitle
 
 \begin{abstract}
@@ -31,13 +31,15 @@ This paper develops a seven-step analytic--topological--geometric framework aime
 \tableofcontents
 
 \section{Introduction}
+
+ootnotetext{The 	extit{AK High-Dimensional Projection Structural Theory (AK-HDPST)} is a general mathematical framework proposed by the lead author to reframe complex PDE problems in higher-dimensional MECE-decomposed geometric spaces. It provides a unifying categorical structure across analysis, topology, and geometry, particularly by enabling barcode degeneration and orbit simplification to be interpreted as structured collapses. See 	exttt{AK\_HDPST\_Theory.pdf} or related references for further details.} is a general mathematical framework proposed by the lead author to reframe complex PDE problems in higher-dimensional MECE-decomposed geometric spaces. It provides a unifying categorical structure across analysis, topology, and geometry, particularly by enabling barcode degeneration and orbit simplification to be interpreted as structured collapses. See 	exttt{AK\_HDPST\_Theory.pdf} or related references for further details.}
 \label{sec:intro}
 
 The global regularity problem for the three-dimensional incompressible Navier--Stokes equations,
-\[
+\begin{equation}
 \partial_t u + (u \cdot \nabla) u + \nabla p = \nu \Delta u, \quad \nabla \cdot u = 0,
-\]
-remains one of the most fundamental open problems in mathematical physics. The Clay Millennium Problem asks whether for every divergence-free initial data $u_0 \in H^1(\mathbb{R}^3)$, the solution remains smooth for all time.
+\end{equation}
+remains one of the most fundamental open problems in mathematical physics. The Clay Millennium Problem asks whether, for every divergence-free initial data $u_0 \in H^1(\mathbb{R}^3)$, the solution remains smooth for all time.
 
 While partial results exist under smallness or critical norm conditions, a general, deterministic resolution has remained elusive. This paper proposes a non-perturbative, modular strategy integrating:
 \begin{itemize}
@@ -48,7 +50,9 @@ While partial results exist under smallness or critical norm conditions, a gener
   \item Algebraic and tropical collapse mechanisms enforcing regularity.
 \end{itemize}
 
-We develop a seven-step program in which topological, geometric, and algebraic insights are tightly coupled with classical analytic bounds. The key innovation lies in encoding regularity via the topological simplicity (e.g., vanishing $\mathrm{PH}_1$), VHS degeneration, and compactness of the orbit $\mathcal{O} := \{ u(t) : t \ge 0 \}$ in $H^1$. The final step (Step 7) closes a feedback loop by showing that topological triviality is both a consequence and a sufficient cause of regularity under a degenerating mixed Hodge structure.
+\textbf{Underlying these steps is a higher-order structural framework---\textit{AK High-Dimensional Projection Structural Theory (AK-HDPST)}---which organizes the analytic, geometric, and topological components into MECE (Mutually Exclusive, Collectively Exhaustive) projections in high-dimensional moduli space. This theory serves as the logical scaffold upon which Step 7 is built, enabling tropical and Hodge degenerations to be interpreted as structured collapses within a unifying categorical geometry.}
+
+We develop a seven-step program in which topological, geometric, and algebraic insights are tightly coupled with classical analytic bounds. The final step closes a feedback loop by showing that topological triviality is both a consequence and a sufficient cause of regularity under a degenerating mixed Hodge structure.
 
 \subsection*{Step 0: Analytical Initialization and Simulation Consistency}
 
@@ -79,10 +83,13 @@ This step underlies the empirical-to-analytic bridge central to Step 1 and suppo
 \hline
 \textbf{Step 6} & \textbf{Stability under Perturbation}: The barcode and attractor remain stable under $H^1$ perturbations. Hausdorff and bottleneck distances are Lipschitz in perturbation size, ensuring structural robustness of regularity. \\
 \hline
-\textbf{Step 7} & \textbf{Algebraic-Topological Collapse}: Under degeneration of mixed Hodge structures and tropical barcode contraction, we show that $\mathrm{PH}_1 = 0$ implies temporal $H^1$ regularity—and vice versa. This bidirectional correspondence links topological triviality to Sobolev continuity through a degenerating geometric moduli system. \\
+\textbf{Step 7} & \textbf{Algebraic-Topological Collapse}: Under degeneration of mixed Hodge structures and tropical barcode contraction, we show that $\mathrm{PH}_1 = 0$ implies temporal $H^1$ regularity---and vice versa. This bidirectional correspondence links topological triviality to Sobolev continuity through a degenerating geometric moduli system, and is framed structurally by the AK-HDPST.
+\\
 \hline
 \end{tabular}
 \end{center}
+
+
 
 % ===========================
 % Conclusion and Future Directions (Revised with Step 7 and Appendix I Integration)
