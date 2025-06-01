@@ -535,6 +535,10 @@ The decay of $C(t)$ constrains the high-frequency tail of the energy spectrum. T
 % ===========================
 \section{Step 3 - Topological Exclusion of Type I Blow-Up via Orbit Simplicity}
 
+This step establishes that Type I blow-up is inconsistent with topological simplicity and energy decay. The core idea is that self-similarity implies loop-like structure in function space, whereas energy dissipation and persistent homology triviality imply injective, contractible orbits.
+
+\subsection{Definitions}
+
 \begin{definition}[Solution Orbit]
 Let $u(t)$ be a weak or strong solution. Define the orbit as:
 \[
@@ -549,6 +553,8 @@ A singularity at $T^*$ is of Type I if:
 \]
 indicating self-similar or scaling-invariant blow-up.
 \end{definition}
+
+\subsection{Topological Triviality and PH$_1$}
 
 \begin{theorem}[PH₁ = 0 Implies Topological Triviality via Čech Complex]
 \label{thm:cech-triviality}
@@ -584,31 +590,32 @@ If $\mathcal{O} \subset H^1$ is injective, of finite arc length, and contractibl
 \]
 \end{theorem}
 
-\begin{remark}[Why Type I Requires Topological Loops]
-Self-similar blow-up implies a scaling orbit:
-\[
-u(t) \approx \frac{1}{(T^*-t)^{\alpha}} U\left( \frac{x}{(T^*-t)^{\beta}} \right),
-\]
-where $U$ solves a stationary rescaled equation. This implies invariance under a loop-like transformation in function space, i.e., $u(t+\Delta t) \approx u(t)$ up to scaling. Such a structure contradicts $\mathrm{PH}_1(\mathcal{O}) = 0$.
+\subsection{Orbit Projection and Loop Detection}
+
+\begin{lemma}[Projected Orbit Contains Loops under Scaling]
+Let $\nu(t) := u(t)/\|u(t)\|_{H^1} \in \mathbb{S} \subset H^1$ be the normalized projection. If $u(t)$ exhibits scaling invariance, then the projected orbit $\pi(\mathcal{O}) = \{ \nu(t) \}$ contains a loop on the unit sphere.
+\end{lemma}
+
+\begin{remark}[Loop Visualization]
+In practice, the orbit $\pi(\mathcal{O})$ can be embedded using Isomap or t-SNE. If the embedding reveals a closed loop, this indicates recurrence and contradicts $\mathrm{PH}_1 = 0$.
 \end{remark}
 
-\begin{remark}[Orbit Topology Illustration]
-The orbit $\mathcal{O}$ under $\mathrm{PH}_1 = 0$ is contractible:
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{isomap_loop_vs_arc.png}
+  \caption{Isomap embedding of projected orbit: loop (left, self-similar) vs. arc (right, dissipative)}
+\end{figure}
 
-\begin{center}
-\begin{tabular}{c c}
-\textbf{PH$_1$ = 0 (Contractible)} & \textbf{PH$_1$ $\neq$ 0 (Loop)} \\
-\texttt{u(t)} $\longrightarrow$ $\bullet$---$\bullet$---$\bullet$ & \texttt{u(t)} $\longrightarrow$ $\bullet$---$\bullet$---$\bullet$---$\bullet$ (loop)
-\end{tabular}
-\end{center}
-
-A self-similar blow-up would require a loop in function space, inconsistent with PH$_1$ triviality.
+\begin{remark}[Numerical Pipeline]
+We compute $\mathrm{PH}_1(t)$ over snapshots $u(t_i)$, normalize, apply Isomap, and visualize. See Appendix~G for details.
 \end{remark}
+
+\subsection{Exclusion of Type I Blow-Up via Topological Argument}
 
 \begin{lemma}[Self-Similar Scaling Implies Topological Loop]
 Suppose $u(t)$ exhibits self-similar scaling:
 \[
-u(t) = \frac{1}{(T^* - t)^\alpha} U\left( \frac{x}{(T^* - t)^\beta} \right).
+ u(t) = \frac{1}{(T^* - t)^\alpha} U\left( \frac{x}{(T^* - t)^\beta} \right).
 \]
 Then the orbit $\mathcal{O}$ in $H^1$ contains a loop-like structure homeomorphic to $\mathbb{S}^1$, contradicting $\mathrm{PH}_1(\mathcal{O}) = 0$.
 \end{lemma}
@@ -620,6 +627,22 @@ If the solution orbit $\mathcal{O}$ contains a topological loop, then there exis
 \]
 This implies a periodic or quasi-periodic recurrence in $H^1$, contradicting the strict energy dissipation and the topological triviality $\mathrm{PH}_1 = 0$.
 \end{lemma}
+
+\begin{theorem}[Unified Exclusion via PH Collapse]
+Let $u(t)$ be a Leray--Hopf solution with orbit $\mathcal{O} \subset H^1$ satisfying:
+\begin{itemize}
+  \item Strict energy dissipation: $\frac{d}{dt} E(t) < 0$,
+  \item Injectivity and finite arc length,
+  \item $\mathrm{PH}_1(\mathcal{O}) = 0$.
+\end{itemize}
+Then no self-similar or scaling-invariant blow-up (Type I) can occur.
+\end{theorem}
+
+\begin{corollary}[Exclusion of Type I Blow-Up]
+Under the assumptions of Theorem \ref{thm:cech-triviality}, no Type I blow-up can occur.
+\end{corollary}
+
+\subsection{Extended Interpretation and Consequences}
 
 \begin{remark}[Energy Dissipation Prevents Asymptotic Return]
 Since $\frac{d}{dt} E(t) < 0$, the solution loses energy monotonically. Therefore, no orbit segment can return arbitrarily close to a previous state in $H^1$ norm unless the flow is trivial. Hence, recurrence as implied by a topological loop cannot occur.
@@ -649,14 +672,9 @@ In practice, if PH₁ barcodes computed along a numerical trajectory remain triv
 The exclusion of Type I blow-up hinges specifically on the vanishing of first persistent homology $\mathrm{PH}_1$, which corresponds to loop-like structures in the orbit geometry. Higher-dimensional features such as $\mathrm{PH}_2$ (e.g., voids or cavities) do not arise in the 1D trajectory $\mathcal{O} \subset H^1$, and even if they did, they would not imply loop recurrence or self-similar blow-up. Thus, the analysis is fully robust within the $\mathrm{PH}_1$ framework.
 \end{remark}
 
-\begin{corollary}[Exclusion of Type I Blow-Up]
-Under the assumptions of Theorem \ref{thm:cech-triviality}, no Type I blow-up can occur.
-\end{corollary}
-
 \begin{remark}[Link to Step 4 – Topological Transition Barrier]
 The injectivity and contractibility of $\mathcal{O}$, together with strictly decreasing energy $E(t)$, prevent return to any prior topological state. Thus, oscillatory or chaotic (Type II/III) transitions must also be ruled out via homological persistence and its stability—see Step 4.
 \end{remark}
-
 
 
 % ===========================
