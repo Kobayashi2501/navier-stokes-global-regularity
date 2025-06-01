@@ -1940,6 +1940,72 @@ Code is available in the GitHub repository (linked in main text).
 \subsection*{J.9 Summary}
 The protocols in this appendix formalize the numerical side of the hybrid regularity program. By linking simulation data, geometric projections, and topological observables, we offer a reproducible framework to verify Steps 3--7 empirically and extend analysis to new PDE regimes.
 
+% =============================================================
+
+\section*{Appendix K. List of Abbreviations and Symbols}
+
+This appendix collects the abbreviations, acronyms, and key symbols used throughout the paper for reference.
+
+\subsection*{K.1 Abbreviations and Acronyms}
+\begin{tabular}{ll}
+\textbf{Acronym} & \textbf{Meaning} \\
+\hline
+NSE & Navier--Stokes Equations \\
+PH & Persistent Homology \\
+MHD & Magnetohydrodynamics \\
+SQG & Surface Quasi-Geostrophic (equation) \\
+VHS & Variation of Hodge Structures \\
+VMHS & Variation of Mixed Hodge Structures \\
+ETDRK & Exponential Time Differencing Runge-Kutta \\
+RK4 & Fourth-Order Runge-Kutta \\
+DWT & Discrete Wavelet Transform \\
+DSE & Dynamical System Ensemble \\
+MECE & Mutually Exclusive Collectively Exhaustive \\
+TC & Transfer Center (in logistics analogies) \\
+DC & Distribution Center (in logistics analogies) \\
+\end{tabular}
+
+\subsection*{K.2 Topological and Analytical Symbols}
+\begin{tabular}{ll}
+\textbf{Symbol} & \textbf{Description} \\
+\hline
+$u(x,t)$ & Velocity field \\
+$C(t)$ & Topological energy functional (Step 2) \\
+$H(t)$ & Topological entropy of barcode distribution \\
+$\Theta(t)$ & Topological disorder parameter \\
+$\mathrm{PH}_1(t)$ & First persistent homology of solution snapshot at time $t$ \\
+$\operatorname{persist}(h)$ & Lifetime of topological feature $h$ \\
+$E_j(t)$ & Energy in Fourier shell $j$ \\
+$\mathrm{Corr}_j(t)$ & Correlation between PH and spectral energy \\
+$C_{\mathrm{Besov}}(t)$ & Scale-weighted PH energy for Besov regularity \\
+$X^j_r(t)$ & Sublevel set of wavelet coefficients at scale $j$ \\
+$W_j u(x,t)$ & Wavelet projection at scale $j$ \\
+\end{tabular}
+
+\subsection*{K.3 Spaces and Function Classes}
+\begin{tabular}{ll}
+\textbf{Symbol} & \textbf{Description} \\
+\hline
+$H^1(\mathbb{R}^3)$ & Sobolev space of square-integrable gradients \\
+$L^3(\mathbb{R}^3)$ & Scale-invariant Lebesgue space \\
+BMO$^{-1}$ & Dual of the John--Nirenberg space of bounded mean oscillation \\
+$\dot{B}^{-1+3/p}_{p,q}$ & Homogeneous Besov space of critical index \\
+$C^\beta([0,T];X)$ & Hölder-continuous functions valued in Banach space $X$ \\
+\end{tabular}
+
+\subsection*{K.4 Computational Tools and Libraries}
+\begin{tabular}{ll}
+\textbf{Tool} & \textbf{Usage} \\
+\hline
+\texttt{ripser.py} & PH computation for Vietoris--Rips complexes \\
+\texttt{persim} & Barcode and diagram plotting \\
+\texttt{scikit-learn} & Isomap embedding and manifold learning \\
+\texttt{PyWavelets} & Discrete wavelet transform (DWT) calculations \\
+\texttt{NumPy}, \texttt{SciPy} & Core numerical array and PDE solvers \\
+\texttt{matplotlib}, \texttt{seaborn} & Visualization tools \\
+\end{tabular}
+
+\paragraph{Note.} Notation follows conventional mathematical and TDA standards unless otherwise specified.
 
 % =============================================================
 
