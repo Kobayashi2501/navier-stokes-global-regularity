@@ -80,8 +80,8 @@ This work is structurally and philosophically grounded in the
 
 | File | Description |
 |------|-------------|
-| `navier_stokes_global_v4.0_final.tex`  | LaTeX source of full manuscript (v4.0) |
-| `navier_stokes_global_v3.2.pdf`        | Previous version (v3.2) for comparison |
+| `navier_stokes_global_v4.0.tex`  | LaTeX source of full manuscript (v4.0) |
+| `navier_stokes_global_v4.0.pdf`        | PDF source of full manuscript (v4.0) |
 | `pseudo_spectral_sim.py`              | Full pseudo-spectral NSE simulator |
 | `fourier_decay.py`                    | Dyadic shell energy analyzer |
 | `ph_isomap.py`                        | Isomap + persistent homology pipeline |
