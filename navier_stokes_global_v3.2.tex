@@ -1873,63 +1873,73 @@ This appendix positions the current theory as a base for generalized topological
 
 % =============================================================
 
-\subsection*{Appendix J. Numerical Validation and Visualization Protocols}
+\section*{Appendix J. Numerical Protocols and Visualization Pipelines}
 
-\paragraph{J.1 Experimental Framework for Persistent Collapse.}
-We describe a reproducible numerical pipeline to validate topological decay and spectral collapse in pseudo-spectral Navier--Stokes simulations.
+This appendix outlines the implementation pipeline, numerical verification procedures, and visualization strategies used to support the hybrid analytic–topological approach presented in the main text.
 
+\subsection*{J.1 Simulation Setup: Navier--Stokes Solver}
+We employ a pseudo-spectral method for simulating the 3D incompressible Navier--Stokes equations:
 \begin{itemize}
-  \item Generate velocity field snapshots $u(x,t_i)$ using `pseudo_spectral_sim.py`.
-  \item Apply wavelet or Fourier filtering to extract scale-dependent features.
-  \item Compute persistent homology via `ripser` or `Gudhi` libraries.
-  \item Visualize barcode diagrams and monitor $C(t)$, $H(t)$, $E_j(t)$.
+  \item Grid resolution: $N^3$, typically $N = 64$ or $128$
+  \item Time step: $\Delta t = 0.001$
+  \item Viscosity: $\nu = 0.01$--$0.1$
+  \item Dealiasing: 2/3-rule (zeroing high frequency modes)
+\end{itemize}
+Time evolution is performed via RK4 or ETDRK schemes. Forcing can be deterministic (e.g., Taylor--Green vortex) or stochastic.
+
+\subsection*{J.2 Snapshot Collection and Orbit Sampling}
+Let $u(x,t_i)$ denote time-discretized snapshots. We define the orbit $O = \{u(t_i)\}$ in $H^1$ or projected low-dimensional space. Snapshots are downsampled in both space and time for computational efficiency.
+
+\subsection*{J.3 Persistent Homology Computation}
+Given snapshots $\{u(t_i)\}$:
+\begin{enumerate}
+  \item Apply Isomap (or wavelet projection) to embed $u(t_i)$ into $\mathbb{R}^d$
+  \item Construct Vietoris--Rips complex from embedded points
+  \item Use \texttt{ripser} or \texttt{Gudhi} to compute $\mathrm{PH}_1(t_i)$
+  \item Track barcode evolution over time
+\end{enumerate}
+
+\subsection*{J.4 Geometric Embedding: Isomap vs. Wavelet}
+Isomap is used to project global orbit geometry into $\mathbb{R}^2$; it reveals injectivity and contractibility (Appendix G). Wavelet-based embeddings allow scale-wise filtration (Appendix I).
+
+\subsection*{J.5 Visualization: Barcode and Orbit Geometry}
+\begin{itemize}
+  \item \textbf{Barcode plots:} Persistent diagrams for $\mathrm{PH}_1(t)$
+  \item \textbf{Isomap orbit:} 2D plots showing loop-free structure
+  \item \textbf{Slice visualization:} 2D planes of $u_i(x,t)$ at fixed $t$
+  \item \textbf{Energy spectra:} $E_k(t)$ vs. $k$ for turbulent decay
 \end{itemize}
 
-\paragraph{J.2 Thresholding and Noise Filtering.}
-Short-lived topological features due to numerical noise must be filtered. Let $\tau_{\text{cutoff}}$ be a persistence threshold:
-\[ \mathrm{persist}(h) < \tau_{\text{cutoff}} \Rightarrow \text{discard}. \]
-Typical values: $\tau_{\text{cutoff}} \in [0.01, 0.05]$, depending on resolution.
-
-\paragraph{J.3 Visualization Tools.}
-Barcode diagrams and their time evolution can be visualized using `persim.plot_diagrams` or customized matplotlib routines. Key quantities to track:
+\subsection*{J.6 Time-Series Analysis of Topological Quantities}
+Define:
 \begin{itemize}
-  \item Time-series of $C(t)$ and $H(t)$,
-  \item Maximum persistence vs. dyadic shell index $j$,
-  \item 2D Isomap embedding with topological color coding,
-  \item Heatmaps of barcode lifespan density over time.
+  \item $C(t) = \sum_h \mathrm{persist}(h)^2$
+  \item $L(t) = \sum_h \mathrm{persist}(h)$
+  \item $H(t) = -\sum_h p_h \log p_h$
+  \item $\Theta(t)$: topological disorder parameter
+\end{itemize}
+These are plotted over time and used to verify consistency with regularity claims.
+
+\subsection*{J.7 Verification Protocols}
+\begin{itemize}
+  \item \textbf{PH collapse}: check $\mathrm{PH}_1(t) \to 0$ as $t \to \infty$
+  \item \textbf{Lyapunov decay:} verify $dC/dt \leq -\gamma C + \epsilon$
+  \item \textbf{Spectral correlation:} $\mathrm{Corr}_j(t) \approx 1$
+  \item \textbf{Ensemble statistics:} average $C(t)$ across i.i.d. runs
 \end{itemize}
 
-\paragraph{J.4 Reproducibility and Data Structure.}
-Organize output as:
+\subsection*{J.8 Reproducibility and Code Availability}
+All numerical experiments were implemented in Python using:
 \begin{itemize}
-  \item `data/snapshots/`: velocity field arrays (NumPy `.npy` files),
-  \item `results/decay/`: shell energy and slope plots,
-  \item `results/persistence/`: barcode diagrams and summaries,
-  \item `logs/configs/`: parameters used for each simulation.
+  \item \texttt{NumPy}, \texttt{SciPy}, \texttt{scikit-learn} for simulation and Isomap
+  \item \texttt{ripser.py}, \texttt{persim} for persistent homology
+  \item \texttt{matplotlib}, \texttt{seaborn} for visualization
 \end{itemize}
-Ensure fixed random seeds, controlled noise, and matched grid resolutions. Maintain YAML/JSON-based metadata tracking.
+Code is available in the GitHub repository (linked in main text).
 
-\paragraph{J.5 Interpretation and Cross-Reference to Theory.}
-Numerical decay in $C(t)$ and $H(t)$ provides empirical support for Step 2 (gradient control), Step 3 (orbit simplicity), and Step 5 (attractor contraction).
-Appendix I's predictions (e.g., $C_{\text{Besov}}(t) \to 0$) can be tested directly.
+\subsection*{J.9 Summary}
+The protocols in this appendix formalize the numerical side of the hybrid regularity program. By linking simulation data, geometric projections, and topological observables, we offer a reproducible framework to verify Steps 3--7 empirically and extend analysis to new PDE regimes.
 
-\paragraph{J.6 Benchmarking Across Models and Resolutions.}
-To evaluate robustness of PH-based diagnostics:
-\begin{itemize}
-  \item Compare results across different resolutions (e.g., $N=32$, $64$, $128$),
-  \item Evaluate sensitivity to viscosity $\nu$, forcing $f$, and domain geometry,
-  \item Test model variants: Euler, SQG, MHD using same topological pipeline.
-\end{itemize}
-
-\paragraph{J.7 Automated Analysis and Statistical Summaries.}
-For large simulations:
-\begin{itemize}
-  \item Compute ensemble statistics of $C(t)$, $H(t)$,
-  \item Use bootstrap or rolling-window averaging for topological indicators,
-  \item Extract and rank dominant barcode features via lifetime or scale concentration.
-\end{itemize}
-
-This appendix provides the empirical complement to the analytic framework, supporting reproducibility, visual insight, cross-model comparison, and future benchmarking standards.
 
 % =============================================================
 
