@@ -1118,50 +1118,63 @@ By integrating all categorical, derived, and geometric components of AK-HDPST, S
 
 
 % ===========================
-% Conclusion and Future Directions (Revised with Step 7 and Appendix I Integration)
+% Conclusion and Future Directions (v4.0, Step 7 + Appendix I Integration)
 % ===========================
 
 \section{Conclusion and Future Directions}
 
-We have developed a seven-step hybrid framework for addressing the global regularity problem of the 3D incompressible Navier--Stokes equations. This approach integrates persistent homology, analytic enstrophy decay, orbit-level geometry, and algebraic degeneration into a single cohesive argument that excludes all known singularity types (Type I--III).
+We have proposed a seven-step analytic–topological–algebraic framework for addressing the global regularity problem of the 3D incompressible Navier–Stokes equations. This strategy interweaves persistent homology, Lyapunov-type enstrophy control, orbit geometry, algebraic degeneration, and tropical convergence into a unified proof structure. Each step not only advances the exclusion of singularity types (Type I–III), but also strengthens a bidirectional correspondence between topological triviality and analytic smoothness.
 
 \subsection*{Summary of Key Contributions}
 
 \begin{itemize}
-    \item \textbf{Topological Stability (Step 1)}: Persistent homology barcodes remain bottleneck-stable over time, ensuring H"older continuity in the Sobolev $H^1$ norm.
-    \item \textbf{Topological Control of Enstrophy (Step 2)}: The barcode-based Lyapunov energy $C(t)$ bounds $\|\nabla u\|^2$, linking topology with gradient control.
-    \item \textbf{Exclusion of Type I Blow-Up (Step 3)}: The solution orbit is shown to be finite-length, injective, and contractible, excluding scaling-invariant singularities.
-    \item \textbf{Topological Exclusion of Type II/III Blow-Up (Step 4)}: Persistent simplicity and decay preclude slow-gradient or chaotic oscillatory blow-ups.
-    \item \textbf{Fractal Dimension Control (Step 5)}: As $C(t) \to 0$, the global attractor collapses into a low-dimensional, contractible set.
-    \item \textbf{Structural Stability (Step 6)}: The entire framework is stable under $H^1$ perturbations, including numerical or ensemble-level noise.
-    \item \textbf{Algebraic-Topological Collapse (Step 7)}: A fully developed argument using VMHS degeneration and tropical barcode contraction establishes both directions: (i) topological triviality implies $H^1$-regularity, and (ii) $H^1$-regularity induces persistent homology collapse. This bidirectional feedback loop forms the core analytic-topological mechanism certifying smoothness.
+    \item \textbf{Topological Stability (Step 1)}: Persistent homology barcodes $\mathrm{PH}_1(t)$ are shown to be bottleneck-stable, implying H\"older continuity in the Sobolev $H^1$ norm. This establishes a topological-to-analytic inference principle.
+
+    \item \textbf{Topological Enstrophy Control (Step 2)}: The topological energy functional $C(t) = \sum \mathrm{persist}(h)^2$ acts as a Lyapunov functional bounding $\|\nabla u\|^2$, thereby linking energy dissipation with topological flattening.
+
+    \item \textbf{Exclusion of Type I Blow-Up (Step 3)}: The solution orbit is proven to be finite-length, injective, and contractible in $H^1$, which rules out self-similar scaling and homological loops, thereby excluding Type I singularities.
+
+    \item \textbf{Exclusion of Type II/III Blow-Up (Step 4)}: Persistent topological entropy $H(t)$ and monotonic barcode decay rule out slow-gradient or chaotic blow-ups. Entropy vanishing implies asymptotic topological simplicity.
+
+    \item \textbf{Fractal Dimension and Attractor Confinement (Step 5)}: As $C(t) \to 0$, the global attractor contracts into a finite-dimensional, contractible manifold. This links persistent topology with geometric compactness.
+
+    \item \textbf{Stability under Perturbations (Step 6)}: The regularity structure remains robust under $H^1$ perturbations. Lipschitz stability of barcodes and attractors ensures the exclusion of singularity re-entry even under noisy or ensemble-initialized conditions.
+
+    \item \textbf{Algebraic-Topological Collapse (Step 7)}: Degeneration of mixed Hodge structures and tropical barcode contraction completes the feedback loop: $\mathrm{PH}_1 = 0$ if and only if $u(t) \in C_t^\beta H^1$, with $\beta > 0$. Regularity is shown to emerge from a structured topological degeneration process.
 \end{itemize}
 
-\subsection*{Main Theorem (Restated)}
+\subsection*{Main Theorem (v4.0 Restated)}
 
-\textit{Let $u_0 \in H^1(\mathbb{R}^3)$ be divergence-free. Then the corresponding Leray--Hopf solution $u(t)$ satisfies:}
+Let $u_0 \in H^1(\mathbb{R}^3)$ be divergence-free. Then the Leray–Hopf solution $u(t)$ satisfies:
+
 \begin{enumerate}
-    \item \textbf{Global regularity}: $\|u(t)\|_{H^1}$ remains bounded for all $t \geq 0$.
-    \item \textbf{Topological triviality}: $\mathrm{PH}_1(\{u(t)\}) = 0$.
-    \item \textbf{Energy dissipation}: $\frac{d}{dt} E(t) < 0$ for all $t > 0$.
-    \item \textbf{Compactness}: The solution orbit $\{u(t)\}$ forms a compact, injective, and contractible arc in $H^1$.
+    \item \textbf{Global regularity:} $\|u(t)\|_{H^1}$ remains bounded for all $t \geq 0$.
+    \item \textbf{Topological triviality:} $\mathrm{PH}_1(\{u(t)\}) = 0$.
+    \item \textbf{Energy dissipation:} $\frac{d}{dt}E(t) < 0$ for all $t > 0$.
+    \item \textbf{Compact orbit:} $\{u(t)\}$ forms a contractible, injective, compact arc in $H^1$.
 \end{enumerate}
-\textit{Hence, no finite-time singularity of Type I, II, or III may occur.}
+
+Hence, no finite-time singularities of Type I, II, or III may occur.
 
 \subsection*{Future Directions}
 
 \begin{itemize}
-    \item \textbf{Extension to bounded domains and critical spaces}: As explored in Appendix I, we aim to generalize the theory to boundary-influenced settings and scale-invariant function spaces such as $L^3$, $\mathrm{BMO}^{-1}$, and Besov classes.
-    \item \textbf{Numerical certification of topological collapse}: Persistent homology can serve as an empirical detector of turbulence or regularity, as implemented in Appendices F, G, and validated via the reproducibility pipeline in Appendix J.
-    \item \textbf{Algebraic generalization}: Step 7 motivates further use of Hodge theory, tropical degenerations, and geometric moduli spaces for encoding regularity conditions. These tools could extend to a broader class of nonlinear systems.
-    \item \textbf{Extension to other PDE systems}: Appendix I outlines speculative but promising directions for applying this framework to Euler, MHD, SQG, and active scalar models.
-    \item \textbf{Stochastic and ensemble frameworks}: Appendix I also proposes PH-based diagnostics for uncertainty-aware simulations and ensemble verification.
-    \item \textbf{Benchmarking and automation}: Appendix J defines a robust structure for experimental reproducibility, statistical analysis, and model comparison for topological indicators.
+    \item \textbf{Critical Spaces and Generalization (Appendix I):} The topological Lyapunov energy $C(t)$ and its wavelet-based counterpart $C_{\text{Besov}}(t)$ may be adapted to scale-invariant settings (e.g., $L^3$, $BMO^{-1}$). Persistent homology on wavelet filtrations offers a path toward regularity results in critical spaces.
+
+    \item \textbf{Cross-PDE Applications:} The framework shows early promise for extensions to Euler, MHD, SQG, and active scalar systems, where topological recurrence and orbit geometry play key roles.
+
+    \item \textbf{Stochastic and Ensemble Extensions:} Persistent barcode stability under probabilistic ensembles or posterior sampling opens new directions in uncertainty quantification and Bayesian turbulence analysis.
+
+    \item \textbf{Algebraic Geometric Expansion:} Step 7 encourages further formalization of moduli degeneration and tropical contractions. Incorporating Hodge-theoretic invariants and degeneration theory may yield deeper insights into long-time flow behavior.
+
+    \item \textbf{Automation and Certification Pipelines (Appendix J):} Numerical pipelines based on barcode entropy, dyadic shell decay, and Isomap–PH projections provide certifiable paths toward verifying topological smoothness.
+
+    \item \textbf{Information-Theoretic Metrics:} Topological entropy $H(t)$, disorder parameters $\Theta(t)$, and their decay furnish complexity-aware metrics for reduced modeling and compressibility of flow regimes.
 \end{itemize}
 
-\subsection*{Closing Thought}
+\subsection*{Closing Perspective}
 
-By interpreting turbulent flows through the lens of topological simplicity and its algebraic degeneration, we gain a new perspective on regularity: not merely as the absence of singularity, but as a structural alignment of analysis, geometry, and data topology. In its final form, Step 7 shows that this alignment is not just sufficient—but also necessary. Topological triviality and analytic smoothness mutually enforce one another. This framework thus opens a path toward certifiable smoothness in nonlinear PDEs, guided not by local estimates, but by global topological invariants.
+This framework reframes the global regularity problem not merely as the absence of singularities, but as a positive manifestation of structural alignment: topology, geometry, and analysis converge into a mutual certifiability loop. Step 7 culminates this vision, showing that regularity and topological triviality are equivalent under tropical-algebraic degeneration. The pathway to smoothness is paved not by local estimates, but by global topological coherence.
 
 
 
