@@ -323,9 +323,8 @@ In other words, the collapse of persistent topology acts not just as a signature
 
 
 % ===========================
-% STEP 2 - Classical Regularity Criteria (Reinforced)
-% ===========================
 \section{Step 2 - Persistence-Based Enstrophy and Gradient Control}
+% ===========================
 
 This step builds on the topological stability from Step 1 and connects it with classical energy and enstrophy bounds. We show that persistent topological features constrain the enstrophy via a Lyapunov-type functional. Moreover, the decay of physical energy suppresses topological complexity, forming a feedback loop.
 
@@ -395,7 +394,30 @@ While $C(t)$ is defined via Fourier modes, it may be generalized using wavelet-b
 Suppose $\mathrm{PH}_1(t)$ is stable in bottleneck distance over $[0,T]$. Then $C(t)$ is piecewise Lipschitz and differentiable almost everywhere. The set of discontinuities corresponds to birth/death events of topological features and is of measure zero.
 \end{lemma}
 
-\begin{remark}[Concrete Example of $C(t)$]
+\subsection*{Supplement: Sobolev–Bochner Interpretation of $C(t)$}
+
+\begin{definition}[Sobolev–Bochner Space]
+Let $X$ be a Banach space. The space $W^{1,1}(0,T; X)$ consists of functions $f: [0,T] \to X$ that are weakly differentiable and satisfy:
+\[
+\|f\|_{W^{1,1}(0,T; X)} := \int_0^T \|f(t)\|_X dt + \int_0^T \left\|\frac{df}{dt}(t)\right\|_X dt < \infty.
+\]
+\end{definition}
+
+\begin{lemma}[Distributional Derivative of $C(t)$]
+If $u(t) \in C^{\alpha/2}([0,T]; H^1)$ and $\mathrm{PH}_1(t)$ is bottleneck-stable, then $C(t) \in W^{1,1}(0,T; \mathbb{R})$ and satisfies:
+\[
+\left\langle \frac{d}{dt} C, \varphi \right\rangle = -\int_0^T \gamma \|\nabla u(t)\|_{L^2}^2 \varphi(t)\, dt + \int_0^T \varepsilon(t) \varphi(t)\, dt,
+\]
+for all test functions $\varphi \in C_c^\infty(0,T)$, where $\varepsilon(t)$ captures topological noise from bar events.
+\end{lemma}
+
+\begin{remark}
+This ensures that $C(t)$ functions as a valid distributional Lyapunov functional even in the presence of nonsmooth barcode transitions.
+\end{remark}
+
+\subsection{Concrete Example of $C(t)$}
+
+\begin{remark}[Example: Periodic Vortex]
 Consider a two-dimensional periodic flow field given by:
 \[
     u(x, y) = (\sin(y), \sin(x)).
