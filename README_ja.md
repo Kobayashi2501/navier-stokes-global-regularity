@@ -77,8 +77,8 @@
 
 | ファイル | 内容 |
 |----------|------|
-| `navier_stokes_global_v4.0_final.tex` | 論文（v4.0）LaTeXソース |
-| `navier_stokes_global_v3.2.pdf` | 旧バージョン（v3.2）PDF |
+| `navier_stokes_global_v4.0.tex` | 論文（v4.0）LaTeXソース |
+| `navier_stokes_global_v4.0.pdf` | 論文（v4.0PDF |
 | `pseudo_spectral_sim.py` | 3次元NSEのフル・スペクトルシミュレータ |
 | `fourier_decay.py` | ダイアディックシェルのエネルギー減衰解析 |
 | `ph_isomap.py` | 軌道スナップショットのIsomap+PH解析ツール |
