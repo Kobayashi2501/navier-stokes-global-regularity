@@ -61,7 +61,7 @@ Thus, **no finite-time singularity of any known type** can occur under the assum
 | File | Description |
 |------|-------------|
 | `navier_stokes_global_v3.2.tex`  | LaTeX source of full manuscript (v3.2) |
-| `navier_stokes_global_v3.1.pdf`  | Reference PDF from prior version |
+| `navier_stokes_global_v3.2.pdf`  | Reference PDF from prior version |
 | `pseudo_spectral_sim.py` | Simplified spectral Navier–Stokes simulator |
 | `fourier_decay.py` | Analyzer for shell-wise energy decay |
 | `ph_isomap.py` | Isomap + persistent homology of orbit snapshots |
