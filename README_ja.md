@@ -62,7 +62,7 @@
 | ファイル名 | 説明 |
 |------------|------|
 | `navier_stokes_global_v3.2.tex`  | 論文本体（LaTeX） |
-| `navier_stokes_global_v3.1.pdf`  | v3.1 版の参照用PDF |
+| `navier_stokes_global_v3.2.pdf`  | 論文本体（PDF） |
 | `pseudo_spectral_sim.py` | 簡易擬スペクトル法によるシミュレーター |
 | `fourier_decay.py` | ダイアディックシェル分解によるエネルギー減衰分析 |
 | `ph_isomap.py` | Isomap + Persistent Homology による軌道解析 |
