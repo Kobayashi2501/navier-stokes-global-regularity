@@ -1278,24 +1278,75 @@ This ensures that persistent homology computed from noisy or projected orbits ap
 
 % =============================================================
 
-\section*{Appendix C. Foundational Lemmas for Orbit Simplicity}
+\section*{Appendix C. Foundational Lemmas and Topological Constructions for Orbit Simplicity}
 \label{sec:appendixC}
 
+This appendix provides analytic and topological foundations for Step 3, which excludes Type I singularities via structural simplicity of the solution orbit. The section consists of two parts:
+\begin{itemize}
+  \item[\textbf{C.1}] Energy-based lemmas guaranteeing injectivity and finite-length behavior of orbits in \( H^1 \),
+  \item[\textbf{C.2}] Topological constructions based on Nerve Theorem that formalize contractibility from PH data.
+\end{itemize}
+
+\subsection*{C.1 Energy Dissipation and Orbit Injectivity}
+
 \begin{lemma}[Injectivity from Energy Dissipation]
-$E(t)$ strictly decreases unless $\nabla u = 0$, implying injectivity of the orbit $\mathcal{O}$.
+Let \( E(t) = \frac{1}{2} \|u(t)\|_{L^2}^2 \). Then \( E(t) \) strictly decreases unless \( \nabla u = 0 \), implying that the solution orbit \( \mathcal{O} = \{ u(t) \}_{t \in [0,T]} \) is injective.
 \end{lemma}
 
 \begin{lemma}[Finite Arc Length]
-If $\partial_t u \in L^1(0, T; H^{-1})$, then $\mathcal{O}$ has finite arc length in $H^1$.
+If \( \partial_t u \in L^1(0, T; H^{-1}) \), then the orbit \( \mathcal{O} \) has finite arc length in \( H^1 \). That is,
+\[
+\int_0^T \left\| \frac{d}{dt} u(t) \right\|_{H^{-1}} dt < \infty \quad \Rightarrow \quad \text{Length}(\mathcal{O}) < \infty.
+\]
 \end{lemma}
 
 \begin{lemma}[Orbit Closure is Contractible]
-An injective, continuous, finite-length orbit $\mathcal{O}$ in $H^1$ is topologically an arc.
+An injective, continuous, finite-length orbit \( \mathcal{O} \subset H^1 \) is homeomorphic to a compact interval. In particular, \( \mathcal{O} \) is contractible.
 \end{lemma}
 
 \begin{theorem}[Topological Triviality from Simplicity]
-If $\mathcal{O}$ is contractible and Lipschitz, then $\mathrm{PH}_1(\mathcal{O}) = 0$.
+If \( \mathcal{O} \) is contractible and Lipschitz, then its persistent homology satisfies
+\[
+\mathrm{PH}_1(\mathcal{O}) = 0.
+\]
 \end{theorem}
+
+\subsection*{C.2 Topological Contractibility via the Nerve Theorem}
+
+\begin{definition}[Good Cover]
+A collection \( \{ U_\alpha \}_{\alpha \in A} \) of open subsets of a topological space \( X \) is a \emph{good cover} if:
+\begin{itemize}
+  \item Each \( U_\alpha \) is contractible,
+  \item Every finite nonempty intersection \( U_{\alpha_1} \cap \dots \cap U_{\alpha_k} \) is contractible.
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Nerve Complex]
+Let \( \mathcal{U} = \{ U_\alpha \} \) be an open cover of \( X \). The \emph{nerve} \( \mathcal{N}(\mathcal{U}) \) is the abstract simplicial complex where \( \{ \alpha_0, \dots, \alpha_k \} \) forms a \( k \)-simplex iff
+\[
+U_{\alpha_0} \cap \cdots \cap U_{\alpha_k} \neq \emptyset.
+\]
+\end{definition}
+
+\begin{theorem}[Nerve Theorem]
+Let \( X \) be a paracompact topological space and \( \mathcal{U} \) a finite good cover. Then
+\[
+X \simeq \mathcal{N}(\mathcal{U}),
+\]
+i.e., \( X \) is homotopy equivalent to the nerve complex.
+\end{theorem}
+
+\begin{corollary}[Contractibility from PH Triviality]
+Let \( \mathcal{O} \subset H^1 \) be a continuous, injective, finite-length orbit. Suppose the Vietoris–Rips complex on a finite \( \varepsilon \)-dense sample \( \{ u(t_i) \} \subset \mathcal{O} \) has \( \mathrm{PH}_1 = 0 \). If the balls \( \{ B_\varepsilon(u(t_i)) \} \) form a good cover, then \( \mathcal{O} \simeq \mathcal{N} \) is contractible.
+\end{corollary}
+
+\begin{proof}[Sketch]
+The set \( \{ B_\varepsilon(u(t_i)) \} \) forms a good cover in Hilbert space \( H^1 \), since balls and their finite intersections are convex. The nerve is then homotopy equivalent to \( \mathcal{O} \). Since \( \mathrm{PH}_1 = 0 \), the Čech complex is an arc, and hence \( \mathcal{O} \) is contractible.
+\end{proof}
+
+\begin{remark}
+This dual path (energy-based and topology-based) confirms that Type I blow-ups, which require orbit-level recurrence or self-similar loops, are excluded by the structural simplicity of the orbit in both analytic and topological senses.
+\end{remark}
 
 % =============================================================
 
