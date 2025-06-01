@@ -12,8 +12,10 @@ The method integrates:
 into a structurally reinforced **7-step framework**, showing that **topological triviality and Sobolev regularity are mutually enforcing**.
 
 > 🧠 **Author’s Note**  
-> This framework originated from the intuition that **topological simplicity of the solution orbit**, captured via persistent homology, could constrain and even enforce analytic smoothness.  
-> Version 4.0 finalizes the bidirectional feedback loop between topological collapse and analytic regularity through rigorous algebraic and geometric mechanisms.
+> This framework was developed within the broader conceptual vision of the **AK High-Dimensional Projection Structural Theory (AK-HDPST)**,  
+> which proposes solving complex mathematical problems by projecting them into higher-dimensional MECE-like structures, enabling tractable decomposition.  
+> This Navier–Stokes strategy serves as a concrete application of AK-HDPST principles, especially via persistent topology and degeneration analysis.  
+> See: [AK Theory GitHub Repository](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory)
 
 ---
 
@@ -28,7 +30,7 @@ Let \( u_0 \in H^1(\mathbb{R}^3) \) be divergence-free. Then the corresponding L
 - **Bidirectional enforcement**: \( \mathrm{PH}_1 = 0 \iff H^1 \)-regularity
 - **Stability**: Regularity persists under small \( H^1 \)-perturbations and ensemble uncertainty
 
-No known singularity type (self-similar, slow gradient, or chaotic) may occur under these conditions.
+Thus, no finite-time singularity of known type (Type I, II, or III) may occur.
 
 ---
 
@@ -37,7 +39,7 @@ No known singularity type (self-similar, slow gradient, or chaotic) may occur un
 | Step | Title | Key Idea |
 |------|-------|----------|
 | 1 | **Topological Stability** | Bottleneck-stable persistent homology implies \( H^1 \)-continuity |
-| 2 | **Topological Enstrophy Control** | \( C(t) := \sum \text{persist}(h)^2 \) bounds \( \|\nabla u\|^2 \) via Lyapunov-type decay |
+| 2 | **Topological Enstrophy Control** | \( C(t) := \sum \text{persist}(h)^2 \) bounds \( \|\nabla u\|^2 \) via Lyapunov decay |
 | 3 | **Type I Exclusion** | Injective, contractible orbit implies no self-similarity or loop recurrence |
 | 4 | **Type II/III Exclusion** | Persistent entropy decay blocks slow or chaotic blow-up |
 | 5 | **Attractor Collapse** | \( C(t) \to 0 \) implies low-dimensional, contractible attractor |
@@ -46,13 +48,31 @@ No known singularity type (self-similar, slow gradient, or chaotic) may occur un
 
 ---
 
+## 🔁 AK-Theory Foundation
+
+This work is structurally and philosophically grounded in the  
+[**AK High-Dimensional Projection Structural Theory**](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory) (AK-HDPST).  
+
+**AK-HDPST** proposes a universal method to address complex problems by:
+- Projecting them into higher-dimensional spaces,
+- Structuring these projections as **MECE**-like (mutually exclusive, collectively exhaustive) groupings,
+- Applying algebraic, geometric, and topological simplification strategies,
+- And reconstructing the global solution from modularly solvable components.
+
+> The present v4.0 framework reflects this philosophy:
+> Persistent homology encodes structural clusters;  
+> tropical geometry and mixed Hodge structures describe projection degeneration;  
+> and the bidirectional feedback between topological and analytic regularity manifests a high-dimensional alignment.
+
+---
+
 ## 🚫 Blow-Up Type Classification
 
 | Type | Description | Exclusion Mechanism |
 |------|-------------|----------------------|
 | I | Self-similar | Loop-free orbit ⇒ \( \mathrm{PH}_1 = 0 \) |
-| II | Slow enstrophy divergence | \( C(t) \) decay contradicts gradient blow-up |
-| III | Chaotic recurrence | Entropy \( H(t) \to 0 \) forbids homological return |
+| II | Slow gradient blow-up | \( C(t) \) decay contradicts long-term growth |
+| III | Chaotic recurrence | Topological entropy \( H(t) \to 0 \) forbids homological return |
 
 ---
 
@@ -61,10 +81,10 @@ No known singularity type (self-similar, slow gradient, or chaotic) may occur un
 | File | Description |
 |------|-------------|
 | `navier_stokes_global_v4.0_final.tex`  | LaTeX source of full manuscript (v4.0) |
-| `navier_stokes_global_v3.2.pdf`        | Prior PDF version (v3.2) |
-| `pseudo_spectral_sim.py`              | Full pseudo-spectral simulator with divergence-free projection |
-| `fourier_decay.py`                    | Analyzer for dyadic shell spectral decay |
-| `ph_isomap.py`                        | Isomap + persistent homology pipeline for orbit geometry |
+| `navier_stokes_global_v3.2.pdf`        | Previous version (v3.2) for comparison |
+| `pseudo_spectral_sim.py`              | Full pseudo-spectral NSE simulator |
+| `fourier_decay.py`                    | Dyadic shell energy analyzer |
+| `ph_isomap.py`                        | Isomap + persistent homology pipeline |
 
 > 📦 Dependencies: Python 3.9+, NumPy, SciPy, matplotlib, scikit-learn, ripser, persim
 
@@ -72,34 +92,33 @@ No known singularity type (self-similar, slow gradient, or chaotic) may occur un
 
 ## 🔬 Verification Philosophy
 
-Persistent homology enables **topological certifiability** of regularity.  
-By using barcode stability theorems and orbit sampling theorems (e.g., Niyogi–Smale–Weinberger),  
-we certify that if the orbit remains **homologically trivial**, then the flow remains **analytically regular**.
+Persistent homology enables **topologically certifiable proxies** for analytic regularity.  
+Via barcode stability theorems and sampling guarantees (e.g., Niyogi–Smale–Weinberger),  
+we connect **empirical orbit simplicity** to **provable smoothness**.
 
-This bridges numerical and analytic domains:  
-**“If the solution orbit is always topologically simple, it must be globally smooth.”**
+> “If the solution orbit remains topologically trivial, then it must be globally smooth.”
 
 ---
 
 ## 📊 Mathematical Highlights
 
-- Defines topological Lyapunov energy \( C(t) \) that decays with viscosity
-- Encodes a **self-reinforcing loop**:  
-  \( \mathrm{PH}_1 = 0 \iff C(t) \downarrow \iff \|\nabla u\|^2 \) bounded
-- Introduces **tropical degeneration** of barcodes and **variation of mixed Hodge structures (VMHS)**
-- Derives attractor dimension estimates via \( C(t) \)
-- Applies **wavelet-based PH** for Besov extensions
-- Extends to **stochastic or ensemble formulations** (Appendix I)
+- Defines a **topological Lyapunov functional** \( C(t) \) that decays with viscosity
+- Establishes **feedback equivalence**:  
+  \( \mathrm{PH}_1 = 0 \Leftrightarrow C(t) \downarrow \Leftrightarrow \|\nabla u\|^2 \) bounded
+- Introduces tropical degeneration and VMHS collapse as analytic regularity enforcers
+- Connects persistent energy to attractor dimension and numerical verification
+- Supports wavelet-based PH for Besov/critical settings
+- Extends to ensemble dynamics and information-theoretic diagnostics
 
 ---
 
 ## 🌐 Extensions Introduced in v4.0
 
-- **Critical Space Extensions**: Framework adapted to \( L^3 \), \( \mathrm{BMO}^{-1} \), and Besov scales
-- **VMHS & Tropical Collapse Formalized**: Algebraic geometry and topological data fully fused
-- **Information-Theoretic Metrics**: Topological entropy \( H(t) \), disorder parameter \( \Theta(t) \)
-- **Multiphysics Coupling**: Transfer of topological structure across coupled PDEs
-- **Numerical Protocols**: Full reproducibility pipeline (Appendix J) for simulation and validation
+- **Critical space generalization**: \( L^3 \), \( \mathrm{BMO}^{-1} \), and Besov scales
+- **VMHS + Tropical framework** fully integrated into Step 7
+- **Topological entropy and disorder metrics** added
+- **Multiphyiscs coupling** via homological transfer mechanisms
+- **Reproducibility pipeline** formalized (Appendix J)
 
 ---
 
@@ -110,13 +129,13 @@ This bridges numerical and analytic domains:
 **Email**: dollops2501@icloud.com
 
 > 🧭 **Research Philosophy**  
-> This project is offered as an open foundation for further refinement, formal proof, or numerical benchmarking.  
-> Anyone is welcome to build upon this work — all insight and feedback are welcome.
+> This project is part of a broader effort to bridge topology, geometry, and analysis in solving hard PDEs.  
+> All extensions, feedback, forks, and collaborations are warmly welcome.
 
 ---
 
 ## ⚖️ License
 
-MIT License — free to use, modify, and cite for academic and non-commercial purposes.
+MIT License — free to use, modify, or cite for academic and non-commercial purposes.
 
 👉 [日本語版 READMEはこちら](README_ja.md)
