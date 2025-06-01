@@ -415,6 +415,35 @@ for all test functions $\varphi \in C_c^\infty(0,T)$, where $\varepsilon(t)$ cap
 This ensures that $C(t)$ functions as a valid distributional Lyapunov functional even in the presence of nonsmooth barcode transitions.
 \end{remark}
 
+\begin{lemma}[Almost Everywhere Differentiability of $C(t)$]
+\label{lem:Ct_rademacher}
+Suppose $C(t)$ is Lipschitz continuous on $[0,T]$ due to bottleneck-stable barcodes $\mathrm{PH}_1(t)$ with uniformly bounded persistence. Then $C(t)$ is differentiable almost everywhere on $[0,T]$.
+
+In particular, $C \in W^{1,\infty}(0,T)$ and admits a strong derivative $C'(t)$ for almost every $t \in [0,T]$.
+\end{lemma}
+
+\begin{proof}
+This is a direct consequence of Rademacher's Theorem: every Lipschitz continuous real-valued function on an interval is differentiable almost everywhere.
+\end{proof}
+
+\begin{remark}[Singular Set Structure of $C(t)$]
+The set of non-differentiability points of $C(t)$ is contained within the set of topological events (birth or death of bars in $\mathrm{PH}_1(t)$), which are discrete in time.
+
+Let $\Sigma := \{ t_i \in (0,T) \mid \text{a bar is born or dies at } t_i \}$. Then:
+\[
+\text{Lebesgue measure}(\Sigma) = 0,
+\]
+and $C'(t)$ exists for all $t \in [0,T] \setminus \Sigma$.
+\end{remark}
+
+\begin{remark}[Interpretation]
+This result ensures that the topological energy $C(t)$, though built from discrete barcode data, admits a well-defined derivative almost everywhere in time. Thus, it is valid to treat $C(t)$ as a continuous Lyapunov functional in both distributional and strong differential settings.
+\end{remark}
+
+\begin{remark}[Relation to Appendix E]
+The regularity and differentiability results for $C(t)$ are formalized and extended in Appendix~E, including topological entropy decay and uniqueness of limiting steady states.
+\end{remark}
+
 \subsection{Concrete Example of $C(t)$}
 
 \begin{remark}[Example: Periodic Vortex]
