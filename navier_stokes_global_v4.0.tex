@@ -1333,6 +1333,22 @@ Hence, no slowly diverging orbit with sustained topology can emerge. \textbf{Thi
 
 While Step~5 describes the collapse of topological complexity via degeneration of persistent barcodes and VMHS structures, this process also admits a spectral interpretation: topological simplification corresponds to suppression of high-frequency content in the Fourier domain.
 
+\begin{theorem}[Persistent Energy Bounds Dyadic Shell Energy]
+Let $C(t) = \sum_{i} l_i(t)^2$ be the persistent topological energy at time $t$, and let $E_j(t)$ denote the energy contained in the dyadic shell $2^j \le |k| < 2^{j+1}$ in Fourier space. Suppose that each topological feature with persistence $l_i(t)$ corresponds to a spatial scale $\lambda_i(t) \sim l_i(t)$ and thus to wavenumber $k_i(t) \sim 1/l_i(t)$. Then, under the topological–spectral correspondence,
+\[
+E_j(t) \lesssim \sum_{i : k_i(t) \in [2^j, 2^{j+1})} l_i(t)^2 \lesssim C(t).
+\]
+In particular, persistent energy $C(t)$ dominates the high-frequency energy concentration:
+\[
+\sum_{j \ge J} E_j(t) \lesssim \sum_{i : k_i(t) \ge 2^J} l_i(t)^2 \le C(t),
+\]
+which implies that $C(t) \to 0$ enforces vanishing of high-frequency energy.
+\end{theorem}
+
+\begin{remark}[Interpretation]
+This theorem formalizes the intuition that persistent energy $C(t)$ not only measures topological complexity but also acts as an upper bound on high-frequency spectral energy. As $C(t)$ decays, dyadic shells corresponding to short-lived (high $k$) features are suppressed. Thus, topological flattening translates to Fourier damping in a quantitative way.
+\end{remark}
+
 \begin{proposition}[Topological--Spectral Correspondence]
 Let $l_i(t)$ denote the lifespan of the $i$-th persistent feature at time $t$, and $k_i(t)$ be the characteristic Fourier wavenumber associated with its spatial scale. Then, up to dimensional scaling,
 \[
