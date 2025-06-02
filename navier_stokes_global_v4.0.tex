@@ -1302,6 +1302,19 @@ Let $\{u(t_i)\}_{i=1}^N$ be a $\varepsilon$-dense sample of $\mathcal{A}$ in $H^
 \]
 \end{proposition}
 
+\begin{remark}[Numerical Sampling Requirements for Reliable PH Triviality]
+In practice, verifying that $\mathrm{PH}_1(\mathcal{A}) = 0$ numerically requires a sufficiently dense sampling of the attractor. Let $\ell_{\min}$ denote the minimal spatial scale of meaningful topological features (e.g., true loops or voids). Then:
+
+\begin{itemize}
+    \item The point cloud $\{u(t_i)\}$ should be $\varepsilon$-dense in $H^1$ with $\varepsilon \ll \ell_{\min}$ to avoid missing genuine features.
+    \item The number of required sample points satisfies $N = O(\varepsilon^{-d})$, where $d$ is the box-counting dimension of $\mathcal{A}$.
+    \item Spurious short-lived barcodes caused by undersampling, noise, or coarse filtration must be thresholded via minimal persistence or lifespan filters.
+    \item If temporal sampling is too sparse, barcode matching over time becomes unreliable, corrupting decay inference from $C(t)$.
+\end{itemize}
+
+Hence, to ensure the numerical conclusion $\mathrm{PH}_1(\mathcal{A}) = 0$ is valid, both spatial and temporal sampling resolutions must exceed the topological feature scales present in the attractor.
+\end{remark}
+
 \begin{lemma}[Numerical Convergence Thresholds]
 If for $t \in [0, T]$, the barcode satisfies $d_B(\mathrm{PH}_1(t_{i}), \mathrm{PH}_1(t_{i+1})) < \delta$, and all features have lifespan $< \tau$, then $C(t)$ is numerically stable and decreasing.
 \end{lemma}
