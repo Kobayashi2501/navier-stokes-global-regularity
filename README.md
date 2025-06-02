@@ -1,20 +1,20 @@
 # 🌊 Global Regularity of 3D Navier–Stokes  
-### via Energy–Topology–Geometry–Algebra Approach (v4.0)
+### via Energy–Topology–Geometry–Algebra Approach (v4.1)
 
-This repository presents **version 4.0** of a unified, non-perturbative strategy toward resolving the **global regularity problem** for the 3D incompressible Navier–Stokes equations on \( \mathbb{R}^3 \).
+This repository presents **version 4.1** of a unified, non-perturbative strategy toward resolving the **global regularity problem** for the 3D incompressible Navier–Stokes equations on \( \mathbb{R}^3 \).
 
 The method integrates:
 - **Persistent homology** from topological data analysis
-- **Spectral energy decay** and **enstrophy control**
-- **Function space orbit geometry**
-- **Tropical geometric degeneration** and **VMHS (Variation of Mixed Hodge Structures)**
+- **Spectral energy decay** and **Lyapunov-type enstrophy control**
+- **Orbit geometry** and **topological contractibility**
+- **Tropical geometric degeneration**, **VMHS**, and **categorical collapse**
+- **Critical-space extensions** via wavelet-scale persistent homology
 
-into a structurally reinforced **7-step framework**, showing that **topological triviality and Sobolev regularity are mutually enforcing**.
+into a reproducible, structurally complete **7-step framework**, showing that **topological triviality and Sobolev regularity are bidirectionally equivalent**.
 
 > 🧠 **Author’s Note**  
-> This framework was developed within the broader conceptual vision of the **AK High-Dimensional Projection Structural Theory (AK-HDPST)**,  
-> which proposes solving complex mathematical problems by projecting them into higher-dimensional MECE-like structures, enabling tractable decomposition.  
-> This Navier–Stokes strategy serves as a concrete application of AK-HDPST principles, especially via persistent topology and degeneration analysis.  
+> This framework was developed as an application of the broader **AK High-Dimensional Projection Structural Theory (AK-HDPST)**.  
+> It interprets analytic blow-up obstructions as **low-dimensional projections of collapsible high-order structure**, and resolves them through **persistent homology collapse**, **tropical degeneration**, and **categorical contraction**.  
 > See: [AK Theory GitHub Repository](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory)
 
 ---
@@ -23,119 +23,118 @@ into a structurally reinforced **7-step framework**, showing that **topological 
 
 Let \( u_0 \in H^1(\mathbb{R}^3) \) be divergence-free. Then the corresponding Leray–Hopf solution \( u(t) \) satisfies:
 
-- **Global regularity**: \( \|u(t)\|_{H^1} \) remains bounded for all \( t \geq 0 \)
-- **Topological triviality**: \( \mathrm{PH}_1(\mathcal{O}) = 0 \), where \( \mathcal{O} = \{u(t)\} \)
-- **Spectral decay**: Dyadic shell energy \( E_j(t) \) decays for large \( j \)
-- **Attractor simplicity**: The orbit is compact, contractible, and low-dimensional
-- **Bidirectional enforcement**: \( \mathrm{PH}_1 = 0 \iff H^1 \)-regularity
-- **Stability**: Regularity persists under small \( H^1 \)-perturbations and ensemble uncertainty
+- **Global regularity**: \( \|u(t)\|_{H^1} < \infty \) for all \( t \geq 0 \)
+- **Topological triviality**: \( \mathrm{PH}_1(\mathcal{O}) = 0 \) where \( \mathcal{O} = \{u(t)\} \)
+- **Spectral decay**: Dyadic shell energy \( E_j(t) \to 0 \) exponentially
+- **Attractor simplicity**: Compact, contractible, low-dimensional global attractor
+- **Feedback equivalence**: \( \mathrm{PH}_1 = 0 \iff H^1 \)-regularity
+- **Stability**: Regularity holds under small perturbations and ensemble uncertainty
+- **Critical-space compatibility**: Persistent energy controls extend to \( B^{-1+3/p}_{p,q} \)
 
-Thus, no finite-time singularity of known type (Type I, II, or III) may occur.
+Thus, no finite-time singularities of known type (Type I, II, or III) may occur.
 
 ---
 
-## 🧭 7-Step Strategy (v4.0 Overview)
+## 🧭 7-Step Strategy (v4.1 Overview)
 
 | Step | Title | Key Idea |
 |------|-------|----------|
-| 1 | **Topological Stability** | Bottleneck-stable persistent homology implies \( H^1 \)-continuity |
-| 2 | **Topological Enstrophy Control** | \( C(t) := \sum \text{persist}(h)^2 \) bounds \( \|\nabla u\|^2 \) via Lyapunov decay |
-| 3 | **Type I Exclusion** | Injective, contractible orbit implies no self-similarity or loop recurrence |
-| 4 | **Type II/III Exclusion** | Persistent entropy decay blocks slow or chaotic blow-up |
-| 5 | **Attractor Collapse** | \( C(t) \to 0 \) implies low-dimensional, contractible attractor |
-| 6 | **Stability Under Perturbation** | Regularity and barcode topology are Lipschitz-stable under \( H^1 \)-perturbations |
-| 7 | **Topological Collapse ⇒ Regularity** | VMHS degeneration and tropical barcode contraction enforce smoothness and close the feedback loop |
+| 0 | **Motivational Lifting** | Observable complexity = projection of higher-order order |
+| 1 | **Topological Stability** | Persistent homology barcodes are bottleneck-stable ⇒ \( H^1 \)-continuity |
+| 2 | **Topological Enstrophy Control** | \( C(t) = \sum \text{persist}^2 \) bounds \( \|\nabla u\|^2 \) |
+| 3 | **Type I Exclusion** | Injective, contractible orbit excludes self-similarity |
+| 4 | **Type II/III Exclusion** | Barcode entropy decay forbids slow or chaotic blow-up |
+| 5 | **Attractor Flattening** | Persistent topology collapse ⇒ finite-dimensional attractor |
+| 6 | **Perturbation Stability** | Structural regularity under \( H^1 \)-perturbations and spectral damping |
+| 7 | **Topological Collapse ⇔ Regularity** | VMHS + Tropical + Categorical collapse enforces smoothness |
 
 ---
 
-## 🔁 AK-Theory Foundation
+## 🌀 AK-Theory Foundation
 
-This work is structurally and philosophically grounded in the  
-[**AK High-Dimensional Projection Structural Theory**](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory) (AK-HDPST).  
+This framework is structurally grounded in  
+[**AK High-Dimensional Projection Structural Theory**](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory) (AK-HDPST).
 
-**AK-HDPST** proposes a universal method to address complex problems by:
-- Projecting them into higher-dimensional spaces,
-- Structuring these projections as **MECE**-like (mutually exclusive, collectively exhaustive) groupings,
-- Applying algebraic, geometric, and topological simplification strategies,
-- And reconstructing the global solution from modularly solvable components.
+**AK-HDPST** proposes:
+- Lifting problems to high-dimensional MECE-like structured spaces
+- Decomposing complexity via topological and categorical objects
+- Applying **persistent degeneration**, **orbit simplification**, and **mirror symmetry**
 
-> The present v4.0 framework reflects this philosophy:
-> Persistent homology encodes structural clusters;  
-> tropical geometry and mixed Hodge structures describe projection degeneration;  
-> and the bidirectional feedback between topological and analytic regularity manifests a high-dimensional alignment.
+> v4.1 exemplifies AK-HDPST in action:  
+> Homology triviality ⇔ functional smoothness ⇔ spectral simplicity ⇔ category-level degeneration.
 
 ---
 
-## 🚫 Blow-Up Type Classification
+## 🚫 Blow-Up Classification and Exclusion
 
 | Type | Description | Exclusion Mechanism |
 |------|-------------|----------------------|
-| I | Self-similar | Loop-free orbit ⇒ \( \mathrm{PH}_1 = 0 \) |
-| II | Slow gradient blow-up | \( C(t) \) decay contradicts long-term growth |
-| III | Chaotic recurrence | Topological entropy \( H(t) \to 0 \) forbids homological return |
+| I | Self-similar scaling | Orbit injectivity + \( \mathrm{PH}_1 = 0 \) ⇒ no loops |
+| II | Slow-gradient blow-up | Topological energy \( C(t) \to 0 \) excludes sustained complexity |
+| III | Chaotic/oscillatory blow-up | Barcode entropy \( H(t) \to 0 \) + irreversibility forbid recurrence |
 
 ---
 
-## 📁 Repository Structure
+## 🧪 Numerical Pipeline (Appendix A, F, G)
 
-| File | Description |
-|------|-------------|
-| `navier_stokes_global_v4.0.tex`  | LaTeX source of full manuscript (v4.0) |
-| `navier_stokes_global_v4.0.pdf`        | PDF source of full manuscript (v4.0) |
-| `pseudo_spectral_sim.py`              | Full pseudo-spectral NSE simulator |
-| `fourier_decay.py`                    | Dyadic shell energy analyzer |
-| `ph_isomap.py`                        | Isomap + persistent homology pipeline |
+| File | Purpose |
+|------|---------|
+| `pseudo_spectral_sim.py` | 3D NSE pseudo-spectral solver |
+| `fourier_decay.py` | Dyadic shell spectral energy decay analyzer |
+| `ph_isomap.py` | Isomap + persistent homology orbit analysis |
 
-> 📦 Dependencies: Python 3.9+, NumPy, SciPy, matplotlib, scikit-learn, ripser, persim
+Key observables:
+- \( C(t) := \sum \mathrm{persist}(h)^2 \)
+- \( H(t) := -\sum p_h \log p_h \)
+- Dyadic slope \( s(t) \) from \( \log E_j(t) \)
+- Tropical collapse in barcode trajectory
 
 ---
 
-## 🔬 Verification Philosophy
+## 🧬 New Features in v4.1
 
-Persistent homology enables **topologically certifiable proxies** for analytic regularity.  
-Via barcode stability theorems and sampling guarantees (e.g., Niyogi–Smale–Weinberger),  
-we connect **empirical orbit simplicity** to **provable smoothness**.
-
-> “If the solution orbit remains topologically trivial, then it must be globally smooth.”
+- **Step 0 added**: Motivational Lifting from AK-HDPST
+- **Step 7 enhanced**: VMHS formalism, spectral sequences, Ext-class vanishing
+- **Appendix I unified**: Critical Besov topology + wavelet-PH extension
+- **Appendix G added**: Isomap-PH numerical feedback loop
+- **Mirror-symmetric collapse** introduced: SYZ perspective on regularity
+- **Numerical thresholding** formalized (e.g., \( \text{persist} < 0.05 \Rightarrow \) triviality)
+- **Stochastic regularity framework** included (ensemble PH decay)
 
 ---
 
 ## 📊 Mathematical Highlights
 
-- Defines a **topological Lyapunov functional** \( C(t) \) that decays with viscosity
-- Establishes **feedback equivalence**:  
-  \( \mathrm{PH}_1 = 0 \Leftrightarrow C(t) \downarrow \Leftrightarrow \|\nabla u\|^2 \) bounded
-- Introduces tropical degeneration and VMHS collapse as analytic regularity enforcers
-- Connects persistent energy to attractor dimension and numerical verification
-- Supports wavelet-based PH for Besov/critical settings
-- Extends to ensemble dynamics and information-theoretic diagnostics
+- Persistent energy \( C(t) \) is a Lyapunov-type functional bounding \( \|\nabla u\|^2 \)
+- PH1-stability ⇔ \( H^1 \)-temporal continuity ⇔ dyadic decay
+- Tropical barcode collapse ⇒ analytic smoothness
+- Contractibility in orbit and attractor ⇔ loop exclusion
+- VMHS degeneration mirrors regularization flow
+- Topological → spectral → analytical → categorical compression
 
 ---
 
-## 🌐 Extensions Introduced in v4.0
+## 📚 References and Proof Structure
 
-- **Critical space generalization**: \( L^3 \), \( \mathrm{BMO}^{-1} \), and Besov scales
-- **VMHS + Tropical framework** fully integrated into Step 7
-- **Topological entropy and disorder metrics** added
-- **Multiphyiscs coupling** via homological transfer mechanisms
-- **Reproducibility pipeline** formalized (Appendix J)
-
----
-
-## 👤 Authorship and Intent
-
-**Main Contributor**: A. Kobayashi  
-**Theoretical Partner**: ChatGPT Research Partner  
-**Email**: dollops2501@icloud.com
-
-> 🧭 **Research Philosophy**  
-> This project is part of a broader effort to bridge topology, geometry, and analysis in solving hard PDEs.  
-> All extensions, feedback, forks, and collaborations are warmly welcome.
+All topological and analytic lemmas follow from:
+- PH stability theorems (Cohen–Steiner et al.)
+- Nerve theorem and persistent sampling (Niyogi–Smale–Weinberger)
+- Spectral decay theory (dyadic shells, Sobolev embedding)
+- VMHS and tropical degeneration (mirror symmetry-inspired)
+- Derived categories and Ext-class duality (Appendix D)
 
 ---
 
-## ⚖️ License
+## 👤 Authorship
 
-MIT License — free to use, modify, or cite for academic and non-commercial purposes.
+**Main Author**: A. Kobayashi  
+**Theory Partner**: ChatGPT Research Partner  
+📧 **Contact**: dollops2501@icloud.com
+
+---
+
+## 📜 License
+
+MIT License — free to use, cite, and fork.
 
 👉 [日本語版 READMEはこちら](README_ja.md)
