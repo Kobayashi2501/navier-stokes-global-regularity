@@ -818,7 +818,21 @@ Define a field $\mathcal{B}(x,t) := \mathrm{PH}_1(B_\epsilon(x), |u(\cdot,t)|)$ 
 \end{definition}
 
 \begin{lemma}[Vanishing PH Energy Implies Gradient Collapse]
-If $C(t) = 0$ for $t > T_0$, then $u(t)$ is spatially constant over connected regions:
+
+\begin{theorem}[VMHS Degeneration Implies Regularity]
+Let $u_\tau$ be a family of velocity fields parameterized by $\tau \in \Delta^*$, with $\tau \to 0$ corresponding to a degeneration of the associated VMHS. Suppose:
+\begin{itemize}
+    \item The Hodge filtration degenerates continuously,
+    \item The $\mathrm{PH}_1(u_\tau)$ barcodes collapse in bottleneck distance,
+    \item The associated topological energy $C(t)$ decays to 0.
+\end{itemize}
+Then the limit field $u_0$ is $H^1$-regular.
+\end{theorem}
+
+\begin{proof}[Sketch]
+The degeneration of the VMHS implies a contraction of the Hodge filtration and collapse of nontrivial cycles. This forces all persistent 1-cycles to vanish, yielding trivial homology. Combined with Step 2, $C(t) \to 0$ implies $\|\nabla u(t)\|^2 \to 0$, ensuring regularity.
+\end{proof}
+        If $C(t) = 0$ for $t > T_0$, then $u(t)$ is spatially constant over connected regions:
 \[
 \|\nabla u(t)\|_{L^2(\Omega)} = 0.
 \]
@@ -902,7 +916,6 @@ def embed_and_analyze(snapshot_data, n_neighbors=10, n_components=2):
     plot_diagrams(diagrams, show=True)
     return diagrams
 \end{lstlisting}
-
 
 
 % ===========================
