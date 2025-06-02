@@ -1053,6 +1053,19 @@ Let $C_\varepsilon(t)$ denote the persistent topological energy of $u_\varepsilo
 If $\overline{C}_\varepsilon(T) \to 0$ as $T \to \infty$ and $d_B(\mathrm{PH}_1(u_\varepsilon(t)), \mathrm{PH}_1(u(t))) \le C \varepsilon$, then $\mathcal{A}_\varepsilon$ is contractible and topologically close to $\mathcal{A}$.
 \end{lemma}
 
+\begin{theorem}[Uniqueness from Topological Stability]
+Let $u(t)$ and $v(t)$ be Leray--Hopf solutions from initial data $u_0$, $v_0$ with $\|u_0 - v_0\|_{H^1} < \varepsilon$. Assume:
+\begin{enumerate}
+  \item $d_B(\mathrm{PH}_1(u(t)), \mathrm{PH}_1(v(t))) \leq C\varepsilon$,
+  \item $C_u(t), C_v(t) \to 0$ as $t \to \infty$,
+\end{enumerate}
+Then $u(t) - v(t) \to 0$ in $H^1$ as $t \to \infty$.
+\end{theorem}
+
+\begin{remark}[Feedback Interpretation]
+Topological collapse implies analytic convergence. This generalizes weak--strong uniqueness in the presence of homological alignment.
+\end{remark}
+
 \begin{remark}[Bayesian and Noisy Initial Data Stability]
 If the initial data $u_0$ is known only through a posterior distribution or ensemble with variance $\sigma^2$, the PH triviality of the attractor remains statistically valid provided $\sigma \ll \delta_{\mathrm{PH}}$ (barcode resolution). This offers robust guarantees for ensemble simulations and uncertainty quantification.
 \end{remark}
