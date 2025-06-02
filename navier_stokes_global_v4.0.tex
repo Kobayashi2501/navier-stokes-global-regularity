@@ -541,6 +541,53 @@ The decay of $C(t)$ constrains the high-frequency tail of the energy spectrum. T
 
 This step establishes that Type I blow-up is inconsistent with topological simplicity and energy decay. The core idea is that self-similarity implies loop-like structure in function space, whereas energy dissipation and persistent homology triviality imply injective, contractible orbits.
 
+\begin{theorem}[Orbit Simplicity Excludes Type I Blow-Up]
+Let $u(t)$ be a weak solution of the 3D incompressible Navier–Stokes equations on $[0,T)$ such that:
+\begin{enumerate}
+    \item The orbit $\mathcal{O} = \{u(t)\}_{t \in [0,T)}$ is injective in $H^1$,
+    \item $\mathcal{O}$ has finite arc length in $H^1$,
+    \item $\mathrm{PH}_1(\mathcal{O}) = 0$ (contractible via Čech complex).
+\end{enumerate}
+Then, $u(t)$ cannot develop a Type I singularity on $[0,T)$.
+\end{theorem}
+
+\begin{proof}[Sketch of Proof]
+Type I blow-up involves norm inflation near $T^*$ while preserving self-similar rescaling.  
+However, such rescaling would require either:  
+(i) recurrence of similar $H^1$ profiles (violates injectivity),  
+(ii) divergent $H^1$ variation (violates finite-length), or  
+(iii) birth of topologically distinct structures (violates $\mathrm{PH}_1 = 0$).  
+
+Thus, the orbit lacks the geometric complexity needed to support a Type I profile.
+\end{proof}
+        
+% --- Inserted Reinforcement ---
+\begin{definition}[Solution Orbit]
+Let $u(t)$ be a weak solution in $H^1(\Omega)$. The orbit of the solution is defined as:
+\[
+\mathcal{O} := \{ u(t) \in H^1(\Omega) \mid t \in [0,T] \}.
+\]
+\end{definition}
+
+\begin{lemma}[Injectivity from Energy Dissipation]
+If $E(t) := \frac{1}{2} \| u(t) \|_{L^2}^2$ is strictly decreasing except at equilibrium, then:
+\[
+u(t_1) = u(t_2) \Rightarrow t_1 = t_2,
+\]
+i.e., the orbit $\mathcal{O}$ is injective.
+\end{lemma}
+
+\begin{lemma}[Finite-Length Orbit]
+If $\| \partial_t u \|_{H^{-1}}$ is integrable over $[0,T]$, then the orbit $\mathcal{O}$ has finite arc length in $H^1$:
+\[
+\mathrm{Length}(\mathcal{O}) := \int_0^T \| \partial_t u \|_{H^{-1}} dt < \infty.
+\]
+\end{lemma}
+
+\begin{theorem}[Nerve-Theoretic Contractibility of Orbit]
+Suppose the finite-sample orbit $\{u(t_i)\}$ yields $\mathrm{PH}_1 = 0$ via Čech filtration and bottleneck stability holds. Then the continuous orbit $\mathcal{O}$ is homologically contractible.
+\end{theorem}
+
 \subsection{Definitions}
 
 \begin{definition}[Solution Orbit]
@@ -679,6 +726,7 @@ The exclusion of Type I blow-up hinges specifically on the vanishing of first pe
 \begin{remark}[Link to Step 4 – Topological Transition Barrier]
 The injectivity and contractibility of $\mathcal{O}$, together with strictly decreasing energy $E(t)$, prevent return to any prior topological state. Thus, oscillatory or chaotic (Type II/III) transitions must also be ruled out via homological persistence and its stability—see Step 4.
 \end{remark}
+
 
 
 % ===========================
