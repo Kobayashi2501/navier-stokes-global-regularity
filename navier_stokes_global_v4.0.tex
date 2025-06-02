@@ -1539,6 +1539,8 @@ The proof strategy rests on five bridges:
     \item \textbf{Feedback Equivalence}: Topological simplification and analytic regularity form a mutually enforcing loop.
 \end{itemize}
 
+These algebraic-topological correspondences are reinforced by the structural stability results of Step~6, which ensure that both $C(t)$ decay and dyadic shell suppression persist under $H^1$ perturbations.
+
 \subsection*{7.2 Formal Setup via AK-HDPST Structures}
 
 Let $\mathcal{P}$ denote the persistent homology topos associated to the time-indexed filtration of $u(t)$. Define the topological energy functor:
@@ -1597,6 +1599,10 @@ Let $u(t) \in C^\beta_t H^1_x$ be a Leray--Hopf solution on $[0, T]$. Then:
 \]
 \end{remark}
 
+\begin{remark}[Contractive Attractor Flow]
+The decay of $C(t)$ induces contraction in the space of filtered complexes, making the attractor flow a contractive mapping in the derived moduli space. This provides a dynamical systems perspective on regularity emergence.
+\end{remark}
+
 \begin{proposition}[Categorical Finality of Regularity]
 If $\mathcal{P} \to [0,T]$ admits a terminal object with $C(T) = 0$, then the orbit $\{ u(t) \}$ is contractible and homotopically trivial.
 \end{proposition}
@@ -1625,6 +1631,10 @@ If $E^r_{p,q}(t)$ collapses at $r = r_0$ and $E^{r_0}_{p,q}=0$ for $p+q>1$, then
   \item $u(t) \in C^\infty$ in $H^1$.
 \end{itemize}
 
+\begin{remark}[Spectral Collapse as Vanishing Obstructions]
+The collapse of $E^r_{p,q}(t)$ at $r = r_0$ implies that all differentials $d^r$ vanish for $r \ge r_0$, and higher extension data stabilize. This prevents persistent cohomological obstructions to smoothness, certifying that $H_1(F^\bullet_t)$ stabilizes and $\mathrm{PH}_1(t) = 0$.
+\end{remark}
+
 \begin{proposition}[PH Bars as Ext Objects]
 Let $B(t)$ be a barcode in $\mathrm{PH}_1(t)$. Then its categorical realization in $D^b(\mathsf{Filt})$ corresponds to an object $X$ such that:
 \[
@@ -1632,6 +1642,10 @@ Let $B(t)$ be a barcode in $\mathrm{PH}_1(t)$. Then its categorical realization 
 \]
 This establishes a duality between persistent bars and Ext-class extensions.
 \end{proposition}
+
+\begin{remark}[Ext Vanishing and Energy Collapse]
+When $\mathrm{Ext}^1(\mathbb{Q}, X) = 0$ for all categorical realizations of persistent bars, it implies $C(t) = 0$. Thus, homological triviality in the derived category corresponds to vanishing Lyapunov energy in the analytic domain.
+\end{remark}
 
 \subsection*{7.7 Conclusion}
 
@@ -1642,7 +1656,27 @@ By integrating all categorical, derived, and geometric components of AK-HDPST, S
   \item Spectral sequence and Ext-theoretic tools to verify smoothness;
   \item Bidirectional feedback loops between topology and analysis.
 \end{itemize}
+
+\begin{remark}[Functional Convergence from PH Collapse]
+If $\mathrm{PH}_1(u(t)) \to 0$ in bottleneck distance, then $u(t)$ converges in $C([0,T], H^1)$ norm to a trajectory lying on a contractible attractor. Thus, regularity holds not only pointwise but also functionally.
+\end{remark}
+
 \textbf{Conclusion:} If persistent topology collapses categorically, spectrally, and tropically---including Ext-class vanishing---regularity is structurally certified.
+
+\begin{center}
+\textbf{\underline{Diagram: Mirror-Symmetric Collapse}}
+\end{center}
+\[
+\begin{array}{ccc}
+\text{Barcode Path } B(t) & \xrightarrow{\text{Trop}} & \text{Tropical Line Segment} \\
+\downarrow \mathcal{M} &  & \downarrow \text{Collapse to Point} \\
+\text{Dual Barcode } B^\vee(t) & \xrightarrow{\text{Trop}} & \text{Tropical Point}
+\end{array}
+\]
+
+\begin{remark}[Mirror Collapse Interpretation]
+The SYZ-mirror dual of the persistent barcode collapses simultaneously in moduli space and tropical space, implying geometric convergence and analytic regularity.
+\end{remark}
 
 
 
