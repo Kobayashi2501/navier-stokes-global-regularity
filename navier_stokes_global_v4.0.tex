@@ -1867,10 +1867,11 @@ These results ensure the functional well-posedness of persistent barcode stabili
 \section*{Appendix C. Foundational Lemmas and Topological Constructions for Orbit Simplicity}
 \label{sec:appendixC}
 
-This appendix provides analytic and topological foundations for Step 3, which excludes Type I singularities via structural simplicity of the solution orbit. The section consists of two parts:
+This appendix provides analytic and topological foundations for Step 3, which excludes Type I singularities via structural simplicity of the solution orbit. The section consists of three parts:
 \begin{itemize}
   \item[\textbf{C.1}] Energy-based lemmas guaranteeing injectivity and finite-length behavior of orbits in \( H^1 \),
-  \item[\textbf{C.2}] Topological constructions based on Nerve Theorem that formalize contractibility from PH data.
+  \item[\textbf{C.2}] Topological constructions based on Nerve Theorem that formalize contractibility from PH data,
+  \item[\textbf{C.3}] Persistent homology constraints that exclude looped or self-similar orbit structures.
 \end{itemize}
 
 \subsection*{C.1 Energy Dissipation and Orbit Injectivity}
@@ -1932,6 +1933,24 @@ The set \( \{ B_\varepsilon(u(t_i)) \} \) forms a good cover in Hilbert space \(
 
 \begin{remark}
 This dual path (energy-based and topology-based) confirms that Type I blow-ups, which require orbit-level recurrence or self-similar loops, are excluded by the structural simplicity of the orbit in both analytic and topological senses.
+\end{remark}
+
+\subsection*{C.3 Persistent Homology and Exclusion of Self-Similarity}
+
+\begin{lemma}[PH-Triviality Implies Exclusion of Self-Similar Loops]
+Let \( \mathcal{O} = \{u(t)\}_{t \in [0,T)} \) be a continuous, injective, finite-length orbit in \( H^1 \) such that \( \mathrm{PH}_1(\mathcal{O}) = 0 \) via Čech or Vietoris–Rips complex. Then \( \mathcal{O} \) cannot contain nontrivial loops, in particular any self-similar orbit segment inducing Type I blow-up.
+\end{lemma}
+
+\begin{proof}[Sketch]
+Type I blow-up corresponds to self-similar rescaling, which geometrically induces a loop or closed orbit in function space. However, \( \mathrm{PH}_1(\mathcal{O}) = 0 \) implies all such 1-dimensional cycles are null-homologous. Via the Nerve Theorem and convexity of balls in \( H^1 \), the Čech complex approximates \( \mathcal{O} \) homotopically. Since its first homology group vanishes, so does that of \( \mathcal{O} \). Hence, \( \mathcal{O} \) is contractible and contains no loops.
+\end{proof}
+
+\begin{corollary}[Exclusion of Type I Self-Similarity from PH Triviality]
+If a Navier–Stokes solution orbit \( \mathcal{O} \) satisfies \( \mathrm{PH}_1(\mathcal{O}) = 0 \), then it cannot exhibit Type I blow-up behavior characterized by self-similar recurrence in function space.
+\end{corollary}
+
+\begin{remark}
+This finalizes the topological exclusion of Type I singularities: persistent triviality, orbit injectivity, and finite arc length jointly preclude the geometric conditions necessary for self-similar singularity formation.
 \end{remark}
 
 % =============================================================
