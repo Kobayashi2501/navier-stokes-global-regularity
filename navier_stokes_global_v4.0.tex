@@ -1266,6 +1266,23 @@ Then the omega-limit set $\omega(u_0)$ is contractible and has finite box-counti
 \end{itemize}
 \end{theorem}
 
+\begin{theorem}[Tropical Collapse is Necessary for Global Regularity]
+Let \( u(t) \) be a Leray--Hopf solution of the 3D incompressible Navier--Stokes equations on \( [0, \infty) \). Suppose:
+\begin{enumerate}
+    \item The solution is globally regular in \( H^1 \),
+    \item The persistent homology barcode path \( B(t) = \mathrm{PH}_1(u(t)) \) is tropically unstable, i.e., \( \operatorname{Trop}(B(t)) \) does not converge to a point or exhibits long-term oscillatory recurrence.
+\end{enumerate}
+Then a contradiction occurs. Therefore, tropical convergence \( \operatorname{Trop}(B(t)) \to \text{pt} \) is a necessary condition for global regularity.
+\end{theorem}
+
+\begin{proof}[Sketch]
+Global $H^1$-regularity implies the decay of $C(t)$ and the collapse of $\mathrm{PH}_1(u(t))$ by Steps~1--3. Since barcodes encode topological features over time, the absence of tropical convergence would imply persistent reformation of topological cycles, violating monotonic decay of $C(t)$ and enstrophy. Hence, tropical convergence is required.
+\end{proof}
+
+\begin{remark}
+This result complements the attractor confinement theorem and the sufficiency statements of Step~7 by demonstrating that tropical degeneration is not only sufficient but also necessary for the elimination of topological recurrence and for ensuring analytic regularity.
+\end{remark}
+
 \begin{theorem}[Manifold Embedding of the Attractor]
 If $C(t) < \varepsilon$ for $t > T_0$ and $\mathrm{PH}_1$ is Lipschitz-stable over time, then $\mathcal{A}$ embeds into a $d$-dimensional manifold with $d \le C' \cdot \varepsilon^\delta$.
 \end{theorem}
