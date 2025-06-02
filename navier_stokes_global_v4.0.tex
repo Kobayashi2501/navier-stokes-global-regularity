@@ -2505,12 +2505,23 @@ If $u(t) \in C^\beta([0,\infty); \dot{B}^{-1+3/p}_{p,q})$ with $\beta > 0$, then
 \]
 \end{theorem}
 
-\subsection*{I.4 Time-Asymmetry and Topological Compression (Link to Step 3)}
-The time irreversibility of PH barcodes forms a crucial barrier to self-similar recurrence:
-\begin{lemma}[Topological Time-Asymmetry Lemma]
-If $C_{\mathrm{Besov}}(t)$ decays monotonically and $\mathrm{PH}^j_1(t)$ are bottleneck-stable, then the topological configuration is temporally irreversible. In particular, no backward scaling symmetry can hold.
-\end{lemma}
-This directly reinforces the Step 3 exclusion of Type I blow-up, where recurrence requires reversible topology.
+\subsection*{I.4 Time-Asymmetry and Critical Besov Alignment}
+
+We now highlight the intrinsic connection between the time-asymmetric behavior of persistent homology collapse and the regularizing structure of critical Besov spaces.
+
+\begin{remark}[Topological Collapse and Temporal Irreversibility]
+The monotonic decay of the persistent energy $C(t)$ and collapse of $\mathrm{PH}_1(t)$ imply a unidirectional topological simplification. This corresponds analytically to a forward-in-time smoothing process, which aligns with the inherent irreversibility of solutions in critical Besov spaces such as $\dot{B}^{-1+3/p}_{p,q}$.
+
+In particular, the norm structure of Besov spaces allows small-scale oscillations or singularities to be smoothed out forward in time, but not recreated backward, thereby encoding a temporal directionality. This reflects the same asymmetry imposed by topological compression: once persistent loops collapse, they cannot spontaneously reappear without violating energy monotonicity.
+\end{remark}
+
+\begin{corollary}[Topological–Besov Equivalence of Irreversibility]
+If a solution $u(t)$ exhibits persistent homology collapse $\mathrm{PH}_1(t) \to 0$ and enstrophy control via $C(t) \to 0$, then its trajectory in $\dot{B}^{-1+3/p}_{p,q}$ lies within the forward-time regularity class and cannot be time-reversed without leaving the solution space.
+\end{corollary}
+
+\begin{remark}[Connection to Step 3]
+The exclusion of Type I blow-up via topological triviality (Step~3) relies on the inability to reconstruct loop-like orbit structures. This logically aligns with the Besov-based asymmetry, where energy concentration and reentrance of singularities are analytically forbidden in the forward-evolving space.
+\end{remark}
 
 \subsection*{I.5 Unified Energy Structure: $C(t)$ and $C_{\mathrm{Besov}}(t)$}
 \begin{lemma}[Functional Embedding Lemma]
