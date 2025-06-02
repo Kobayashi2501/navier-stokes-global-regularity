@@ -1349,6 +1349,22 @@ which implies that $C(t) \to 0$ enforces vanishing of high-frequency energy.
 This theorem formalizes the intuition that persistent energy $C(t)$ not only measures topological complexity but also acts as an upper bound on high-frequency spectral energy. As $C(t)$ decays, dyadic shells corresponding to short-lived (high $k$) features are suppressed. Thus, topological flattening translates to Fourier damping in a quantitative way.
 \end{remark}
 
+\begin{theorem}[Exponential Decay of Dyadic Shell Energy]
+Let $E_j(t)$ denote the energy in dyadic shell $2^j \le |k| < 2^{j+1}$, and suppose $C(t) \le C_0 e^{-\lambda t}$. Then for each $j$, there exist constants $A_j, \mu_j > 0$ such that
+\[
+E_j(t) \le A_j e^{-\mu_j t}.
+\]
+Moreover, if shell index $j$ increases, then decay rates $\mu_j$ grow with $j$, reflecting faster suppression of higher modes.
+\end{theorem}
+
+\begin{proposition}[Decay Slope Bound via Persistent Energy]
+Define the log-log slope $s(t)$ of the dyadic spectrum by fitting $\log E_j(t) \sim -s(t) \cdot j + c$. Then $s(t)$ satisfies:
+\[
+s(t) \gtrsim \frac{1}{2} \log_2 \left(\frac{1}{C(t)}\right).
+\]
+Hence, as $C(t) \to 0$, the slope steepens, indicating more rapid decay of spectral energy in higher shells.
+\end{proposition}
+
 \begin{proposition}[Topological--Spectral Correspondence]
 Let $l_i(t)$ denote the lifespan of the $i$-th persistent feature at time $t$, and $k_i(t)$ be the characteristic Fourier wavenumber associated with its spatial scale. Then, up to dimensional scaling,
 \[
