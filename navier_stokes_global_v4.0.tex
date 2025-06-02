@@ -323,8 +323,9 @@ In other words, the collapse of persistent topology acts not just as a signature
 
 
 % ===========================
-\section{Step 2 - Persistence-Based Enstrophy and Gradient Control}
+Step 2 - Persistence-Based Enstrophy and Gradient Control
 % ===========================
+\section{Step 2 - Persistence-Based Enstrophy and Gradient Control}
 
 This step builds on the topological stability from Step 1 and connects it with classical energy and enstrophy bounds. We show that persistent topological features constrain the enstrophy via a Lyapunov-type functional. Moreover, the decay of physical energy suppresses topological complexity, forming a feedback loop.
 
@@ -394,9 +395,9 @@ While $C(t)$ is defined via Fourier modes, it may be generalized using wavelet-b
 Suppose $\mathrm{PH}_1(t)$ is stable in bottleneck distance over $[0,T]$. Then $C(t)$ is piecewise Lipschitz and differentiable almost everywhere. The set of discontinuities corresponds to birth/death events of topological features and is of measure zero.
 \end{lemma}
 
-\subsection*{Supplement: Sobolev–Bochner Interpretation of $C(t)$}
+\subsection*{Supplement: Sobolev--Bochner Interpretation of $C(t)$}
 
-\begin{definition}[Sobolev–Bochner Space]
+\begin{definition}[Sobolev--Bochner Space]
 Let $X$ be a Banach space. The space $W^{1,1}(0,T; X)$ consists of functions $f: [0,T] \to X$ that are weakly differentiable and satisfy:
 \[
 \|f\|_{W^{1,1}(0,T; X)} := \int_0^T \|f(t)\|_X dt + \int_0^T \left\|\frac{df}{dt}(t)\right\|_X dt < \infty.
@@ -408,7 +409,7 @@ If $u(t) \in C^{\alpha/2}([0,T]; H^1)$ and $\mathrm{PH}_1(t)$ is bottleneck-stab
 \[
 \left\langle \frac{d}{dt} C, \varphi \right\rangle = -\int_0^T \gamma \|\nabla u(t)\|_{L^2}^2 \varphi(t)\, dt + \int_0^T \varepsilon(t) \varphi(t)\, dt,
 \]
-for all test functions $\varphi \in C_c^\infty(0,T)$, where $\varepsilon(t)$ captures topological noise from bar events.
+for all test functions $\varphi \in C_c^\infty(0,T)$.
 \end{lemma}
 
 \begin{remark}
@@ -459,7 +460,6 @@ As viscosity causes the flow to decay, the velocity magnitudes decrease and the 
 \subsection{Analytic Energy Decay Implies Topological Collapse}
 
 \begin{theorem}[Energy Decay Forces Topological Simplicity]
-\label{thm:energy_topo}
 Let $u(t)$ be a Leray--Hopf weak solution to the 3D incompressible Navier--Stokes equations on a smooth bounded domain $\Omega$. Suppose:
 \begin{itemize}
     \item The energy $E(t) := \|u(t)\|_{H^1}^2$ satisfies $\frac{d}{dt} E(t) < 0$ for all $t > 0$;
@@ -482,7 +482,6 @@ and $u(t)$ converges in $H^1$ norm to a steady state.
 \end{theorem}
 
 \begin{lemma}[Equivalence with Beale--Kato--Majda Criterion]
-\label{lem:bkm_equiv}
 Let $u(x,t)$ be a sufficiently regular weak solution. Assume:
 \[
 \int_0^T \|\nabla \times u(t)\|_{L^\infty} dt < \infty.
