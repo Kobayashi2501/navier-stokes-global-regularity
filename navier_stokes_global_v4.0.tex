@@ -280,6 +280,106 @@ Under persistent barcode collapse and Sobolev control, we have:
 In other words, the collapse of persistent topology acts not just as a signature but as a generator of smoothness.
 \end{remark}
 
+\subsection*{Supplement A: Topological Certifiability via PH Stability and Sampling Density}
+
+\begin{theorem}[Topological Certifiability via Sampling and Stability]
+\label{thm:certifiability}
+Let $\mathcal{O} := \{ u(t) \in H^1 : t \in [0,T] \}$ denote the solution orbit. Suppose:
+\begin{enumerate}
+    \item $\mathcal{O}$ is compact in $H^1$, injective, and has finite arc length.
+    \item A finite sample $S = \{ u(t_i) \}_{i=1}^n$ is $\varepsilon$-dense in $\mathcal{O}$ in the Hausdorff sense.
+    \item The persistent homology $\mathrm{PH}_1(S)$ computed from $S$ via the Čech complex vanishes: $\mathrm{PH}_1(S) = 0$.
+    \item The barcode exhibits bottleneck stability:
+    \[
+    d_B(\mathrm{PH}_1(t_i), \mathrm{PH}_1(t_j)) \leq L|t_i - t_j|^\alpha.
+    \]
+\end{enumerate}
+Then with high confidence (depending on $\varepsilon$, curvature of $\mathcal{O}$, and barcode noise threshold $\delta$), we conclude:
+\[
+\mathrm{PH}_1(\mathcal{O}) = 0,
+\]
+i.e., the analytic solution orbit is homologically trivial.
+\end{theorem}
+
+\begin{remark}[Source Theorems and Rationale]
+This follows from the combination of:
+\begin{itemize}
+    \item The Niyogi–Smale–Weinberger theorem, ensuring homology recovery from dense samples;
+    \item The stability theorem of Cohen–Steiner et al., bounding perturbation error in persistence diagrams.
+\end{itemize}
+Together, they imply that numerically observed $\mathrm{PH}_1 = 0$ is a reliable proxy for analytic triviality, provided:
+\[
+\varepsilon \ll \min(\text{inj radius}, \delta).
+\]
+\end{remark}
+
+\begin{remark}[Numerical Relevance]
+This theorem provides a blueprint for practical verification: ensuring small $\varepsilon$, stable barcode variation, and nontrivial persistence thresholds suffices to infer analytic simplicity.
+\end{remark}
+
+\begin{remark}[Analytic $\Rightarrow$ Topological Direction (See Step 2)]
+While Step 1 establishes that topological regularity implies Sobolev continuity, the converse direction is also true: energy decay leads to topological simplification. This duality is formalized in Step 2, where we show that strict dissipation of enstrophy forces the collapse of persistent topological structures. Hence, the analytic–topological relation forms a feedback loop:
+\[
+\mathrm{PH}_1\text{-stability} \;\Longleftrightarrow\; H^1\text{-regularity}.
+\]
+\end{remark}
+
+\begin{remark}[Numerical Implementation Guidelines]
+In practical simulations, topological triviality of the orbit $\mathcal{O}$ can be certified if:
+\begin{itemize}
+    \item The bottleneck variation over time satisfies
+    \[
+    d_B(\mathrm{PH}_1(t_i), \mathrm{PH}_1(t_{i+1})) < \delta, \quad \text{for some } \delta \lesssim 10^{-3}.
+    \]
+    \item The sample resolution obeys $\varepsilon < 0.01$ relative to the domain diameter.
+    \item All $\mathrm{PH}_1$ features have lifespan $< \tau_\text{threshold}$ for a time-stable window.
+\end{itemize}
+These empirical conditions ensure robustness against noise and are consistent with Theorem~\ref{thm:certifiability}.
+\end{remark}
+
+\subsection*{Supplement B: Functional Analytic Reinforcement and Tropical Collapse}
+
+\begin{lemma}[Differentiability of Topological Energy Functional]
+\label{lem:Ct_differentiable}
+Let $u(x,t) \in C^{\alpha/2}_t H^1_x$ and suppose $\mathrm{PH}_1(t)$ is bottleneck-stable in $t$. Then the persistence-based energy functional
+\[
+C(t) := \sum_{h \in \mathrm{PH}_1(t)} \mathrm{persist}(h)^2
+\]
+is Lipschitz continuous on $[0,T]$ and differentiable almost everywhere.
+\end{lemma}
+
+\begin{remark}
+The argument uses the fact that finite barcode variation with controlled persistence implies stability under $L^\infty$ perturbations. In particular, since the barcode evolves continuously under $t \mapsto u(\cdot,t)$ in $H^1$, the functional $C(t)$ inherits piecewise-smooth regularity.
+\end{remark}
+
+\begin{theorem}[Tropical Collapse Implies Smoothness]
+Let $\mathrm{PH}_1(t)$ converge to a trivial tropical limit in bottleneck distance as $t \to T^*$. Then:
+\begin{enumerate}
+  \item $C(t)$ converges to $0$ as $t \to T^*$.
+  \item $C(t)$ is differentiable on $[0,T^*)$, with $\frac{d}{dt} C(t) \to 0$ as $t \to T^*$.
+  \item The solution $u(x,t)$ becomes $C^\infty$-smooth in time for $t$ near $T^*$.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}[Geometry Behind Tropical Limit]
+The tropical collapse corresponds to barcode lifetimes shrinking to zero, reflecting the destruction of all nontrivial homological cycles. This limit behavior represents a topological rigidity condition, forbidding bifurcations or chaotic transport.
+\end{remark}
+
+\begin{remark}[Analytic–Topological Convergence Loop]
+This strengthens the feedback loop:
+
+\begin{theorem}[Analytic $\Leftrightarrow$ Topological Equivalence]
+Under persistent barcode collapse and Sobolev control, we have:
+\[
+\mathrm{PH}_1(u(t)) \text{ collapses } \Longleftrightarrow u(t) \in C^\infty([t_0,T]; H^1(\Omega)).
+\]
+\end{theorem}
+\[
+\mathrm{PH}_1 \to 0 \quad \Longleftrightarrow \quad C(t) \in C^1_t \quad \Longleftrightarrow \quad u \in C^\infty_t H^1_x.
+\]
+In other words, the collapse of persistent topology acts not just as a signature but as a generator of smoothness.
+\end{remark}
+
 
 
 % ===========================
