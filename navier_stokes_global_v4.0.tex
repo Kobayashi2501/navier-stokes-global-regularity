@@ -1204,7 +1204,6 @@ This exclusion enables transition to Step 5, where the barcode simplification is
 
 This step consolidates and extends the topological implications of Steps 1--4. Step~1 established the stability of persistent homology barcodes and their connection to Sobolev continuity. Step~2 introduced a Lyapunov-type functional $C(t)$ derived from persistent homology that controls enstrophy. Step~3 used the vanishing of $C(t)$ to infer orbit simplicity and exclude Type~I blow-up. Step~4 extended this to exclude Type~II and III singularities using persistent topological irreversibility. Step~5 now addresses the global structure of the long-time dynamics: it shows that the global attractor is contractible and finite-dimensional whenever persistent topological energy decays. Thus, this step forms the asymptotic geometric conclusion of the earlier topological stability analysis.
 
-
 \subsection{Topological Collapse Implies Exclusion of Type II Blow-Up}
 
 \begin{definition}[Persistent Topological Energy]
@@ -1277,8 +1276,8 @@ Assume $C(t) \le C_0 e^{-\lambda t}$ for $t > T_0$ with constants $C_0, \lambda 
 \]
 \end{lemma}
 
-\begin{proposition}[Constructive Topological Approximation via Čech Complex]
-Let $\{u(t_i)\}_{i=1}^N$ be a $\varepsilon$-dense sample of $\mathcal{A}$ in $H^1$. If the Čech complex built on this sample satisfies $\mathrm{PH}_1 = 0$, then with high probability:
+\begin{proposition}[Constructive Topological Approximation via \v{C}ech Complex]
+Let $\{u(t_i)\}_{i=1}^N$ be a $\varepsilon$-dense sample of $\mathcal{A}$ in $H^1$. If the \v{C}ech complex built on this sample satisfies $\mathrm{PH}_1 = 0$, then with high probability:
 \[
 \mathrm{PH}_1(\mathcal{A}) = 0.
 \]
@@ -1329,6 +1328,36 @@ The following conditions jointly exclude Type II blow-up:
 \end{itemize}
 Hence, no slowly diverging orbit with sustained topology can emerge. \textbf{This completes the topological exclusion of Type II singularities.}
 \end{remark}
+
+\subsection*{Topological Degeneration as Fourier Suppression: A Structural Bridge}
+
+While Step~5 describes the collapse of topological complexity via degeneration of persistent barcodes and VMHS structures, this process also admits a spectral interpretation: topological simplification corresponds to suppression of high-frequency content in the Fourier domain.
+
+\begin{proposition}[Topological--Spectral Correspondence]
+Let $l_i(t)$ denote the lifespan of the $i$-th persistent feature at time $t$, and $k_i(t)$ be the characteristic Fourier wavenumber associated with its spatial scale. Then, up to dimensional scaling,
+\[
+l_i(t) \sim \frac{1}{k_i(t)}.
+\]
+That is, short-lived topological features correspond to high-frequency oscillations, and the collapse of such features implies decay in spectral energy for large $k$.
+\end{proposition}
+
+\begin{remark}[Entropic Bridge via $H(t)$]
+Define the topological entropy by
+\[
+H(t) = -\sum_i p_i(t) \log p_i(t),
+\]
+where $p_i(t)$ is the normalized persistence of the $i$-th barcode at time $t$. As $H(t) \to 0$, persistence becomes concentrated in a few dominant (long-lived) features. This reflects a concentration of energy in low-frequency modes and the vanishing of high-wavenumber contributions.
+\end{remark}
+
+\begin{definition}[Derived Degeneration Functor]
+Let $\mathcal{D}$ denote a filtration-aware degeneration functor mapping topological complexity into spectral complexity:
+\[
+\mathcal{D} : \mathrm{PH}_1(t) \longrightarrow \widehat{u}(k, t),
+\]
+such that the degeneration of $\mathrm{PH}_1(t)$ implies decay of energy in high $k$. This functor formalizes the conceptual link between geometric simplification and Fourier-mode suppression.
+\end{definition}
+
+This topological-to-spectral degeneration sets the stage for Step~6, where we formalize the suppression of high-frequency energy through dyadic shell decomposition in Fourier space and prove exponential decay of turbulent modes.
 
 
 
