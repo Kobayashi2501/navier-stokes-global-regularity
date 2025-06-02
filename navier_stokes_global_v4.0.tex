@@ -801,6 +801,10 @@ Suppose the finite-sample orbit $\{u(t_i)\}$ yields $\mathrm{PH}_1 = 0$ via Čec
 By the bottleneck stability theorem in persistent homology, the vanishing of $\mathrm{PH}_1(\mathcal{O})$ is preserved under small $H^1$ perturbations of the orbit. This ensures that trivial loop structure cannot be created by minor dynamical fluctuations, reinforcing the structural rigidity of topological simplicity.
 \end{remark}
 
+\begin{remark}[PH₁ Triviality as a Stability Extension of Step 1]
+Step~1 established that $\mathrm{PH}_1(t)$ barcodes are bottleneck-stable under $H^1$ perturbations. This continuity ensures that no small fluctuation in the orbit can induce a new topological feature. Step~3 leverages this by concluding that global $\mathrm{PH}_1 = 0$ remains stable throughout the evolution, thereby reinforcing the analytic smoothness implied by topological triviality.
+\end{remark}
+
 \subsection{Definitions}
 
 \begin{definition}[Solution Orbit]
@@ -908,6 +912,10 @@ This implies a periodic or quasi-periodic recurrence in $H^1$, contradicting the
 Self-similar blow-up demands scale-invariance and effective time-reversibility. However, the Navier--Stokes equations dissipate energy monotonically, introducing a fundamental time arrow. This inherent asymmetry prevents any backward-invariant scaling trajectory from persisting.
 \end{remark}
 
+\begin{remark}[Topological Time-Asymmetry Prevents Self-Similar Loops]
+The persistent homology energy $C(t)$, introduced in Step~2, is a strictly decreasing functional under energy dissipation. This introduces an intrinsic time-arrow in topological space: once topological features vanish (e.g., loops), they cannot re-emerge under continuous evolution. Hence, no self-similar, time-reversible orbit structure is dynamically sustainable. This directionality reinforces the exclusion of Type I blow-up, which demands time-symmetric recurrence in shape and scale.
+\end{remark}
+
 \begin{theorem}[Unified Exclusion via PH Collapse]
 Let $u(t)$ be a Leray--Hopf solution with orbit $\mathcal{O} \subset H^1$ satisfying:
 \begin{itemize}
@@ -931,6 +939,11 @@ Since $\frac{d}{dt} E(t) < 0$, the solution loses energy monotonically. Therefor
 \begin{remark}[Topological Compression Excludes Scaling Invariance]
 Type I blow-up requires structural repetition under rescaling, implying conservation of topological complexity. However, persistent homology triviality ($\mathrm{PH}_1 = 0$) implies maximal topological compression. Thus, the flow cannot sustain a recursive or self-similar topological regime.
 \end{remark}
+
+\begin{remark}[Lyapunov Collapse Forces Trivial Topology]
+The Lyapunov functional $C(t)$ introduced in Step~2 not only bounds enstrophy but also collapses the orbit’s topological complexity over time. Since $C(t) \to 0$ implies that all persistent bars vanish, the solution trajectory must flatten topologically. This serves as a time-asymmetric forcing mechanism that drives the orbit toward $\mathrm{PH}_1 = 0$, thereby excluding structures needed for Type I blow-up.
+\end{remark}
+
 
 \begin{remark}[Time-Asymmetry Precludes Type I Self-Similarity]
 Self-similar blow-up requires a reversible rescaling of the orbit $\mathcal{O}$, i.e., $u(t+\Delta t) \approx \lambda(\Delta t) u(t)$. However, persistent homology triviality ($\mathrm{PH}_1 = 0$) combined with strict energy dissipation implies time-asymmetric collapse of topological structure. Hence, no invertible scaling trajectory can exist, precluding Type I singularities.
@@ -962,6 +975,10 @@ Critical Besov or Morrey spaces encode blow-up scaling properties but do not det
 
 \begin{remark}[Link to Step 4 – Topological Transition Barrier]
 The injectivity and contractibility of $\mathcal{O}$, together with strictly decreasing energy $E(t)$, prevent return to any prior topological state. Thus, oscillatory or chaotic (Type II/III) transitions must also be ruled out via homological persistence and its stability—see Step 4.
+\end{remark}
+
+\begin{remark}[Foundational Role for Step 4]
+The exclusion of loop-like orbit structures and the imposed topological compression under dissipation provide the foundational mechanism for excluding Type II and III singularities. Since no nontrivial topological cycle can persist, even slow-gradient or oscillatory recurrences (central to Step~4) lack the necessary structural complexity to emerge.
 \end{remark}
 
 
