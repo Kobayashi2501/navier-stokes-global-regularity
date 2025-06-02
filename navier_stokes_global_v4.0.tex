@@ -2669,7 +2669,10 @@ Future directions include:
 
 % =============================================================
 
+% Appendix J. Numerical Protocols and Visualization Pipelines
+
 \section*{Appendix J. Numerical Protocols and Visualization Pipelines}
+\label{sec:appendixJ}
 
 This appendix outlines the implementation pipeline, numerical verification procedures, and visualization strategies used to support the hybrid analytic–topological approach presented in the main text.
 
@@ -2735,6 +2738,33 @@ Code is available in the GitHub repository (linked in main text).
 
 \subsection*{J.9 Summary}
 The protocols in this appendix formalize the numerical side of the hybrid regularity program. By linking simulation data, geometric projections, and topological observables, we offer a reproducible framework to verify Steps 3--7 empirically and extend analysis to new PDE regimes.
+
+\subsection*{J.10 Numerical Modules and Theoretical Mapping}
+\label{subsec:J10}
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|p{4.5cm}|p{8.5cm}|}
+\hline
+\textbf{Module Name} & \textbf{Theoretical Role / Corresponding Step(s)} \\
+\hline
+\texttt{pseudo\_spectral\_sim.py} &
+Simulates the velocity field $u(x,t)$ using a spectral solver. Provides data for Step~1 (topological stability), Step~2 (enstrophy decay), and Step~3 (orbit simplicity). \\
+\hline
+\texttt{fourier\_decay.py} &
+Computes dyadic shell energies and Fourier spectrum $E_k$. Verifies Step~6 by confirming suppression of high-frequency modes. \\
+\hline
+\texttt{ph\_isomap.py} &
+Embeds orbit data via Isomap and computes $\mathrm{PH}_1$ using \texttt{ripser}. Central to Step~1 (stability), Step~3 (contractibility), and Step~4 (barcode evolution). \\
+\hline
+\texttt{ak\_projection\_lemma\_proofs\_en\_v4.2.tex} &
+Contains the formal foundation of AK-HDPST. Justifies the global structure of Step~7 via categorical and degeneration-based arguments. \\
+\hline
+\end{tabular}
+\caption{Mapping between numerical simulation modules and theoretical proof components.}
+\label{tab:numerical_mapping}
+\end{table}
 
 % =============================================================
 
