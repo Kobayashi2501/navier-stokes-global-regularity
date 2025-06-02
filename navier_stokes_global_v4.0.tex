@@ -786,6 +786,10 @@ If $\| \partial_t u \|_{H^{-1}}$ is integrable over $[0,T]$, then the orbit $\ma
 Suppose the finite-sample orbit $\{u(t_i)\}$ yields $\mathrm{PH}_1 = 0$ via Čech filtration and bottleneck stability holds. Then the continuous orbit $\mathcal{O}$ is homologically contractible.
 \end{theorem}
 
+\begin{remark}[Bottleneck Stability Preserves PH₁ Triviality]
+By the bottleneck stability theorem in persistent homology, the vanishing of $\mathrm{PH}_1(\mathcal{O})$ is preserved under small $H^1$ perturbations of the orbit. This ensures that trivial loop structure cannot be created by minor dynamical fluctuations, reinforcing the structural rigidity of topological simplicity.
+\end{remark}
+
 \subsection{Definitions}
 
 \begin{definition}[Solution Orbit]
@@ -839,6 +843,14 @@ If $\mathcal{O} \subset H^1$ is injective, of finite arc length, and contractibl
 \]
 \end{theorem}
 
+\begin{theorem}[VMHS Degeneration Implies Homological Collapse]
+Suppose the evolution of barcodes $\mathrm{PH}_1(t)$ along $\mathcal{O}$ defines a continuous variation with uniformly shrinking intervals. Then this defines a degenerating variation of mixed Hodge structure, which implies topological collapse of the orbit in homology.
+\end{theorem}
+
+\begin{proof}[Sketch]
+Let $\mathrm{PH}_1(t)$ evolve under bounded $H^1$ norms with bottleneck distance decaying to zero. This contraction corresponds to the vanishing of nontrivial Hodge weights, and thus, to a collapse of the underlying fiber in the categorical moduli space. Consequently, $\mathrm{PH}_1(\mathcal{O}) = 0$ holds.
+\end{proof}
+
 \subsection{Orbit Projection and Loop Detection}
 
 \begin{lemma}[Projected Orbit Contains Loops under Scaling]
@@ -859,6 +871,10 @@ In practice, the orbit $\pi(\mathcal{O})$ can be embedded using Isomap or t-SNE.
 We compute $\mathrm{PH}_1(t)$ over snapshots $u(t_i)$, normalize, apply Isomap, and visualize. See Appendix~G for details.
 \end{remark}
 
+\begin{remark}[Numerical Robustness and Resolution]
+Detecting topological loops via Isomap or t-SNE requires sufficient sampling density and low-noise data. Overly sparse orbit snapshots may miss recurrence, while oversmoothing may artificially destroy genuine features. Therefore, verifying $\mathrm{PH}_1 = 0$ numerically must consider barcode persistence across multiple scales.
+\end{remark}
+
 \subsection{Exclusion of Type I Blow-Up via Topological Argument}
 
 \begin{lemma}[Self-Similar Scaling Implies Topological Loop]
@@ -876,6 +892,10 @@ If the solution orbit $\mathcal{O}$ contains a topological loop, then there exis
 \]
 This implies a periodic or quasi-periodic recurrence in $H^1$, contradicting the strict energy dissipation and the topological triviality $\mathrm{PH}_1 = 0$.
 \end{lemma}
+
+\begin{remark}[Time-Asymmetric Dissipation vs Scaling Symmetry]
+Self-similar blow-up demands scale-invariance and effective time-reversibility. However, the Navier--Stokes equations dissipate energy monotonically, introducing a fundamental time arrow. This inherent asymmetry prevents any backward-invariant scaling trajectory from persisting.
+\end{remark}
 
 \begin{theorem}[Unified Exclusion via PH Collapse]
 Let $u(t)$ be a Leray--Hopf solution with orbit $\mathcal{O} \subset H^1$ satisfying:
@@ -913,12 +933,20 @@ Self-similar blow-up requires nonlocal rescaling across space-time neighborhoods
 The topological simplicity of the orbit is reflected not only in $\mathrm{PH}_1$ but also in its embedding into a contractible moduli space of flow configurations. No nontrivial fiber or obstruction class exists to support recurrent or self-similar structure within this simplified configuration manifold.
 \end{remark}
 
+\begin{remark}[Categorical Collapse via AK-HDPST]
+In the AK High-Dimensional Projection Structural Theory (AK-HDPST), orbit simplicity corresponds to categorical degeneration. The trajectory $\mathcal{O}$ compresses into a contractible fiber of a higher-dimensional functorial evolution, implying the collapse of all nontrivial morphism classes. Thus, no loop-like groupoid can survive under this compression.
+\end{remark}
+
 \begin{remark}[Numerical Implication]
 In practice, if PH₁ barcodes computed along a numerical trajectory remain trivial and no closed loop is detected under Isomap projection, then the orbit is empirically consistent with Type I blow-up exclusion. This provides an observable numerical criterion for ruling out self-similarity.
 \end{remark}
 
 \begin{remark}[Higher-Dimensional Persistent Homology]
 The exclusion of Type I blow-up hinges specifically on the vanishing of first persistent homology $\mathrm{PH}_1$, which corresponds to loop-like structures in the orbit geometry. Higher-dimensional features such as $\mathrm{PH}_2$ (e.g., voids or cavities) do not arise in the 1D trajectory $\mathcal{O} \subset H^1$, and even if they did, they would not imply loop recurrence or self-similar blow-up. Thus, the analysis is fully robust within the $\mathrm{PH}_1$ framework.
+\end{remark}
+
+\begin{remark}[Comparison with Critical Function Space Topologies]
+Critical Besov or Morrey spaces encode blow-up scaling properties but do not detect homological structure. In contrast, persistent homology detects topological recurrence directly. The condition $\mathrm{PH}_1 = 0$ therefore provides a stronger geometric obstruction than norm-based regularity criteria.
 \end{remark}
 
 \begin{remark}[Link to Step 4 – Topological Transition Barrier]
