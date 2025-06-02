@@ -54,16 +54,25 @@ While partial results exist under smallness or critical norm conditions, a gener
 
 We develop a seven-step program in which topological, geometric, and algebraic insights are tightly coupled with classical analytic bounds. The final step closes a feedback loop by showing that topological triviality is both a consequence and a sufficient cause of regularity under a degenerating mixed Hodge structure.
 
-\subsection*{Step 0: Analytical Initialization and Simulation Consistency}
+\section{Step 0 - Motivational Lifting: From Observable Complexity to Higher-Order Order}
 
-As a foundational assumption, we begin with divergence-free initial data $u_0 \in H^1(\mathbb{R}^3)$ and construct Leray--Hopf weak solutions. Our numerical simulations use pseudo-spectral methods (Appendix A) that preserve incompressibility and dissipative structure. This initialization provides the setting in which all subsequent topological and energetic quantities are defined and sampled. In particular:
-\begin{itemize}
-  \item The orbit $\{ u(t) \}$ is sampled at uniform time intervals and is embedded into finite-dimensional space for persistent homology computation.
-  \item Consistency with Sobolev and spectral structures is ensured by alignment with Fourier and wavelet resolution (see Appendices F and I).
-  \item Numerical sampling theorems (e.g., Niyogi--Smale--Weinberger) provide justification for finite-point inference of homological properties.
-\end{itemize}
+The AK High-Dimensional Projection Structural Theory (AK-HDPST) begins with a guiding insight:
 
-This step underlies the empirical-to-analytic bridge central to Step 1 and supports the reproducibility principles formalized in Appendices H and J.
+\begin{quote}
+\textit{“Observable complexity may be the projection of hidden higher-order regularity.”}
+\end{quote}
+
+This perspective reinterprets turbulence, singularity formation, and nonlinear instabilities as artifacts of dimensionally compressed observation. Much like how birational geometry resolves surface singularities by lifting to a smooth ambient space, we propose that the Navier–Stokes equations admit an implicit structure that becomes regular when projected into a structured high-dimensional space—such as one endowed with persistent topological, algebraic, and geometric modules.
+
+In this formulation, the apparent complexity of the solution space is a shadow of a decomposable, MECE-structured categorical object. Each observable solution trajectory corresponds to a projection from a fibered ambient geometry, where persistent topological structures encode long-lived dynamics and degeneration phenomena correspond to categorical transitions.
+
+\subsection*{Bridge to Step 1: Topology as the First Lens}
+
+To begin resolving the singularity problem from this lifted perspective, we first seek structural invariants that persist under small perturbations and track coherent behavior over time. For this, we turn to \textbf{Persistent Homology}.
+
+Step~1 formalizes this topological entry point: it defines time-evolving barcodes $\mathrm{PH}_1(t)$ as quantitative topological signatures of the solution orbit and demonstrates their bottleneck stability in the Sobolev $H^1$ norm. This creates the first analytic-to-topological bridge: persistent topology reveals underlying continuity and smoothness constraints even in weak solutions.
+
+Hence, the transition from Step~0 to Step~1 is not merely notational but conceptual: we move from the philosophical lifting of complexity to the rigorous extraction of persistent geometric invariants as the foundation of a proof strategy.
 
 \subsection*{Overview Table of the Seven-Step Framework}
 
