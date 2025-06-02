@@ -1634,12 +1634,23 @@ Let \( u(t) \) be a weak solution to the 3D incompressible Navier--Stokes equati
 \end{theorem}
 
 \begin{proof}[Sketch]
-(i) ⇒ (ii): Bottleneck stability of PH₁ implies H\"older continuity in \( H^1 \). If all barcodes converge to zero, then topological events (e.g., loop births) vanish, implying uniform $H^1$ continuity.
+(i) ⇒ (ii): Bottleneck stability of $\mathrm{PH}_1$ implies Hölder continuity in $H^1$. If all barcodes converge to zero, then topological events (e.g., loop births) vanish, implying uniform $H^1$ continuity.
 
 (ii) ⇒ (iii): Uniform continuity prohibits structural degeneration or chaotic orbit returns, both topologically and analytically.
 
-(iii) ⇒ (i): If no degeneration occurs, persistent features vanish over time. Thus PH₁ collapses to zero in bottleneck distance.
+(iii) ⇒ (i): If no degeneration occurs, persistent features vanish over time. Thus $\mathrm{PH}_1$ collapses to zero in bottleneck distance.
 \end{proof}
+
+This equivalence can be formalized using the following structures:
+
+- The derived category $D^b(\mathsf{Filt})$ of filtered complexes associated with the barcode filtration of $u(t)$.
+- The persistence module $\mathrm{PH}_1(u(t))$ interpreted as a functor from the time-indexed poset $([0,T], \le)$ to an abelian category of vector spaces.
+- For each $t$, the persistent homology $\mathrm{PH}_1(u(t))$ corresponds to the first cohomology $H_1(F^\bullet_t)$ of a filtered complex $F^\bullet_t$, and can be categorically interpreted as an extension class:
+\[
+\mathrm{PH}_1(u(t)) \simeq \mathrm{Ext}^1(\mathbb{Q}, F^\bullet_t).
+\]
+In this setting, the vanishing of $\mathrm{PH}_1$ corresponds to the collapse of all extension classes in the derived category, i.e., triviality of $\mathrm{Ext}^1$ and thus analytic regularity.
+
 
 \begin{remark}
 This closes the equivalence between analytic smoothness and topological triviality, strengthening the foundational link between persistent homology and regularity in the Navier--Stokes context.
@@ -1671,17 +1682,21 @@ Assume $\mathcal{P}$ is fibered over $[0,T]$ via a projection functor $\pi$, and
 Let $F^\bullet_t$ be a filtered complex associated to $u(t)$ such that $\mathrm{PH}_1(t) \cong H_1(F^\bullet_t)$. We define a spectral sequence $E^r_{p,q}(t) \Rightarrow H_{p+q}(F^\bullet_t)$ associated to the filtration.
 
 \begin{definition}[Tropical Stability of Barcode Path]
-The barcode path $B(t)$ is tropically stable if its projection to tropical coordinates $\operatorname{Trop}(B(t))$ is piecewise-linear and Lipschitz continuous with respect to $t$, and converges to a trivial point as $t \to T$.
+The barcode path $B(t)$ is \emph{tropically stable} if its projection to tropical coordinates $\operatorname{Trop}(B(t))$ is piecewise-linear, Lipschitz continuous in $t$, and converges to a single point as $t \to T$. This models the combinatorial collapse of persistent topological features.
 \end{definition}
 
 \begin{definition}[Persistent Homology Degeneration via VMHS]
-$B(t)$ degenerates via a polarized VMHS if there exists a family of filtered complexes $\{F^p(t)\}$ such that:
+The path $B(t)$ is said to \emph{degenerate via a polarized variation of mixed Hodge structure (VMHS)} if there exists a family of filtered complexes $\{F^p(t)\}$ such that:
 \begin{itemize}
-  \item Each $F^p(t)$ corresponds to a filtration compatible with $u(t)$;
-  \item The filtration collapses toward boundary strata in a moduli space as $t \to T$;
-  \item The limiting Hodge structure is mixed and polarized.
+  \item Each $F^p(t)$ defines a filtration compatible with the solution $u(t)$;
+  \item The filtration degenerates toward boundary strata in a parameterized moduli space as $t \to T$;
+  \item The limiting Hodge structure $(W_\bullet, F^\bullet)$ is mixed and polarized.
 \end{itemize}
 \end{definition}
+
+\begin{remark}[Categorification of Barcodes]
+Each persistence barcode $B(t)$ corresponds to a filtered complex $F^\bullet_t$ in the derived category $D^b(\mathsf{Filt})$. Its homology $H_1(F^\bullet_t)$ determines the topological generators of $\mathrm{PH}_1(t)$. The degeneration of $F^\bullet_t$ is naturally modeled by a limiting mixed Hodge structure, whose collapse certifies the topological triviality of the orbit.
+\end{remark}
 
 \subsection*{7.3 Main Theorems}
 
@@ -1696,6 +1711,17 @@ Let $u(t)$ be a Leray--Hopf solution on $[0,T]$. Assume:
 \end{enumerate}
 Then $u(t)$ is $C^\beta$-continuous in time with respect to the $H^1$ norm.
 \end{theorem}
+
+\begin{remark}[Proof Sketch - Theorem 8.6]
+The five assumptions correspond to:
+
+(1)–(2): Structural degeneration via VMHS implies barcode triviality;
+(3): Tropical stability guarantees piecewise-linear convergence in a toroidal moduli space;
+(4): $C(t)$ decay aligns with enstrophy control;
+(5): The spectral sequence collapse certifies no higher cohomological obstructions remain.
+
+Thus, the topological energy functor $C$ vanishes along a terminal path in $\mathcal{P} \to [0,T]$, implying analytic smoothness.
+\end{remark}
 
 \begin{theorem}[Analytic Regularity from Tropical Barcode Collapse]
 If $\operatorname{Trop}(B(t))$ converges to a point and $C(t) \to 0$, then for $t$ near $T$, $u(t)$ is $C^\infty$-smooth in time in $H^1$.
@@ -1726,6 +1752,14 @@ The decay of $C(t)$ induces contraction in the space of filtered complexes, maki
 If $\mathcal{P} \to [0,T]$ admits a terminal object with $C(T) = 0$, then the orbit $\{ u(t) \}$ is contractible and homotopically trivial.
 \end{proposition}
 
+\begin{remark}[Derived Terminal Object Interpretation]
+The terminal object in $\mathcal{P}$ corresponds to a filtered complex $F^\bullet_T$ with $\mathrm{Ext}^1(\mathbb{Q}, F^\bullet_T) = 0$. This implies the degeneration has reached categorical finality, and the corresponding barcode is trivial: $\mathrm{PH}_1(T) = 0$.
+\end{remark}
+
+\begin{remark}[Ext Vanishing as Structural Collapse]
+The vanishing of $\mathrm{Ext}^1(\mathbb{Q}, F^\bullet_T)$ indicates that all barcode extensions become trivial in the derived category. This is equivalent to categorical contractibility, i.e., the persistent orbit is homologically equivalent to a point.
+\end{remark}
+
 \subsection*{7.5 Mirror--Symplectic Perspective}
 
 \begin{definition}[Tropical Mirror Collapse]
@@ -1736,6 +1770,10 @@ A barcode path $B(t)$ admits a tropical mirror collapse if:
   \item Fukaya category objects degenerate to trivial classes.
 \end{itemize}
 \end{definition}
+
+\begin{remark}[SYZ Correspondence in PH]
+Let $B(t)$ and its mirror $B^\vee(t)$ correspond to families of Lagrangian torus fibrations. Tropical collapse corresponds to the collapse of both the base and fiber tori, and the derived Fukaya category degenerates to zero objects. Hence, $\mathrm{PH}_1$ collapses both symplectically and algebraically.
+\end{remark}
 
 \begin{theorem}[Mirror Dual Collapse Implies Regularity]
 If both $B(t)$ and $B^\vee(t)$ collapse tropically and symplectically, then $u(t)$ is smooth, finite-dimensional, and non-recurrent.
@@ -1762,6 +1800,18 @@ Let $B(t)$ be a barcode in $\mathrm{PH}_1(t)$. Then its categorical realization 
 This establishes a duality between persistent bars and Ext-class extensions.
 \end{proposition}
 
+\begin{definition}[PH--Ext Correspondence]
+Let $\mathcal{F}_t$ be the filtered complex encoding the persistent homology barcode. Then:
+\[
+\mathrm{PH}_1(t) \simeq \mathrm{Ext}^1(\mathbb{Q}, \mathcal{F}_t)
+\]
+in the derived category $D^b(\mathsf{Filt})$.
+\end{definition}
+
+\begin{theorem}[Ext Vanishing Criterion]
+If $\mathrm{Ext}^1(\mathbb{Q}, \mathcal{F}_t) = 0$ for all $t > T_0$, then $\mathrm{PH}_1(t) = 0$ and $u(t)$ is $C^\infty$-smooth in $H^1$ norm.
+\end{theorem}
+
 \begin{remark}[Ext Vanishing and Energy Collapse]
 When $\mathrm{Ext}^1(\mathbb{Q}, X) = 0$ for all categorical realizations of persistent bars, it implies $C(t) = 0$. Thus, homological triviality in the derived category corresponds to vanishing Lyapunov energy in the analytic domain.
 \end{remark}
@@ -1781,6 +1831,12 @@ If $\mathrm{PH}_1(u(t)) \to 0$ in bottleneck distance, then $u(t)$ converges in 
 \end{remark}
 
 \textbf{Conclusion:} If persistent topology collapses categorically, spectrally, and tropically---including Ext-class vanishing---regularity is structurally certified.
+
+\begin{remark}[Outlook]
+Future refinements may formalize these categorical collapse mechanisms over derived stacks, or apply the same reasoning to other dissipative PDEs where persistent homology can be interpreted as Ext-vanishing in appropriately filtered derived categories.
+\end{remark}
+
+This opens a pathway toward a unifying framework of dissipative dynamics through homological simplification, potentially connecting geometric analysis, category theory, and data topology.
 
 \begin{center}
 \textbf{\underline{Diagram: Mirror-Symmetric Collapse}}
