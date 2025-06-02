@@ -118,7 +118,7 @@ AK-HDPSTは：
 
 ## 👤 著者情報
 
-**主執筆者**：A. Kobayashi（小林篤志）  
+**主執筆者**：A. Kobayashi（小林篤史）  
 **理論パートナー**：ChatGPT Research Partner  
 📧 **連絡先**：dollops2501@icloud.com
 
