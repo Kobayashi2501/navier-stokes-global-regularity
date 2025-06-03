@@ -67,10 +67,10 @@ Let \( u_0 \in H^1(\mathbb{R}^3) \) be divergence-free. Then the corresponding L
 
 ---
 
-## 🌀 Foundation: AK-HDPST v4.2
+## 🌀 Foundation: AK-HDPST v4.5
 
 The framework is grounded in  
-[**AK High-Dimensional Projection Structural Theory (v4.2)**](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory),  
+[**AK High-Dimensional Projection Structural Theory (v4.5)**](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory),  
 which enables:
 
 - Lifting PDEs into MECE-structured fiber categories
