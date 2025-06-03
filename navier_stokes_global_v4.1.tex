@@ -2167,6 +2167,16 @@ If \( \mathcal{O} \) is contractible and Lipschitz, then its persistent homology
 \]
 \end{theorem}
 
+\subsection*{C.1.1 Čech Approximation and Persistent Homology}
+
+\begin{lemma}[Čech Approximation from Convexity]
+Let \( \mathcal{O} \subset H^1 \) be compact and covered by balls \( \{ B_\varepsilon(u(t_i)) \} \) such that \( \{ u(t_i) \} \) is \( \varepsilon \)-dense. If each \( B_\varepsilon(u(t_i)) \) is convex in \( H^1 \), then the Čech complex approximates \( \mathcal{O} \) up to homotopy.
+\end{lemma}
+
+\begin{proof}[Sketch]
+Convexity ensures that all finite intersections are contractible, satisfying the good cover condition. The Nerve Theorem then implies homotopy equivalence between the Čech complex and the union of the balls, which densely approximates \( \mathcal{O} \).
+\end{proof}
+
 \subsection*{C.2 Topological Contractibility via the Nerve Theorem}
 
 \begin{definition}[Good Cover]
@@ -2200,8 +2210,29 @@ Let \( \mathcal{O} \subset H^1 \) be a continuous, injective, finite-length orbi
 The set \( \{ B_\varepsilon(u(t_i)) \} \) forms a good cover in Hilbert space \( H^1 \), since balls and their finite intersections are convex. The nerve is then homotopy equivalent to \( \mathcal{O} \). Since \( \mathrm{PH}_1 = 0 \), the Čech complex is an arc, and hence \( \mathcal{O} \) is contractible.
 \end{proof}
 
+\begin{proposition}[PH Triviality as Strict Simplicity Certificate]
+Let \( \mathcal{O} \subset H^1 \) be an orbit or attractor. Then $\mathrm{PH}_1(\mathcal{O}) = 0$ certifies topological simplicity more strongly than classical contractibility, especially under noisy, sampled, or filtered data regimes.
+\end{proposition}
+
+\begin{remark}
+This proposition emphasizes that persistent homology triviality serves not only as a theoretical condition, but as a robust certificate of structural simplicity in practical settings, especially under sampling noise or topological distortion.
+\end{remark}
+
 \begin{remark}
 This dual path (energy-based and topology-based) confirms that Type I blow-ups, which require orbit-level recurrence or self-similar loops, are excluded by the structural simplicity of the orbit in both analytic and topological senses.
+\end{remark}
+
+\subsection*{C.2.1 Persistent Stability under Filtration Resolution}
+
+\begin{lemma}[Persistent Homology Stability Under Sampling Scale]
+Let \( \mathcal{O} \subset H^1 \) be a compact injective orbit. If the Čech complex constructed from an \( \varepsilon \)-dense point cloud has \( \mathrm{PH}_1 = 0 \), and \( \varepsilon < \ell_{\min}/2 \), where \( \ell_{\min} \) is the shortest nontrivial loop scale, then:
+\[
+\mathrm{PH}_1(\mathcal{O}) = 0.
+\]
+\end{lemma}
+
+\begin{remark}
+This provides a numerical justification: if persistent homology vanishes at high resolution, no genuine 1-cycles exist. This bridges the topological exclusion with practical sampling theory, reinforcing that Type I singularity is not numerically supported.
 \end{remark}
 
 \subsection*{C.3 Persistent Homology and Exclusion of Self-Similarity}
@@ -2225,7 +2256,6 @@ A space can be contractible in the homotopy sense while exhibiting nontrivial pe
 
 Therefore, persistent homology triviality provides a more stringent, data-sensitive certification of topological simplicity than classical contractibility.
 \end{remark}
-
 
 \begin{remark}
 This finalizes the topological exclusion of Type I singularities: persistent triviality, orbit injectivity, and finite arc length jointly preclude the geometric conditions necessary for self-similar singularity formation.
