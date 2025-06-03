@@ -1566,9 +1566,29 @@ This topological-to-spectral degeneration sets the stage for Step~6, where we fo
 \section{Step 6 - Structural Stability under Perturbations and Spectral Exclusion of Type II/III}
 \label{sec:step6}
 
-\subsection*{6.1 Stability of Type II/III Exclusion and Attractor Confinement}
+\subsection{6.1 Persistent Homology Stability under Perturbation}
 
 This step ensures that the exclusion of singularities and attractor flattening demonstrated in Step~5 remain valid under small perturbations of the initial condition. Specifically, we investigate how the persistent topological energy $C(t)$ and the barcode structures $\mathrm{PH}_1(t)$ behave under $H^1$-perturbations, and prove that attractor simplicity and topological triviality are structurally stable.
+
+\begin{theorem}[Stability of PH$_1$ under $H^1$ Perturbations]
+Let $u(t)$ be a weak solution to the Navier--Stokes equations on $[0,T]$ with orbit $\mathcal{O} = \{ u(t) \}_{t \in [0,T]} \subset H^1$. Suppose a perturbed initial condition $u^\varepsilon(0) = u(0) + \varepsilon \phi$, with $\|\phi\|_{H^1} \le 1$, defines a perturbed solution $u^\varepsilon(t)$. Then for sufficiently small $\varepsilon$, the corresponding orbits satisfy:
+\[
+d_B(\mathrm{PH}_1(\mathcal{O}), \mathrm{PH}_1(\mathcal{O}^\varepsilon)) < \delta(\varepsilon),
+\]
+where $d_B$ is the bottleneck distance and $\delta(\varepsilon) \to 0$ as $\varepsilon \to 0$.
+\end{theorem}
+
+\begin{proof}[Sketch of Argument]
+From classical local well-posedness in $H^1$, small perturbations in the initial data lead to nearby solution trajectories. Because persistent homology is bottleneck-stable under metric perturbations of point clouds, and the orbit $\mathcal{O}$ and its perturbation $\mathcal{O}^\varepsilon$ remain close in $H^1$, we conclude:
+\[
+d_B(\mathrm{PH}_1(\mathcal{O}), \mathrm{PH}_1(\mathcal{O}^\varepsilon)) \le \eta(\varepsilon), \quad \text{with } \eta(\varepsilon) \to 0.
+\]
+Thus, no new topological features arise under small $H^1$ perturbations.
+\end{proof}
+
+\begin{remark}[Role of $C(t)$ as Stabilizer]
+Since the topological energy $C(t) = \sum_i \mathrm{pers}_i^2$ decreases monotonically, small perturbations do not introduce long-lived topological features. This supports the Lyapunov-like behavior of $C(t)$ and stabilizes $\mathrm{PH}_1 = 0$.
+\end{remark}
 
 \begin{remark}[Connection to Step 5]
 This step ensures that the attractor simplicity and exclusion of singularities derived in Step~5 remain valid even under small perturbations of the initial data.
@@ -1687,7 +1707,7 @@ The topological exclusion of Type II and III blow-up is structurally stable unde
 Thus, no physically meaningful perturbation can trigger topological or analytic singularity re-entry.
 \end{remark}
 
-\subsection*{6.2 Spectral Decay and Intrinsic Singularity Exclusion}
+\subsection{6.2 Spectral Decay and Intrinsic Singularity Exclusion}
 
 In addition to perturbative stability, we now establish that spectral decay of dyadic shell energies suffices to exclude the onset of Type~II and Type~III blow-up, independent of initial data sensitivity.
 
