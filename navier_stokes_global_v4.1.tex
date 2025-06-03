@@ -194,7 +194,7 @@ Let $\mathcal{O} := \{u(t): t \in [0,T]\} \subset H^1$ be the solution orbit, an
 Theorem \ref{thm:niyogi_smale_weinberger} connects finite-sample simulations with analytic topological properties. It enables reliable use of discrete barcode observations to infer continuum regularity, provided the sampling density $\varepsilon$ is sufficiently small.
 \end{remark}
 
-\begin{remark}[Experimental Mathematics Perspective]
+\begin{remark}[]
 This framework endorses a sound experimental mathematics strategy: if numerical simulations on $\varepsilon$-dense samples yield vanishing $\mathrm{PH}_1$ stably over time, then the analytic orbit $\mathcal{O}$ is provably topologically trivial. This reverses the usual logic of analysis-from-theory, and strengthens the validity of empirical observation.
 \end{remark}
 
@@ -234,6 +234,15 @@ Together, they imply that numerically observed $\mathrm{PH}_1 = 0$ is a reliable
 \begin{remark}[Numerical Relevance]
 This theorem provides a blueprint for practical verification: ensuring small $\varepsilon$, stable barcode variation, and nontrivial persistence thresholds suffices to infer analytic simplicity.
 \end{remark}
+
+\begin{lemma}[Local Lipschitzness of Isomap Embedding]
+Let $u(t) \in H^1$ and let $\Phi: H^1 \to \mathbb{R}^d$ be the Isomap embedding. Then, for sufficiently dense sampling and regularity assumptions, $\Phi$ is locally Lipschitz:
+\[
+\|\Phi(u(t)) - \Phi(u(s))\|_{\mathbb{R}^d} \leq L \|u(t) - u(s)\|_{H^1}.
+\]
+\end{lemma}
+
+This lemma justifies the use of $\mathrm{PH}_1$ barcodes derived from Isomap-embedded velocity fields. It provides the analytic foundation for the stability theorem that follows.
 
 \begin{theorem}[Sobolev Regularity Implies Persistent Stability]
 Let $u(t) \in C^\alpha([0,T]; H^1(\Omega))$ and let $\mathrm{PH}_1(t)$ be the persistent homology barcode obtained from an Isomap embedding of $\{u(t)\}$. Then
