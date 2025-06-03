@@ -1586,6 +1586,14 @@ d_B(\mathrm{PH}_1(\mathcal{O}), \mathrm{PH}_1(\mathcal{O}^\varepsilon)) \le \eta
 Thus, no new topological features arise under small $H^1$ perturbations.
 \end{proof}
 
+\begin{remark}[Numerical Detection of PH$_1$ Stability]
+Given orbit snapshots $\{ u(t_i) \}$ and $\{ u^\varepsilon(t_i) \}$ computed via \texttt{simulate\_nse}, one can apply \texttt{ph\_isomap} to both trajectories and compare the resulting persistence diagrams. If:
+\[
+d_B(\mathrm{PH}_1(t_i), \mathrm{PH}_1^\varepsilon(t_i)) < \delta
+\]
+holds uniformly in $t_i$, this numerically confirms the structural stability of topological features under $H^1$ perturbations.
+\end{remark}
+
 \begin{remark}[Role of $C(t)$ as Stabilizer]
 Since the topological energy $C(t) = \sum_i \mathrm{pers}_i^2$ decreases monotonically, small perturbations do not introduce long-lived topological features. This supports the Lyapunov-like behavior of $C(t)$ and stabilizes $\mathrm{PH}_1 = 0$.
 \end{remark}
