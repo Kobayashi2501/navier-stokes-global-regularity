@@ -55,15 +55,15 @@ Let \( u_0 \in H^1(\mathbb{R}^3) \) be divergence-free. Then the corresponding L
 
 | File | Purpose |
 |------|---------|
-| `pseudo_spectral_sim.py` | 3D pseudo-spectral Navier–Stokes solver:contentReference[oaicite:0]{index=0} |
-| `fourier_decay.py` | Dyadic shell spectral energy decay analyzer:contentReference[oaicite:1]{index=1} |
-| `ph_isomap.py` | Isomap + persistent homology barcode analysis:contentReference[oaicite:2]{index=2} |
+| `pseudo_spectral_sim.py` | 3D pseudo-spectral Navier–Stokes solver |
+| `fourier_decay.py` | Dyadic shell spectral energy decay analyzer |
+| `ph_isomap.py` | Isomap + persistent homology barcode analysis |
 
 **Key observables**:
 - \( C(t) = \sum \mathrm{persist}(h)^2 \): persistent energy
 - \( H(t) = -\sum p_h \log p_h \): barcode entropy
 - \( s(t) = \frac{d}{dj} \log E_j(t) \): spectral slope
-- Persistent threshold: \( \mathrm{persist} < 0.05 \Rightarrow \) topological triviality
+- Persistent threshold: \( \mathrm{persist} < 0.05 \Rightarrow \mathrm{PH}_1 = 0 \)
 
 ---
 
@@ -77,28 +77,17 @@ which enables:
 - Decomposition via PH, categorical degeneration, and mirror symmetry
 - Interpreting regularity as a byproduct of **higher-order geometric compression**
 
-This project implements **all 7 AK steps**, including **Step 7: Category-level degeneration** via VMHS + Ext-functor collapse:contentReference[oaicite:3]{index=3}.
+This project implements **all 7 AK steps**, including **Step 7: Category-level degeneration** via VMHS + Ext-functor collapse.
 
 ---
 
-## 🔥 Structural Exclusion of Blow-Up
+## 🚫 Blow-Up Classification and Exclusion
 
 | Type | Description | Exclusion Mechanism |
 |------|-------------|----------------------|
-| I | Self-similar blow-up | Injective + contractible orbit (Čech-PH) |
+| I | Self-similar blow-up | Injective + contractible orbit (Čech–PH) |
 | II | Slow-gradient divergence | \( C(t) \to 0 \) forbids sustained topological complexity |
 | III | Chaotic oscillation | \( H(t) \to 0 \), structural irreversibility under energy decay |
-
----
-
-## 🧬 New in v5.0
-
-- **Step 7 fully formalized**: VMHS, SYZ mirror collapse, Ext-class degeneration
-- **Persistent structures mapped to derived categories** (Appendix D)
-- **Wavelet-PH Besov compatibility proven** (Appendix I)
-- **Isomap+PH topological proof loop** enabled (Appendix G)
-- **Entropy collapse = category degeneration** framework
-- **Global smoothness equivalence proven structurally** (not just empirically)
 
 ---
 
@@ -113,11 +102,22 @@ This project implements **all 7 AK steps**, including **Step 7: Category-level d
 
 ---
 
-## 👥 Authorship
+## 👤 Authorship
 
-**Main Author**: A. Kobayashi  
-**Theoretical Collaboration**: ChatGPT Research Partner  
-📧 **Contact**: dollops2501@icloud.com
+**Author**: Atsushi Kobayashi  
+**Theoretical Partner**: ChatGPT Research Partner  
+📧 **Contact**: [dollops2501@icloud.com](mailto:dollops2501@icloud.com)
+
+---
+
+## 📢 Call for Review and Collaboration
+
+This project is currently **under preparation for arXiv submission**, and we are actively seeking reviewers, collaborators, and subject-matter experts to help verify the structural consistency and mathematical soundness of the proposed proof framework.
+
+If you are a researcher, graduate student, or expert interested in PDEs, topological data analysis, or categorical methods in mathematical physics,  
+please feel free to reach out via [email](mailto:dollops2501@icloud.com) or [GitHub Issues](https://github.com/Kobayashi2501/Navier-Stokes-v5.0/issues).
+
+Your insights and feedback would be highly appreciated.
 
 ---
 
