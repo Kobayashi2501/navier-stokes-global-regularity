@@ -130,6 +130,13 @@ d_B(\mathrm{PH}_k(t_1), \mathrm{PH}_k(t_2)) = \inf_{\gamma} \sup_{h \in \mathrm{
 where $\gamma$ is an optimal matching between barcodes, and $\mathrm{persist}(h)$ is the persistence (death-birth interval length) of barcode $h$.
 \end{definition}
 
+\begin{lemma}[Local Lipschitzness of Isomap Embedding]
+Let $u(t) \in H^1$ and let $\Phi: H^1 \to \mathbb{R}^d$ be the Isomap embedding. Then, for sufficiently dense sampling and regularity assumptions, $\Phi$ is locally Lipschitz:
+\[
+\|\Phi(u(t)) - \Phi(u(s))\|_{\mathbb{R}^d} \leq L \|u(t) - u(s)\|_{H^1}.
+\]
+\end{lemma}
+
 \begin{theorem}[Topological Stability $\Rightarrow$ Sobolev Continuity]
 \label{thm:topological_sobolev_continuity}
 Suppose $u(x,t)$ is a weak solution to the 3D incompressible Navier--Stokes equations on a bounded domain $\Omega \subset \mathbb{R}^3$ with smooth initial data $u_0$. Assume the persistent homology barcode exhibits stability such that, for all $t_1,t_2\in[0,T]$,
@@ -196,6 +203,21 @@ Theorem \ref{thm:niyogi_smale_weinberger} connects finite-sample simulations wit
 
 \begin{remark}[]
 This framework endorses a sound experimental mathematics strategy: if numerical simulations on $\varepsilon$-dense samples yield vanishing $\mathrm{PH}_1$ stably over time, then the analytic orbit $\mathcal{O}$ is provably topologically trivial. This reverses the usual logic of analysis-from-theory, and strengthens the validity of empirical observation.
+\end{remark}
+
+\begin{lemma}[Probabilistic Recovery of Homology from Dense Samples]
+Let $M \subset H^1$ be a compact manifold and $S \subset M$ be an $\varepsilon$-dense random sample of size $n$. Then for sufficiently large $n$ (depending on $\dim M$, reach, and $\varepsilon$), with probability $1 - \delta$:
+\[
+\mathrm{PH}_k(S) \cong \mathrm{PH}_k(M),
+\]
+provided $\varepsilon \ll \text{reach}(M)$ and $n \gtrsim \varepsilon^{-d} \log(1/\delta)$.
+\end{lemma}
+
+\begin{remark}[Probabilistic Meaning of "High Confidence"]
+The conclusion $\mathrm{PH}_1(\mathcal{O}) = 0$ holds with high probability provided:
+- The sampling resolution $\varepsilon$ satisfies $\varepsilon \ll \min(\text{inj radius}, \delta)$;
+- The sample size $n \gtrsim \varepsilon^{-d} \log(1/\delta)$;
+- The barcode persistence threshold $\delta$ exceeds noise level.
 \end{remark}
 
 \subsection*{Supplement A: Topological Certifiability via PH Stability and Sampling Density}
@@ -269,6 +291,10 @@ In practical simulations, topological triviality of the orbit $\mathcal{O}$ can 
     \item All $\mathrm{PH}_1$ features have lifespan $< \tau_\text{threshold}$ for a time-stable window.
 \end{itemize}
 These empirical conditions ensure robustness against noise and are consistent with Theorem~\ref{thm:certifiability}.
+\end{remark}
+
+\begin{remark}[Error Propagation in PH Estimation]
+Barcode features with lifespan below a critical threshold $\tau_{\text{min}}$ are likely to be noise artifacts. Sampling frequency $\Delta t$ and spatial resolution $\varepsilon$ influence the false positive rate. Statistical filtering (e.g., persistence landscapes or bootstrapping) is recommended to mitigate spurious features.
 \end{remark}
 
 \subsection*{Supplement B: Functional Analytic Reinforcement and Tropical Collapse}
@@ -365,6 +391,13 @@ Together, they imply that numerically observed $\mathrm{PH}_1 = 0$ is a reliable
 \begin{remark}[Numerical Relevance]
 This theorem provides a blueprint for practical verification: ensuring small $\varepsilon$, stable barcode variation, and nontrivial persistence thresholds suffices to infer analytic simplicity.
 \end{remark}
+
+\begin{theorem}[Sobolev Regularity Implies Persistent Stability]
+Let $u(t) \in C^\alpha([0,T]; H^1(\Omega))$ and let $\mathrm{PH}_1(t)$ be the persistent homology barcode obtained from an Isomap embedding of $\{u(t)\}$. Then
+\[
+d_B(\mathrm{PH}_1(t), \mathrm{PH}_1(s)) \leq C |t - s|^\alpha.
+\]
+\end{theorem}
 
 \begin{remark}[Analytic $\Rightarrow$ Topological Direction (See Step 2)]
 While Step 1 establishes that topological regularity implies Sobolev continuity, the converse direction is also true: energy decay leads to topological simplification. This duality is formalized in Step 2, where we show that strict dissipation of enstrophy forces the collapse of persistent topological structures. Hence, the analytic–topological relation forms a feedback loop:
