@@ -830,26 +830,54 @@ Since persistent barcodes vanish for spectrally flat fields, the exponential dec
 This step establishes that Type I blow-up is inconsistent with topological simplicity and energy decay. The core idea is that self-similarity implies loop-like structure in function space, whereas energy dissipation and persistent homology triviality imply injective, contractible orbits.
 For a formal topological justification of how persistent homology triviality excludes loop-like or self-similar orbit structures, we refer the reader to Lemma~C.3 and Corollary~C.4 in Appendix~\ref{sec:appendixC}.
 
+\begin{lemma}[Injectivity from Energy Dissipation]
+Let $E(t) = \frac{1}{2} \|u(t)\|_{L^2}^2$ be the kinetic energy. Then $E(t)$ strictly decreases in time unless $\nabla u = 0$. As a consequence, the solution orbit $\mathcal{O} = \{ u(t) \}_{t \in [0,T)}$ is injective in $H^1$.
+\end{lemma}
 
-\begin{theorem}[Orbit Simplicity Excludes Type I Blow-Up]
+\begin{lemma}[Finite-Length Orbit from Dissipation]
+If $\| \nabla u(t) \|_{L^2}$ is square-integrable over $[0,T)$, then the orbit $\mathcal{O}$ has finite arc-length in $H^1$. That is,
+\[
+\int_0^T \left\| \frac{d u(t)}{dt} \right\|_{H^1} dt < \infty.
+\]
+\end{lemma}
+
+Together, these lemmas imply that the orbit $\mathcal{O}$ cannot exhibit return or looping behavior, a necessary condition for Type I singularities.
+
+\begin{remark}[Orbit Structure under Energy Dissipation]
+The strict monotonicity of energy ensures a time-oriented, non-recurrent evolution in phase space. Coupled with the absence of nontrivial PH$_1$ features, the orbit lacks the geometric complexity required to support Type I blow-up.
+\end{remark}
+
+\begin{remark}[See Appendix~C for Topological Foundations]
+The formal connection between PH$_1$ triviality and contractibility is given via the Čech complex and the Nerve Theorem, detailed in Appendix~C.
+\end{remark}
+
+\begin{theorem}[Constructive Exclusion of Type I Blow-Up]
 Let $u(t)$ be a weak solution of the 3D incompressible Navier–Stokes equations on $[0,T)$ such that:
 \begin{enumerate}
     \item The orbit $\mathcal{O} = \{u(t)\}_{t \in [0,T)}$ is injective in $H^1$,
     \item $\mathcal{O}$ has finite arc length in $H^1$,
-    \item $\mathrm{PH}_1(\mathcal{O}) = 0$ (contractible via Čech complex).
+    \item $\mathrm{PH}_1(\mathcal{O}) = 0$, i.e., it is contractible in the Čech sense.
 \end{enumerate}
-Then, $u(t)$ cannot develop a Type I singularity on $[0,T)$.
+Then the formation of a self-similar loop structure is topologically obstructed, and Type~I blow-up is excluded constructively.
 \end{theorem}
 
-\begin{proof}[Sketch of Proof]
-Type I blow-up involves norm inflation near $T^*$ while preserving self-similar rescaling.  
-However, such rescaling would require either:  
-(i) recurrence of similar $H^1$ profiles (violates injectivity),  
-(ii) divergent $H^1$ variation (violates finite-length), or  
-(iii) birth of topologically distinct structures (violates $\mathrm{PH}_1 = 0$).  
+\begin{proof}[Sketch of Constructive Argument]
+Assume, for contradiction, that a Type~I blow-up scenario occurs.Then the orbit $\mathcal{O}$ must exhibit a recursive, loop-like structure in $H^1$ under time-rescaling. However:
 
-Thus, the orbit lacks the geometric complexity needed to support a Type I profile.
+- From energy dissipation, $\mathcal{O}$ is injective and of finite arc length (Lemmas above).
+- From $\mathrm{PH}_1(\mathcal{O}) = 0$, there exists a Čech complex built from an $\varepsilon$-dense sample of $\mathcal{O}$ that is contractible.
+- By the Nerve Theorem (see Appendix~C), this implies $\mathcal{O}$ is itself contractible.
+
+But a self-similar or recursive orbit cannot be both injective and contractible unless it is trivial. Thus, Type I blow-up is incompatible with the topological and energetic constraints.
 \end{proof}
+
+\begin{remark}[Topological Compression Excludes Scaling Invariance]
+Type I blow-up requires structural repetition under rescaling, implying conservation of topological complexity. However, persistent homology triviality ($\mathrm{PH}_1 = 0$) implies maximal topological compression. Thus, the flow cannot sustain a recursive or self-similar topological regime.
+\end{remark}
+
+\begin{remark}[Foundational Role for Step 4]
+The exclusion of loop-like orbit structures and the imposed topological compression under dissipation provide the foundational mechanism for excluding Type II and III singularities. Since no nontrivial topological cycle can persist, even slow-gradient or oscillatory recurrences (central to Step~4) lack the necessary structural complexity to emerge.
+\end{remark}
         
 % --- Inserted Reinforcement ---
 \begin{definition}[Solution Orbit]
