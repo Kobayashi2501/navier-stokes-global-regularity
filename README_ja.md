@@ -64,9 +64,9 @@
 
 ---
 
-## 🌀 AK理論との関係（v4.5）
+## 🌀 AK理論との関係
 
-本戦略は [**AK高次元射影構造理論 v4.5**](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory) によって支持されており：
+本戦略は [**AK高次元射影構造理論**](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory) によって支持されており：
 
 - 問題をMECE構造を持つ高次元空間へリフティング
 - PH, VMHS, Ext群, SYZ退化による**位相・幾何・圏的解体**
