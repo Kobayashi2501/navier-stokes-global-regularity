@@ -121,7 +121,15 @@ Your insights and feedback would be highly appreciated.
 
 ---
 
-## 📜 License
+### 📜 License
 
-MIT License — free to use, cite, modify, and fork.  
-👉 [日本語版 READMEはこちら](README_ja.md)
+Licensed under the [MIT License](https://opensource.org/licenses/MIT)
+
+---
+
+### 🌐 Japanese Version
+
+### 🌐 Japanese Version
+
+→ [日本語版はこちら（README_jp.md）](https://github.com/Kobayashi2501/Hilbert12-StructuralProof/blob/main/README_jp.md)
+
