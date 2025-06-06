@@ -138,4 +138,4 @@ Licensed under the [MIT License](https://opensource.org/licenses/MIT)
 
 ### 🌐 Japanese Version
 
-→ [日本語版はこちら（README_jp.md）](https://github.com/Kobayashi2501/Hilbert12-StructuralProof/blob/main/README_jp.md)
+→ [日本語版はこちら（README_jp.md）](https://github.com/Kobayashi2501/navier-stokes-global-regularity/blob/main/README_ja.md)
