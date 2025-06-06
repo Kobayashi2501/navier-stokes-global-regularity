@@ -872,6 +872,13 @@ If the spectral decay exponent $\lambda$ exceeds any finite bound, then $u(t)$ i
 Since persistent barcodes vanish for spectrally flat fields, the exponential decay of dyadic shell energies implies barcode collapse, and thus $C(t) \to 0$. This justifies using $C(t)$ as a diagnostic for both topological and analytic smoothness.
 \end{remark}
 
+\paragraph{Divergent Convergence of $C(t)$ and $H(t)$.}
+While $C(t)$ measures the total persistence energy, $H(t)$ captures homological diversity.  
+If $C(t)$ decays rapidly while $H(t)$ remains non-zero, the system exhibits early energy suppression with residual structural entropy:
+\[
+C(t) \to 0 \quad \text{but} \quad H(t) > 0.
+\]
+This condition may indicate metastable complexity—e.g., multiple small-scale loops—despite bulk dissipation, a hallmark of intermittent turbulence.
 
 % ===========================
 % STEP 3 - Topological Exclusion of Type I Blow-Up via Orbit Simplicity
@@ -1790,6 +1797,14 @@ Then, the solution \( u(t) \) cannot develop Type II or Type III blow-up on \( [
 Type II blow-up involves slow accumulation of small-scale structures, requiring non-negligible high-frequency content over time. Type III corresponds to oscillatory or chaotic recurrence, needing regeneration of fine-scale modes. Both mechanisms require persistent high-mode energy. However, the assumed exponential decay of \( E_j(t) \) suppresses such complexity, ruling out the analytic and topological preconditions for these singularity types.
 \end{proof}
 
+\paragraph{Collapse Causality Flow.}
+In the AK-HDPST framework, we interpret spectral decay as the driving mechanism for topological simplification.  
+The decay of high-frequency shell energy $E_j(t)$ compresses persistent topological features, leading to vanishing barcode lengths:
+\[
+\frac{dC(t)}{dt} < 0 \quad \Rightarrow \quad \ell_i(t) \searrow \quad \Rightarrow \quad \mathrm{PH}_1(t) \to 0.
+\]
+Thus, spectral energy loss is not only a smoothing agent analytically, but also a topological flattener, collapsing loops, voids, and oscillatory structures in the attractor.
+
 \begin{remark}
 This result complements the perturbative stability results in Section~6.1 by demonstrating that intrinsic spectral simplicity alone suffices to eliminate singularity pathways, without requiring external control or continuity in initial data.
 \end{remark}
@@ -1797,9 +1812,27 @@ This result complements the perturbative stability results in Section~6.1 by dem
 \paragraph{Numerical Confirmation}
 Empirical simulations based on the pseudo-spectral solver (see Appendix B.4) support the topological collapse: 
 \[
-\frac{d}{dt} PH_1(u(t)) < 0, \quad \frac{d}{dt} C(t) < 0.
+\frac{d}{dt} \mathrm{PH}_1(u(t)) < 0, \quad \frac{d}{dt} C(t) < 0.
 \]
-This confirms that the theoretical results hold in practice, reinforcing that small $H^1$-perturbations do not reverse the collapse of the attractor complexity.
+These simulations confirm that both $C(t)$ and $\mathrm{PH}_1(t)$ decay monotonically over time.  
+This supports the theoretical causality flow:
+\[
+E_j(t) \searrow \quad \Rightarrow \quad C(t) \searrow \quad \Rightarrow \quad \mathrm{PH}_1(t) \to 0,
+\]
+and reinforces that the attractor complexity collapse is robust under small $H^1$-perturbations.
+
+\paragraph{Limitations and Exceptions.}
+While AK Collapse ensures structural regularity, not all flows exhibit this collapse.  
+When either $\mathrm{PH}_1$ or $\mathrm{Ext}^1$ remains active, residual complexity or singularity may persist.
+
+\paragraph{Examples of Collapse Failure.}
+Such cases include:
+\begin{itemize}
+    \item Vortex rings or toroidal structures resisting collapse in $\mathrm{PH}_1$
+    \item Categorical bifurcations or sheaf mutations sustained in $\mathrm{Ext}^1$
+\end{itemize}
+
+Such structures obstruct the rigidity zone and allow blow-up scenarios or topological recurrence to persist.
 
 
 % ===========================
@@ -1902,6 +1935,16 @@ then \( u(t) \) remains smooth on \( [0,T] \). Under the AK collapse framework, 
 PH_1(u(t)) \to 0, \quad \mathrm{Ext}^1(\mathcal{F}_t, -) \to 0 \quad \Rightarrow \quad \|\nabla \times u(t)\|_{L^\infty} < C.
 \]
 Thus, the vanishing of persistent topological and categorical complexity enforces uniform control over vorticity. This satisfies the BKM condition structurally, confirming that the AK collapse implies not only categorical and topological flattening, but also classical analytic regularity. See also Appendix~B.4 for structural correspondence.
+
+\paragraph{Collapse as Structural Enforcement of BKM.}
+In this framework, the classical BKM criterion is no longer a separate analytic condition,  
+but a consequence of structural collapse:
+\[
+\mathrm{PH}_1(t) = 0 \ \wedge \ \mathrm{Ext}^1(\mathcal{F}_t,-) = 0 \quad \Rightarrow \quad \int_0^\infty \|\nabla \times u(t)\|_{L^\infty} dt < \infty.
+\]
+That is, the topological and categorical triviality enforced by AK Collapse structurally bounds vorticity growth,  
+rendering the classical blow-up criterion automatically satisfied. This elevates AK Collapse from an abstract condition  
+to a physically meaningful regularity enforcer.
 
 ---
 
@@ -2199,6 +2242,16 @@ PH_1(t) \to 0 \quad \Leftrightarrow \quad \text{Trop}(X_t) \text{ stabilizes} \q
 
 \begin{remark}
 This functorial diagram shows that the vanishing of topological complexity (barcodes) under dissipative PDE evolution leads—via tropical stabilization—to categorical rigidity in the derived AK-category. This sequence is the key structural engine behind the proof of regularity in the Navier--Stokes system.
+\end{remark}
+
+\begin{remark}[Collapse Asymmetry and Observational Limits]
+While the diagram shows a forward collapse direction, it is important to note that the converse does not necessarily hold:
+\[
+\mathrm{Ext}^1(\mathcal{F}_t, -) = 0 \quad \centernot\Rightarrow \quad PH_1(t) = 0.
+\]
+In other words, categorical collapse may occur without observable topological simplification in persistence diagrams.  
+This asymmetry highlights that $\mathrm{PH}_1$ serves as a visible front-end, but cannot detect hidden derived Ext-vanishing.  
+For full collapse detection, both $\mathrm{PH}_1$ and $\mathrm{Ext}^1$ must be evaluated in tandem.
 \end{remark}
 
 
@@ -2635,6 +2688,14 @@ We say $u(t)$ undergoes \emph{AK Collapse} on $U$ if:
 \mathrm{Ext}^1_{\mathsf{Filt}|_U}(\mathbb{Q}, \mathcal{F}_t|_U) = 0 \quad \text{and} \quad \mathrm{PH}_1(u(t)|_U) = 0.
 \]
 \end{definition}
+
+\paragraph{Dual Semantic Roles of Ext$^1$.}
+The group $\mathrm{Ext}^1(F_t, -)$ encapsulates two structural aspects:
+\begin{enumerate}
+    \item \emph{Internal deformation complexity} — obstructing the collapse to derived-finality
+    \item \emph{Energy transmission capacity} — representing susceptibility to external perturbations
+\end{enumerate}
+Thus, $\mathrm{Ext}^1 = 0$ signifies not only the absence of obstruction but also categorical damping and rigidity in evolution.
 
 ---
 
