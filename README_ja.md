@@ -1,118 +1,144 @@
-# 🌊 3次元非圧縮ナビエ–ストークス方程式の全球正則性  
-### エネルギー・トポロジー・幾何・代数ハイブリッドによる非摂動的アプローチ（v5.0）
+# 🌊 3次元ナビエ–ストークス方程式の全球正則性  
+### エネルギー・トポロジー・圏・幾何による崩壊的アプローチ（v5.1）
 
-このリポジトリは、3次元非圧縮ナビエ–ストークス方程式の**全球正則性問題に対する構造的解法 v5.0** を提示します。
+このリポジトリは、3次元非圧縮ナビエ–ストークス方程式に対する**全球正則性問題の構造的解決**を目指した  
+**非摂動的・圏論的アプローチ v5.1** を提示するものです。
 
-本手法は、以下を統合した**7段階の再現可能かつ非摂動的な戦略**に基づきます：
-- トポロジカルデータ解析による**持続的ホモロジー（PH）**
-- スペクトルエネルギーの減衰と**エネルギー関数 \( C(t) \) によるエンストロフィー制御**
-- **軌道幾何学**と持続的位相の**収縮性**
-- トロピカル幾何・混合ホッジ構造（VMHS）・Ext群による**退化理論**
-- **圏論的圧縮**と導来圏的解釈（Derived Category）
-- **臨界関数空間**への拡張：波レット＋PHによるBesov空間制御
+本手法は以下の理論を統合します：
 
-> 🧠 **著者注記**  
-> 本手法は、より汎用的な [**AK高次元射影構造理論（AK-HDPST）**](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory) の応用例です。  
-> Blow-up（特異性）の困難性を「高次元的には収縮可能な構造の低次元投影」として解釈し、**トポロジー的崩壊・退化・圏的圧縮**によって解消します。
+- トポロジカルデータ解析による**Persistent Homology（PH）**
+- **スペクトルエネルギーの崩壊**（dyadic shell減衰）
+- **軌道の幾何構造**と**ホモトピー収縮性**
+- **混合ホッジ構造の退化（VMHS）**と**SYZミラー退化**
+- Derived圏における**Extクラスの消滅**
+- **圏論的崩壊**と**トポス的剛性**
+- 臨界ベソフ空間 \( B^{-1+3/p}_{p,q} \) への拡張
 
----
+これらを7段階の証明戦略として統合し、  
+**PH₁の崩壊 + Ext¹の崩壊 ⇔ 解の滑らかさ（正則性）** を構造的に示します。
 
-## 🔑 構造的定理の要約
-
-初期データ \( u_0 \in H^1(\mathbb{R}^3) \)（発散ゼロ）に対し、Leray–Hopf解 \( u(t) \) は以下を満たします：
-
-- **全球正則性**：\( \|u(t)\|_{H^1} < \infty \quad \forall t \ge 0 \)
-- **持続的単純性**：軌道 \( \mathcal{O} = \{u(t)\} \) に対して \( \mathrm{PH}_1(\mathcal{O}) = 0 \)
-- **スペクトル減衰**：dyadic shell エネルギー \( E_j(t) \to 0 \)（指数的）
-- **アトラクタの収縮性**：軌道空間は有限次元・単連結
-- **双方向同値**：\( \mathrm{PH}_1 = 0 \iff H^1 \)-正則性
-- **摂動安定性**：初期値摂動や確率的揺らぎに対して構造が保たれる
-- **臨界空間整合性**：\( B^{-1+3/p}_{p,q} \) に対する拡張可能性
-
-> 🔒 結論：既知の型（Type I, II, III）の**有限時間特異性は発生し得ない**。
+> 🧠 **備考**  
+> 本構成は、より一般的な枠組みである  
+> [**AK高次元射影構造理論（AK-HDPST）**](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory)  
+> の具体応用として構築されました。  
+> 解の爆発（Blow-up）を「低次元射影によって現れる構造的障害」と捉え、  
+> それをトポロジー・圏・幾何の**三重崩壊**により解消します。
 
 ---
 
-## 🧭 7段階の戦略構造（v5.0）
+## 🔑 主要定理（構造的要約）
 
-| ステップ | 概要 | 主なアイデア |
-|----------|------|--------------|
-| 0 | **動機的リフティング** | 観測される複雑性は高次元秩序の投影として解釈 |
-| 1 | **トポロジー安定性** | Bottleneck安定性 → \( H^1 \)時間連続性 |
-| 2 | **エンストロフィー制御** | \( C(t) = \sum \text{persist}^2 \) により \( \|\nabla u\|^2 \) を抑制 |
-| 3 | **Type I 排除** | 軌道の一意性・単連結性が自己相似Blow-upを排除 |
-| 4 | **Type II/III 排除** | 情報エントロピー \( H(t) \to 0 \) が再帰的特異性を排除 |
-| 5 | **アトラクタの平坦化** | トポロジー収縮 → 有限次元アトラクタへ |
-| 6 | **摂動安定性** | \( H^1 \)摂動や確率場でも構造は保たれる |
-| 7 | **トポロジー ⇔ 正則性** | VMHS退化・Ext消失・圏的縮退により正則性を強制 |
+初期データ \( u_0 \in H^1(\mathbb{R}^3) \)、非圧縮条件（\( \nabla \cdot u_0 = 0 \)）の下で、  
+対応するLeray–Hopf解 \( u(t) \) は以下を満たします：
+
+- \( \|u(t)\|_{H^1} < \infty \quad \forall t \geq 0 \)
+- Persistent Homology：\( \mathrm{PH}_1(u(t)) \to 0 \)
+- Extクラス消滅：\( \mathrm{Ext}^1(F_t, -) \to 0 \), ただし \( F_t \in \mathcal{D}^b(\text{AK}) \)
+- dyadic shell エネルギー \( E_j(t) \to 0 \)
+- バーコードエントロピー \( H(t) \to 0 \)
+- Collapse剛性領域 \( R := \{ t \mid \mathrm{PH}_1 = \mathrm{Ext}^1 = 0 \} \Rightarrow u(t) \in C^\infty \)
+
+> 🔒 **上記構造的条件が満たされれば、有限時間特異点（Type I–III）は生じません。**
 
 ---
 
-## 🔬 数値実装と観測量
+## 🧭 7ステップ戦略（v5.1）
 
-| スクリプト | 用途 |
+| ステップ | 名称 | 概要 |
+|----------|------|------|
+| 0 | **動機的持ち上げ** | 滑らかさは崩壊構造の帰結として現れる |
+| 1 | **トポロジー的安定性** | PHの安定性 ⇒ Sobolev連続性 |
+| 2 | **トポロジー的エネルギー制御** | \( C(t) = \sum \text{persist}^2 \) が渦度を抑制 |
+| 3 | **軌道の注入性** | PH軌道が時間発展を一意に復元可能 |
+| 4 | **VMHS退化** | ループ構造崩壊 ⇒ Ext消滅へ対応 |
+| 5 | **Trop–Mirror幾何崩壊** | SYZ・トロピカル退化により幾何構造が崩壊 |
+| 6 | **スペクトルシェル崩壊** | Fourier空間でのエネルギー消滅が滑らかさを保証 |
+| 7 | **崩壊 ⇔ 正則性** | \( \mathrm{PH}_1 = \mathrm{Ext}^1 = 0 \Rightarrow u(t) \in C^\infty \)
+
+---
+
+## 🔬 数値パイプライン
+
+| ファイル名 | 目的 |
 |------------|------|
-| `pseudo_spectral_sim.py` | 3D NSEの疑似スペクトル解法:contentReference[oaicite:0]{index=0} |
-| `fourier_decay.py` | dyadicスペクトル減衰の定量化:contentReference[oaicite:1]{index=1} |
-| `ph_isomap.py` | Isomap + PHによる軌道位相の解析:contentReference[oaicite:2]{index=2} |
+| `pseudo_spectral_sim.py` | 3DスペクトルNavier–Stokes解法 |
+| `fourier_decay.py` | dyadic shell エネルギーの崩壊分析 |
+| `ph_isomap.py` | Isomap + Persistent Homology 可視化 |
 
 **主要観測量**：
-- \( C(t) = \sum \mathrm{persist}(h)^2 \)：持続的エネルギー
-- \( H(t) = -\sum p_h \log p_h \)：トポロジーエントロピー
-- \( s(t) = \frac{d}{dj} \log E_j(t) \)：スペクトル傾き（指数減衰）
-- **位相収束閾値**：\( \mathrm{persist} < 0.05 \Rightarrow \mathrm{PH}_1 = 0 \)
+
+- トポロジー的エネルギー \( C(t) = \sum \text{persist}^2 \)
+- バーコードエントロピー \( H(t) = -\sum p_h \log p_h \)
+- スペクトル傾き \( s(t) = \frac{d}{dj} \log E_j(t) \)
+- 崩壊閾値： \( \text{persist} < 0.05 \Rightarrow \mathrm{PH}_1 = 0 \)
 
 ---
 
-## 🌀 AK理論との関係
+## 🌀 理論基盤：AK-HDPST
 
-本戦略は [**AK高次元射影構造理論**](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory) によって支持されており：
+本構成は以下に基づきます：  
+[**AK高次元射影構造理論**](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory)
 
-- 問題をMECE構造を持つ高次元空間へリフティング
-- PH, VMHS, Ext群, SYZ退化による**位相・幾何・圏的解体**
-- 正則性 ⇔ 崩壊 ⇔ トポロジー単純性 ⇔ 導来的圏縮退
+主な要素：
+- PDEの高次元射影とMECE構造分解
+- Collapse functor：PH ⇒ Trop ⇒ Ext
+- Derived剛性ゾーン（rigidity zone）の形成
+- SYZ–Langlands–Mirror 統合圏構造
 
-> v5.0はAK理論の「完全適用例」として構築され、Navier–Stokesの blow-up を「構造的に解消可能な問題」として再構成しています:contentReference[oaicite:3]{index=3}。
-
----
-
-## 🚫 Blow-up の型と排除構造
-
-| 型 | 特徴 | 排除の鍵 |
-|----|------|----------|
-| Type I | 自己相似型Blow-up | 軌道の単射性＋収縮性（Čech–PH） |
-| Type II | 緩やかな特異性 | \( C(t) \to 0 \)：構造的複雑性が維持できない |
-| Type III | カオス的発散 | \( H(t) \to 0 \)：再帰的状態の位相構造が欠如 |
+付録A〜Zにて：
+- Collapse論理地図（Appendix Z）
+- Derived Topos補強（Appendix G）
+- Langlands型対応（Appendix H）
+- 三項対応：PH ⇔ Trop ⇔ Ext（Appendix I）
 
 ---
 
-## 📚 引用・証明構造
+## 🚫 Blow-up分類と排除機構
 
-- Cohen–SteinerらのPH安定定理（bottleneck）
-- Smale–Niyogi–WeinbergerのČech–Nerve理論
-- Beale–Kato–Majdaのスペクトルエネルギー分解
-- SYZ鏡対称性・VMHS退化による位相的退化
-- Ext群消滅・導来圏的正則性（Appendix D）
-- Besov時間正則性のPH拡張（Appendix I）
-
----
-
-## 👤 著者
-
-**著者**：小林篤史  
-**共同研究パートナー**：ChatGPT Research Partner  
-📧 **連絡先**：dollops2501@icloud.com
+| 種別 | 特異構造 | 排除メカニズム |
+|------|----------|----------------|
+| Type I | 自己相似型 | 軌道の注入性とPH収縮性 |
+| Type II | 緩慢な渦度爆発 | \( C(t) \to 0 \) による持続的ループの消滅 |
+| Type III | カオス的振動 | \( H(t) \to 0 \)、PHとExtの不可逆崩壊による抑制 |
 
 ---
 
-## 📢 arXiv査読者・共同検証者募集中
+## 📚 参考文献と理論的構造
 
-本研究は現在、**arXiv投稿準備中**であり、構造的一貫性と数理的正確性についての確認・査読にご協力いただける方を広く募集しております。  
-ご関心のある研究者・大学院生・専門家の方は、上記連絡先またはGitHub Issueよりご連絡ください。
+- PHの安定性：Cohen–Steiner, Edelsbrunner, Harer
+- エネルギー崩壊：Beale–Kato–Majda, dyadic shellモデル
+- 混合ホッジ・SYZ退化：Kontsevich, Strominger–Yau–Zaslow
+- Ext消滅とDerived圏：Beilinson–Bernstein–Deligne
+- Collapse同値性：本理論のAppendix群参照
 
 ---
 
-## 📜 ライセンス
+## 👤 著者情報
 
-MITライセンス — 自由に使用・改変・引用・派生可能。  
-👉 [English README here](README.md)
+**著者**：小林　篤史  
+**理論パートナー**：ChatGPT Research Partner  
+📧 **連絡先**：[dollops2501@icloud.com](mailto:dollops2501@icloud.com)
+
+---
+
+## 📢 査読・協力のお願い
+
+本プロジェクトは現在、**arXiv投稿に向けた準備段階**にあります。  
+以下の観点での**数理的な検証・共同研究・ご意見**を募集しています：
+
+- Collapse構造の整合性検証
+- Ext–PH対応の形式的補強
+- Blow-up分類との照合
+- 圏論的正則性とPDEの橋渡し
+
+→ [メール](mailto:dollops2501@icloud.com) または  
+[GitHub Issues](https://github.com/Kobayashi2501/Navier-Stokes-v5.0/issues) にてお気軽にご連絡ください。
+
+---
+
+### 📜 ライセンス
+
+MITライセンスに基づき公開  
+[MIT License](https://opensource.org/licenses/MIT)
+
+---
