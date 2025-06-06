@@ -28,11 +28,12 @@
 This paper develops a seven-step analytic--topological--geometric framework aimed at resolving the global regularity problem for the three-dimensional incompressible Navier--Stokes equations on $\mathbb{R}^3$. Our strategy fuses persistent homology, energy dissipation, orbit-level geometry, and algebraic degeneration into a unified program that excludes all known types of finite-time singularities---Type I (self-similar), Type II (critical gradient blow-up), and Type III (non-compact excursions). Each step contributes both analytically and topologically, culminating in a feedback mechanism where topological collapse and analytic regularity reinforce one another. No small-data or scaling assumptions are required. The final step leverages AK High-Dimensional Projection Structural Theory (AK-HDPST v6.0) to rigorously demonstrate that the degeneration of mixed Hodge structures and persistent homology collapse categorically ensures analytic smoothness, establishing a reproducible and structurally complete route to global regularity.
 \end{abstract}
 
+
 \section{Introduction}
 \label{sec:intro}
 
 \footnotetext{
-The \textit{AK High-Dimensional Projection Structural Theory (AK-HDPST)} is a general mathematical framework proposed by the lead author to reframe complex PDE problems in higher-dimensional MECE-decomposed geometric spaces. It provides a unifying categorical structure across analysis, topology, and geometry, particularly by enabling barcode degeneration and orbit simplification to be interpreted as structured collapses. See \texttt{AK\_HDPST\_Theory.pdf} or related references for further details.
+This work proposes a \textit{structural proof strategy} for the global regularity problem of the 3D incompressible Navier–Stokes equations. Rather than establishing a complete analytic proof in the classical PDE sense, it rigorously constructs a categorical–topological framework based on the \textbf{AK High-Dimensional Projection Structural Theory (AK-HDPST)}. This theory, proposed by the lead author, reinterprets the PDE dynamics via high-dimensional MECE-decomposed geometric projections, persistent homology degeneration, and Ext-group collapse. For a detailed theoretical background, see \texttt{AK\_HDPST\_Theory.pdf}.
 }
 
 The global regularity problem for the three-dimensional incompressible Navier--Stokes equations,
@@ -41,7 +42,8 @@ The global regularity problem for the three-dimensional incompressible Navier--S
 \end{equation}
 remains one of the most fundamental and challenging open problems in mathematical physics. The Clay Millennium Problem asks whether, for every divergence-free initial data $u_0 \in H^1(\mathbb{R}^3)$, the solution remains smooth for all time. Despite extensive partial progress under smallness, criticality, or symmetry constraints, a complete deterministic proof has eluded resolution.
 
-This paper proposes a reproducible, non-perturbative, and modular resolution strategy. It bypasses critical norm restrictions and instead constructs a bridge across classical PDE theory, topological data analysis, and geometric orbit structures. Each layer of the framework reinforces the others through a structured, MECE-style decomposition of the singularity exclusion problem.
+This paper presents a reproducible, non-perturbative, and modular resolution framework. Rather than relying on energy bounds or critical norms alone, it constructs a bridge between classical PDE theory, topological data analysis, and categorical geometry. Each layer of this architecture contributes to excluding singularity formation through structurally collapsed topological and algebraic obstructions.
+
 
 The core of our method is a seven-step analytic--topological--algebraic program:
 \begin{itemize}
@@ -165,7 +167,36 @@ u_0 \in H^1(\mathbb{R}^3), \quad \|u_0\|_{H^1} < \infty, \quad \nabla \cdot u_0 
 \]
 In addition, the external force $f$ is taken to be time-independent and satisfies $f \in L^2([0,\infty); H^1)$. These assumptions guarantee the well-posedness of the PH evolution and compatibility with the functional setting described in Appendix B.1.
 
-\begin{definition}[Persistent Homology Barcode]
+\begin{remark}[On Initial Condition Scope and Stability Assumption]
+The structural arguments in this framework assume that the initial velocity field satisfies:
+\[
+u_0 \in H^1(\mathbb{R}^3), \quad \text{and} \quad \mathrm{PH}_1(u_0) \text{ is barcode-stable}.
+\]
+This means that the barcode diagram of the initial magnitude field $|u_0(x)|$ admits a stable persistence structure under small temporal perturbations:
+\[
+\sup_{t \in [0,T]} d_B(\mathrm{PH}_1(t), \mathrm{PH}_1(t+\delta)) < \varepsilon.
+\]
+
+Such conditions are **not merely technical**, but reflect physical constraints:  
+they exclude violently oscillating or topologically wild initial states, such as:
+\begin{itemize}
+  \item Fractal-like vorticity fields,
+  \item Highly localized delta-like velocity concentrations,
+  \item Strongly oscillatory flow patterns with unstable loop structures.
+\end{itemize}
+
+In contrast, many physically relevant flows (e.g., shear layers, vortices with finite support, smooth jets) satisfy this condition.  
+Thus, the theory covers a wide but **structurally stable** class of initial data.
+
+The extension to:
+\[
+u_0 \in L^2(\mathbb{R}^3) \quad \text{or} \quad H^\alpha, \ \alpha < 1
+\]
+remains an open direction, as such data may generate non-contractible or unstable PH structures.  
+Persistence control in this more general regime requires refinement of the topological invariants used here.
+\end{remark}
+
+\begin{definition}[Persistent Homology Barcode] \label{def:sublevel-filtration}
 Given a velocity field $u(x,t)$, define the sublevel set filtration as:
 \[
 X_r(t) = \{x \in \Omega \mid |u(x,t)| \leq r \}, \quad r > 0.
@@ -751,9 +782,9 @@ From a fluid perspective, as kinetic energy dissipates and high-frequency modes 
 
 \begin{remark}[Connection to Step 3]
 The suppression of $C(t)$ and control of enstrophy imply orbit compactness and gradient regularity, enabling the arguments in Step 3. There, we use this to exclude Type I self-similar blow-ups by proving that the orbit $\mathcal{O} \subset H^1$ is contractible and loop-free.
+\end{remark}
 
-% --- Inserted Reinforcement ---
-\begin{definition}[Topological Energy Functional $C(t)$]
+\begin{definition}[Topological Energy Functional $C(t)$] \label{def:topo-energy}
 Let $\mathrm{PH}_1(u(t))$ be the 1st persistent homology barcode of the velocity field. Define
 \[
 C(t) := \sum_{h \in \mathrm{PH}_1(u(t))} \mathrm{pers}(h)^2,
@@ -767,7 +798,6 @@ If $C(t)$ is decreasing and Lipschitz, then there exists $\lambda > 0$ such that
 C(t) \gtrsim \| \nabla u(t) \|_{L^2}^2.
 \]
 \end{lemma}
-\end{remark}
 
 \begin{remark}[Link to Spectral Decay (Step 4)]
 The decay of $C(t)$ constrains the high-frequency tail of the energy spectrum. This will be used in Step 4 to exclude Type II singularities by bounding spectral energy via topological flattening.
@@ -1236,6 +1266,22 @@ Define a field $\mathcal{B}(x,t) := \mathrm{PH}_1(B_\epsilon(x), |u(\cdot,t)|)$ 
 \end{definition}
 
 \begin{lemma}[Vanishing PH Energy Implies Gradient Collapse]
+If $C(t) = 0$ for $t > T_0$, then $u(t)$ is spatially constant over connected regions:
+\[
+\|\nabla u(t)\|_{L^2(\Omega)} = 0.
+\]
+\end{lemma}
+
+\begin{definition}[VMHS Degeneration] \label{def:vmhs-collapse}
+Let $X_t$ be a one-parameter family of complex varieties over the punctured disk $\Delta^*$, equipped with a Variation of Mixed Hodge Structure (VMHS) on $H^*(X_t)$.  
+We say the family exhibits \emph{VMHS degeneration} as $t \to 0$ if:
+\begin{itemize}
+  \item The limiting Hodge filtration $\lim_{t \to 0} F^\bullet H^k(X_t)$ exists and stabilizes,
+  \item The associated weight and monodromy filtrations converge,
+  \item The degenerating filtration induces collapse in derived Ext-groups via AK lifting.
+\end{itemize}
+This structure reflects a topological and categorical simplification, central to collapse-based regularity criteria.
+\end{definition}
 
 \begin{theorem}[VMHS Degeneration Implies Regularity]
 Let $u_\tau$ be a family of velocity fields parameterized by $\tau \in \Delta^*$, with $\tau \to 0$ corresponding to a degeneration of the associated VMHS. Suppose:
@@ -1250,11 +1296,13 @@ Then the limit field $u_0$ is $H^1$-regular.
 \begin{proof}[Sketch]
 The degeneration of the VMHS implies a contraction of the Hodge filtration and collapse of nontrivial cycles. This forces all persistent 1-cycles to vanish, yielding trivial homology. Combined with Step 2, $C(t) \to 0$ implies $\|\nabla u(t)\|^2 \to 0$, ensuring regularity.
 \end{proof}
-        If $C(t) = 0$ for $t > T_0$, then $u(t)$ is spatially constant over connected regions:
+
+\begin{remark}[Flat Field Implication]
+If $C(t) = 0$ for $t > T_0$, then $u(t)$ is spatially constant over connected regions:
 \[
 \|\nabla u(t)\|_{L^2(\Omega)} = 0.
 \]
-\end{lemma}
+\end{remark}
 
 \begin{proposition}[Spectral Representation of PH Energy]
 Define $\rho_t(\ell)$ = density of bars of length $\ell$ in $\mathrm{PH}_1(t)$. Then:
@@ -1854,7 +1902,7 @@ The barcode structures arising in persistent homology can be categorically inter
 where $Q$ denotes a categorical unit object of the base space, and $F^\bullet[b,d]$ is the sheaf or complex associated with the filtration interval $[b,d]$. Consequently, the extinction of barcode intervals directly implies the vanishing of corresponding Ext groups, thereby ensuring derived-categorical smoothness conditions essential to proving regularity.
 
 
-\begin{definition}[AK Collapse Structure]
+\begin{definition}[AK Collapse Structure] \label{def:ak-collapse}
 Let $\mathcal{F}_t \in D^b(\mathsf{Filt})$ be a filtered complex associated with a weak solution $u(t)$ to the 3D incompressible Navier--Stokes equations.  
 We say that $u(t)$ undergoes \emph{AK Collapse} on open set $U \subset \mathbb{R}^3$ if:
 \[
@@ -1978,6 +2026,26 @@ In the context of the derived category, the concept of a final object refers to 
 \textit{“When topology collapses and extension vanishes, smoothness is no longer optional—it is the only possible outcome.”}
 \end{quote}
 
+\begin{definition}[VMHS Degeneration] \label{def:vmhs-collapse}
+Let $X_t$ be a one-parameter family of complex varieties over the punctured disk $\Delta^*$, equipped with a Variation of Mixed Hodge Structure (VMHS) on $H^*(X_t)$.  
+We say the family exhibits \emph{VMHS degeneration} as $t \to 0$ if:
+\begin{itemize}
+  \item The limiting Hodge filtration $\lim_{t \to 0} F^\bullet H^k(X_t)$ exists and stabilizes,
+  \item The associated weight and monodromy filtrations converge,
+  \item The degenerating filtration induces collapse in derived Ext-groups via AK lifting.
+\end{itemize}
+This structure reflects a topological and categorical simplification, central to collapse-based regularity criteria.
+\end{definition}
+
+\begin{remark}[Physical Interpretation of VMHS Degeneration]
+VMHS degeneration corresponds physically to the loss of complex topological patterns—such as swirling loops or layered vortex structures—in the fluid’s evolution.  
+As filtration layers collapse, the fluid sheds topological complexity:  
+vorticity cycles vanish, oscillatory structures simplify, and chaotic elements decay into trivial geometry.  
+This mirrors the contraction of mixed Hodge layers and signals a physically observable smoothing effect.  
+In this view, VMHS degeneration is not abstract—it is the **topological death of turbulence**.
+\end{remark}
+
+This interpretation provides a physical lens for understanding how complex topological energy dissipates into analytically regular structures under VMHS degeneration.
 
 % ===========================
 % Conclusion and Future Directions
