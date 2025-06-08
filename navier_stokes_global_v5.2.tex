@@ -1096,10 +1096,27 @@ Let $\nu(t) := u(t)/\|u(t)\|_{H^1} \in \mathbb{S} \subset H^1$ be the normalized
 In practice, the orbit $\pi(\mathcal{O})$ can be embedded using Isomap or t-SNE. If the embedding reveals a closed loop, this indicates recurrence and contradicts $\mathrm{PH}_1 = 0$.
 \end{remark}
 
+\usepackage{tikz}
+\usepackage{caption}
+
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.6\textwidth]{isomap_loop_vs_arc.png}
-  \caption{Isomap embedding of projected orbit: loop (left, self-similar) vs. arc (right, dissipative)}
+  \begin{tikzpicture}[scale=1.2]
+
+    % Left: loop
+    \draw[thick, blue] (0,0) circle (1cm);
+    \node at (0,-1.4) {\small Loop (Self-similar)};
+    
+    % Right: arc
+    \draw[thick, red, ->] (3,0) arc[start angle=180, end angle=360, radius=1cm];
+    \node at (3,-1.4) {\small Arc (Dissipative)};
+    
+    % Labels
+    \node at (0,1.2) {\textbf{(a)}};
+    \node at (3,1.2) {\textbf{(b)}};
+
+  \end{tikzpicture}
+  \caption{Isomap embedding of projected orbit. (a) Loop structure implies recurrence or self-similarity; (b) Arc structure implies dissipative decay.}
 \end{figure}
 
 \begin{remark}[Numerical Pipeline]
