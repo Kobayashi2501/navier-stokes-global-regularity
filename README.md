@@ -152,8 +152,13 @@ We invite collaboration and feedback on:
 - Role of VMHS, SYZ, and Langlands-type degenerations  
 - Validation via numerical barcodes and shell decay
 
+This project is currently **being prepared for arXiv submission**.  
+> 📨 If you are an active arXiv author and support the aims of this work,  
+> we would greatly appreciate your endorsement for the initial upload.  
+
 Feel free to contact us by [email](mailto:dollops2501@icloud.com) or contribute via  
 [GitHub Issues](https://github.com/Kobayashi2501/Navier-Stokes-v5.0/issues)
+
 
 ---
 
