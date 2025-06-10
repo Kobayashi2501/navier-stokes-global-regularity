@@ -1,25 +1,34 @@
 # 🌊 Global Regularity of 3D Navier–Stokes  
-### via Energy–Topology–Category–Geometry Collapse (v5.2)
+### via Energy–Topology–Category–Geometry Collapse (v5.3)
 
-This repository presents **version 5.2** of a structurally complete, non-perturbative framework toward resolving the **global regularity problem** for the 3D incompressible Navier–Stokes equations on \( \mathbb{R}^3 \).
+This repository presents **Version 5.3** of a structurally complete, non-perturbative framework aimed at resolving the **global regularity problem** for the 3D incompressible Navier–Stokes equations on \( \mathbb{R}^3 \).
 
-The method unifies:
-- **Persistent homology** (PH) via sublevel-set topology
-- **Spectral energy decay** and dyadic shell analysis
-- **Orbit geometry** and contractibility over time
-- **VMHS degeneration**, **Tropical collapse**, and **SYZ mirror flow**
-- **Ext-class vanishing** in derived category \( \mathcal{D}^b(\text{AK}) \)
-- **Category-theoretic collapse** and **topos-theoretic rigidity**
-- Critical-space extensions into \( B^{-1+3/p}_{p,q} \)
+---
 
-All integrated into a **7-step structural proof** that shows:  
-> **Persistent collapse (PH₁ = 0)** and **categorical collapse (Ext¹ = 0)** are _jointly sufficient_ for  
-> **smoothness of weak solutions**: \( u(t) \in C^\infty(\mathbb{R}^3) \ \forall t > T_0 \)
+## 🎯 Problem Statement
 
-> 🧠 **Author’s Note**  
-> This proof is a concrete realization of  
-> [**AK High-Dimensional Projection Structural Theory (AK-HDPST)**](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory).  
-> It reframes blow-up phenomena as **collapse failure zones**, diagnosed via obstruction logic and resolved by derived category convergence.
+The central question is:  
+> Do smooth initial conditions always yield smooth solutions to the 3D incompressible Navier–Stokes equations for all time?
+
+This v5.3 approach provides a **7-step structural proof** of regularity, formulated without perturbative techniques, by:
+- Recasting singularities as **collapse failures** in topological, categorical, and spectral dimensions
+- Establishing formal equivalence between **persistent homology**, **Ext-group vanishing**, and **analytic smoothness**
+
+---
+
+## 🧠 Method Overview
+
+We construct a multilayered collapse theory based on:
+
+- **Persistent Homology (PH)**: barcodes from sublevel filtration of Isomap-embedded flow data
+- **Spectral Energy Decay**: dyadic shell analysis via Fourier transform
+- **Topological Orbit Geometry**: PH₁ contractibility and injectivity over time
+- **VMHS Degeneration**: Variation of Mixed Hodge Structure collapse → Ext-class flattening
+- **Mirror–Langlands–Tropical Correspondence**: categorical degeneration as geometric collapse
+- **Category-theoretic Collapse**: Ext¹ = 0 in \( \mathcal{D}^b(\mathrm{Filt}) \) ensures obstruction-free regularity
+- **ZFC-compatible Collapse Axioms**: summarized in Appendix Z
+
+> Collapse is interpreted not as failure, but as **semantic simplification** of high-dimensional flow complexity.
 
 ---
 
@@ -27,147 +36,101 @@ All integrated into a **7-step structural proof** that shows:
 
 Let \( u_0 \in H^1(\mathbb{R}^3) \), divergence-free. Then the corresponding Leray–Hopf weak solution \( u(t) \) satisfies:
 
-**If** the following _collapse conditions_ hold for some \( T_0 > 0 \):
+**If**, for some \( T_0 > 0 \), the following conditions hold:
 
-- Persistent Homology collapse: \( \mathrm{PH}_1(u(t)) \to 0 \quad (t \to \infty) \)
-- Ext-class collapse: \( \mathrm{Ext}^1(F_t, -) \to 0 \), with \( F_t \in \mathcal{D}^b(\text{AK}) \)
-- Topological energy decay: \( C(t) = \sum \text{pers}_i^2 \to 0 \)
-- Barcode entropy: \( H(t) \to 0 \)
-- Dyadic shell energy decay: \( E_j(t) \to 0 \) (Fourier regularity)
+- \( \mathrm{PH}_1(u(t)) \to 0 \quad (t \to \infty) \)
+- \( \mathrm{Ext}^1(\mathcal{F}_t, -) \to 0 \quad \text{in } \mathcal{D}^b(\mathrm{Filt}) \)
+- Topological energy: \( C(t) = \sum \text{pers}_i^2 \to 0 \)
+- Barcode entropy: \( H(t) = -\sum p_i \log p_i \to 0 \)
+- Dyadic shell energy decay: \( \log E_j(t) \sim -sj \), with slope \( s > 1 \)
 
-**Then**:  
+**Then**:
 \[
 u(t) \in C^\infty(\mathbb{R}^3) \quad \forall t > T_0
 \]
 
-This includes full exclusion of:
-- Type I (self-similar) singularities
-- Type II (oscillatory or bifurcating) structures
-- Type III (topological or chaotic) blow-up regimes
-
-> 🔍 Collapse failure cases (e.g. persistent PH₁ ≠ 0, Ext¹ ≠ 0) are diagnosed structurally via  
-> the **Obstruction Logic Triplet** in Appendix Z.9.
+> 🔍 See Appendix Z.9 (Collapse Lemma) for formal derivation.
 
 ---
 
-## 🧠 What This Proof Says — And Implies
+## 🧭 Step-by-Step Strategy (v5.3)
 
-This framework does **not rely on perturbation** or special symmetries.  
-Instead, it structurally proves the following:
-
-- **Persistent topology and categorical obstruction** are _observable and controllable_ quantities.
-- Their **simultaneous vanishing** guarantees the **analytic smoothness** of Navier–Stokes flows.
-- Collapse is interpreted as a **semantic trivialization** of the solution’s derived complexity.
-- Failure to collapse implies detectable _obstruction classes_, indicating _singularity zones_.
-
-Thus, the v5.2 framework provides:
-
-1. **A structural criterion** for determining when a weak solution must become smooth  
-2. **A diagnostic logic** for when and why singularities might persist  
-3. **A formal collapse theorem** (Appendix E, Z) that generalizes BKM-type criteria through Ext–PH duality  
-4. **A numerically testable roadmap**: using barcodes, spectral decay, and energy profiles
+| Step | Title | Core Idea |
+|------|-------|-----------|
+| 0 | Lifting Obstruction | Structural collapse replaces blow-up exclusion |
+| 1 | Topological Stability | Barcode stability under PH filtration implies Sobolev continuity |
+| 2 | Energy–Topology Bound | Persistent energy bounds control enstrophy via topology |
+| 3 | Orbit Injectivity | PH₁ injectivity excludes Type I/II blow-up |
+| 4 | VMHS Degeneration | Functorial degeneration stabilizes Ext and category gluing |
+| 5 | Mirror–Tropical Collapse | Mirror-SYZ and Langlands flatten flow moduli |
+| 6 | Fourier Shell Collapse | Dyadic slope decay implies analytic control |
+| 7 | Collapse ⇒ Regularity | PH = 0 ⇔ Ext = 0 ⇔ \( u(t) \in C^\infty \): full smoothness by causal chain |
 
 ---
 
-## 🧭 7-Step Strategy (v5.2 Overview)
+## 🔬 Numerical Implementation
 
-| Step | Title | Key Idea |
-|------|-------|----------|
-| 0 | **Motivational Lifting** | Collapse is the _cause_ of smoothness, not a result |
-| 1 | **Topological Stability** | Sobolev continuity inferred from PH barcode stability |
-| 2 | **Persistent Energy Control** | Topological energy bounds enstrophy evolution |
-| 3 | **Orbit Injectivity** | Injectivity of PH₁ trajectory precludes self-similarity |
-| 4 | **VMHS Degeneration** | Ext-class collapse corresponds to loop degeneration |
-| 5 | **Tropical–Mirror Collapse** | Trop→Ext convergence stabilizes geometry |
-| 6 | **Spectral Shell Decay** | High-frequency decay signals analytic regularity |
-| 7 | **Collapse ⇒ Regularity** | Dual collapse implies full \( C^\infty \)-regularity |
+| File | Description |
+|------|-------------|
+| `pseudo_spectral_sim.py` | 3D Fourier-based spectral Navier–Stokes solver |
+| `fourier_decay.py` | Computes dyadic shell energy slope \( s \) |
+| `ph_isomap.py` | PH₁ barcodes from Isomap embedding of solution trajectories |
 
----
+### Measured Observables:
 
-## 🔬 Numerical Pipelines
-
-| File | Purpose |
-|------|---------|
-| `pseudo_spectral_sim.py` | Spectral Navier–Stokes solver (3D Fourier) |
-| `fourier_decay.py` | Dyadic shell slope computation |
-| `ph_isomap.py` | Isomap + PH₁ barcode analysis |
-
-**Key Observables**:
-- Topological energy: \( C(t) = \sum \text{pers}_i^2 \)
-- Barcode entropy: \( H(t) = -\sum p_i \log p_i \)
-- Spectral slope: \( s(t) = \frac{d}{dj} \log E_j(t) \)
-- Collapse condition: \( \max(\text{pers}_i) < \varepsilon \Rightarrow \mathrm{PH}_1 = 0 \)
+- **Topological energy**: \( C(t) = \sum \text{pers}_i^2 \)
+- **Barcode entropy**: \( H(t) = -\sum p_i \log p_i \)
+- **Spectral slope**: \( s(t) = \frac{d}{dj} \log E_j(t) \)
+- **Collapse detection**: \( \max \text{pers}_i < \varepsilon \Rightarrow \mathrm{PH}_1 = 0 \)
 
 ---
 
-## 🌀 Foundations in AK-HDPST
+## 🚫 Blow-Up Exclusion by Collapse
 
-This proof is grounded in:
-[**AK High-Dimensional Projection Structural Theory**](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory)
-
-Key components:
-- High-dimensional projection to separate MECE structures
-- PH₁ → Trop → Extⁱ functorial degeneration
-- Mirror–Langlands–Topos synthesis
-- Topological ↔ categorical collapse logic (Appendices A–Z)
-
-> Collapse is seen not as breakdown, but as categorical simplification.
+| Type | Description | Collapse-Based Elimination |
+|------|-------------|-----------------------------|
+| I | Self-similar blow-up | PH₁ injectivity + Ext-finiteness |
+| II | Oscillatory bifurcation | Entropy decay eliminates looped transitions |
+| III | Topological/chaotic | PH₁ = Ext¹ = 0 implies geometric rigidity |
 
 ---
 
-## 🚫 Blow-Up Classification and Collapse Exclusion
+## 📚 Theoretical Foundations
 
-| Type | Description | Collapse-Based Exclusion |
-|------|-------------|---------------------------|
-| Type I | Self-similar singularity | Orbit injectivity + Ext finality |
-| Type II | Oscillatory/vortex blow-up | Entropy decay \( H(t) \to 0 \) removes cycles |
-| Type III | Topological chaos | Simultaneous PH and Ext collapse ⇒ rigidity zone |
-
----
-
-## 📚 References and Theoretical Basis
-
-- Persistent Homology: Edelsbrunner, Ghrist, Carlsson  
-- Spectral decay: Beale–Kato–Majda  
-- Hodge + VMHS: Deligne, Schmid, Kontsevich, SYZ  
-- Ext collapse: Beilinson–Bernstein–Deligne  
-- Collapse Logic: Appendix Z (AK–PH–Ext structural equivalence)
-
----
-
-## 👤 Authorship
-
-**Author**: Atsushi Kobayashi  
-**Theoretical Partner**: ChatGPT Research Partner  
-📧 **Contact**: [dollops2501@icloud.com](mailto:dollops2501@icloud.com)
+- Persistent Homology: G. Carlsson, H. Edelsbrunner  
+- VMHS & Hodge Theory: Deligne, Schmid, Kontsevich  
+- Collapse Lemma: Developed in Appendix Z.9  
+- Category-Theoretic Obstruction Logic: Appendix G–J  
+- AK Theory: [AK-HDPST GitHub Repository](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory)
 
 ---
 
 ## 📢 Call for Review and Collaboration
 
-We invite collaboration and feedback on:
+This repository reflects an original theory and formal framework for resolving a major open PDE problem.
 
-- Structural soundness of the 7-step proof  
-- Dual collapse (PH₁ = 0 and Ext¹ = 0) sufficiency  
-- Role of VMHS, SYZ, and Langlands-type degenerations  
-- Validation via numerical barcodes and shell decay
+If you are:
 
-This project is currently **being prepared for arXiv submission**.  
-> 📨 If you are an active arXiv author and support the aims of this work,  
-> we would greatly appreciate your endorsement for the initial upload.  
+- A researcher in topology, PDE, or derived category theory
+- Interested in collapse logic, VMHS, Langlands geometry
+- A developer working on PH barcode tools or Fourier analysis
 
-Feel free to contact us by [email](mailto:dollops2501@icloud.com) or contribute via  
-[GitHub Issues](https://github.com/Kobayashi2501/Navier-Stokes-v5.0/issues)
+We welcome your **comments, validation, or collaboration**.
 
+> 📩 Contact: [dollops2501@icloud.com](mailto:dollops2501@icloud.com)  
+> GitHub issues and pull requests are also appreciated.
+
+This work is currently being prepared for **arXiv submission**.  
+If you support the approach and wish to endorse its release, please contact us.
 
 ---
 
-### 📜 License
+## 🌐 Japanese Version
+
+→ [日本語版はこちら（README_ja.md）](https://github.com/Kobayashi2501/navier-stokes-global-regularity/blob/main/README_ja.md)
+
+---
+
+## 📜 License
 
 Licensed under the [MIT License](https://opensource.org/licenses/MIT)
-
----
-
-### 🌐 Japanese Version
-
-→ [日本語版はこちら（README_jp.md）](https://github.com/Kobayashi2501/navier-stokes-global-regularity/blob/main/README_ja.md)
