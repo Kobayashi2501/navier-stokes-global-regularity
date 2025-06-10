@@ -1,159 +1,134 @@
 # 🌊 3次元ナビエ–ストークス方程式の全球正則性  
-### エネルギー・トポロジー・圏論・幾何的Collapseによる構造的証明（v5.2）
+### エネルギー×トポロジー×圏論×幾何のCollapse理論による解法（v5.3）
 
-このリポジトリは、非圧縮3次元ナビエ–ストークス方程式（\(\mathbb{R}^3\)）に対する  
-**全球的な滑らかさ（正則性）問題の構造的解法（v5.2）** を提示するものです。
-
-本証明は以下の構成要素を統合します：
-
-- **持続的ホモロジー**（Persistent Homology, PH）によるサブレベル集合の位相解析
-- **Fourierエネルギーの減衰構造**（ダイアディックシェル）
-- **軌道幾何と写像の一意性**
-- **VMHS退化**と**トロピカル幾何崩壊（SYZミラー対称性）**
-- **導来圏におけるExt群の消失（\(\mathrm{Ext}^1 = 0\)）**
-- **圏論的Collapse**と**Topos的硬直性**
-- 臨界空間（例：\( B^{-1+3/p}_{p,q} \)）への拡張性
-
-これらは、以下の**7段階のCollapse証明戦略**により統合され：
-
-> **持続的位相崩壊（PH₁ = 0）と、導来的障害の消滅（Ext¹ = 0）が同時に成立するならば、  
-> Navier–Stokesの解 \( u(t) \) は滑らか（\( C^\infty \)）である**ことを示します。
-
-> 🧠 **この理論は AK高次元射影構造理論（AK-HDPST）** に基づいており、  
-> Blow-up（特異性の発生）を「圏論的障害のCollapse Failure」として構造的に排除します。
+このリポジトリは、3次元非圧縮ナビエ–ストークス方程式（定常初期値問題）に対する全球正則性問題を、**構造的かつ非摂動的**に解決するための枠組み **Version 5.3** を示します。
 
 ---
 
-## 🔑 主定理（Collapseによる正則性）
+## 🎯 問題設定
 
-初期条件 \( u_0 \in H^1(\mathbb{R}^3) \)（非圧縮）に対し、対応する Leray–Hopf 弱解 \( u(t) \) に対して：
+中心的な問いは：
 
-以下の「Collapse条件」が時刻 \( t > T_0 \) において満たされると仮定すると：
+> \( \mathbb{R}^3 \) 上で与えられた滑らかな初期条件は、常に全時間にわたり滑らかな解を生むか？
 
-- \( \mathrm{PH}_1(u(t)) \to 0 \)：持続的ホモロジーの完全消滅
-- \( \mathrm{Ext}^1(F_t, -) \to 0 \)：導来圏の拡張群の消滅（\( F_t \in \mathcal{D}^b(\text{AK}) \)）
-- トポロジー的エネルギー \( C(t) = \sum \text{pers}_i^2 \to 0 \)
-- バーコードエントロピー \( H(t) \to 0 \)
-- ダイアディックシェルエネルギー \( E_j(t) \to 0 \)：高周波数の崩壊
+この v5.3 は、従来の摂動論ではなく、**Collapse失敗構造としての特異性を再定義**し、
+- Persistent Homology（PH）
+- Ext群（導来圏の障害類）
+- エネルギースペクトル減衰
+の**同時消滅が滑らかさを保証する**という因果的枠組みを、7ステップで構築しています。
 
-**ならば：**
+---
+
+## 🧠 解法の構造
+
+本アプローチは以下の層構造を統合します：
+
+- **Persistent Homology（PH）**：Isomap埋め込みから得られるバーコード構造
+- **Fourierスペクトル減衰**：Dyadic Shellによる高周波崩壊の定量評価
+- **軌道トポロジー幾何**：PH₁の縮退・収束による Type I/II 排除
+- **VMHSの退化**：混合ホッジ構造の変動による Ext崩壊の因果補完
+- **Mirror–Tropical–Langlands対応**：幾何の退化をカテゴリ的に解釈
+- **導来圏的 Collapse**：Ext¹ = 0 が構造的 Glueing 成功を意味する
+- **ZFC整合な Collapse 公理**：Appendix Z に整理
+
+> Collapseとは破壊ではなく、**高次構造の意味論的単純化**である。
+
+---
+
+## 🔑 メイン定理（Collapseによる滑らかさ）
+
+初期値 \( u_0 \in H^1(\mathbb{R}^3) \)、発散ゼロとする。  
+対応する Leray–Hopf 弱解 \( u(t) \) に対し：
+
+**ある \( T_0 > 0 \) において、以下が成り立つならば**：
+
+- \( \mathrm{PH}_1(u(t)) \to 0 \quad (t \to \infty) \)
+- \( \mathrm{Ext}^1(\mathcal{F}_t, -) \to 0 \quad \text{in } \mathcal{D}^b(\mathrm{Filt}) \)
+- トポロジカルエネルギー \( C(t) = \sum \text{pers}_i^2 \to 0 \)
+- バーコードエントロピー \( H(t) = -\sum p_i \log p_i \to 0 \)
+- ダイアディックスペクトル \( \log E_j(t) \sim -sj \) で \( s > 1 \)
+
+**ならば**：
 \[
-u(t) \in C^\infty(\mathbb{R}^3),\quad \forall t > T_0
+u(t) \in C^\infty(\mathbb{R}^3) \quad \forall t > T_0
 \]
 
-これにより以下のすべての特異性タイプが排除されます：
-
-- **Type I**：自己相似型特異点（スケーリング特異性）
-- **Type II**：渦系の振動・分岐
-- **Type III**：トポロジー的カオス・周期的循環
-
-> 🔍 Collapse条件が破れた場合でも、**Appendix Z.9 にて Collapse Failure の障害論理**が明示されており、  
-> どの構造が非正則性を引き起こすか診断可能です。
+> 🔍 詳細な形式的証明は Appendix Z.9 の Collapse Lemma に記述。
 
 ---
 
-## 🧠 この証明が意味すること
+## 🧭 7ステップ構成（v5.3）
 
-この理論は、摂動や特別な対称性に依存せず、以下を形式的に保証します：
-
-1. **位相的情報（PH）と圏論的障害（Ext¹）**が**構造的に滑らかさを決定**する
-2. Collapseが成立すれば、**構造的・解析的に正則性が必然的に導かれる**
-3. Collapseに失敗する場合でも、その障害（obstruction）が**論理的・導来的に検出可能**
-4. Collapse構造は**数値的にも診断可能**（PHバーコード、Fourier減衰、エントロピー）
-
----
-
-## 🧭 7段階のCollapse戦略（概要）
-
-| ステップ | 内容 | 中心概念 |
-|----------|------|-----------|
-| Step 0 | 構造的リフティング | Collapseは「原因」であり「結果」ではない |
-| Step 1 | 位相的安定性 | Sobolev空間とPHバーコードの安定性対応 |
-| Step 2 | トポロジーエネルギー制御 | \( C(t) = \sum \text{pers}_i^2 \) が準エントロピー的役割を果たす |
-| Step 3 | 軌道の一意性 | 時間発展に対するPH₁のInjectivityが自己相似を排除 |
-| Step 4 | VMHSの退化 | Hodge構造の退化が Ext¹ の消滅と一致 |
-| Step 5 | Trop–SYZ–Mirror対応 | 幾何退化が導来圏でのCollapseに変換される |
-| Step 6 | スペクトル崩壊 | Fourier空間における高周波崩壊が解析正則性を支える |
-| Step 7 | Collapse ⇒ 正則性定理 | \( \mathrm{PH}_1 = 0 \land \mathrm{Ext}^1 = 0 \Rightarrow u(t) \in C^\infty \) |
+| Step | タイトル | 主な着眼点 |
+|------|-----------|-------------|
+| 0 | 障害構造の持ち上げ | 特異性をCollapse失敗として再定義 |
+| 1 | トポロジー安定性 | Barcode安定性 → Sobolev連続性を導出 |
+| 2 | エネルギー×位相 | Topological EnergyがEnstrophyを拘束 |
+| 3 | 軌道一意性 | PH₁軌道のinjectivity → Type I/II除外 |
+| 4 | VMHS退化 | Extクラスの消滅とFunctorial Glueing の接続 |
+| 5 | Mirror–Trop Collapse | 幾何構造をカテゴリ的退化で平坦化 |
+| 6 | Fourier殻崩壊 | 高周波スペクトル減衰 → 滑らかさへ |
+| 7 | Collapse ⇒ 正則性 | \( \mathrm{PH}_1 = 0 ⇔ \mathrm{Ext}^1 = 0 ⇔ u ∈ C^\infty \) を証明的に構成 |
 
 ---
 
-## 🔬 数値解析スクリプト
+## 🔬 数値的手法とコード対応
 
-| ファイル名 | 目的 |
-|------------|------|
-| `pseudo_spectral_sim.py` | スペクトル法によるNavier–Stokes時間発展 |
-| `fourier_decay.py` | ダイアディックシェルのエネルギー減衰率評価 |
-| `ph_isomap.py` | Isomap + 持続的ホモロジー（PH₁）解析 |
+| ファイル名 | 役割 |
+|------------|-------|
+| `pseudo_spectral_sim.py` | スペクトル法によるNavier–Stokes数値解 |
+| `fourier_decay.py` | Dyadic Shellエネルギーの減衰傾き解析 |
+| `ph_isomap.py` | Isomap埋め込み後のPH₁バーコード抽出 |
 
-**観測指標：**
-- トポロジーエネルギー：\( C(t) = \sum \text{pers}_i^2 \)
-- バーコードエントロピー：\( H(t) = -\sum p_i \log p_i \)
-- スペクトル傾き：\( \frac{d}{dj} \log E_j(t) \)
-- Collapse条件： \( \max(\text{pers}_i) < \varepsilon \Rightarrow \mathrm{PH}_1 = 0 \)
+### 観測量（Collapse診断指標）：
 
----
-
-## 🌀 AK高次元射影構造理論（AK-HDPST）との関係
-
-この証明は、以下の理論的枠組みと直結しています：
-
-🔗 [AK高次元射影構造理論（AK-HDPST）](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory)
-
-- 問題を高次元にリフティングしてMECE分解可能な構造に変換
-- Collapse関手：\( \mathrm{PH}_1 \to \mathrm{Trop} \to \mathrm{Ext}^1 \)
-- Collapse三角形：トポロジー崩壊＝導来圏収束＝幾何退化
-- Mirror–Langlands–Topos対応も内包
+- **Topological Energy**： \( C(t) = \sum \text{pers}_i^2 \)
+- **Barcode Entropy**： \( H(t) = -\sum p_i \log p_i \)
+- **Shell Decay Slope**： \( s(t) = \frac{d}{dj} \log E_j(t) \)
+- **Collapse条件**： \( \max \text{pers}_i < \varepsilon \Rightarrow \mathrm{PH}_1 = 0 \)
 
 ---
 
-## 🚫 Blow-up の分類とCollapseによる排除対応
+## 🚫 Blow-up分類とCollapseによる排除
 
-| 型 | Blow-upの特徴 | Collapseによる排除構造 |
-|----|----------------|----------------------------|
-| Type I | 自己相似型の吹き上がり | 軌道のInjectivityとExtのfinal性により排除 |
-| Type II | 振動・渦の反復 | エントロピー \( H(t) \to 0 \) による分岐の排除 |
-| Type III | トポロジー的混沌 | PHとExtの同時Collapseにより剛体化領域へ移行 |
-
----
-
-## 📚 理論的基盤・引用文献
-
-- Persistent Homology：Edelsbrunner, Ghrist, Carlsson  
-- Spectral decay：Beale–Kato–Majda  
-- Hodge理論・SYZミラー：Deligne, Schmid, Kontsevich  
-- Ext-collapse：Beilinson–Bernstein–Deligne（perverse sheaves）  
-- Collapse論理形式：Appendix Z（PH ⇔ Ext ⇔ 滑らかさ）
+| Blow-up型 | 特徴 | Collapseによる除去機構 |
+|-----------|------|--------------------------|
+| Type I | 自己相似型 | 軌道注入性 + Ext有限性 |
+| Type II | 発振/分岐型 | Entropy減衰によるループ崩壊 |
+| Type III | トポロジカルカオス | PHとExtの同時消滅 → 幾何剛性 |
 
 ---
 
-## 👤 著者
+## 📚 理論的基盤と参照元
 
-**構築者**：小林 篤史（Atsushi Kobayashi）  
-**理論支援パートナー**：ChatGPT Research Partner  
-📧 **連絡先**：[dollops2501@icloud.com](mailto:dollops2501@icloud.com)
+- Persistent Homology：Carlsson, Edelsbrunner  
+- VMHS・ホッジ理論：Deligne, Schmid, Kontsevich  
+- Collapse Lemma：Appendix Z.9 にて定理化  
+- 導来圏論・Obstruction Logic：Appendix G–J  
+- AK理論：  
+  → [AK高次元射影構造理論 GitHub](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory)
 
 ---
 
-## 📢 査読・共同研究のお願い
+## 📢 査読と共同研究の募集
 
-本プロジェクトでは以下の観点からのフィードバック・議論・共同研究を歓迎しています：
+本リポジトリは、未解決のPDE問題に対し、構造的かつ証明論的な解法を提示する独自理論です。
 
-- 7ステップ構成の論理的一貫性  
-- Ext¹ = 0 および PH₁ = 0 の正則性に対する十分性  
-- VMHS・SYZミラー・Langlands対応といった外部理論との統合の妥当性  
-- 数値的観測（バーコード・スペクトル減衰）によるCollapse構造の検証
+次のような方はぜひご連絡ください：
 
-現在、本研究の理論は **arXivへの掲載を準備中** です。  
-> 📩 本理論の趣旨にご賛同いただける arXiv 登録研究者の方で、  
-> 初回アップロードのための **endorsement（推薦）** をご協力いただける方がいらっしゃいましたら、  
-> ぜひご連絡いただけますと幸いです。
+- トポロジー／PDE／導来圏理論の研究者
+- Collapse論理・VMHS・Langlands幾何に関心のある方
+- バーコード解析・Fourier崩壊の数値手法に取り組む開発者
 
-ご興味のある方は、[メール](mailto:dollops2501@icloud.com) または  
-[GitHub Issues](https://github.com/Kobayashi2501/Navier-Stokes-v5.0/issues) にてご連絡ください。
+> 📩 連絡先： [dollops2501@icloud.com](mailto:dollops2501@icloud.com)  
+> GitHubのIssue投稿・Pull Requestも歓迎です。
+
+この内容は**arXiv投稿準備中**です。  
+ご賛同・推薦いただける方はご連絡いただけると幸いです。
 
 ---
 
 ## 📜 ライセンス
 
-本リポジトリは [MITライセンス](https://opensource.org/licenses/MIT) の下で公開されています。
+MITライセンスに基づき配布されています。  
+→ [MIT License](https://opensource.org/licenses/MIT)
