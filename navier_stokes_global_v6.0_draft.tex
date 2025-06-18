@@ -583,13 +583,20 @@ This proposition will be proven by translating topological vanishing into obstru
 Let us consider the following causal flow of implication, adapted from Appendix P:
 
 \[
-\begin{tikzcd}[column sep=large, row sep=large]
-\mathcal{F}_t \arrow[r, "\mathrm{PH}_1 = 0"] \arrow[d, "\text{Topological Energy Decay}"']
-& \text{Collapse State} \arrow[d, "\text{Collapse Functor}"] \\
-\text{Obstruction-Free Flow} \arrow[r, "\text{Topological Gluing Realization}"]
+\resizebox{\textwidth}{!}{%
+\begin{tikzcd}
+\mathcal{F}_t
+  \arrow[r, "{\mathrm{PH}_1 = 0}"]
+  \arrow[d, "{\text{Topological Energy Decay}}"']
+& \text{Collapse State}
+  \arrow[d, "{\text{Collapse Functor}}"] \\
+\text{Obstruction-Free Flow}
+  \arrow[r, "{\text{Topological Gluing Realization}}"]
 & u(t) \in C^\infty
 \end{tikzcd}
+}
 \]
+
 
 Each arrow in this diagram has a formal interpretation in terms of derived sheaf theory and AK Collapse semantics.
 
@@ -733,13 +740,20 @@ just as \( E_{\mathrm{PH}}(t) \) did for topological complexity.
 We now restate the causal collapse structure as a diagram, adapted from Appendix Q:
 
 \[
-\begin{tikzcd}[column sep=large, row sep=large]
-\mathcal{F}_t \arrow[r, "\mathrm{Ext}^1 = 0"] \arrow[d, "E_{\mathrm{Ext}}(t) \to 0"']
-& \text{Collapse State} \arrow[d, "\text{Collapse Functor}"] \\
-\text{Gluable Local Sections} \arrow[r, "\text{Global Reconstruction}"]
+\resizebox{\textwidth}{!}{%
+\begin{tikzcd}
+\mathcal{F}_t
+  \arrow[r, "{\mathrm{Ext}^1 = 0}"]
+  \arrow[d, "{E_{\mathrm{Ext}}(t) \to 0}"']
+& \text{Collapse State}
+  \arrow[d, "{\text{Collapse Functor}}"] \\
+\text{Gluable Local Sections}
+  \arrow[r, "{\text{Global Reconstruction}}"]
 & u(t) \in C^\infty
 \end{tikzcd}
+}
 \]
+
 
 The vertical arrows represent energetic and functorial decay,  
 while the horizontal ones represent semantic transitions from local to global structure.
@@ -1488,7 +1502,7 @@ This provides a quantitative formalization of topological simplification over ti
 \subsection*{C.5 Diagram: Temporal Collapse of Barcodes}
 
 \[
-\begin{tikzcd}[row sep=2.5em, column sep=4.5em]
+\begin{tikzcd}
 \mathrm{PH}_1(t_0)
   \arrow[r, "\text{Time Evolution}"]
 & \mathrm{PH}_1(t_1)
@@ -2109,17 +2123,20 @@ that is, a sheaf cohomological obstruction to forming global trivializations ove
 We consider again the core Collapse diagram:
 
 \[
-\begin{tikzcd}[row sep=2.5em, column sep=4.5em]
+\resizebox{\textwidth}{!}{%
+\begin{tikzcd}
 \mathcal{F}_t
-  \arrow[r, "\mathrm{Ext}^1 = 0"]
-  \arrow[d, "E_{\mathrm{Ext}}(t) \to 0"']
+  \arrow[r, "{\mathrm{Ext}^1 = 0}"]
+  \arrow[d, "{E_{\mathrm{Ext}}(t) \to 0}"']
 & \text{Trivial Extension Class}
-  \arrow[d, "Collapse Functor"] \\
+  \arrow[d, "{Collapse Functor}"] \\
 \text{Obstruction-Free Flow}
-  \arrow[r, "\text{Categorical Gluing}"]
+  \arrow[r, "{Categorical Gluing}"]
 & u(t) \in C^\infty
 \end{tikzcd}
+}
 \]
+
 
 This diagram expresses that collapsing Ext\(^1\) to zero categorically flattens local patches into a smooth global structure.
 
@@ -2229,13 +2246,20 @@ presented in Chapter 8 and Appendices P/Q. We aim to:
 We begin with the Collapse diagram (PH₁ perspective), originally stated as:
 
 \[
+\resizebox{\textwidth}{!}{%
 \begin{tikzcd}
-\mathcal{F}_t \arrow[r, "\mathrm{PH}_1"] \arrow[d, "\text{Topological Energy Decay}"']
-& \mathrm{PH}_1 = 0 \arrow[d, "\text{Collapse Functor}"] \\
-\text{Ext-Free State} \arrow[r, "\text{Obstruction Removal}"]
+\mathcal{F}_t
+  \arrow[r, "{\mathrm{PH}_1}"]
+  \arrow[d, "{Topological Energy Decay}"']
+& \mathrm{PH}_1 = 0
+  \arrow[d, "{Collapse Functor}"] \\
+Ext-Free State
+  \arrow[r, "{Obstruction Removal}"]
 & u(t) \in C^\infty
 \end{tikzcd}
+}
 \]
+
 
 ---
 
@@ -2261,12 +2285,18 @@ Commutativity corresponds to the **associativity of function composition** in th
 The Ext-based Collapse diagram:
 
 \[
+\resizebox{\textwidth}{!}{%
 \begin{tikzcd}
-\mathcal{F}_t \arrow[r, "\mathrm{Ext}^1"] \arrow[d, "E_{\mathrm{Ext}}(t) \to 0"']
-& \mathrm{Ext}^1 = 0 \arrow[d, "\text{Collapse Functor}"] \\
-\text{Obstruction-Free State} \arrow[r, "\text{Categorical Gluing}"]
+\mathcal{F}_t
+  \arrow[r, "{\mathrm{Ext}^1}"]
+  \arrow[d, "{E_{\mathrm{Ext}}(t) \to 0}"']
+& \mathrm{Ext}^1 = 0
+  \arrow[d, "{Collapse Functor}"] \\
+Obstruction-Free State
+  \arrow[r, "{Categorical Gluing}"]
 & u(t) \in C^\infty
 \end{tikzcd}
+}
 \]
 
 translates to:
@@ -2661,16 +2691,20 @@ C : D^b(\mathsf{Filt}) \to \mathsf{Triv}, \quad C(\mathcal{F}_t) \simeq \mathcal
 \subsection*{L.3 Final Collapse Diagram (Fully Typed and Commutative)}
 
 \[
-\begin{tikzcd}[row sep=3.2em, column sep=4.8em]
+\resizebox{\textwidth}{!}{%
+\begin{tikzcd}
 \mathcal{F}_t
-  \arrow[r, "\mathrm{PH}_1 = 0"] \arrow[d, "E_{\mathrm{Ext}}(t) \to 0"']
+  \arrow[r, "{\mathrm{PH}_1 = 0}"]
+  \arrow[d, "{E_{\mathrm{Ext}}(t) \to 0}"']
 & \texttt{Topological Collapse}
-  \arrow[d, "C : \mathsf{Filt} \to \mathsf{Triv}"] \\
+  \arrow[d, "{C : \mathsf{Filt} \to \mathsf{Triv}}"] \\
 \texttt{Ext-Class Collapse}
-  \arrow[r, "\texttt{Categorical Gluing}"]
+  \arrow[r, "{\texttt{Categorical Gluing}}"]
 & u(t,x) \in C^\infty
 \end{tikzcd}
+}
 \]
+
 
 Each arrow in this square is:
 \begin{itemize}
@@ -2824,16 +2858,20 @@ This satisfies:
 \paragraph{Figure M.1 — Full Collapse Diagram (Typed)}
 
 \[
-\begin{tikzcd}[row sep=3.2em, column sep=4.5em]
-\mathcal{F}_t \arrow[r, "\mathrm{PH}_1 = 0"]
-            \arrow[d, "E_{\mathrm{Ext}}(t) \to 0"']
-  & \texttt{Topological Collapse}
-    \arrow[d, "C : \mathsf{Filt} \to \mathsf{Triv}"] \\
+\resizebox{\textwidth}{!}{%
+\begin{tikzcd}
+\mathcal{F}_t
+  \arrow[r, "{\mathrm{PH}_1 = 0}"]
+  \arrow[d, "{E_{\mathrm{Ext}}(t) \to 0}"']
+& \texttt{Topological Collapse}
+  \arrow[d, "{C : \mathsf{Filt} \to \mathsf{Triv}}"] \\
 \texttt{Ext-Class Collapse}
-  \arrow[r, "\texttt{Gluing Functor}"]
-  & u(t,x) \in C^\infty
+  \arrow[r, "{\texttt{Gluing Functor}}"]
+& u(t,x) \in C^\infty
 \end{tikzcd}
+}
 \]
+
 
 \paragraph{Figure M.2 — Collapse Energy Decay}
 
