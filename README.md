@@ -1,7 +1,7 @@
 # 🌊 Global Regularity of 3D Navier–Stokes  
 ### via Collapse of Persistent Topology and Categorical Obstruction (v6.0, AK-HDPST based)
 
-This repository presents **Version 6.0**, a formally complete and verifiable proof system for the **global regularity** of the 3D incompressible Navier–Stokes equations on \( \mathbb{R}^3 \),  
+This repository presents **Version 6.0**, a formally complete and verifiable proof system for the **global regularity** of the 3D incompressible Navier–Stokes equations on `ℝ³`,  
 based entirely on the **AK Collapse Framework** developed in [AK-HDPST v10.0](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory).
 
 ---
@@ -10,10 +10,11 @@ based entirely on the **AK Collapse Framework** developed in [AK-HDPST v10.0](ht
 
 The Millennium Problem asks:
 
-> Do smooth, divergence-free initial data \( u_0 \in H^1(\mathbb{R}^3) \) yield a globally smooth solution  
-> \( u(t,x) \in C^\infty(\mathbb{R}^3 \times [0, \infty)) \) for all time?
+> Do smooth, divergence-free initial data `u₀ ∈ H¹(ℝ³)` yield a globally smooth solution  
+> `u(t,x) ∈ C^∞(ℝ³ × [0, ∞))` for all time?
 
-Version 6.0 answers this affirmatively under a new paradigm of **homological–categorical collapse**, which replaces traditional blow-up analysis with a functorial and type-theoretic obstruction-elimination framework.
+Version 6.0 answers this affirmatively under a new paradigm of **homological–categorical collapse**,  
+which replaces traditional blow-up analysis with a functorial and type-theoretic obstruction-elimination framework.
 
 ---
 
@@ -33,30 +34,30 @@ Traditional approaches have attempted the problem via:
 
 **This approach (v6.0)** introduces:
 
-- 🧩 **Persistent Homology Collapse**: \( \mathrm{PH}_1(\mathcal{F}_t) \to 0 \)
-- 🧠 **Ext-Class Elimination**: \( \mathrm{Ext}^1(\mathcal{F}_t, \mathbb{Q}) = 0 \)
-- 🧮 **Collapse Functor**: \( C : D^b(\mathsf{Filt}) \to \mathsf{Triv} \)
-- 📐 **ZFC + Type Theory Encoding**: Verified structure in Coq-form logic
-- ✅ **Full Diagrammatic and Formal Closure**: See [Appendix L](./navier_stokes_global_v6.0.tex)
+- 🧩 `Persistent Homology Collapse`: `PH₁(ℱₜ) → 0`
+- 🧠 `Ext-Class Elimination`: `Ext¹(ℱₜ, ℚ) = 0`
+- 🧮 `Collapse Functor`: `C : Dᵇ(Filt) → Triv`
+- 📐 `ZFC + Type Theory Encoding`: Verified in Coq-style logic
+- ✅ `Full Diagrammatic and Formal Closure`: See Appendix L
 
 ---
 
 ## 🔑 Main Theorem (Formal Collapse Regularity)
 
-Let \( u_0 \in H^1(\mathbb{R}^3) \), divergence-free.  
-Let \( u(t) \) be the corresponding Leray–Hopf weak solution.
+Let `u₀ ∈ H¹(ℝ³)`, divergence-free.  
+Let `u(t)` be the corresponding Leray–Hopf weak solution.
 
 If:
-- The filtered sheaf \( \mathcal{F}_t \in D^b(\mathsf{Filt}) \) satisfies:
-  - \( \mathrm{PH}_1(\mathcal{F}_t) = 0 \)
-  - \( \mathrm{Ext}^1(\mathcal{F}_t, \mathbb{Q}) = 0 \)
+- The filtered sheaf `ℱₜ ∈ Dᵇ(Filt)` satisfies:
+  - `PH₁(ℱₜ) = 0`
+  - `Ext¹(ℱₜ, ℚ) = 0`
 - Collapse energies satisfy:
-  - \( \lim_{t \to \infty} E_{\mathrm{PH}}(t) = 0 \)
-  - \( \lim_{t \to \infty} E_{\mathrm{Ext}}(t) = 0 \)
+  - `lim_{t→∞} E_PH(t) = 0`
+  - `lim_{t→∞} E_Ext(t) = 0`
 
 Then:
-`u(t,x) ∈ C^∞(ℝ³ × [0,∞))`  (Globally Smooth)
 
+`u(t,x) ∈ C^∞(ℝ³ × [0, ∞))`  **(Globally Smooth)**
 
 ---
 
@@ -64,11 +65,11 @@ Then:
 
 | Collapse Layer | Object | Role |
 |----------------|--------|------|
-| Topology | \( \mathrm{PH}_1(\mathcal{F}_t) \) | Detects vortex loops |
-| Category | \( \mathrm{Ext}^1(\mathcal{F}_t, \mathbb{Q}) \) | Obstruction to gluing |
-| Energy | \( E_{\mathrm{PH}}, E_{\mathrm{Ext}} \) | Quantify collapse progression |
-| Functor | \( C : \mathsf{Filt} \to \mathsf{Triv} \) | Collapse operation |
-| Logic | \( \Pi, \Sigma \)-types | Formal closure in type theory |
+| Topology | `PH₁(ℱₜ)` | Detects vortex loops |
+| Category | `Ext¹(ℱₜ, ℚ)` | Obstruction to gluing |
+| Energy | `E_PH`, `E_Ext` | Quantify collapse progression |
+| Functor | `C : Filt → Triv` | Collapse operation |
+| Logic | `Π`, `Σ` types | Formal closure in type theory |
 
 ---
 
@@ -76,12 +77,12 @@ Then:
 
 Although the proof is structural, optional numeric observables can be defined:
 
-- **PH barcode decay** → \( \mathrm{PH}_1 = 0 \)
-- **Dyadic energy slope** → \( \log E_j(t) \sim -sj \)
-- **Ext energy proxy** → flattening of Ext-class dimensionality
-- **Collapse detection** → \( E(t) < \varepsilon \Rightarrow \) Regularity
+- **PH barcode decay** → `PH₁ = 0`
+- **Dyadic energy slope** → `log Eⱼ(t) ~ -sⱼ`
+- **Ext energy proxy** → flattening of `Ext¹` dimension
+- **Collapse detection** → `E(t) < ε ⇒` regularity
 
-*Note: numeric simulation is not required for proof.*
+*Note: numerical simulation is not required for proof.*
 
 ---
 
@@ -90,16 +91,16 @@ Although the proof is structural, optional numeric observables can be defined:
 Collapse Regularity is derived from the following commutative diagram:
 
 
-And its categorical functor form (see Appendix I).
+And its functorial diagram form (see Appendix I).
 
 ---
 
 ## ✅ What Has Been Proven
 
-- [x] Collapse functor \( C \) is constructible in ZFC
-- [x] PH₁ and Ext¹ fully characterize regularity
+- [x] Collapse functor `C` is constructible in ZFC
+- [x] `PH₁` and `Ext¹` fully characterize regularity
 - [x] All obstruction classes (topological and categorical) are eliminated
-- [x] The solution \( u(t,x) \) remains globally smooth for all time
+- [x] The solution `u(t,x)` remains globally smooth for all time
 - [x] Entire structure encoded in Coq-style type theory
 
 ---
@@ -122,18 +123,26 @@ And its categorical functor form (see Appendix I).
 
 ---
 
-## 📢 Collaboration Invitation
+## 📢 arXiv Submission and Endorsement
 
-If you are a researcher in:
+This project is currently being prepared for submission to **arXiv**.
 
-- Partial Differential Equations
-- Homological Algebra / Sheaf Theory
-- Topological Data Analysis
-- Formal Verification (Lean / Coq)
+We are actively seeking:
+- Peer endorsement from verified arXiv authors
+- Collaborative review and constructive critique
+- Application discussions to other PDE or geometric problems
 
-… and wish to verify, extend, or generalize this approach, your collaboration is welcome.
+If you support this work or wish to endorse its submission, please contact the author directly.
 
-> 📩 Contact: [dollops2501@icloud.com](mailto:dollops2501@icloud.com)
+---
+
+## ✉️ Contact
+
+**Author**: Atsushi Kobayashi  
+**Email**: [dollops2501@icloud.com](mailto:dollops2501@icloud.com)  
+**GitHub**: [@Kobayashi2501](https://github.com/Kobayashi2501)
+
+Pull requests and issues are also welcomed.
 
 ---
 
