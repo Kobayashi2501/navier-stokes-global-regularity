@@ -55,9 +55,8 @@ If:
   - \( \lim_{t \to \infty} E_{\mathrm{Ext}}(t) = 0 \)
 
 Then:
-\[
-u(t,x) \in C^\infty(\mathbb{R}^3 \times [0,\infty)) \quad \text{(Globally Smooth)}
-\]
+`u(t,x) ∈ C^∞(ℝ³ × [0,∞))`  (Globally Smooth)
+
 
 ---
 
