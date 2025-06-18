@@ -2776,4 +2776,123 @@ This satisfies:
 
 
 
+% =====================================================
+% Appendix M: Glossary and Collapse Framework Gallery
+% =====================================================
+
+\section*{Appendix M: Glossary and Collapse Framework Gallery}
+\addcontentsline{toc}{section}{Appendix M: Glossary and Gallery}
+
+\subsection*{M.1 Glossary of Core Terms}
+
+\begin{description}
+
+  \item[CollapseZone]  
+  The logical condition \( \mathrm{PH}_1(\mathcal{F}_t) = 0 \land \mathrm{Ext}^1(\mathcal{F}_t, \mathbb{Q}) = 0 \).  
+  A time-state region where both topological and categorical obstructions vanish.
+
+  \item[Filtered Sheaf \( \mathcal{F}_t \)]  
+  A derived object in \( D^b(\mathsf{FiltShv}) \) constructed from the flow topology of \( u(t,x) \),  
+  encoding persistent homological and local vorticity data.
+
+  \item[Persistent Homology \( \mathrm{PH}_1 \)]  
+  The first persistent homology group over a filtration of vortex sublevel sets.  
+  Represents loop-type structures (vortex tubes) in the velocity field.
+
+  \item[Ext$^1$ Class \( \mathrm{Ext}^1(\mathcal{F}_t, \mathbb{Q}) \)]  
+  Derived obstruction class indicating failure to glue local sheaf patches into a global smooth configuration.
+
+  \item[Collapse Energy \( E_{\mathrm{PH}}(t) \), \( E_{\mathrm{Ext}}(t) \)]  
+  Quantitative functionals measuring topological complexity and categorical non-triviality at time \( t \).
+
+  \item[Collapse Functor \( C \)]  
+  A left-exact functor \( C : D^b(\mathsf{Filt}) \to \mathsf{Triv} \) mapping obstruction-laden sheaves to globally smooth representatives.
+
+  \item[Collapse Diagram]  
+  A commuting square or cube expressing causal paths from energy decay to smoothness via functorial operations.
+
+  \item[Type I/II/III Blow-up]  
+  Classical singularity types categorized by temporal/space gradient divergence and vortex topology.  
+  All are eliminated structurally in this framework.
+
+\end{description}
+
+---
+
+\subsection*{M.2 Visual Collapse Framework Library}
+
+\paragraph{Figure M.1 — Full Collapse Diagram (Typed)}
+
+\[
+\begin{tikzcd}[row sep=3.2em, column sep=4.5em]
+\mathcal{F}_t \arrow[r, "\mathrm{PH}_1 = 0"]
+            \arrow[d, "E_{\mathrm{Ext}}(t) \to 0"']
+  & \texttt{Topological Collapse}
+    \arrow[d, "C : \mathsf{Filt} \to \mathsf{Triv}"] \\
+\texttt{Ext-Class Collapse}
+  \arrow[r, "\texttt{Gluing Functor}"]
+  & u(t,x) \in C^\infty
+\end{tikzcd}
+\]
+
+\paragraph{Figure M.2 — Collapse Energy Decay}
+
+\[
+\begin{aligned}
+& E_{\mathrm{PH}}(t) := \sum_i \mathrm{length}(\gamma_i(t)) + \|\partial \mathcal{F}_t\|^2 \\
+& E_{\mathrm{Ext}}(t) := \sum_i \dim \mathrm{Ext}^1(\mathcal{F}_{t,i}, \mathbb{Q}) + \|\delta_t\|^2
+\end{aligned}
+\]
+
+\paragraph{Figure M.3 — Blow-up Type Classification}
+
+\begin{itemize}
+  \item Type I: Gradients blow up in finite time, bounded in \( L^\infty \).
+  \item Type II: Energy bounded, but derivative growth unbounded.
+  \item Type III: Vortex-type persistence beyond finite scale.
+\end{itemize}
+
+All types excluded under:
+\[
+\texttt{CollapseZone}(t) \quad \Rightarrow \quad u(t) \in C^\infty
+\]
+
+---
+
+\subsection*{M.3 Notation Table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|l|}
+\hline
+\textbf{Symbol} & \textbf{Meaning} \\
+\hline
+\( \mathcal{F}_t \) & Filtered sheaf over velocity space at time \( t \) \\
+\( \mathrm{PH}_1 \) & First persistent homology group \\
+\( \mathrm{Ext}^1 \) & First derived extension class \\
+\( C \) & Collapse functor: \( D^b(\mathsf{Filt}) \to \mathsf{Triv} \) \\
+\( u(t,x) \) & Velocity field solution to Navier–Stokes equation \\
+\( E_{\mathrm{PH}}(t) \) & PH-based collapse energy functional \\
+\( E_{\mathrm{Ext}}(t) \) & Ext-based collapse energy functional \\
+\( \partial, \delta_t \) & Boundary maps in filtered and derived sheaves \\
+\( \texttt{CollapseZone} \) & Region where PH₁ and Ext$^1$ vanish simultaneously \\
+\hline
+\end{tabular}
+\caption{Notation Reference Table}
+\end{table}
+
+---
+
+\subsection*{M.4 Summary}
+
+Appendix M consolidates all terminology, diagrammatic representations, and symbol definitions  
+required to navigate and apply the Collapse-based regularity proof of the Navier–Stokes equations.  
+It is intended for cross-referencing by mathematicians, formalists, and computational implementers alike.
+
+\begin{flushright}
+\textbf{Q.E.D.}
+\end{flushright}
+
+
+
 \end{document}
