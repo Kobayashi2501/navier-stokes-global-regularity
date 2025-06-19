@@ -3279,7 +3279,7 @@ Axiom Collapse_smooth_realization :
 The following logical triangle must commute formally:
 
 \[
-\begin{tikzcd}[row sep=large, column sep=large]
+\begin{tikzcd}
 \mathrm{PH}_1(X) = 0 \arrow[r, Rightarrow]
 & \mathrm{Ext}^1(X) = 0 \arrow[d, Rightarrow] \\
 & \mathrm{Smooth}(X)
@@ -3324,12 +3324,14 @@ that the diagram of implications is coherent under the assumptions defined in Ap
 The Collapse Diagram encodes the following logical structure:
 
 \[
-\begin{tikzcd}[row sep=large, column sep=large]
+\resizebox{\textwidth}{!}{%
+\begin{tikzcd}
 u(t) \arrow[r, "\text{Spectral Decay}"] \arrow[d, swap, "\text{Topological Energy}"]
 & \mathrm{PH}_1(u) = 0 \arrow[d, "\text{Functor Collapse}"] \\
 \mathrm{Ext}^1(u) = 0 \arrow[r, "\text{Obstruction Removal}"]
 & u(t) \in C^\infty
 \end{tikzcd}
+}
 \]
 
 This can be interpreted as the following logical commutation:
