@@ -139,7 +139,7 @@ Collapse を通じた正則性遷移は以下の可換図式で示されます�
 
 ## ✉️ 連絡先
 
-**著者**：小林　敦志（Atsushi Kobayashi）  
+**著者**：小林　篤史（Atsushi Kobayashi）  
 **メール**： [dollops2501@icloud.com](mailto:dollops2501@icloud.com)  
 **GitHub**：[@Kobayashi2501](https://github.com/Kobayashi2501)
 
