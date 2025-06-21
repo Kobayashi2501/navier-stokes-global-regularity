@@ -1,48 +1,71 @@
-% ===========================
-% Navier–Stokes Global Regularity via Categorical Collapse
-% ===========================
+% ===============================================
+%  Navier–Stokes Global Regularity via Categorical Collapse
+% ===============================================
 \documentclass[11pt]{article}
 
-% === Language and Encoding ===
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[english]{babel}
+% === Language and Font ===
+\usepackage[utf8]{inputenc}       % UTF-8 input
+\usepackage[T1]{fontenc}          % T1 font encoding
+\usepackage{fontspec}             % XeLaTeX font support
+\setmainfont{Times New Roman}     % Set main font
 
 % === Math and Symbols ===
-\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{amsmath, amssymb, amsthm, amsfonts}
 \usepackage{mathtools}
 \usepackage{mathrsfs}
-\usepackage{stmaryrd}  % for \llbracket etc.
-\usepackage{bm}        % bold math
+\usepackage{stmaryrd}             % For \llbracket etc.
+\usepackage{bm}                   % Bold math symbols
+\usepackage{changepage} 
+% === TikZ and Diagrams ===
 \usepackage{tikz}
-\usetikzlibrary{matrix, arrows.meta, calc, decorations.pathmorphing}
+\usepackage{tikz-cd}
+\usetikzlibrary{
+  cd, matrix, arrows.meta, decorations.pathmorphing, calc, positioning
+}
 
-% === Code, Listings, Diagrams ===
+% === Listings for Coq, Code etc. ===
 \usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}             % For rotatebox, scalebox etc.
+
+\lstdefinelanguage{Coq}{
+  keywords={Definition,Theorem,Proof,Qed,Fixpoint,match,with,end,fun,let,in,forall,exists,Inductive,return,Type},
+  keywordstyle=\color{blue}\bfseries,
+  identifierstyle=\color{black},
+  comment=[l]{//},
+  commentstyle=\color{gray},
+  morecomment=[s]{(*}{*)},
+  string=[b]",
+  stringstyle=\color{red},
+}
+
 \lstset{
+  language=Coq,
   basicstyle=\ttfamily\footnotesize,
   keywordstyle=\color{blue},
   commentstyle=\color{gray},
   breaklines=true,
+  breakindent=0pt,
+  columns=flexible,
+  keepspaces=true,
+  xleftmargin=1em,
+  framexrightmargin=1em,
   frame=single,
   captionpos=b
 }
 
-% === Graphics and Layout ===
-\usepackage{graphicx}
-\usepackage{xcolor}
+
+
+% === Geometry and Layout ===
 \usepackage{geometry}
 \geometry{margin=1in}
+\usepackage{placeins}             % \FloatBarrier support
 
 % === Hyperlinks ===
 \usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
 
-% === Title Metadata ===
-\title{Navier–Stokes Global Regularity via Categorical Collapse\\
-\Large \textsc{Version 6.0}\\
-\small Based on the AK High-Dimensional Projection Structural Theory v10.0}
-\author{Atsushi Kobayashi \\ \small with ChatGPT Research Partner}
-\date{June 2025}
+% === Language Support ===
+\usepackage[english]{babel}       % Use English language (place last)
 
 % === Theorem Environments ===
 \newtheorem{theorem}{Theorem}[section]
@@ -52,6 +75,8 @@
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{example}[theorem]{Example}
+\newtheorem{axiom}{Axiom}[section]
+\newtheorem{conjecture}{Conjecture}[section]
 
 % === Math Operators ===
 \DeclareMathOperator{\Ext}{Ext}
@@ -83,9 +108,16 @@
 \newcommand{\into}{\hookrightarrow}
 \newcommand{\onto}{\twoheadrightarrow}
 \newcommand{\eps}{\varepsilon}
-\newcommand{\Sha}{\mathbb{S}}
+\newcommand{\Sha}{\mathcal{X}}
 
-% === Document Starts ===
+% === Document Metadata ===
+\title{Navier–Stokes Global Regularity via Categorical Collapse\\
+\Large \textsc{Version 6.0}\\
+\small Based on the AK High-Dimensional Projection Structural Theory v10.0}
+\author{Atsushi Kobayashi \\ \small with ChatGPT Research Partner}
+\date{June 2025}
+
+% === Document Start ===
 \begin{document}
 
 \maketitle
@@ -583,8 +615,7 @@ This proposition will be proven by translating topological vanishing into obstru
 Let us consider the following causal flow of implication, adapted from Appendix P:
 
 \[
-\resizebox{\textwidth}{!}{%
-\begin{tikzcd}
+\begin{tikzcd}[row sep=large, column sep=large]
 \mathcal{F}_t
   \arrow[r, "{\mathrm{PH}_1 = 0}"]
   \arrow[d, "{\text{Topological Energy Decay}}"']
@@ -594,9 +625,7 @@ Let us consider the following causal flow of implication, adapted from Appendix 
   \arrow[r, "{\text{Topological Gluing Realization}}"]
 & u(t) \in C^\infty
 \end{tikzcd}
-}
 \]
-
 
 Each arrow in this diagram has a formal interpretation in terms of derived sheaf theory and AK Collapse semantics.
 
@@ -740,8 +769,7 @@ just as \( E_{\mathrm{PH}}(t) \) did for topological complexity.
 We now restate the causal collapse structure as a diagram, adapted from Appendix Q:
 
 \[
-\resizebox{\textwidth}{!}{%
-\begin{tikzcd}
+\begin{tikzcd}[row sep=large, column sep=large]
 \mathcal{F}_t
   \arrow[r, "{\mathrm{Ext}^1 = 0}"]
   \arrow[d, "{E_{\mathrm{Ext}}(t) \to 0}"']
@@ -751,9 +779,7 @@ We now restate the causal collapse structure as a diagram, adapted from Appendix
   \arrow[r, "{\text{Global Reconstruction}}"]
 & u(t) \in C^\infty
 \end{tikzcd}
-}
 \]
-
 
 The vertical arrows represent energetic and functorial decay,  
 while the horizontal ones represent semantic transitions from local to global structure.
@@ -1781,7 +1807,7 @@ and is compatible with shift and exact triangles.
 
 ---
 
-\subsection*{E.6 Comparison: Abelian vs. Derived Context
+\subsection*{E.6 Comparison: Abelian vs. Derived Context}
 
 \begin{table}[h!]
 \centering
@@ -1962,7 +1988,7 @@ Collapse is therefore no longer a heuristic structure, but a closed formal syste
 % Appendix G: PH₁-Based Collapse and Localized Proof Expansion
 % =====================================================
 
-\section*{Appendix G: PH₁-Based Collapse and Localized Proof Expansion}
+\section*{Appendix G: PH\(_1\)-Based Collapse and Localized Proof Expansion}
 \addcontentsline{toc}{section}{Appendix G: PH₁-Based Collapse and Localized Proof Expansion}
 
 \subsection*{G.1 Purpose and Context}
@@ -2048,7 +2074,7 @@ The sheaf condition ensures that global vanishing of \( \mathrm{PH}_1 \) holds i
 
 ---
 
-\subsection*{G.6 Formal Type-Theoretic Encoding (Refined)
+\subsection*{G.6 Formal Type-Theoretic Encoding (Refined)}
 
 \begin{lstlisting}[language=Coq, caption=Local Collapse Encoding in Type Theory]
 Parameter U : OpenSet.
@@ -2123,20 +2149,17 @@ that is, a sheaf cohomological obstruction to forming global trivializations ove
 We consider again the core Collapse diagram:
 
 \[
-\resizebox{\textwidth}{!}{%
-\begin{tikzcd}
+\begin{tikzcd}[row sep=large, column sep=large]
 \mathcal{F}_t
   \arrow[r, "{\mathrm{Ext}^1 = 0}"]
   \arrow[d, "{E_{\mathrm{Ext}}(t) \to 0}"']
 & \text{Trivial Extension Class}
-  \arrow[d, "{Collapse Functor}"] \\
+  \arrow[d, "{\text{Collapse Functor}}"] \\
 \text{Obstruction-Free Flow}
-  \arrow[r, "{Categorical Gluing}"]
+  \arrow[r, "{\text{Categorical Gluing}}"]
 & u(t) \in C^\infty
 \end{tikzcd}
-}
 \]
-
 
 This diagram expresses that collapsing Ext\(^1\) to zero categorically flattens local patches into a smooth global structure.
 
@@ -2241,25 +2264,22 @@ presented in Chapter 8 and Appendices P/Q. We aim to:
 
 ---
 
-\subsection*{I.2 Collapse Diagram (PH₁-Version)}
+\subsection*{I.2 Collapse Diagram (PH\(_1\)-Version)}
 
 We begin with the Collapse diagram (PH₁ perspective), originally stated as:
 
 \[
-\resizebox{\textwidth}{!}{%
-\begin{tikzcd}
+\begin{tikzcd}[row sep=large, column sep=large]
 \mathcal{F}_t
   \arrow[r, "{\mathrm{PH}_1}"]
-  \arrow[d, "{Topological Energy Decay}"']
+  \arrow[d, "{\text{Topological Energy Decay}}"']
 & \mathrm{PH}_1 = 0
-  \arrow[d, "{Collapse Functor}"] \\
-Ext-Free State
-  \arrow[r, "{Obstruction Removal}"]
+  \arrow[d, "{\text{Collapse Functor}}"] \\
+\text{Ext-Free State}
+  \arrow[r, "{\text{Obstruction Removal}}"]
 & u(t) \in C^\infty
 \end{tikzcd}
-}
 \]
-
 
 ---
 
@@ -2285,18 +2305,16 @@ Commutativity corresponds to the **associativity of function composition** in th
 The Ext-based Collapse diagram:
 
 \[
-\resizebox{\textwidth}{!}{%
-\begin{tikzcd}
+\begin{tikzcd}[row sep=large, column sep=large]
 \mathcal{F}_t
   \arrow[r, "{\mathrm{Ext}^1}"]
   \arrow[d, "{E_{\mathrm{Ext}}(t) \to 0}"']
 & \mathrm{Ext}^1 = 0
-  \arrow[d, "{Collapse Functor}"] \\
-Obstruction-Free State
-  \arrow[r, "{Categorical Gluing}"]
+  \arrow[d, "{\text{Collapse Functor}}"] \\
+\text{Obstruction-Free State}
+  \arrow[r, "{\text{Categorical Gluing}}"]
 & u(t) \in C^\infty
 \end{tikzcd}
-}
 \]
 
 translates to:
@@ -2413,7 +2431,7 @@ Parameter F_t : ℝ → Sheaf.        (* Barcode sheaf at time t *)
 
 ---
 
-\subsection*{J.3 Topological Collapse Predicates (PH₁-Based)}
+\subsection*{J.3 Topological Collapse Predicates (PH\(_1\)-Based)}
 
 \begin{lstlisting}[language=Coq]
 Parameter PH1_trivial : ℝ → Prop.
@@ -2589,7 +2607,7 @@ ZFC Foundations          & Not specified          & Explicit constructibility (A
 
 ---
 
-\subsection*{K.5 Logical Closure Status: Informal vs. Formal
+\subsection*{K.5 Logical Closure Status: Informal vs. Formal}
 
 \begin{description}
   \item[Version 5.3:]  
@@ -2691,8 +2709,7 @@ C : D^b(\mathsf{Filt}) \to \mathsf{Triv}, \quad C(\mathcal{F}_t) \simeq \mathcal
 \subsection*{L.3 Final Collapse Diagram (Fully Typed and Commutative)}
 
 \[
-\resizebox{\textwidth}{!}{%
-\begin{tikzcd}
+\begin{tikzcd}[row sep=large, column sep=large]
 \mathcal{F}_t
   \arrow[r, "{\mathrm{PH}_1 = 0}"]
   \arrow[d, "{E_{\mathrm{Ext}}(t) \to 0}"']
@@ -2702,9 +2719,7 @@ C : D^b(\mathsf{Filt}) \to \mathsf{Triv}, \quad C(\mathcal{F}_t) \simeq \mathcal
   \arrow[r, "{\texttt{Categorical Gluing}}"]
 & u(t,x) \in C^\infty
 \end{tikzcd}
-}
 \]
-
 
 Each arrow in this square is:
 \begin{itemize}
@@ -2858,8 +2873,7 @@ This satisfies:
 \paragraph{Figure M.1 — Full Collapse Diagram (Typed)}
 
 \[
-\resizebox{\textwidth}{!}{%
-\begin{tikzcd}
+\begin{tikzcd}[row sep=large, column sep=large]
 \mathcal{F}_t
   \arrow[r, "{\mathrm{PH}_1 = 0}"]
   \arrow[d, "{E_{\mathrm{Ext}}(t) \to 0}"']
@@ -2869,7 +2883,6 @@ This satisfies:
   \arrow[r, "{\texttt{Gluing Functor}}"]
 & u(t,x) \in C^\infty
 \end{tikzcd}
-}
 \]
 
 
@@ -3324,14 +3337,12 @@ that the diagram of implications is coherent under the assumptions defined in Ap
 The Collapse Diagram encodes the following logical structure:
 
 \[
-\resizebox{\textwidth}{!}{%
-\begin{tikzcd}
+\begin{tikzcd}[row sep=large, column sep=large]
 u(t) \arrow[r, "\text{Spectral Decay}"] \arrow[d, swap, "\text{Topological Energy}"]
 & \mathrm{PH}_1(u) = 0 \arrow[d, "\text{Functor Collapse}"] \\
 \mathrm{Ext}^1(u) = 0 \arrow[r, "\text{Obstruction Removal}"]
 & u(t) \in C^\infty
 \end{tikzcd}
-}
 \]
 
 This can be interpreted as the following logical commutation:
@@ -3603,8 +3614,8 @@ via:
 
 We recommend use of:
 
-- **Coq 8.18+** with \texttt{math-comp}, \texttt{ssreflect}, or custom modules
-- Or **Lean 4.0+** with `mathlib4` and `category_theory`
+- \textbf{Coq 8.18+} with \texttt{math-comp}, \texttt{ssreflect}, or custom modules
+- Or \textbf{Lean 4.0+} with \texttt{mathlib4} and \texttt{category\_theory}
 
 \subsection*{N.7.6 Export and Repository Preparation}
 
