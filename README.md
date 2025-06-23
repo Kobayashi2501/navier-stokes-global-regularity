@@ -143,6 +143,14 @@ Q.E.D.
 
 ---
 
+## DOI
+
+This project has been formally archived on Zenodo:
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15713877.svg)](https://doi.org/10.5281/zenodo.15713877)
+
+---
+
 ## 📢 arXiv Submission and Endorsement
 
 This project is currently being prepared for submission to **arXiv**.
