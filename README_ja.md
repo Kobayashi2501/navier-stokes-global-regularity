@@ -143,6 +143,14 @@ Q.E.D.
 
 ---
 
+## DOI
+
+このプロジェクトはZenodoに正式にアーカイブされています：
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15713877.svg)](https://doi.org/10.5281/zenodo.15713877)
+
+---
+
 ## 📢 arXiv 投稿準備中・推薦者募集中
 
 本プロジェクトは現在 **arXiv投稿を準備中** です。
