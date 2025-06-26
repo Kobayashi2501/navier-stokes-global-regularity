@@ -2,7 +2,7 @@
 ### via Collapse of Persistent Topology and Categorical Obstruction (v6.0, AK-HDPST based)
 
 This repository presents **Version 6.0**, a formally complete and verifiable proof system for the **global regularity** of the 3D incompressible Navier–Stokes equations on `ℝ³`,  
-based entirely on the **AK Collapse Framework** developed in [AK-HDPST v10.0](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory).
+based entirely on the **AK Collapse Framework** developed in [AK-HDPST](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory).
 
 ---
 
