@@ -139,9 +139,6 @@ Collapse正則性の論理進行：
 ## 📚 参考リンク
 
 - [AK高次元射影構造理論 (v11.0)](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory)
-- [Collapse階層図解 (Appendix N)](https://github.com/Kobayashi2501/navier-stokes-global-regularity/blob/main/Appendix_N.tex)
-- [型理論テンプレート (Appendix O)](https://github.com/Kobayashi2501/navier-stokes-global-regularity/blob/main/Appendix_O.tex)
-- [論理閉鎖と最終証明 (Appendix L)](https://github.com/Kobayashi2501/navier-stokes-global-regularity/blob/main/Appendix_L.tex)
 
 ---
 
