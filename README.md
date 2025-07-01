@@ -147,7 +147,7 @@ Thus, within this framework:
 
 This project is archived on Zenodo:
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15713877.svg)](https://doi.org/10.5281/zenodo.15713877)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15783540.svg)](https://doi.org/10.5281/zenodo.15783540)
 
 ---
 
