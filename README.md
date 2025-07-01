@@ -137,9 +137,6 @@ Thus, within this framework:
 ## 📚 Further Reading
 
 - [AK-HDPST Theory (v11.0)](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory)
-- [Collapse Diagrams and Hierarchical Refinement (Appendix N)](https://github.com/Kobayashi2501/navier-stokes-global-regularity/blob/main/Appendix_N.tex)
-- [Formal Coq/Lean Templates (Appendix O)](https://github.com/Kobayashi2501/navier-stokes-global-regularity/blob/main/Appendix_O.tex)
-- [Logical Closure Proof (Appendix L)](https://github.com/Kobayashi2501/navier-stokes-global-regularity/blob/main/Appendix_L.tex)
 
 ---
 
