@@ -136,7 +136,7 @@ Thus, within this framework:
 
 ## 📚 Further Reading
 
-- [AK-HDPST Theory (v11.0)](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory)
+- [AK-HDPST Theory](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory)
 
 ---
 
