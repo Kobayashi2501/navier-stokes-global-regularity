@@ -116,9 +116,7 @@ These are discussed in Appendix C and Appendix E.
 
 ## 📚 Related Work
 
-- [AK-HDPST Core Theory (v14.0)](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory)
-- [Appendix Summary](https://github.com/Kobayashi2501/navier-stokes-global-regularity/blob/main/Appendix_Summary.tex)
-- [Appendix Z (Coq Encoding)](https://github.com/Kobayashi2501/navier-stokes-global-regularity/blob/main/Appendix_Z.tex)
+- [AK-HDPST Core Theory)](https://github.com/Kobayashi2501/AK-High-Dimensional-Projection-Structural-Theory)
 
 ---
 
