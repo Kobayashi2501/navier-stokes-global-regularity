@@ -124,7 +124,7 @@ Collapse Q.E.D. による正則性は次の流れで導かれます：
 
 このリポジトリはZenodoにアーカイブされています：
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15783540.svg)](https://doi.org/10.5281/zenodo.15783540)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16357948.svg)](https://doi.org/10.5281/zenodo.16357948)
 
 ---
 
