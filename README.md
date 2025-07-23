@@ -124,7 +124,7 @@ These are discussed in Appendix C and Appendix E.
 
 This repository is archived with Zenodo:
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15783540.svg)](https://doi.org/10.5281/zenodo.15783540)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16357948.svg)](https://doi.org/10.5281/zenodo.16357948)
 
 ---
 
